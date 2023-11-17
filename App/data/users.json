@@ -1,6 +1,0 @@
-//this is a possible way to create our user's database ?
-{
-  "users":[
-    ["user name", "img_path", "login", "password"]
-  ]
-}
