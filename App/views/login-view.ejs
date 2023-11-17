@@ -1,7 +1,16 @@
-Please login to your account or create a new one
 <script src=".js/login-view.js"></script>
 <link rel="stylesheet" href="css/login-style.css">
-<div id="container">
+<div id="header" align="center">
+    <div id="txt">Enter your personal informations</div>
+</div>
+<div id="container" align="center">
     <!-- shall contain couples of text input fields ig -->
-    <a href="/logged" class="btn btn-secondary">Login</a>
+    <div id="name_txt">Name- </div>
+    <input id="name_field" type="text" value="" placeholder="username">
+    <div id="pwd_txt">Password- </div>
+    <input id="pwd_field" type="text" value="" placeholder="password">
+
+    <button id="btn" type="button" onclick="LogToApp()">Login</button>
+    <a id="test-link" href="/logged" type="button" class="btn btn-secondary">Login</a>
+
 </div>

@@ -1,0 +1,44 @@
+#header{
+    font-size: large;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+#name_txt{
+    font-weight: bold;
+    align: left;
+}
+#name_field{
+    align: left;
+    height: fit-content;
+}
+
+#pwd_txt{
+    margin-top: 10px;
+    font-weight: bold;
+    align: left;
+}
+#pwd_field{
+    margin-top: 10px;
+    align: left;
+    height: fit-content;
+}
+
+#log{
+    align: center;
+}
+#btn{
+    margin-top: 20px;
+    align: center;
+    width: fit-content;
+}
+#test-link{
+    margin-top: 20px;
+    align: center;
+}
+
