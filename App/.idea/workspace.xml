@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa509c83-b2ee-45c5-b505-bf50454757e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/layout-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/fst-view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/login-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/login-view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/login-view.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/fst-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/fst-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/fst-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/fst-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/fst-view.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/app-layout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/app-layout.ejs" afterDir="false" />
     </list>
@@ -20,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="tsconfig.json" />
         <option value="package.json" />
+        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
@@ -65,6 +67,7 @@
       <updated>1700179665398</updated>
       <workItem from="1700179666410" duration="1386000" />
       <workItem from="1700181193994" duration="2583000" />
+      <workItem from="1700212957146" duration="2534000" />
     </task>
     <servers />
   </component>

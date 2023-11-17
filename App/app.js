@@ -20,6 +20,9 @@ app.set('layout', './layouts/app-layout.ejs')
 
 
 app.get('', (req, res) => {
+    res.render("login-view.ejs")
+});
+app.get('/logged', (req, res) => {
     res.render("fst-view.ejs")
 });
 
