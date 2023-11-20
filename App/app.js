@@ -26,6 +26,13 @@ app.get('/logged', (req, res) => {
     res.render("fst-view.ejs")
 });
 
+//handling logins check
+app.post('/login', (req, res) => {
+    const is_valid = true;
+    if(is_valid){
+        res.render("fst-view.js");
+    }
+});
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
