@@ -1,0 +1,37 @@
+#header{
+    background: #2ED573;
+    display: flex;
+    align-items: center;
+    gap: 35%;
+}
+#back-btn{
+    font-size: 3em;
+    background-color: transparent;
+}
+#title{
+    font-size: 3em;
+    font-weight: bold;
+    font-family: Monaco;
+    color: #FFFFFF;
+}
+
+#body{
+
+}
+
+.label{
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: Monaco;
+}
+.field{
+    margin-left: 10%;
+    display: flex;
+    background-color: #DFE4EA;
+    border: solid 3px #2F3542;
+    border-radius: 2em;
+    width: 100px;
+    height: 25px;
+}
