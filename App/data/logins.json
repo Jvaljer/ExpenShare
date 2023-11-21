@@ -1,0 +1,11 @@
+{
+  "logins": [
+    ["ahenryl", "qwerty1234"]
+  ],
+  "trips": [
+    ["Tanzania", "ahenryl",
+      ["hotel","food","fuel"],
+      ["user1","user2"]
+    ]
+  ]
+}

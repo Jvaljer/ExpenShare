@@ -1,6 +1,97 @@
-#container{
-    background-color: #F1F2F6;
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+#title{
+    font-family: Monaco;
+    margin-right: 50px;
+}
+#usrprofile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+#usricon{
+    margin-left: 15px;
+    background-color: #70A1FF;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+
+#body{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+#ex-trip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 15px;
+    background-color: #DFE4EA;
+}
+#illustration{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    background: #ECCC68;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+}
+#name{
+    margin-left: 50px;
+    font-family: Monaco;
+    font-size: 2em;
+}
+#group{
+    margin-left: 100px;
+    margin-right: 25px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr) ;
-    grid-template-rows: repeat(12, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+    grid-template-rows: repeat(2, 0.25fr);
+    grid-template-columns: repeat(4,0.25fr);
+}
+
+.usr{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+#usr0{
+    background-color: #FF6B81;
+}
+#usr1{
+    background-color: #7BED9F;
+}
+#usr2{
+    background-color: #FFA502;
+}
+#usr3{
+    background-color: #2F3542;
+}
+#usr4{
+    background-color: #1E90FF;
+}
+
+#form{
+    margin-top: 100px;
+}
+#new-trip-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50px;
+    font-size: 5em;
 }

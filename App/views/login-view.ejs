@@ -1,19 +1,19 @@
 <script src=".js/login-view.js"></script>
 <link rel="stylesheet" href="css/login-style.css">
+
 <div id="header" align="center">
     <div id="txt">Enter your personal informations</div>
 </div>
-<div id="container" align="center">
-    <!-- shall contain couples of text input fields ig -->
-    <div id="name_txt">Name- </div>
-    <input id="name_field" type="text" value="" placeholder="username">
-    <div id="pwd_txt">Password- </div>
-    <input id="pwd_field" type="text" value="" placeholder="password">
-
-    <form action="/login" method="post">
+<form id="form" action="/login" method="post">
+    <div id="container">
+        <div id="usr">
+            <div id="usrtxt">Name- </div>
+            <input id="usrfield" type="text" value="" placeholder="user-name">
+        </div>
+        <div id="pwd">
+            <div id="pwdtxt">Password- </div>
+            <input id="pwdfield" type="text" value="" placeholder="your password">
+        </div>
         <button id="btn" type="submit">Login</button>
-    </form>
-    <!--
-    <a id="test-link" href="/logged" type="button" class="btn btn-secondary">Login</a>
-    -->
-</div>
+    </div>
+</form>
