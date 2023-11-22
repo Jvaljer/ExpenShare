@@ -26,10 +26,14 @@ app.get('', (req, res) => {
 
 //handling logins check
 app.post('/login', (req, res) => {
+    //here we would load all datas
     res.render("fst-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
     res.render("new-trip-view.ejs");
+});
+app.post('/validate-trip', (req,res) => {
+    res.render("valid-trip.ejs");
 });
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);

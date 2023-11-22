@@ -12,40 +12,70 @@
     <div id="travel-label" class="label">Travel -</div>
     <div id="travel-field">
         <!--Here must add an icon & text field-->
+        <div id="travel-icon"></div>
+        <input id="travel-input" type="text" placeholder="travel name">
     </div>
+
     <div id="dates-label" class="label">Dates -</div>
     <div id="dates-field">
-        <!--Here must add a calendar-->
+        <!--Here must add two calendars-->
+        <label id="start-txt">Start: </label>
+        <input type="date" id="travel-start-date">
+        <label id="end-txt">End: </label>
+        <input type="date" id="travel-end-date">
     </div>
+
     <div id="group-label" class="label">Group Members -</div>
     <div id="group-field" class="field">
         <!--Here must add the user's icon & an 'add' button-->
         <!--Also we wanna initiate a small window when add is hit
             in order to select users to add-->
+        <div id="user-list">
+            <div id="user0" class="usr"></div>
+            <div id="user1" class="usr"></div>
+        </div>
+        <div id="usr-separator" class="separator"></div>
+        <button id="add-user-btn" type="button" class="add-btn">+</button>
     </div>
+
     <div id="category-label" class="label">Categories -</div>
     <div id="category-field" class="field">
         <!--Here must add the categories's icon & an 'add' button-->
         <!--Also we wanna initiate a small window when add is hit
             in order to select category to add-->
+        <div id="category-list">
+            <div id="category0" class="category"></div>
+            <div id="category1" class="category"></div>
+            <div id="category2" class="category"></div>
+        </div>
+        <div id="usr-separator" class="separator"></div>
+        <button id="add-category-btn" type="button" class="add-btn">+</button>
     </div>
+
     <div id="maxbudget-label" class="label">Maximum Budget -</div>
     <div id="budget-field" class="field">
         <!--Here just wanna add a slider-->
+            <input type="range" id="budget-slider" min="0" max="1000" value="0" oninput="this.nextElementSibling.value = this.value"/>
+            <output id="budget-value">0</output>
     </div>
+
     <div id="icon-label" class="label">Group Picture -</div>
     <div id="icon-field">
         <!--And here just wanna add a import photo fiel-->
+        <input type="file" id="group-img-chooser" accept="image/png, image/jpeg" />
+        <img src="">
     </div>
 </div>
 
 <div id="footer">
-    <div id="comment-field">
+    <div id="comment-field" class="field">
         <!--There we want to add a text field that could
             contain enough for a comment-->
+        <textarea id="comment" placeholder="add a comment about this trip"></textarea>
     </div>
-    <div id="">
         <!--Here we only wanna add an 'add' button to validate the informations
             Also this shou;d trigger a view change-->
-    </div>
+    <form id="form" action="/validate-trip" method="post">
+        <button type="submit" id="validate-btn" class="btn default" onclick="AddTrip">Add</button>
+    </form>
 </div>

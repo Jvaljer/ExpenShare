@@ -15,23 +15,195 @@
     color: #FFFFFF;
 }
 
-#body{
+#travel-field{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+    margin-top: 10px;
+}
+#travel-icon{
+    width: 50px;
+    height: 50px;
+    background-color: #2ED573;
+    border-radius: 10px;
+    margin-right: 2em;
+}
+#travel-input{
+    font-family: Monaco;
+    font-size: 1.25em;
+}
+#dates-field{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+    margin-top: 10px;
+}
+#start-txt{
+    font-family: Monaco;
+    font-size: 1.25em;
+    color: #3742FA;
+}
+#travel-start-date{
+    margin-left: 5px;
+    font-family: Monaco;
+    font-size: 1.5em;
+    border: solid 3px #3742FA;
+    border-radius: 10px;
+}
+#end-txt{
+    margin-left: 100px;
+    font-family: Monaco;
+    font-size: 1.25em;
+    color: #3742FA;
+}
+#travel-end-date{
+    margin-left: 5px;
+    font-family: Monaco;
+    font-size: 1.5em;
+    border: solid 3px #3742FA;
+    border-radius: 10px;
+}
+
+#user-list{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#user0{
+    margin-left: 10px;
+    background-color: #FF6B81;
+}
+#user1{
+    margin-left: 10px;
+    background-color: #70A1FF;
+}
+
+#category-list{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#category0{
+    margin-left: 10px;
+    background-color: #7BED9F;
+}
+#category1{
+    margin-left: 10px;
+    background-color: #ECCC68;
+}
+#category2{
+    margin-left: 10px;
+    background-color: #3742FA;
+}
+
+#budget-slider{
+    margin-left: 5%;
+    width:90%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+#budget-value{
+    margin-left: 1%;
+    font-family: Monaco;
+    font-size: 25px;
+    margin-right: 5%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+#icon-field{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#group-img-chooser{
+    margin-top: 15px;
+    font-family: Monaco;
+    font-size: 1.25em;
+}
+
+#footer{
+    margin-top: 5%;
+    margin-bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#comment{
+    font-family: Monaco;
+    font-size: 1em;
+    border: solid 3px #2F3542;
+    border-radius: 1.5em;
+    width: 500px;
+    height: 300px;
+    resize: none;
 
 }
 
-.label{
-    margin-top: 2%;
-    margin-left: 10%;
+#validate-btn{
+    margin-top: 40px;
+    width: 100px;
+    font-family: Monaco;
     font-size: 2em;
+    border-radius: 2em;
+    color: #FFFFFF;
+}
+.default {
+    border-color: #DFE4EA;
+}
+
+.default:hover {
+    background: #2F3542;
+}
+
+.label{
+    margin-top: 2.5%;
+    margin-left: 12%;
+    font-size: 1.5em;
     font-weight: bold;
     font-family: Monaco;
 }
 .field{
-    margin-left: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
     display: flex;
     background-color: #DFE4EA;
     border: solid 3px #2F3542;
     border-radius: 2em;
-    width: 100px;
-    height: 25px;
+}
+.separator{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 5px;
+    height: 55px;
+    background-color: #2F3542;
+    border-radius: 10px;
+}
+.add-btn{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 4em;
+}
+.usr{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.category{
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
 }

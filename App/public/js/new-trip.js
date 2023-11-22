@@ -1,0 +1,3 @@
+function AddTrip(){
+    //must implement
+}
