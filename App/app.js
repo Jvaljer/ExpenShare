@@ -41,6 +41,17 @@ app.post('/validate-trip', (req,res) => {
 app.post('/specific-travel', (req,res) => {
     res.render("travel-main-view.ejs");
 });
+
+//This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
+app.get('/navbar', (req, res) => {
+    res.render("navbar.ejs")
+})
+
+app.get('/friends', (req, res) => {
+    res.render("friends.ejs")
+})
+
+
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });

@@ -1,0 +1,57 @@
+#body{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 200px auto;
+    justify-items: center;
+    align-items: center;
+}
+
+#tripFriend{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.friendBox{
+    grid-column: 2;
+    grid-row: 2; /* I think I should maybe remove it? */
+    background-color: aqua;
+    padding: 15px 100px;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+/* Take back from here to make the picture go on the left and the name go on the right*/
+.picture{
+    align-content: left;
+    justify-content: left;
+}
+
+.name{
+    align-content: right;
+    justify-content: right;
+}
+
+
+/* This part will change to be generated dynamically*/
+.friendBox:nth-child(1) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.friendBox:nth-child(2) {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.friendBox:nth-child(3) {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.friendBox:nth-child(4) {
+    grid-column: 2;
+    grid-row: 5; 
+}
+
+
+
