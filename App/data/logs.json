@@ -1,4 +1,5 @@
 {
-  "usernames": ["ahenryl"],
-  "passwords": ["qwerty1234"]
+  "logins": [
+    ["ahenryl","qwerty1234"]
+  ]
 }

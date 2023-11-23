@@ -3,7 +3,10 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const port = 3000;
+
 const fs = require('fs');
+const bodyParser = require ( 'body-parser');
+app.use (bodyParser.urlencoded()) ;
 
 app.use(express.static(__dirname));
 // Adding css and js files from installed apps
@@ -21,13 +24,32 @@ app.set('layout', './layouts/app-layout.ejs')
 
 
 app.get('', (req, res) => {
-    res.render("login-view.ejs")
+    res.render("login-view.ejs", {start:true, fail:false});
 });
 
 app.post('/login', (req, res) => {
     //here we would load all datas
-    console.log("we got body :" + req.body);
-    res.render("fst-view.ejs");
+    const username = req.body.username;
+    const password = req.body.password;
+    const raw = fs.readFileSync("data/logs.json");
+    const data = JSON.parse(raw);
+    const logs = data["logins"];
+
+    for(var i=0; i<logs.length; i++){
+
+        if(logs[i][0]===username && logs[i][1]===password){
+            console.log("connected !");
+            res.render("fst-view.ejs", {
+
+            }); //shall now give current user as data
+        } else {
+            console.log("failed to connect duh");
+        }
+    }
+    res.render("login-view.ejs",{
+        start: false,
+        fail: true
+    });
 });
 app.post('/logged', (req,res) => {
     res.render("fst-view.ejs");
