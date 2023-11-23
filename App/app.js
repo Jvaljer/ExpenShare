@@ -24,9 +24,12 @@ app.get('', (req, res) => {
     res.render("login-view.ejs")
 });
 
-//handling logins check
 app.post('/login', (req, res) => {
     //here we would load all datas
+    console.log("we got body :" + req.body);
+    res.render("fst-view.ejs");
+});
+app.post('/logged', (req,res) => {
     res.render("fst-view.ejs");
 });
 app.post('/new-trip', (req,res) => {

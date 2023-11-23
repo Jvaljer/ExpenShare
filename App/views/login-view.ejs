@@ -4,16 +4,15 @@
 <div id="header" align="center">
     <div id="txt">Enter your personal informations</div>
 </div>
+
 <form id="form" action="/login" method="post">
-    <div id="container">
         <div id="usr">
             <div id="usrtxt">Name- </div>
-            <input id="usrfield" type="text" value="" placeholder="user-name">
+            <input id="usrfield" type="text" placeholder="user-name" name="username"/>
         </div>
         <div id="pwd">
             <div id="pwdtxt">Password- </div>
-            <input id="pwdfield" type="text" value="" placeholder="your password">
+            <input id="pwdfield" type="text" placeholder="your password" name="password"/>
         </div>
         <button id="btn" type="submit">Login</button>
-    </div>
 </form>
