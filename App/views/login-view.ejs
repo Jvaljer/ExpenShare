@@ -5,12 +5,16 @@
     <div id="txt">Enter your personal informations</div>
     <%if(!start){%>
         <%if(fail){%>
-            <div id="err-box">
-                Failed to connect, do you want to sign-in ?
+            <div id="err-msg">
+                Failed to connect...
+                <form action="/sign-in" method="post">
+                    <button type="submit">sign in</button>
+                </form>
             </div>
         <%}%>
     <%}%>
 </div>
+
 <form id="form" action="/login" method="post">
         <div id="usr">
             <div id="usrtxt">Name- </div>

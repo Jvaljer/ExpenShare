@@ -3,12 +3,24 @@
     margin-bottom: 30px;
     margin-top: 15px;
 }
+#txt{
+    font-family: Monaco;
+    font-weight: bold;
+    font-size: 1em;
+}
+#err-msg{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    font-family: Monaco;
+}
 #form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 40%;
+    width: 26%;
+    margin-left: 37%;
     width: fit-content;
     background-color: #A4B0BE;
     border-radius: 15px;

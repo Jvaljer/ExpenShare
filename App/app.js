@@ -43,7 +43,10 @@ app.post('/login', (req, res) => {
 
             }); //shall now give current user as data
         } else {
-            console.log("failed to connect duh");
+            res.render("login-view.ejs", {
+                start:false,
+                fail:true
+            });
         }
     }
     res.render("login-view.ejs",{
@@ -51,8 +54,22 @@ app.post('/login', (req, res) => {
         fail: true
     });
 });
+app.post('/log', (req,res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    //here shall add the logs to the json file
+
+    res.render("login-view.ejs",{
+        start: false,
+        fail: false
+    });
+});
 app.post('/logged', (req,res) => {
     res.render("fst-view.ejs");
+});
+app.post('/sign-in', (req,res) => {
+    res.render("sign-in-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
     res.render("new-trip-view.ejs");

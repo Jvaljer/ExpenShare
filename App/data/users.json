@@ -1,9 +1,10 @@
 {
-  "names": [],
-  "travels": [
-    []
-  ],
-  "debts": [
-    []
+  "users": [
+    {
+      "name": "ahenryl",
+      "trips": [
+        "Tanzania"
+      ]
+    }
   ]
 }

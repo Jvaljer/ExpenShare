@@ -1,16 +1,15 @@
 {
-  "names": [],
-  "creators": [],
-  "dates": [
-    []
-  ],
-  "members": [
-    []
-  ],
-  "categories": [
-    []
-  ],
-  "budgets": [],
-  "pictures": [],
-  "comments": []
+  "Tanzania": {
+      "group": [
+        "ahenryl"
+      ],
+      "categories": [
+        "Food",
+        "Hotel",
+        "Activities"
+      ],
+      "max-budget": "350",
+      "photo": "tanzania.png",
+      "comment": "lone trip isn't that bad actually"
+  }
 }
