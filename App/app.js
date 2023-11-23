@@ -51,6 +51,7 @@ app.get('/friends', (req, res) => {
     res.render("friends.ejs")
 })
 
+//test comment
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
