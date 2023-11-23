@@ -30,6 +30,10 @@
     justify-items: center;
     align-items: center;
 }
+#travel-btn{
+    border-radius: 15px;
+    background-color: #DFE4EA;
+}
 #ex-trip{
     display: flex;
     justify-content: center;

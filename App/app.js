@@ -35,6 +35,9 @@ app.post('/new-trip', (req,res) => {
 app.post('/validate-trip', (req,res) => {
     res.render("valid-trip.ejs");
 });
+app.post('/specific-travel', (req,res) => {
+    res.render("travel-main-view.ejs");
+});
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
