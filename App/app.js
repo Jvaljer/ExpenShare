@@ -36,17 +36,19 @@ app.post('/login', (req, res) => {
     const logs = data["logins"];
 
     for(var i=0; i<logs.length; i++){
-
+        console.log(logs[i][0]+','+logs[i][1]);
         if(logs[i][0]===username && logs[i][1]===password){
-            console.log("connected !");
-            res.render("fst-view.ejs", {
-
-            }); //shall now give current user as data
-        } else {
-            res.render("login-view.ejs", {
-                start:false,
-                fail:true
-            });
+            //here we wanna load the user from another JSON file
+            const raw = fs.readFileSync("data/users.json");
+            const data = JSON.parse(raw);
+            const users = data["users"];
+            for(var i=0; i<users.length; i++){
+                if(users[i][0]===username){
+                    res.render("fst-view.ejs", {
+                        user: users[i]
+                    });
+                }
+            }
         }
     }
     res.render("login-view.ejs",{
@@ -58,7 +60,15 @@ app.post('/log', (req,res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    //here shall add the logs to the json file
+    // Read the existing JSON file
+    const raw = fs.readFileSync("data/logs.json");
+    const data = JSON.parse(raw);
+
+    // Add the new login information to the array
+    data.logins.push([username, password]);
+
+    // Write the updated JSON back to the file
+    fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
     res.render("login-view.ejs",{
         start: false,

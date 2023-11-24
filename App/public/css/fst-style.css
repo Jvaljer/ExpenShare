@@ -22,7 +22,10 @@
     width: 75px;
     height: 75px;
 }
-
+#usrimg{
+    width: 75px;
+    height: 75px;
+}
 #body{
     margin-top: 75px;
     display: flex;

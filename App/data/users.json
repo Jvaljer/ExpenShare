@@ -1,10 +1,9 @@
 {
   "users": [
-    {
-      "name": "ahenryl",
-      "trips": [
-        "Tanzania"
-      ]
-    }
+    [
+      "ahenryl",
+      ["Tanzania"],
+      "usr0.png"
+    ]
   ]
 }

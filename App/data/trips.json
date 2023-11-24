@@ -1,7 +1,7 @@
 {
   "Tanzania": {
       "group": [
-        "ahenryl"
+        ["ahenryl", "creator"]
       ],
       "categories": [
         "Food",
@@ -11,5 +11,8 @@
       "max-budget": "350",
       "photo": "tanzania.png",
       "comment": "lone trip isn't that bad actually"
+  },
+  "Australia": {
+
   }
 }
