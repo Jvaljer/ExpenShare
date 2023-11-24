@@ -33,11 +33,11 @@
     justify-items: center;
     align-items: center;
 }
-#travel-btn{
+.travel-btn{
     border-radius: 15px;
     background-color: #DFE4EA;
 }
-#ex-trip{
+.trip{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +51,10 @@
     margin-left: 25px;
     background: #ECCC68;
     border-radius: 10px;
+    width: 100px;
+    height: 100px;
+}
+#tripimg{
     width: 100px;
     height: 100px;
 }
@@ -73,23 +77,12 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-}
-#usr0{
     background-color: #FF6B81;
 }
-#usr1{
-    background-color: #7BED9F;
+.usrtinyicon{
+    width: 30px;
+    height: 30px;
 }
-#usr2{
-    background-color: #FFA502;
-}
-#usr3{
-    background-color: #2F3542;
-}
-#usr4{
-    background-color: #1E90FF;
-}
-
 #form{
     margin-top: 100px;
 }

@@ -1,18 +1,18 @@
 {
-  "Tanzania": {
-      "group": [
-        ["ahenryl", "creator"]
-      ],
-      "categories": [
-        "Food",
-        "Hotel",
-        "Activities"
-      ],
-      "max-budget": "350",
-      "photo": "tanzania.png",
-      "comment": "lone trip isn't that bad actually"
-  },
-  "Australia": {
-
-  }
+  "Tanzania": [
+    "Tanzania",
+    [
+      ["ahenryl", "creator"],
+      ["hortense", "none"],
+      ["jason", "none"]
+    ],
+    [
+      "Food",
+      "Hotel",
+      "Activites"
+    ],
+    "350",
+    "tanzania.png",
+    "lone trip isn't that bad actually"
+  ]
 }

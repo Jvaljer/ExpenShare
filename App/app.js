@@ -42,10 +42,19 @@ app.post('/login', (req, res) => {
             const raw = fs.readFileSync("data/users.json");
             const data = JSON.parse(raw);
             const users = data["users"];
+
+            const raw_ = fs.readFileSync("data/trips.json");
+            const data_ = JSON.parse(raw_);
+            let trips = [];
             for(var i=0; i<users.length; i++){
                 if(users[i][0]===username){
+                    for(var j=0; j<users[i][1].length; j++){
+                        trips.push(data_[users[i][1][j]]);
+                    }
+                    console.log(trips);
                     res.render("fst-view.ejs", {
-                        user: users[i]
+                        user: users[i],
+                        trip: trips
                     });
                 }
             }

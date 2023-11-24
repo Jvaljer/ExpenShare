@@ -12,11 +12,11 @@
 </div>
 
 <div id="body">
-    <form id="travel-form" action="/specific-travel" method="post">
+    <!--<form action="/specific-travel" method="post">
         <button id="travel-btn" type="submit">
             <div id="ex-trip">
                 <div id="illustration"></div>
-                <div id="name">Tanzania</div>
+                <div id="name" name="title">Tanzania</div>
                 <div id="group">
                     <div id="usr0" class="usr"></div>
                     <div id="usr1" class="usr"></div>
@@ -26,7 +26,26 @@
                 </div>
             </div>
         </button>
-    </form>
+    </form> -->
+    <%for(var i=0; i<trip.length; i++){%>
+        <form action="/specific-travel" method="post">
+            <button class="travel-btn" type="submit">
+                <div class="trip">
+                    <div id="illustration">
+                        <img id="tripimg" src="<%trip[i][4]%>">
+                    </div>
+                    <div id="name" name="title"> <%=trip[i][0]%> </div>
+                    <div id="group">
+                        <%for(var j=0; j<trip[i][1].length; j++){%>
+                            <div class="usr">
+                                <img class="usrtinyicon" src=""> <!--shall add a variable to contain all images-->
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
+            </button>
+        </form>
+    <%}%>
 </div>
 
 <div id="footer" align="center">
