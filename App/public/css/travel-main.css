@@ -14,7 +14,14 @@
     font-family: Monaco;
     color: #FFFFFF;
 }
-
+#body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#chart-field{
+    width: 50%;
+}
 .label{
     margin-top: 2.5%;
     margin-left: 12%;

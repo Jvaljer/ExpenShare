@@ -6,6 +6,7 @@ const port = 3000;
 
 const fs = require('fs');
 const bodyParser = require ( 'body-parser');
+const chart = require('chart.js');
 app.use (bodyParser.urlencoded()) ;
 
 app.use(express.static(__dirname));
@@ -24,6 +25,7 @@ app.set('layout', './layouts/app-layout.ejs')
 
 
 app.get('', (req, res) => {
+    console.log("rendering LOGIN-VIEW with start & !fail _");
     res.render("login-view.ejs", {start:true, fail:false});
 });
 
@@ -35,8 +37,9 @@ app.post('/login', (req, res) => {
     const data = JSON.parse(raw);
     const logs = data["logins"];
 
+    let ignore = false;
+
     for(var i=0; i<logs.length; i++){
-        console.log(logs[i][0]+','+logs[i][1]);
         if(logs[i][0]===username && logs[i][1]===password){
             //here we wanna load the user from another JSON file
             const raw = fs.readFileSync("data/users.json");
@@ -51,19 +54,23 @@ app.post('/login', (req, res) => {
                     for(var j=0; j<users[i][1].length; j++){
                         trips.push(data_[users[i][1][j]]);
                     }
-                    console.log(trips);
+                    console.log("rendering FST-VIEW with user & trips /LOGIN");
                     res.render("fst-view.ejs", {
                         user: users[i],
                         trip: trips
                     });
+                    ignore = true;
                 }
             }
         }
     }
-    res.render("login-view.ejs",{
-        start: false,
-        fail: true
-    });
+    if(!ignore){
+        console.log("rendering LOGIN-VIEW with !start & fail /LOGIN");
+        res.render("login-view.ejs",{
+            start: false,
+            fail: true
+        });
+    }
 });
 app.post('/log', (req,res) => {
     const username = req.body.username;
@@ -79,33 +86,41 @@ app.post('/log', (req,res) => {
     // Write the updated JSON back to the file
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
+    console.log("rendering LOGIN-VIEW with !start & !fail /LOG");
     res.render("login-view.ejs",{
         start: false,
         fail: false
     });
 });
 app.post('/logged', (req,res) => {
+    console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs");
 });
 app.post('/sign-in', (req,res) => {
+    console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
     res.render("sign-in-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
+    console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
 app.post('/validate-trip', (req,res) => {
+    console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
     res.render("valid-trip.ejs");
 });
 app.post('/specific-travel', (req,res) => {
+    console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     res.render("travel-main-view.ejs");
 });
 
 //This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
 app.get('/navbar', (req, res) => {
+    console.log("rendering NAVBAR with _ /NAVBAR");
     res.render("navbar.ejs")
 })
 
 app.get('/friends', (req, res) => {
+    console.log("rendering FRIENDS with _ /FRIENDS");
     res.render("friends.ejs")
 })
 
