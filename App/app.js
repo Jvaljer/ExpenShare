@@ -124,7 +124,10 @@ app.get('/friends', (req, res) => {
     res.render("friends.ejs")
 })
 
-//test comment
+app.get('/debt-everyone', (req, res) => {
+    console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
+    res.render("debt-everyone.ejs")
+})
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
