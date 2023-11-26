@@ -100,7 +100,7 @@ app.post('/sign-in', (req,res) => {
     console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
     res.render("sign-in-view.ejs");
 });
-app.get('/new-trip', (req,res) => {
+app.post('/new-trip', (req,res) => {
     console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
