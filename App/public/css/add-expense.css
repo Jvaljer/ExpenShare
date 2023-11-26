@@ -1,0 +1,115 @@
+.trip-name{
+    background: #2ED573;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#back-form{
+    position: absolute;
+    left: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#title{
+    font-size: 3em;
+    font-weight: bold;
+    font-family: Monaco;
+    color: #FFFFFF;
+}
+
+#back-btn{
+    font-size: 3em;
+    background-color: transparent;
+}
+
+#addExpense{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.title{
+    margin-right:10px;
+    display:flex;
+    align-self: center;
+}
+
+.expense-name{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.expense-amount{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.categoryField{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoryChoice{
+    display: flex;
+    flex-grow: 0; 
+    background-color: #dcdcdc;
+    width: 400px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.category{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.field{
+    margin-top: 20px;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment{
+    font-family: Monaco;
+    font-size: 1em;
+    border: solid 3px #2F3542;
+    border-radius: 1.5em;
+    width: 500px;
+    height: 300px;
+    resize: none;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+}
+
+#validate-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100px;
+    font-family: Monaco;
+    font-size: 2em;
+    border-radius: 2em;
+    color: #FFFFFF;
+    margin-bottom: 15%;
+}
+
+.default {
+    border-color: #DFE4EA;
+}
+
+.default:hover {
+    background: #2F3542;
+}
+

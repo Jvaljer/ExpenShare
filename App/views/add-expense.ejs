@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="css/add-expense.css">
+
+<div id="container">
+
+    <div id="header">
+        <!-- this shall contain the app name, and the user profile overview -->
+        <%- include("navbar.ejs")%>
+        <div class="trip-name">
+            <form id="back-form" action="/login" method="post">
+                <button id="back-btn" type="submit"><</button>
+            </form>
+            <div id="title">Tanzania</div>
+        </div>
+    </div>
+
+    <div id="body">
+        <h1 id="addExpense"> Add Expense </h1>
+
+        <div class="expense-name">
+            <div class="title">Expense Name </div>
+            <input id="expense-name" type="text" placeholder="">
+        </div>
+        
+        <div class="expense-amount">
+            <div class="title">Expense Amount </div>
+            <input id="expense-amount" type="number" placeholder="">
+        </div>
+
+        <div class="categoryField">
+            <div class="categoryChoice"> 
+                <div class="category"> H </div>
+                <div class="category"> P </div>
+            </div>
+        </div>
+    
+        
+        <div id="comment-field" class="field">
+            <textarea id="comment" placeholder="Add a comment about this expense"></textarea>
+        </div>
+
+        <!-- need to check here, I need to change the onclick probably but don't know what for -->
+        <form id="form" action="/valid-expense" method="post">
+            <button type="submit" id="validate-btn" class="btn default" onclick=>Add</button>
+        </form>
+
+    </div>
+</div>

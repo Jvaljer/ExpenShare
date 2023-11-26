@@ -134,6 +134,7 @@
     justify-content: center;
     align-items: center;
 }
+
 #comment{
     font-family: Monaco;
     font-size: 1em;
@@ -142,7 +143,6 @@
     width: 500px;
     height: 300px;
     resize: none;
-
 }
 
 #validate-btn{

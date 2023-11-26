@@ -100,7 +100,7 @@ app.post('/sign-in', (req,res) => {
     console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
     res.render("sign-in-view.ejs");
 });
-app.post('/new-trip', (req,res) => {
+app.get('/new-trip', (req,res) => {
     console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
@@ -137,6 +137,16 @@ app.get('/debt-admin', (req, res) => {
 app.get('/profile', (req, res) => {
     console.log("rendering PROFILE with _ /PROFILE");
     res.render("profile.ejs")
+})
+
+app.get('/add-expense', (req, res) => {
+    console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
+    res.render("add-expense.ejs")
+})
+
+app.post('/valid-expense', (req, res) => {
+    console.log("rendering VALID-EXPENSE with _ /VALID-EXPENSE");
+    res.render("valid-expense.ejs")
 })
 
 
