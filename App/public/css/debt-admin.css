@@ -1,0 +1,44 @@
+#footer{
+    position:absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.users{
+    display:flex;
+    flex-direction: row;
+    background-color: #dcdcdc;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.other-user{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.img{
+    width: 40px;
+    height: 40px;
+}
+
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 420px;
+    margin-top: -40px;
+}
+.current-user{
+    padding-left: 5px;
+    padding-top: 2px;
+    background-color: #70A1FF;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+
+
