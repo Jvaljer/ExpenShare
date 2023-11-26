@@ -1,0 +1,85 @@
+.my-profile{
+    background: #ECCC68;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#back-form{
+    position: absolute;
+    left: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#title{
+    font-size: 3em;
+    font-weight: bold;
+    font-family: Monaco;
+    color: #090909;
+}
+
+#back-btn{
+    font-size: 3em;
+    background-color: transparent;
+}
+
+.trip-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#destination{
+    margin-left: -320px;
+}
+
+.expenseBox{
+    display: flex;
+    flex-grow: 0; 
+    position: relative;
+    background-color: #dcdcdc;
+    width: 400px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.category{
+    background-color: #ECCC68;
+    border-radius: 25%;
+    width: 30px;
+    height: 30px;
+}
+
+.amount{
+    position: absolute;
+    left: 70px;
+}
+
+.name{
+    margin-right: 6px;
+}
+
+.img{
+    width: 40px;
+    height: 40px;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 420px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.current-user{
+    padding-left: 5px;
+    padding-top: 2px;
+    background-color: #70A1FF;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}

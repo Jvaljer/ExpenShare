@@ -134,6 +134,12 @@ app.get('/debt-admin', (req, res) => {
     res.render("debt-admin.ejs")
 })
 
+app.get('/profile', (req, res) => {
+    console.log("rendering PROFILE with _ /PROFILE");
+    res.render("profile.ejs")
+})
+
+
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });

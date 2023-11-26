@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="css/profile.css">
+
+<div id="container">
+    <div id="header">
+        <!-- this shall contain the app name, and the user profile overview -->
+        <%- include("navbar.ejs")%>
+        <div class="my-profile">
+            <form id="back-form" action="/login" method="post">
+                <button id="back-btn" type="submit"><</button>
+            </form>
+            <div id="title">My Profile</div>
+        </div>
+    </div>
+
+    <div id="body">
+
+        <div class="profile"> 
+            <div class="name">Hortense</div>
+            <div class="current-user"> <img class="img" src="media/usr1.png"> </div>
+        </div>  
+
+        <div class="trip-list"> 
+            <h2 id="destination">Tanzania -</h2>
+            <div class="expenseBox"> 
+                <div class="category"></div>
+                <div class="amount">18.64$ </div> 
+            </div>
+            <div class="expenseBox"> 
+                <div class="category"></div>
+                <div class="amount">12.01$ </div> 
+            </div>
+        </div>
+
+        <div class="trip-list"> 
+            <h2 id="destination">Australia -</h2>
+            <div class="expenseBox"> 
+                <div class="category"></div>
+                <div class="amount">37.12$ </div> 
+            </div>
+        </div>
+    </div>
+</div>
