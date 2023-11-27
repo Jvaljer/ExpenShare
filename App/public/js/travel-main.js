@@ -1,7 +1,7 @@
 const barCanvas = document.getElementById("barCanvas");
 
 const barChart = new Chart(barCanvas, {
-    type: "bar",
+    type: 'bar',
     data: {
         labels: ["Beijing", "Tokyo", "Seoul", "Hong Kong"],
         datasets: [{
