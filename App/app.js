@@ -6,7 +6,6 @@ const port = 3000;
 
 const fs = require('fs');
 const bodyParser = require ( 'body-parser');
-const chart = require('chart.js');
 app.use (bodyParser.urlencoded()) ;
 
 app.use(express.static(__dirname));
