@@ -1,21 +1,18 @@
 <link rel="stylesheet" href="css/travel-main.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-<script src="js/travel-main.js"></script>
 
+<%- include("navbar.ejs")%>
 <div id="header">
     <form id="back-form" action="/login" method="post">
         <button id="back-btn" type="submit"><</button>
     </form>
     <div id="title">Tanzania</div>
 </div>
-
 <div id="body">
     <div id="chart-label">Overview -</div>
     <div id="chart-field">
-        <canvas id="myChart" aria-label="chart" role="img" width="400" height="400"></canvas>
+        <canvas id="myChart" aria-label="chart" role="img"></canvas>
     </div>
 </div>
 
-<div id="footer">
-
-</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script src="js/travel-main.js"></script>

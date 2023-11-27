@@ -1,0 +1,9 @@
+Datas communications : 
+	from NEW-TRAVEL to MAIN-VIEW
+
+Pages implementations : 
+	fix CHART.JS on SPECIFIC-TRAVEL-VIEW
+	do all SPECIFIC-TRAVEL-VIEW
+
+Navigation implementations : 
+	shall implement a 'from' parameter when using the navbar
