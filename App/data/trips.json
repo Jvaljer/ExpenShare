@@ -7,9 +7,18 @@
       ["jason", "none"]
     ],
     [
-      "Food",
-      "Hotel",
-      "Activites"
+      {
+        "Food": [
+          ["ahenryl", 34.98, 2],
+          ["jason", 23.55, 3]
+        ]
+      },
+      {
+        "Hotel": [
+          ["hortense", 120.00, 0],
+          ["jason", 120.00, 1]
+        ]
+      }
     ],
     "350",
     "tanzania.png",

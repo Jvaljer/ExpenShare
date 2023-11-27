@@ -1,9 +1,14 @@
 Datas communications : 
-	from NEW-TRAVEL to MAIN-VIEW
+	from NEW-TRAVEL to MAIN-VIEW (user infos)
+	from NEW-TRAVEL to MAIN-VIEW (new travel infos)
+	
 
 Pages implementations : 
 	fix CHART.JS on SPECIFIC-TRAVEL-VIEW
 	do all SPECIFIC-TRAVEL-VIEW
 
 Navigation implementations : 
-	shall implement a 'from' parameter when using the navbar
+	shall implement a 'from' parameter when using the navbar (to enable hitting 'go back' button without error...)
+	shall fix the 'back to home page' navigation from 'validate-travel' to 'main-view'
+	fix 'navbar'->HOME "cannot GET /logged"
+	shall implement all navbar communications (current user JSON in data ? How would that be handled with server ???)

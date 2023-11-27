@@ -8,9 +8,20 @@
     <div id="title">Tanzania</div>
 </div>
 <div id="body">
-    <div id="chart-label">Overview -</div>
+    <div id="overview-label" class="label">Overview -</div>
     <div id="chart-field">
         <canvas id="myChart" aria-label="chart" role="img"></canvas>
+    </div>
+    <form action="/new-expense" method="post">
+        <button id="new-expense-btn" class="btn default" type="submit">Add Expense</button>
+    </form>
+    <div id="latest-label" class="label">Latest Expenses -</div>
+    <div id="latest-field">
+        <div id="expense">
+            <div id="category-icon"></div>
+            <div id="amount">37.95 $</div>
+            <div id="expense-user-icon"></div>
+        </div>
     </div>
 </div>
 
