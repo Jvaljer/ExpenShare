@@ -24,7 +24,7 @@ app.set('layout', './layouts/app-layout.ejs')
 
 
 app.get('', (req, res) => {
-    console.log("rendering LOGIN-VIEW with start & !fail _");
+    //console.log("rendering LOGIN-VIEW with start & !fail _");
     res.render("login-view.ejs", {start:true, fail:false});
 });
 
@@ -53,18 +53,27 @@ app.post('/login', (req, res) => {
                     for(var j=0; j<users[i][1].length; j++){
                         trips.push(data_[users[i][1][j]]);
                     }
-                    console.log("rendering FST-VIEW with user & trips /LOGIN");
+
+                    const raw_cur = fs.readFileSync("data/current.json");
+                    const data_cur = JSON.parse(raw_cur);
+                    data_cur["current-infos"] = []; //emptying all previous infos
+                    data_cur["current-infos"].push(username);
+                    data_cur["current-infos"].push(trips);
+                    fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
+
+                    //console.log("rendering FST-VIEW with user & trips /LOGIN");
                     res.render("fst-view.ejs", {
                         user: users[i],
                         trip: trips
                     });
+
                     ignore = true;
                 }
             }
         }
     }
     if(!ignore){
-        console.log("rendering LOGIN-VIEW with !start & fail /LOGIN");
+        //console.log("rendering LOGIN-VIEW with !start & fail /LOGIN");
         res.render("login-view.ejs",{
             start: false,
             fail: true
@@ -85,66 +94,74 @@ app.post('/log', (req,res) => {
     // Write the updated JSON back to the file
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
-    console.log("rendering LOGIN-VIEW with !start & !fail /LOG");
+    //console.log("rendering LOGIN-VIEW with !start & !fail /LOG");
     res.render("login-view.ejs",{
         start: false,
         fail: false
     });
 });
 app.post('/logged', (req,res) => {
-    console.log("rendering FST-VIEW with _ /LOGGED");
-    res.render("fst-view.ejs");
+    //here we first wanna get the actual user & trips
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    //console.log("rendering FST-VIEW with _ /LOGGED");
+    res.render("fst-view.ejs", {
+        user: current[0],
+        trip: current[1]
+    });
 });
 app.post('/sign-in', (req,res) => {
-    console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
+    //console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
     res.render("sign-in-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
-    console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
+    //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
 app.post('/validate-trip', (req,res) => {
-    console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
+    //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
     res.render("valid-trip.ejs");
 });
 app.post('/specific-travel', (req,res) => {
-    console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
+    //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     res.render("travel-main-view.ejs");
 });
 
 //This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
 app.get('/navbar', (req, res) => {
-    console.log("rendering NAVBAR with _ /NAVBAR");
+    //console.log("rendering NAVBAR with _ /NAVBAR");
     res.render("navbar.ejs")
 })
 
 app.get('/friends', (req, res) => {
-    console.log("rendering FRIENDS with _ /FRIENDS");
+    //console.log("rendering FRIENDS with _ /FRIENDS");
     res.render("friends.ejs")
 })
 
 app.get('/debt-everyone', (req, res) => {
-    console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
+    //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
     res.render("debt-everyone.ejs")
 })
 
 app.get('/debt-admin', (req, res) => {
-    console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
+    //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
     res.render("debt-admin.ejs")
 })
 
 app.get('/profile', (req, res) => {
-    console.log("rendering PROFILE with _ /PROFILE");
+    //console.log("rendering PROFILE with _ /PROFILE");
     res.render("profile.ejs")
 })
 
 app.get('/add-expense', (req, res) => {
-    console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
+    //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
     res.render("add-expense.ejs")
 })
 
 app.post('/valid-expense', (req, res) => {
-    console.log("rendering VALID-EXPENSE with _ /VALID-EXPENSE");
+    //console.log("rendering VALID-EXPENSE with _ /VALID-EXPENSE");
     res.render("valid-expense.ejs")
 })
 
