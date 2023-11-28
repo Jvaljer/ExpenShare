@@ -5,7 +5,8 @@ const app = express();
 const port = 3000;
 
 const fs = require('fs');
-const bodyParser = require ( 'body-parser');
+const bodyParser = require ('body-parser');
+const $ = require('jquery');
 app.use (bodyParser.urlencoded()) ;
 
 app.use(express.static(__dirname));
@@ -120,8 +121,9 @@ app.post('/new-trip', (req,res) => {
     //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
-app.post('/validate-trip', (req,res) => {
+app.all('/validate-trip', (req,res) => {
     //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
+    console.log("calling this duh");
     res.render("valid-trip.ejs");
 });
 app.post('/specific-travel', (req,res) => {
