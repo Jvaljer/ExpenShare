@@ -48,11 +48,19 @@ app.post('/login', (req, res) => {
 
             const raw_ = fs.readFileSync("data/trips.json");
             const data_ = JSON.parse(raw_);
+            const trip_data = data_.trips;
             let trips = [];
             for(var i=0; i<users.length; i++){
                 if(users[i][0]===username){
                     for(var j=0; j<users[i][1].length; j++){
-                        trips.push(data_[users[i][1][j]]);
+                        var trip_name = users[i][1][j];
+                        console.log("searching "+trip_name);
+                        for(var k=0; k<trip_data.length; k++){
+                            if(trip_name===trip_data[k][0]){
+                                console.log("found it : "+trip_data[k]);
+                                trips.push(trip_data[k]);
+                            }
+                        }
                     }
 
                     const raw_cur = fs.readFileSync("data/current.json");
@@ -124,8 +132,55 @@ app.post('/new-trip', (req,res) => {
 
 app.post('/validate-trip', (req, res) => {
     console.log("POST /validate-trip");
-    console.log("request infos : "+req.body.name);
+
+    const name = req.body.name;
+    const start = req.body.start;
+    const end = req.body.end;
+    const budget = req.body.budget;
+    const img = req.body.img;
+    const comment = req.body.comment;
+    const members = req.body.members;
+    const categories = req.body.categories;
+
     //adding new travel here
+    const raw = fs.readFileSync("data/trips.json");
+    const data = JSON.parse(raw);
+
+    const cur_usr = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][0];
+
+    var member_list = [
+        [cur_usr, "creator"]
+    ];
+    for(var i=0; i<members.length; i++){
+        member_list.push([members[i], "none"]);
+    }
+
+    var category_list = [];
+    for(var i=0; i<categories.length; i++){
+        var category = categories[i];
+        category_list.push([category]);
+    }
+
+    const trip_info = [
+            name,
+            [start, end],
+            member_list,
+            category_list,
+            budget,
+            img,
+            comment
+    ];
+
+    data.trips.push(trip_info);
+
+    fs.writeFileSync("data/trips.json", JSON.stringify(data, null, 2));
+
+    //now need to add this new trip to the current ones
+    const raw_cur = fs.readFileSync("data/current.json");
+    const data_cur = JSON.parse(raw_cur);
+    data_cur["current-infos"][1].push(trip_info);
+    fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
+
     res.render("valid-trip.ejs");
 });
 app.get('/validate-trip', (req,res) => {

@@ -6,6 +6,7 @@ Datas communications :
 Pages implementations : 
 	do second charted page
 	do both NEW-TRIP adding pages (category + users)
+	NEW-TRIP div style when added
 
 Navigation implementations : 
 	shall implement a 'from' parameter when using the navbar (to enable hitting 'go back' button without error...)

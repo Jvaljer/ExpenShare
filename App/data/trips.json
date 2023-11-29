@@ -1,28 +1,52 @@
 {
-  "Tanzania": [
-    "Tanzania",
-    ["12/06/2023","29/07/2023"],
+  "trips": [
     [
-      ["ahenryl", "creator"],
-      ["hortense", "none"],
-      ["jason", "none"]
-    ],
-    [
-      {
-        "Food": [
-          ["ahenryl", 34.98, 2],
-          ["jason", 23.55, 3]
+      "Tanzania",
+      [
+        "12/06/2023",
+        "29/07/2023"
+      ],
+      [
+        [
+          "ahenryl",
+          "creator"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "jason",
+          "none"
         ]
-      },
-      {
-        "Hotel": [
-          ["hortense", 120.00, 0],
-          ["jason", 120.00, 1]
+      ],
+      [
+        [
+          "Food",
+          [
+            "ahenryl",
+            34.98
+          ],
+          [
+            "jason",
+            23.55
+          ]
+        ],
+        [
+          "Hotel",
+          [
+            "hortense",
+            120
+          ],
+          [
+            "jason",
+            120
+          ]
         ]
-      }
-    ],
-    "350",
-    "tanzania.png",
-    "based trip to tanzania, hope will be fun"
+      ],
+      "350",
+      "tanzania.png",
+      "based trip to tanzania, hope will be fun"
+    ]
   ]
 }
