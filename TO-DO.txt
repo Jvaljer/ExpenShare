@@ -1,16 +1,35 @@
-Datas communications : 
-	from NEW-TRAVEL to MAIN-VIEW (new travel infos)
-	link travel's datas to the chart
-	fix user's informations from VALID-TRIP.'back to main page' to MAIN-VIEW
+-----TO FIX-----
+* When signing in, logs aren't usable right after. 
 
-Pages implementations : 
-	do second charted page
-	do both NEW-TRIP adding pages (category + users)
-	NEW-TRIP div style when added
+-----UNIMPLEMENTED VIEWS-----
+* Specific Travel - Category Detail
 
-Navigation implementations : 
-	shall implement a 'from' parameter when using the navbar (to enable hitting 'go back' button without error...)
-	shall fix the 'back to home page' navigation from 'validate-travel' to 'main-view'
-	fix 'navbar'->HOME "cannot GET /logged"
-	shall implement all navbar communications (current user JSON in data ? How would that be handled with server ???)
-	fix from TRAVEL-MAIN-VIEW 'back' button
+-----VIEWS DETAIL TO FIX-----
+* 'new-trip-view' : no style for added members
+* 'new-trip-view' : no style for added categories
+* 'fst-view' : added trips are a bit wider than basic one
+* 'friends' : icon not displayed
+
+-----DATA COMMUNICATION-----
+* 'valid-trip'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
+* 'new-trip-view'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
+* 'fst-view'->'travel-main-view' : chart is made without travel informations
+* 'fst-view'->'travel-main-view' : no information communicated
+* 'travel-main-view'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
+* 'navbar'->'friends' : no information communicated
+* 'navbar'->'profile' : no information communicated
+
+-----NAVIGATION-----
+* 'travel-main-view' : Cannot POST /new-expense
+* 'navbar'->"Home" : Cannot GET /logged
+* 'friends'->"BACK-BTN" : sends to "/login" with errors
+* 'navbar'->"Add an Expense" : click does nothing
+* 'navbar'->"Debt" : click does nothing
+* 'profile'->"BACK-BTN" : sends to "/login" with errors
+
+-----OTHER-----
+* Try with real 'server' stuff asap...
+
+=====SOLUTION IDEAS=====
+* Implement a 'previous.json' in datas to keep track of the page we are coming from
+
