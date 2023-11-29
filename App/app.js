@@ -121,11 +121,19 @@ app.post('/new-trip', (req,res) => {
     //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs");
 });
-app.all('/validate-trip', (req,res) => {
-    //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
-    console.log("calling this duh");
+
+app.post('/validate-trip', (req, res) => {
+    console.log("POST /validate-trip");
+    console.log("request infos : "+req.body.name);
+    //adding new travel here
     res.render("valid-trip.ejs");
 });
+app.get('/validate-trip', (req,res) => {
+    //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
+    console.log("GET /validate-trip");
+    res.render("valid-trip.ejs");
+});
+
 app.post('/specific-travel', (req,res) => {
     //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     res.render("travel-main-view.ejs");

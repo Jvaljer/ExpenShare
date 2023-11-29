@@ -62,12 +62,7 @@ jQuery(document).ready(function () {
             categories: addedCategories
         };
 
-        // Send data to the server (you can use AJAX for this)
         $.post("/validate-trip", formData, function (data) {
-            const group = formData.members;
-            const categories = formData.categories;
-
-            console.log("got list info : "+group+", "+categories);
             window.location.href = "/validate-trip";
         });
     });

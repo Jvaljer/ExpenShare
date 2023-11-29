@@ -1,6 +1,7 @@
 Datas communications : 
 	from NEW-TRAVEL to MAIN-VIEW (new travel infos)
 	link travel's datas to the chart
+	fix user's informations from VALID-TRIP.'back to main page' to MAIN-VIEW
 
 Pages implementations : 
 	do second charted page
