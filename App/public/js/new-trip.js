@@ -10,7 +10,7 @@ jQuery(document).ready(function () {
         const memberName = "member "+mcpt;
         if (memberName) {
             console.log("Adding a member");
-            $("#user-list").append(`<div class="usr">${memberName}</div>`);
+            $("#user-list").append(`<div class="usr">${mcpt}</div>`);
             addedMembers.push(memberName);
         }
         mcpt++;
@@ -21,7 +21,7 @@ jQuery(document).ready(function () {
         const categoryName = "category "+ccpt;
         if (categoryName) {
             console.log("Adding a category");
-            $("#category-list").append(`<div class="category">${categoryName}</div>`);
+            $("#category-list").append(`<div class="category">${ccpt}</div>`);
             addedCategories.push(categoryName);
         }
         ccpt++;
