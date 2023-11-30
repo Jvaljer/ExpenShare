@@ -71,14 +71,6 @@
     justify-content: center;
     align-items: center;
 }
-#user0{
-    margin-left: 10px;
-    background-color: #FF6B81;
-}
-#user1{
-    margin-left: 10px;
-    background-color: #70A1FF;
-}
 
 #category-list{
     margin-left: 15px;
@@ -86,18 +78,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-#category0{
-    margin-left: 10px;
-    background-color: #7BED9F;
-}
-#category1{
-    margin-left: 10px;
-    background-color: #ECCC68;
-}
-#category2{
-    margin-left: 10px;
-    background-color: #3742FA;
 }
 
 #budget-slider{
@@ -199,12 +179,16 @@
     font-size: 4em;
 }
 .usr{
+    margin-left: 10px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    background-color: #FF6B81;
 }
 .category{
+    margin-left: 10px;
     width: 40px;
     height: 40px;
     border-radius: 25%;
+    background-color: #70A1FF;
 }

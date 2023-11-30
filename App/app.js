@@ -37,8 +37,6 @@ app.post('/login', (req, res) => {
     const data = JSON.parse(raw);
     const logs = data["logins"];
 
-    console.log("we got them logs : "+logs);
-
     let ignore = false;
     for(var i=0; i<logs.length; i++){
         if(logs[i][0]===username && logs[i][1]===password){
@@ -68,7 +66,7 @@ app.post('/login', (req, res) => {
                     const data_cur = JSON.parse(raw_cur);
                     data_cur["current-infos"] = []; //emptying all previous infos
                     data_cur["current-infos"].push(username);
-                    data_cur["current-infos"].push(trips);
+                    //data_cur["current-infos"].push(trips);
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
 
                     //console.log("rendering FST-VIEW with user & trips /LOGIN");
@@ -119,10 +117,33 @@ app.post('/logged', (req,res) => {
     const data = JSON.parse(raw);
     const current = data["current-infos"];
 
+    const raw_ = fs.readFileSync("data/users.json");
+    const data_ = JSON.parse(raw_);
+    const users = data_["users"];
+
+    const raaw = fs.readFileSync("data/trips.json");
+    const daata = JSON.parse(raaw);
+    const trips = daata["trips"];
+
+    var all_trip = [];
+    for(var i=0; i<users.length; i++){
+        if(users[i][0]===current[0]){
+            const username = users[i][0];
+            const user_trips = users[i][1];
+            for(var j=0; j<trips.length; j++){
+                for(var k=0; k<user_trips.length; k++){
+                    if(user_trips[k]===trips[j][0]){
+                        all_trip.push(trips[j]);
+                    }
+                }
+            }
+        }
+    }
+
     //console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs", {
         user: current[0],
-        trip: current[1]
+        trip: all_trip
     });
 });
 app.post('/sign-in', (req,res) => {
@@ -178,14 +199,17 @@ app.post('/validate-trip', (req, res) => {
     ];
 
     data.trips.push(trip_info);
-
     fs.writeFileSync("data/trips.json", JSON.stringify(data, null, 2));
 
-    //now need to add this new trip to the current ones
-    const raw_cur = fs.readFileSync("data/current.json");
-    const data_cur = JSON.parse(raw_cur);
-    data_cur["current-infos"][1].push(trip_info);
-    fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
+    const raw_ = fs.readFileSync("data/users.json");
+    const data_ = JSON.parse(raw_);
+    const users = data_["users"];
+    for(var i=0; i<users.length; i++){
+        if(cur_usr===users[i][0]){
+            users[i][1].push(name);
+        }
+    }
+    fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
 
     res.render("valid-trip.ejs");
 });

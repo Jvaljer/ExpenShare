@@ -12,11 +12,7 @@
           "creator"
         ],
         [
-          "hortense",
-          "none"
-        ],
-        [
-          "jason",
+          "Laurene",
           "none"
         ]
       ],
@@ -28,18 +24,14 @@
             34.98
           ],
           [
-            "jason",
+            "Laurene",
             23.55
           ]
         ],
         [
           "Hotel",
           [
-            "hortense",
-            120
-          ],
-          [
-            "jason",
+            "Laurene",
             120
           ]
         ]
@@ -47,92 +39,6 @@
       "350",
       "tanzania.png",
       "based trip to tanzania, hope will be fun"
-    ],
-    [
-      "Australia",
-      [
-        "2023-11-01",
-        "2023-11-30"
-      ],
-      [
-        [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "member 0",
-          "none"
-        ],
-        [
-          "member 1",
-          "none"
-        ]
-      ],
-      [
-        [
-          "category 0"
-        ]
-      ],
-      "310",
-      null,
-      "this is only a test trip"
-    ],
-    [
-      "Tanzania",
-      [
-        "2023-11-04",
-        "2023-11-16"
-      ],
-      [
-        [
-          "Laurene",
-          "creator"
-        ],
-        [
-          "member 0",
-          "none"
-        ],
-        [
-          "member 1",
-          "none"
-        ]
-      ],
-      [
-        [
-          "category 0"
-        ],
-        [
-          "category 1"
-        ]
-      ],
-      "160",
-      null,
-      ""
-    ],
-    [
-      "Tanzania",
-      [
-        "2023-12-08",
-        "2023-12-02"
-      ],
-      [
-        [
-          "Laurene",
-          "creator"
-        ],
-        [
-          "member 0",
-          "none"
-        ]
-      ],
-      [
-        [
-          "category 0"
-        ]
-      ],
-      "0",
-      null,
-      ""
     ]
   ]
 }

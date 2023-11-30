@@ -32,6 +32,7 @@
 * Try with real 'server' stuff asap...
 * modify login logic (not intuitive as it is yet)
 * allow users to select their icon (list of images)
+* add an URL or link for some expenses (hotel or restaurant)
 
 =====SOLUTION IDEAS=====
 * Implement a 'previous.json' in datas to keep track of the page we are coming from
