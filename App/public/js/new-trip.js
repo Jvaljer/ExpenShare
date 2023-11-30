@@ -62,6 +62,7 @@ jQuery(document).ready(function () {
             categories: addedCategories
         };
 
+        //julopipo said 'try using AJAX' -> tf that is ...
         $.post("/validate-trip", formData, function (data) {
             window.location.href = "/validate-trip";
         });

@@ -9,6 +9,7 @@
 * 'new-trip-view' : no style for added categories
 * 'fst-view' : added trips are a bit wider than basic one
 * 'friends' : icon not displayed
+* 'new-trip-view' : selection popup for members & categories
 
 -----DATA COMMUNICATION-----
 * 'valid-trip'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)

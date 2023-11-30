@@ -2,18 +2,10 @@
   "users": [
     [
       "ahenryl",
-      ["Tanzania"],
+      [
+        "Tanzania"
+      ],
       "usr0.png"
-    ],
-    [
-      "hortense",
-      ["Tanzania"],
-      "usr1.png"
-    ],
-    [
-      "jason",
-      ["Tanzania"],
-      "usr2.png"
     ]
   ]
 }

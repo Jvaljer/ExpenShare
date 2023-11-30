@@ -37,8 +37,9 @@ app.post('/login', (req, res) => {
     const data = JSON.parse(raw);
     const logs = data["logins"];
 
-    let ignore = false;
+    console.log("we got them logs : "+logs);
 
+    let ignore = false;
     for(var i=0; i<logs.length; i++){
         if(logs[i][0]===username && logs[i][1]===password){
             //here we wanna load the user from another JSON file
@@ -92,18 +93,21 @@ app.post('/login', (req, res) => {
 app.post('/log', (req,res) => {
     const username = req.body.username;
     const password = req.body.password;
-
     // Read the existing JSON file
     const raw = fs.readFileSync("data/logs.json");
     const data = JSON.parse(raw);
-
     // Add the new login information to the array
     data.logins.push([username, password]);
-
     // Write the updated JSON back to the file
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
-    //console.log("rendering LOGIN-VIEW with !start & !fail /LOG");
+    //now adding this new user to the user list (ofc)
+    const raaw = fs.readFileSync("data/users.json");
+    const daata = JSON.parse(raaw);
+    daata.users.push([username,[],""]); //can add here an image (use cnt of already existing ones...)
+    fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
+
+    console.log("rendering LOGIN-VIEW with !start & !fail + new logs /LOG");
     res.render("login-view.ejs",{
         start: false,
         fail: false
@@ -130,6 +134,8 @@ app.post('/new-trip', (req,res) => {
     res.render("new-trip-view.ejs");
 });
 
+//dunno why but have this strange duplicata .post & .get which seems to be the only working way...
+//shall ask julopipo
 app.post('/validate-trip', (req, res) => {
     console.log("POST /validate-trip");
 
