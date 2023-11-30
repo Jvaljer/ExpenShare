@@ -51,13 +51,13 @@
 }
 
 .amount-neg{
-    color: red;
+    color: green;
     position: absolute;
     left: 70px;
 }
 
 .amount-pos{
-    color: green;
+    color:red;
     position: absolute;
     left: 70px;
 }

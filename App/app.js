@@ -201,32 +201,32 @@ app.post('/specific-travel', (req,res) => {
 });
 
 //This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
-app.get('/navbar', (req, res) => {
+/*app.post('/navbar', (req, res) => {
     //console.log("rendering NAVBAR with _ /NAVBAR");
     res.render("navbar.ejs")
-})
+})*/
 
-app.get('/friends', (req, res) => {
+app.post('/friends', (req, res) => {
     //console.log("rendering FRIENDS with _ /FRIENDS");
     res.render("friends.ejs")
 })
 
-app.get('/debt-everyone', (req, res) => {
+app.post('/debt-everyone', (req, res) => {
     //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
     res.render("debt-everyone.ejs")
 })
 
-app.get('/debt-admin', (req, res) => {
+app.post('/debt-admin', (req, res) => {
     //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
     res.render("debt-admin.ejs")
 })
 
-app.get('/profile', (req, res) => {
+app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");
     res.render("profile.ejs")
 })
 
-app.get('/add-expense', (req, res) => {
+app.post('/add-expense', (req, res) => {
     //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
     res.render("add-expense.ejs")
 })
