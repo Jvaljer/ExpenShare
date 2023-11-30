@@ -1,19 +1,4 @@
-#header{
-    background: #2ED573;
-    display: flex;
-    align-items: center;
-    gap: 35%;
-}
-#back-btn{
-    font-size: 3em;
-    background-color: transparent;
-}
-#title{
-    font-size: 3em;
-    font-weight: bold;
-    font-family: Monaco;
-    color: #FFFFFF;
-}
+
 #chart-field{
     width: 50%;
     margin-left: 25%;

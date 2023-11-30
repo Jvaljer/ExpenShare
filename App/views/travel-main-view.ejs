@@ -1,12 +1,8 @@
 <link rel="stylesheet" href="css/travel-main.css">
+<link rel="stylesheet" href="css/trip-bar.css">
 
 <%- include("navbar.ejs")%>
-<div id="header">
-    <form id="back-form" action="/logged" method="post">
-        <button id="back-btn" type="submit"><</button>
-    </form>
-    <div id="title">Tanzania</div>
-</div>
+<%- include("trip-bar.ejs")%>
 <div id="body">
     <div id="overview-label" class="label">Overview -</div>
     <div id="chart-field">

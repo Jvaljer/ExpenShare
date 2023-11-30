@@ -1,0 +1,25 @@
+.trip-name{
+    background: #2ED573;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#back-form{
+    position: absolute;
+    left: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#title{
+    font-size: 3em;
+    font-weight: bold;
+    font-family: Monaco;
+    color: #FFFFFF;
+}
+
+#back-btn{
+    font-size: 3em;
+    background-color: transparent;
+}
