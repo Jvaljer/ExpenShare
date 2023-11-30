@@ -104,7 +104,7 @@ app.post('/log', (req,res) => {
     //now adding this new user to the user list (ofc)
     const raaw = fs.readFileSync("data/users.json");
     const daata = JSON.parse(raaw);
-    daata.users.push([username,[],""]); //can add here an image (use cnt of already existing ones...)
+    daata.users.push([username,[],"user1.png"]); //can add here an image (use cnt of already existing ones...)
     fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
 
     console.log("rendering LOGIN-VIEW with !start & !fail + new logs /LOG");

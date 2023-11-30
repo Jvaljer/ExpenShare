@@ -1,5 +1,4 @@
 -----TO FIX-----
-* When signing in, logs aren't usable right after. 
 
 -----UNIMPLEMENTED VIEWS-----
 * Specific Travel - Category Detail
@@ -10,6 +9,7 @@
 * 'fst-view' : added trips are a bit wider than basic one
 * 'friends' : icon not displayed
 * 'new-trip-view' : selection popup for members & categories
+*
 
 -----DATA COMMUNICATION-----
 * 'valid-trip'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
@@ -30,6 +30,8 @@
 
 -----OTHER-----
 * Try with real 'server' stuff asap...
+* modify login logic (not intuitive as it is yet)
+* allow users to select their icon (list of images)
 
 =====SOLUTION IDEAS=====
 * Implement a 'previous.json' in datas to keep track of the page we are coming from
