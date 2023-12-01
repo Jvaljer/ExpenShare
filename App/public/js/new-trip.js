@@ -128,8 +128,6 @@ jQuery(document).ready(function () {
 
         //julopipo said 'try using AJAX' -> tf that is ...
         $.post("/validate-trip", trip_data, function (data) {
-            console.log("members : "+members);
-            console.log("categories : "+categories);
             window.location.href = "/validate-trip";
         });
     });

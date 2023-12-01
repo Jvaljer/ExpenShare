@@ -197,6 +197,8 @@ app.post('/validate-trip', (req, res) => {
     const categories = req.body.categories;
     const color = req.body.color;
 
+    console.log("travel color is "+color);
+
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
     const data = JSON.parse(raw);
