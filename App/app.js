@@ -169,9 +169,15 @@ app.post('/new-trip', (req,res) => {
             others.splice(i,1);
         }
     }
+
+    const raaw = fs.readFileSync("data/categories.json");
+    const daata = JSON.parse(raaw);
+    const categories = daata["categories"];
+
     //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs", {
-        all_users: others
+        all_users: others,
+        all_categories: categories
     });
 });
 
@@ -189,6 +195,9 @@ app.post('/validate-trip', (req, res) => {
     const comment = req.body.comment;
     const members = req.body.members;
     const categories = req.body.categories;
+    const color = req.body.color;
+
+    console.log("travel color is "+color);
 
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
@@ -216,17 +225,21 @@ app.post('/validate-trip', (req, res) => {
             category_list,
             budget,
             img,
-            comment
+            comment,
+            color
     ];
+    console.log("got members : "+member_list);
+    console.log("got categories : "+category_list);
 
     data.trips.push(trip_info);
     fs.writeFileSync("data/trips.json", JSON.stringify(data, null, 2));
 
     const raw_ = fs.readFileSync("data/users.json");
     const data_ = JSON.parse(raw_);
+    const users = data_["users"];
     for(var i=0; i<users.length; i++){
         if(cur_usr===users[i][0]){
-            data_.users[i][1].push(name);
+            users[i][1].push(name);
         }
     }
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
@@ -460,7 +473,9 @@ app.get('/valid-expense', (req, res) => {
     res.render("valid-expense.ejs")
 })
 
-
+app.all('/specific-category', (req,res) => {
+    res.render("specific-category.ejs");
+});
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });

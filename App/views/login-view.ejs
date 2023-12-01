@@ -6,15 +6,12 @@
         <%if(fail){%>
             <div id="err-msg">
                 Failed to connect...
-                <form action="/sign-in" method="post">
-                    <button type="submit">sign in</button>
-                </form>
             </div>
         <%}%>
     <%}%>
 </div>
 
-<form id="form" action="/login" method="post">
+<form id="login-form" action="/login" method="post">
         <div id="usr">
             <div id="usrtxt">Name- </div>
             <input id="usrfield" type="text" placeholder="user-name" name="username"/>
@@ -25,6 +22,10 @@
             <button id="show-hide" type="button" onclick="ShowHidePassword()">show</button>
         </div>
         <button id="btn" type="submit">Login</button>
+</form>
+<form id="signin-form" action="/sign-in" method="post">
+    <div id="signin-text">Not any account yet ?</div>
+    <button type="submit">create one</button>
 </form>
 
 <script src="js/login.js"></script>

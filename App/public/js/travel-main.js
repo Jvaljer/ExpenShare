@@ -32,24 +32,6 @@ const data = {
     }]
 };
 
-/*const data = {
-    labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-    ],
-    datasets: [{
-        label: 'My First Dataset',
-        data: [300, 50, 100],
-        backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-    }]
-};*/
-
 const config = {
     type: 'doughnut',
     data: data,
@@ -60,4 +42,12 @@ const config = {
     },
 };
 
-const chart = new Chart(my_canva, config);
+const travel_chart = new Chart(my_canva, config);
+
+my_canva.onclick = function(e){
+    var slice = travel_chart.getElementsAtEventForMode(e, 'nearest', {intersect: true}, true);
+    if (!slice.length) return; // return if not clicked on slice
+    var category = travel_chart.data.labels[slice[0].index];
+    console.log("clicked on category: "+category);
+    //from here we wanna render the specific category view
+};

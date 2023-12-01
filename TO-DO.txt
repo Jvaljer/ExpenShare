@@ -6,8 +6,6 @@
 
 
 -----VIEWS DETAIL TO FIX-----
-* 'new-trip-view' : shall re-implement adding members (right/left disposition)
-* 'new-trip-view' : shall re-implement adding categories (right/left disposition)
 * 'fst-view' : added trips are fitting their content
 * 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
 * 'sign-in-view' : must allow user to select an icon from a list by clicking
@@ -16,9 +14,9 @@
 
 
 -----DATA COMMUNICATION-----
-* 'travel-main-view'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
 * 'profile' : missing the expense information 
 * 'debt': no dynamic yet
+* must remove trip from current.json when hitting the back button
 
 
 -----OTHER-----
