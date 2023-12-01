@@ -9,7 +9,6 @@
 * 'new-trip-view' : shall re-implement adding members (right/left disposition)
 * 'new-trip-view' : shall re-implement adding categories (right/left disposition)
 * 'fst-view' : added trips are fitting their content
-* 'friends' : icon not displayed
 * 'friends': be able to add new friends for the trip from there
 * 'friends': the first one displayed should be ourself
 * 'sign-in-view' : must allow user to select an icon from a list by clicking

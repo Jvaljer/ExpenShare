@@ -313,18 +313,32 @@ app.post('/friends', (req, res) => {
     let userslistnames = [];
     let userspicture = [];
 
-    for (var i=0; i<current.length; i++){
-        userslistroles.push(current[1][2][i][1]);
-        userslistnames.push(current[1][2][i][0]);
+    for (var i=0; i<current[1][2].length; i++){
+        if (current[1][2][i][0] == auser){
+            userslistnames.unshift(current[1][2][i][0]);
+            userslistroles.unshift(current[1][2][i][1]);
+        } else {
+            userslistroles.push(current[1][2][i][1]);
+            userslistnames.push(current[1][2][i][0]);
+        }
     }
+    console.log("NAME LIST: ", userslistnames);
 
     //for the images
     const raw_users = fs.readFileSync("data/users.json");
     const data_users = JSON.parse(raw_users);
     const current_users = data_users["users"];
 
-    for (var j=0; j<current_users.length; j++){
-        userspicture.push(current_users[j][2]);
+    for (i=0; i<userslistnames.length; i++){
+        for (var j=0; j<current_users.length; j++){
+            if(userslistnames[i] == current_users[j][0]){
+                if (userslistnames[i] == auser){
+                    userspicture.unshift(current_users[j][2])
+                } else {
+                    userspicture.push(current_users[j][2]);
+                }
+            }
+        }
     }
 
     res.render("friends.ejs", {

@@ -1,6 +1,6 @@
 {
   "current-infos": [
-    "Laurene",
+    "steve",
     [
       "Tanzania",
       [
@@ -13,8 +13,28 @@
           "creator"
         ],
         [
+          "jason",
+          "whatever"
+        ],
+        [
+          "steve",
+          "food"
+        ],
+        [
           "Laurene",
           "none"
+        ],
+        [
+          "hortense",
+          "fleur"
+        ],
+        [
+          "anne",
+          "hotel"
+        ],
+        [
+          "jane",
+          "plane"
         ]
       ],
       [
@@ -40,6 +60,7 @@
       "350",
       "tanzania.png",
       "based trip to tanzania, hope will be fun"
-    ]
+    ],
+    null
   ]
 }
