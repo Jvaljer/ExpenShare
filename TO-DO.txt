@@ -16,6 +16,7 @@
 -----DATA COMMUNICATION-----
 * 'profile' : missing the expense information 
 * 'debt': no dynamic yet
+* must remove trip from current.json when hitting the back button
 
 
 -----OTHER-----

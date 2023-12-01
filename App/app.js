@@ -441,7 +441,9 @@ app.post('/valid-expense', (req, res) => {
     res.render("valid-expense.ejs")
 })
 
-
+app.all('/specific-category', (req,res) => {
+    res.render("specific-category.ejs");
+});
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });
