@@ -303,8 +303,35 @@ function debtbar(){
 app.post('/friends', (req, res) => {
     //console.log("rendering FRIENDS with _ /FRIENDS");
     let creator = debtbar();
+    
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    let auser = current[0]
+    let userslistroles = [];
+    let userslistnames = [];
+    let userspicture = [];
+
+    for (var i=0; i<current.length; i++){
+        userslistroles.push(current[1][2][i][1]);
+        userslistnames.push(current[1][2][i][0]);
+    }
+
+    //for the images
+    const raw_users = fs.readFileSync("data/users.json");
+    const data_users = JSON.parse(raw_users);
+    const current_users = data_users["users"];
+
+    for (var j=0; j<current_users.length; j++){
+        userspicture.push(current_users[j][2]);
+    }
+
     res.render("friends.ejs", {
-        role: creator
+        role: creator,
+        rolelist: userslistroles,
+        namelist: userslistnames,
+        picturelist: userspicture
     })
 })
 

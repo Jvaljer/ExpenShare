@@ -16,26 +16,13 @@
 
         <!-- This will be changed to have the name dynamically-->
         <div class="friends">
-            <div class="friendBox"> 
-                <div class="picture"> <img class="img" src="media/usr0.png"> </div>
-                <div class="name">Jason </div> 
-                <div class="role">Creator/Manager</div>
-            </div>
-            <div class="friendBox"> 
-                <div class="picture"> </div>
-                <div class="name"> Hortense </div>
-                <div class="role">Hotel Organiser</div>
-            </div>
-            <div class="friendBox">
-                <div class="picture"> </div>
-                <div class="name"> Steve </div>
-                <div class="role">Transport Organiser</div>
-            </div>
-            <div class="friendBox"> 
-                <div class="picture"> </div>
-                <div class="name"> Anne </div>
-                <div class="role">Food Shopper</div>
-            </div>
+            <% for (i=0; i<rolelist.length; i++){%>
+                <div class="friendBox"> 
+                    <div class="picture"> <img class="img" src=<%=picturelist[i]%>> </div> <!-- change for every users to have their picture-->
+                    <div class="name"><%=namelist[i]%> </div> 
+                    <div class="role"><%=rolelist[i]%> </div>
+                </div>
+            <%}%>
         </div>
     </div>
 </div>
