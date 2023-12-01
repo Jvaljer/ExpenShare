@@ -140,13 +140,10 @@ app.post('/logged', (req,res) => {
         }
     }
 
-    let creator = debtbar();
-
     //console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs", {
         user: users[user_index],
-        trip: all_trip,
-        role: creator
+        trip: all_trip
     });
 });
 app.post('/sign-in', (req,res) => {
@@ -329,10 +326,7 @@ app.post('/debt-admin', (req, res) => {
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");
-    let creator = debtbar();
-    res.render("profile.ejs", {
-        role: creator
-    })
+    res.render("profile.ejs")
 })
 
 app.post('/add-expense', (req, res) => {

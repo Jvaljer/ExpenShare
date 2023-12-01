@@ -21,11 +21,6 @@
 * 'navbar'->'profile' : no information communicated
 
 
------NAVIGATION-----
-* 'navbar'->"Debt" : no link yet (should have diff between admin and normal user) 
-* my profile should be accessible also on the main page, through the icon on the corner, so then if you click on the arrow to go back, it should go back to the main page with all the travels. Rn, only accessible through specific trips and go back to the main page of the trip
-
-
 -----OTHER-----
 * Try with real 'server' stuff asap...
 * modify login logic (not intuitive as it is yet)
