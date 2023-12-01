@@ -155,9 +155,23 @@ app.post('/new-trip', (req,res) => {
     const data = JSON.parse(raw);
     const users= data["users"];
 
+    //here I wanna delete the current user from the sent list
+    const raw_ = fs.readFileSync("data/current.json");
+    const data_ = JSON.parse(raw_);
+    const cur_user = data_["current-infos"][0];
+
+    console.log(cur_user);
+
+    const others = users;
+    for(var i=0; i<users.length; i++){
+        if(users[i][0]===cur_user){
+            console.log("removing the user : "+users[i][0]);
+            others.splice(i,1);
+        }
+    }
     //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs", {
-        all_users: users
+        all_users: others
     });
 });
 
