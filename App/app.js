@@ -151,9 +151,16 @@ app.post('/sign-in', (req,res) => {
     res.render("sign-in-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
+    const raw = fs.readFileSync("data/users.json");
+    const data = JSON.parse(raw);
+    const users= data["users"];
+
     //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
-    res.render("new-trip-view.ejs");
+    res.render("new-trip-view.ejs", {
+        all_users: users
+    });
 });
+
 
 //dunno why but have this strange duplicata .post & .get which seems to be the only working way...
 //shall ask julopipo

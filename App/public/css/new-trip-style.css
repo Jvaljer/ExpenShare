@@ -196,3 +196,41 @@
     border-radius: 25%;
     background-color: #70A1FF;
 }
+
+#available-users{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#added-users{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#color-picker{
+    width: 50px;
+    height: 50px;
+    margin-right: 2em;
+}
+
+.added-usr{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #70A1FF;
+}
+.notadded-usr{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FF6B81;
+}
+
+.user-icon{
+    width: 40px;
+    height: 40px;
+}

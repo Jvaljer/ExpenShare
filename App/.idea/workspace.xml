@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa509c83-b2ee-45c5-b505-bf50454757e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logs.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/current.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/current.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/new-trip-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new-trip-view.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/jvaljer/Public/Git/ExpenShare/App/media",
+    "last_opened_file_path": "/Users/jvaljer/Public/Git/ExpenShare/App",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -93,6 +94,7 @@
       <workItem from="1701334111703" duration="6291000" />
       <workItem from="1701374794395" duration="5779000" />
       <workItem from="1701424320519" duration="241000" />
+      <workItem from="1701426268413" duration="245000" />
     </task>
     <servers />
   </component>

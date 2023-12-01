@@ -1,42 +1,41 @@
 jQuery(document).ready(function () {
     // Track added members and categories
-    const addedMembers = [];
-    const addedCategories = [];
+    const members = [];
+    const categories = [];
 
     let mcpt = 0;
     let ccpt = 0;
     // Function to add a member to the list
-    function addMember() {
-        const memberName = "member "+mcpt;
-        if (memberName) {
+    function AddMember() {
+        const member = "member "+mcpt;
+        if (member) {
             console.log("Adding a member");
             $("#user-list").append(`<div class="usr">${mcpt}</div>`);
-            addedMembers.push(memberName);
+            members.push(member);
         }
         mcpt++;
     }
 
     // Function to add a category to the list
-    function addCategory() {
-        const categoryName = "category "+ccpt;
-        if (categoryName) {
+    function AddCategory() {
+        const category = "category "+ccpt;
+        if (category) {
             console.log("Adding a category");
             $("#category-list").append(`<div class="category">${ccpt}</div>`);
-            addedCategories.push(categoryName);
+            categories.push(category);
         }
         ccpt++;
     }
 
     // Handle "Add Member" button click
-    $("#add-user-btn").on("click", function () {
-        console.log("clicked on add-user");
-        addMember();
+    $(".notadded-usr").on("click", function(){
+        console.log("clicked on an available user");
     });
 
     // Handle "Add Category" button click
     $("#add-category-btn").on("click", function () {
         console.log("clicked on add-category");
-        addCategory();
+        AddCategory();
     });
 
     // Handle form submission
@@ -49,21 +48,23 @@ jQuery(document).ready(function () {
         const budget = $("#budget-slider").val();
         const image = $("#group-img-chooser").val();
         const comment = $("#comment-text").val();
+        const color = $("#color-picker").val();
 
         // Gather all members and categories
-        const formData = {
+        const trip_data = {
             name: travelName,
             start: startDate,
             end: endDate,
             budget: budget,
             image: image,
             comment: comment,
-            members: addedMembers,
-            categories: addedCategories
+            members: members,
+            categories: categories,
+            color: color
         };
 
         //julopipo said 'try using AJAX' -> tf that is ...
-        $.post("/validate-trip", formData, function (data) {
+        $.post("/validate-trip", trip_data, function (data) {
             window.location.href = "/validate-trip";
         });
     });
