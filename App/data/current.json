@@ -1,11 +1,11 @@
 {
   "current-infos": [
-    "Laurene",
+    "ahenryl",
     [
-      "Tanzania",
+      "aaaaa",
       [
-        "12/06/2023",
-        "29/07/2023"
+        "2023-12-14",
+        "2023-12-15"
       ],
       [
         [
@@ -13,73 +13,26 @@
           "creator"
         ],
         [
-          "Laurene",
+          "jane",
+          "none"
+        ],
+        [
+          "anne",
           "none"
         ]
       ],
       [
         [
-          "Food",
-          [
-            "ahenryl",
-            34.98
-          ],
-          [
-            "Laurene",
-            23.55
-          ]
+          "Transports"
         ],
         [
-          "Hotel",
-          [
-            "Laurene",
-            120
-          ]
+          "Hotel"
         ]
       ],
-      "350",
-      "tanzania.png",
-      "based trip to tanzania, hope will be fun"
-    ],
-    [
-      "Tanzania",
-      [
-        "12/06/2023",
-        "29/07/2023"
-      ],
-      [
-        [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "Laurene",
-          "none"
-        ]
-      ],
-      [
-        [
-          "Food",
-          [
-            "ahenryl",
-            34.98
-          ],
-          [
-            "Laurene",
-            23.55
-          ]
-        ],
-        [
-          "Hotel",
-          [
-            "Laurene",
-            120
-          ]
-        ]
-      ],
-      "350",
-      "tanzania.png",
-      "based trip to tanzania, hope will be fun"
+      "357",
+      null,
+      "adds exfcsvs few w",
+      null
     ]
   ]
 }

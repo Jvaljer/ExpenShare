@@ -189,13 +189,6 @@
     border-radius: 50%;
     background-color: #FF6B81;
 }
-.category{
-    margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 25%;
-    background-color: #70A1FF;
-}
 
 #available-users{
     display: flex;
@@ -204,6 +197,18 @@
     align-items: center;
 }
 #added-users{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#available-categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#added-categories{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -229,8 +234,26 @@
     border-radius: 50%;
     background-color: #FF6B81;
 }
-
 .user-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.notadded-cat{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
+    background-color: #FF6348;
+}
+.added-cat{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 25%;
+    background-color: #ECCC68;
+}
+.cat-icon{
     width: 40px;
     height: 40px;
 }

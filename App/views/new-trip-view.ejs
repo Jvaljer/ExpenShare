@@ -29,12 +29,12 @@
             <!--Here must add the user's icon & an 'add' button-->
             <!--Also we wanna initiate a small window when add is hit
                 in order to select users to add-->
-            <div id="added-users" name="members">
+            <div id="added-users">
             </div>
-            <div id="usr-separator" class="separator"></div>
+            <div class="separator"></div>
             <div id="available-users">
                 <%for(var i=0; i<all_users.length; i++){%>
-                <div class="notadded-usr">
+                <div class="notadded-usr" value="<%=all_users[i][0]%>">
                     <img class="user-icon" src="media/<%=all_users[i][2]%>">
                 </div>
                 <%}%>
@@ -46,10 +46,16 @@
             <!--Here must add the categories's icon & an 'add' button-->
             <!--Also we wanna initiate a small window when add is hit
                 in order to select category to add-->
-            <div id="category-list" name="catrgories">
+            <div id="added-categories">
             </div>
-            <div id="usr-separator" class="separator"></div>
-            <button id="add-category-btn" type="button" class="add-btn">+</button>
+            <div class="separator"></div>
+            <div id="available-categories">
+                <%for(var i=0; i<all_categories.length; i++){%>
+                <div class="notadded-cat" value="<%=all_categories[i][0]%>">
+                    <img class="cat-icon" src="media/<%=all_categories[i][1]%>">
+                </div>
+                <%}%>
+            </div>
         </div>
 
         <div id="maxbudget-label" class="label">Maximum Budget -</div>
