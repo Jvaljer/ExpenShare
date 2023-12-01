@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="css/trip-bar.css">
 
 <%- include("navbar.ejs")%>
-<div class="trip-name">
+<div class="trip-name" data-trip="<%= JSON.stringify(trip) %>">
     <form id="back-form" action="/logged" method="post">
         <button id="back-btn" type="submit"><</button>
     </form>
-    <div id="title">Tanzania</div>
+    <div id="title"> <%= trip[0] %></div>
 </div>
 <div id="body">
     <div id="overview-label" class="label">Overview -</div>

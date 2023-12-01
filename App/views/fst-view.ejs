@@ -18,7 +18,8 @@
                     <div id="illustration">
                         <img id="tripimg" src="<%trip[i][4]%>">
                     </div>
-                    <div id="name" name="title"> <%=trip[i][0]%> </div>
+                    <input type="hidden" name="travelname" value="<%= trip[i][0] %>">
+                    <div id="name"> <%=trip[i][0]%> </div>
                     <div id="group">
                         <%for(var j=0; j<trip[i][2].length; j++){%>
                             <div class="usr">

@@ -53,10 +53,8 @@ app.post('/login', (req, res) => {
                 if(users[i][0]===username){
                     for(var j=0; j<users[i][1].length; j++){
                         var trip_name = users[i][1][j];
-                        console.log("searching "+trip_name);
                         for(var k=0; k<trip_data.length; k++){
                             if(trip_name===trip_data[k][0]){
-                                console.log("found it : "+trip_data[k]);
                                 trips.push(trip_data[k]);
                             }
                         }
@@ -105,7 +103,7 @@ app.post('/log', (req,res) => {
     daata.users.push([username,[],"user1.png"]); //can add here an image (use cnt of already existing ones...)
     fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
 
-    console.log("rendering LOGIN-VIEW with !start & !fail + new logs /LOG");
+    //console.log("rendering LOGIN-VIEW with !start & !fail + new logs /LOG");
     res.render("login-view.ejs",{
         start: false,
         fail: false
@@ -126,8 +124,10 @@ app.post('/logged', (req,res) => {
     const trips = daata["trips"];
 
     var all_trip = [];
+    var user_index = -1;
     for(var i=0; i<users.length; i++){
         if(users[i][0]===current[0]){
+            user_index = i;
             const username = users[i][0];
             const user_trips = users[i][1];
             for(var j=0; j<trips.length; j++){
@@ -144,7 +144,7 @@ app.post('/logged', (req,res) => {
 
     //console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs", {
-        user: current[0],
+        user: users[user_index],
         trip: all_trip,
         role: creator
     });
@@ -161,7 +161,7 @@ app.post('/new-trip', (req,res) => {
 //dunno why but have this strange duplicata .post & .get which seems to be the only working way...
 //shall ask julopipo
 app.post('/validate-trip', (req, res) => {
-    console.log("POST /validate-trip");
+    //console.log("POST /validate-trip");
 
     const name = req.body.name;
     const start = req.body.start;
@@ -206,10 +206,9 @@ app.post('/validate-trip', (req, res) => {
 
     const raw_ = fs.readFileSync("data/users.json");
     const data_ = JSON.parse(raw_);
-    const users = data_["users"];
     for(var i=0; i<users.length; i++){
         if(cur_usr===users[i][0]){
-            users[i][1].push(name);
+            data_.users[i][1].push(name);
         }
     }
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
@@ -218,15 +217,39 @@ app.post('/validate-trip', (req, res) => {
 });
 app.get('/validate-trip', (req,res) => {
     //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
-    console.log("GET /validate-trip");
+    //console.log("GET /validate-trip");
     res.render("valid-trip.ejs");
 });
 
 
 app.post('/specific-travel', (req,res) => {
+    console.log("clicked on travel : "+req.body.travelname);
+    const name = req.body.travelname;
+
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    const raw_ = fs.readFileSync("data/trips.json");
+    const data_ = JSON.parse(raw_);
+    const trips = data_["trips"];
+
+    var trip;
+    for(var i=0; i<trips.length; i++){
+        if(name===trips[i][0]){
+            trip = trips[i];
+        }
+    }
+
+    current.push(trip);
+    fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
+
     //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     let creator = debtbar();
+
     res.render("travel-main-view.ejs", {
+        user: current[0],
+        trip: current[1],
         role: creator
     });
 });
