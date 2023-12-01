@@ -26,6 +26,7 @@
 * modify login logic (not intuitive as it is yet)
 * allow users to select their icon (list of images) when creating account
 * move code from the app.js to separate js file - reorganise code (see later)
+* there is nowhere where we assign the roles 
 
 
 =====SOLUTION IDEAS=====

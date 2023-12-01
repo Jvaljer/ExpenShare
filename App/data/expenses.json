@@ -1,0 +1,58 @@
+{
+  "expenses": [
+    [
+      "Tanzania",
+      "Laurene",
+      "Plaza Hotel",
+      "275",
+      "2023-11-30",
+      "Hotel",
+      "5 stars with jacuzzi"
+    ],
+    [
+      "Tanzania",
+      "Laurene",
+      "Japanese Restaurant",
+      "76",
+      "2023-11-18",
+      "Food",
+      "It was yummy"
+    ],
+    [
+      "Tanzania",
+      "Laurene",
+      "Train to Buzan",
+      "95",
+      "2023-11-18",
+      "Transportation",
+      "Not comfortable at all"
+    ],
+    [
+      "Australia",
+      "Laurene",
+      "Insect snacks",
+      "13",
+      "2023-12-27",
+      "Food",
+      "Interesting experience"
+    ],
+    [
+      "Australia",
+      "Laurene",
+      "Insect snacks",
+      "13",
+      "2023-12-27",
+      "Food",
+      "Interesting experience"
+    ],
+    [
+      "Australia",
+      "Laurene",
+      "Insect snacks",
+      "13",
+      "2023-02-14",
+      "Food",
+      "Interesting experience"
+    ]
+  ]
+}

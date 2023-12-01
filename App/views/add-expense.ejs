@@ -9,35 +9,55 @@
         <%- include("trip-bar.ejs")%>
     </div>
 
-    <div id="body">
-        <h1 id="addExpense"> Add Expense </h1>
+    <form id="form" action="/valid-expense" method="post">
+        <div id="body">
+            <h1 id="addExpense"> Add Expense </h1>
 
-        <div class="expense-name">
-            <div class="title">Expense Name </div>
-            <input id="expense-name" type="text" placeholder="">
-        </div>
+            <div class="expense-name">
+                <div class="title">Expense Name </div>
+                <input id="expense-name" type="text" placeholder="" name="name">
+            </div>
+            
+            <div class="expense-amount">
+                <div class="title">Expense Amount </div>
+                <input id="expense-amount" type="number" placeholder="" name="amount">
+            </div>
+
+            <div class="expense-date">
+                <div class="title">Date </div>
+                <input id="expense-date" type="date" name="date">
+            </div>
+
+            <div class="categoryField">
+                <fieldset>
+                    <div class="categorytitle">Category </div>
+                    <div class="category_choices">
+                        <div id="category">
+                            <input type="radio" id="category" name="category" value="Hotel"/>
+                            <label for="hotel">Hotel</label>
+                        </div>
+                        <div id="category">
+                            <input type="radio" id="category" name="category" value="Transportation" />
+                            <label for="transportation">Transportation</label>
+                        </div>
+                        <div id="category">
+                            <input type="radio" id="category" name="category" value="Food" />
+                            <label for="food">Food</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
         
-        <div class="expense-amount">
-            <div class="title">Expense Amount </div>
-            <input id="expense-amount" type="number" placeholder="">
-        </div>
+            <div id="comment-field" class="field" name="comment">
+                <textarea id="comment" placeholder="Add a comment about this expense"></textarea>
+            </div>
 
-        <div class="categoryField">
-            <div class="categoryChoice"> 
-                <div class="category"> H </div>
-                <div class="category"> P </div>
+            <div class="validate" id="validate">
+                <button type="submit" id="validate-btn" class="btn default">Add</button>
             </div>
         </div>
-    
-        
-        <div id="comment-field" class="field">
-            <textarea id="comment" placeholder="Add a comment about this expense"></textarea>
-        </div>
-
-        <!-- need to check here, I need to change the onclick probably but don't know what for -->
-        <form id="form" action="/valid-expense" method="post">
-            <button type="submit" id="validate-btn" class="btn default" onclick=>Add</button>
-        </form>
-
-    </div>
+    </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/add-expense.js"></script>

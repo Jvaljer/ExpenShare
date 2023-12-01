@@ -233,6 +233,7 @@ app.post('/validate-trip', (req, res) => {
 
     res.render("valid-trip.ejs");
 });
+
 app.get('/validate-trip', (req,res) => {
     //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
     //console.log("GET /validate-trip");
@@ -419,12 +420,43 @@ app.post('/add-expense', (req, res) => {
     //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
     let creator = debtbar();
     res.render("add-expense.ejs", {
-        role: creator
+        role: creator,
     })
 })
 
 app.post('/valid-expense', (req, res) => {
     //console.log("rendering VALID-EXPENSE with _ /VALID-EXPENSE");
+
+    const name = req.body.name;
+    const amount = req.body.amount;
+    const date = req.body.date;
+    const category = req.body.category;
+    const comment = req.body.comment;
+    
+    const raw = fs.readFileSync("data/expenses.json");
+    const data = JSON.parse(raw);
+
+    //to get the information of who added the travel
+    const cur_usr = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][0];
+    const cur_travel = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][1][0];
+
+    const expenses_info = [
+        cur_travel,
+        cur_usr,
+        name,
+        amount,
+        date,
+        category,
+        comment
+    ]
+
+    data.expenses.push(expenses_info);
+    fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
+
+    res.render("valid-expense.ejs")
+})
+
+app.get('/valid-expense', (req, res) => {
     res.render("valid-expense.ejs")
 })
 
