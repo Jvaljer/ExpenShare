@@ -32,7 +32,21 @@
             <div id="user-list" name="members">
             </div>
             <div id="usr-separator" class="separator"></div>
-            <button id="add-user-btn" type="button" class="add-btn">+</button>
+            <div id="group-field" class="field">
+                <!--Here must add the user's icon & an 'add' button-->
+                <!--Also we wanna initiate a small window when add is hit
+                    in order to select users to add-->
+                <div id="added-users" name="members">
+                </div>
+                <div id="usr-separator" class="separator"></div>
+                <div id="available-users">
+                    <%for(var i=0; i<all_users.length; i++){%>
+                        <div class="notadded-usr">
+                            <img class="user-icon" src="media/<%=all_users[i][2]%>">
+                        </div>
+                    <%}%>
+                </div>
+            </div>
         </div>
 
         <div id="category-label" class="label">Categories -</div>
