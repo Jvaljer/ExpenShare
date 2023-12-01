@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa509c83-b2ee-45c5-b505-bf50454757e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/current.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/current.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/usr3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/usr4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/usr5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/usr6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/usr7.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/travel-main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/travel-main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/fst-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/fst-view.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/travel-main-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/travel-main-view.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TO-DO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TO-DO.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/jvaljer/Public/Git/ExpenShare/App",
+    "last_opened_file_path": "/Users/jvaljer/Public/Git/ExpenShare/App/media",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -61,6 +59,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/media" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,6 +96,7 @@
       <workItem from="1701333251235" duration="292000" />
       <workItem from="1701334111703" duration="6291000" />
       <workItem from="1701374794395" duration="5779000" />
+      <workItem from="1701424320519" duration="136000" />
     </task>
     <servers />
   </component>
