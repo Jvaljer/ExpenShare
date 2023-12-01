@@ -11,17 +11,20 @@
 * 'fst-view' : added trips are fitting their content
 * 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
 * 'sign-in-view' : must allow user to select an icon from a list by clicking
+* 'add-expense': change the Add button
+* 'valid-expense': change the Go back to home button
 
 
 -----DATA COMMUNICATION-----
 * 'travel-main-view'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
-* 'navbar'->'profile' : no information communicated
+* 'profile' : missing the expense information 
+* 'debt': no dynamic yet
 
 
 -----OTHER-----
 * Try with real 'server' stuff asap...
 * modify login logic (not intuitive as it is yet)
-* allow users to select their icon (list of images)
+* allow users to select their icon (list of images) when creating account
 * move code from the app.js to separate js file - reorganise code (see later)
 
 
