@@ -140,10 +140,13 @@ app.post('/logged', (req,res) => {
         }
     }
 
+    let creator = debtbar();
+
     //console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs", {
         user: current[0],
-        trip: all_trip
+        trip: all_trip,
+        role: creator
     });
 });
 app.post('/sign-in', (req,res) => {
@@ -219,40 +222,102 @@ app.get('/validate-trip', (req,res) => {
     res.render("valid-trip.ejs");
 });
 
+
 app.post('/specific-travel', (req,res) => {
     //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
-    res.render("travel-main-view.ejs");
+    let creator = debtbar();
+    res.render("travel-main-view.ejs", {
+        role: creator
+    });
 });
+
+function debtbar(){
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    let auser = current[0]
+    let userslist = [];
+    let creator = false;
+
+    for (var i=0; i<current.length; i++){
+        userslist.push(current[1][2][i])
+    }
+
+    if (userslist.length >0){
+        for (var i=0; i<userslist.length; i++){
+            if (userslist[i][0] == auser){ 
+                if (userslist[i][1] == "creator"){
+                    creator = true;
+                } else {
+                    creator = false;
+                }
+            }
+        }
+    }
+    return creator;
+};
+
+
 
 //This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
 /*app.post('/navbar', (req, res) => {
-    //console.log("rendering NAVBAR with _ /NAVBAR");
-    res.render("navbar.ejs")
+    console.log("rendering NAVBAR with _ /NAVBAR");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    let auser = current[0]
+
+    let userslist = [];
+
+    for (var i=0; i<current.length; i++){
+        userslist.push(current[1][0][2][i])
+    }
+
+    res.render("navbar.ejs", {
+        user: auser,
+        tripfriends: userslist
+    })
 })*/
 
 app.post('/friends', (req, res) => {
     //console.log("rendering FRIENDS with _ /FRIENDS");
-    res.render("friends.ejs")
+    let creator = debtbar();
+    res.render("friends.ejs", {
+        role: creator
+    })
 })
 
 app.post('/debt-everyone', (req, res) => {
     //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
-    res.render("debt-everyone.ejs")
+    let creator = debtbar();
+    res.render("debt-everyone.ejs", {
+        role: creator
+    })
 })
 
 app.post('/debt-admin', (req, res) => {
     //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
-    res.render("debt-admin.ejs")
+    let creator = debtbar();
+    res.render("debt-admin.ejs", {
+        role: creator
+    })
 })
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");
-    res.render("profile.ejs")
+    let creator = debtbar();
+    res.render("profile.ejs", {
+        role: creator
+    })
 })
 
 app.post('/add-expense', (req, res) => {
     //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
-    res.render("add-expense.ejs")
+    let creator = debtbar();
+    res.render("add-expense.ejs", {
+        role: creator
+    })
 })
 
 app.post('/valid-expense', (req, res) => {

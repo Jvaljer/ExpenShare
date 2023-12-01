@@ -1,88 +1,45 @@
 {
   "current-infos": [
-    "Laurene",
+    "ahenryl",
     [
+      "Tanzania",
       [
-        "Tanzania",
-        [
-          "12/06/2023",
-          "29/07/2023"
-        ],
-        [
-          [
-            "ahenryl",
-            "creator"
-          ],
-          [
-            "hortense",
-            "none"
-          ],
-          [
-            "jason",
-            "none"
-          ]
-        ],
-        [
-          [
-            "Food",
-            [
-              "ahenryl",
-              34.98
-            ],
-            [
-              "jason",
-              23.55
-            ]
-          ],
-          [
-            "Hotel",
-            [
-              "hortense",
-              120
-            ],
-            [
-              "jason",
-              120
-            ]
-          ]
-        ],
-        "350",
-        "tanzania.png",
-        "based trip to tanzania, hope will be fun"
+        "12/06/2023",
+        "29/07/2023"
       ],
       [
-        "Australia",
         [
-          "2023-11-01",
-          "2023-11-30"
+          "ahenryl",
+          "creator"
         ],
         [
+          "Laurene",
+          "none"
+        ]
+      ],
+      [
+        [
+          "Food",
           [
             "ahenryl",
-            "creator"
-          ],
-          [
-            "member 0",
-            "none"
-          ],
-          [
-            "member 1",
-            "none"
+            34.98
           ],
           [
             "Laurene",
-            "none"
+            23.55
           ]
         ],
         [
+          "Hotel",
           [
-            "category 0"
+            "Laurene",
+            120
           ]
-        ],
-        "310",
-        null,
-        "this is only a test trip"
-      ]
+        ]
+      ],
+      "350",
+      "tanzania.png",
+      "based trip to tanzania, hope will be fun"
     ]
   ]
 }
