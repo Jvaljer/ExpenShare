@@ -315,13 +315,14 @@ app.post('/friends', (req, res) => {
     const data = JSON.parse(raw);
     const current = data["current-infos"];
 
+    //creating a list of roles, names, and pictures to display the people from a trip
     let auser = current[0]
     let userslistroles = [];
     let userslistnames = [];
     let userspicture = [];
 
     for (var i=0; i<current[1][2].length; i++){
-        if (current[1][2][i][0] == auser){
+        if (current[1][2][i][0] == auser){  //to have the current user appear as the first one in the list
             userslistnames.unshift(current[1][2][i][0]);
             userslistroles.unshift(current[1][2][i][1]);
         } else {
@@ -329,9 +330,8 @@ app.post('/friends', (req, res) => {
             userslistnames.push(current[1][2][i][0]);
         }
     }
-    console.log("NAME LIST: ", userslistnames);
 
-    //for the images
+    //for the images, need to go into the users json file and organise them in the list in the same order as the name list to have the matching icon with the right name
     const raw_users = fs.readFileSync("data/users.json");
     const data_users = JSON.parse(raw_users);
     const current_users = data_users["users"];
@@ -374,7 +374,31 @@ app.post('/debt-admin', (req, res) => {
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");
-    res.render("profile.ejs")
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    const raw_users = fs.readFileSync("data/users.json");
+    const data_users = JSON.parse(raw_users);
+    const users_list = data_users["users"];
+
+    let usrimg = "";
+    let index = -1;
+
+    for (i=0; i<users_list.length; i++){
+        if(users_list[i][0] == current[0]){
+            usrimg = users_list[i][2]
+            index = i;
+        }
+    }
+
+    console.log("TRIPS LIST", users_list[index][1])
+
+    res.render("profile.ejs", {
+        user: current[0],
+        icon: usrimg,
+        trips: users_list[index][1]
+    })
 })
 
 app.post('/add-expense', (req, res) => {

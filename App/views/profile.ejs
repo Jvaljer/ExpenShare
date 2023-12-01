@@ -14,28 +14,23 @@
     <div id="body">
 
         <div class="profile"> 
-            <div class="name">Hortense</div>
-            <div class="current-user"> <img class="img" src="media/usr1.png"> </div>
+            <div class="name"><%=user%></div>
+            <div class="current-user"> <img class="img" src="media/<%=icon%>"> </div>
         </div>  
 
-        <div class="trip-list"> 
-            <h2 id="destination">Tanzania -</h2>
-            <div class="expenseBox"> 
-                <div class="category"></div>
-                <div class="amount">18.64$ </div> 
+        <% for (i=0; i<trips.length; i++){ %>
+            <div class="trip-list"> 
+                <h2 id="destination"><%=trips[i]%> -</h2>
+                <div class="expenseBox"> 
+                    <div class="category">H</div>
+                    <div class="amount">18.64$ </div> 
+                </div>
+                <div class="expenseBox"> 
+                    <div class="category">P</div>
+                    <div class="amount">12.01$ </div> 
+                </div>
             </div>
-            <div class="expenseBox"> 
-                <div class="category"></div>
-                <div class="amount">12.01$ </div> 
-            </div>
-        </div>
-
-        <div class="trip-list"> 
-            <h2 id="destination">Australia -</h2>
-            <div class="expenseBox"> 
-                <div class="category"></div>
-                <div class="amount">37.12$ </div> 
-            </div>
-        </div>
+        <%}%>
+        
     </div>
 </div>

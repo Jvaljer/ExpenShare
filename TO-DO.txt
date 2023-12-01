@@ -9,14 +9,12 @@
 * 'new-trip-view' : shall re-implement adding members (right/left disposition)
 * 'new-trip-view' : shall re-implement adding categories (right/left disposition)
 * 'fst-view' : added trips are fitting their content
-* 'friends': be able to add new friends for the trip from there
-* 'friends': the first one displayed should be ourself
+* 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
 * 'sign-in-view' : must allow user to select an icon from a list by clicking
 
 
 -----DATA COMMUNICATION-----
 * 'travel-main-view'->'fst-view' : user information aren't well fetched (icon & username mis-displayed)
-* 'navbar'->'friends' : no information communicated
 * 'navbar'->'profile' : no information communicated
 
 
@@ -24,6 +22,7 @@
 * Try with real 'server' stuff asap...
 * modify login logic (not intuitive as it is yet)
 * allow users to select their icon (list of images)
+* move code from the app.js to separate js file - reorganise code (see later)
 
 
 =====SOLUTION IDEAS=====
