@@ -548,7 +548,20 @@ app.get('/specific-category', (req, res) => {
     }
     console.log(spe_exp);
     var exps = []; //this must contain list like this [username, whole amount]
-
+    for(var i=0; i<members.length; i++){
+        exps.push([members[i], 0]);
+    }
+    const cat_exp = spe_exp[1];
+    for(var i=0; i<cat_exp.length; i++){
+        console.log("cat_exp["+i+"]="+cat_exp[i]);
+        for(var j=0; j<exps.length; j++){
+            console.log("exps["+j+"]="+exps[j]);
+            if(cat_exp[i][0]===exps[j][0]){
+                exps[j][1] += parseInt(cat_exp[i][2]);
+            }
+        }
+    }
+    console.log(exps);
     res.render("specific-category.ejs", {
         role: creator,
         category: cname,
