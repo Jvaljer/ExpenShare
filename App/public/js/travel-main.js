@@ -1,21 +1,27 @@
 var my_canva = document.getElementById('myChart');
 
 const data_div = document.querySelector('.trip-name');
-const trip_data = JSON.parse(data_div.dataset.trip);
+const trip = JSON.parse(data_div.dataset.expenses);
 
-const trip_categories = trip_data[3];
-const all_colors = ["#FF6348", "#ECCC68", "#1E90FF", "#7BED9F", "#57606F"];
+const all_colors = ["#FF6348", "#ECCC68", "#1E90FF", "#7BED9F", "#57606F", "#FFA502", "#70A1FF", "#57606F", "#FF6B81"];
 
-//initializing all chart values
+const expenses = trip[1];
+
+//initializing all chart variables
 var categories = [];
 var values = [];
 var colors = []
 
-for(var i=0; i<trip_categories.length; i++){
-    categories.push(trip_categories[i][0]);
+//must set all variable values
+for(var i=0; i<expenses.length; i++){
+    const expense = expenses[i];
+    categories.push(expense[0]);
+
+    const expcat = expense[1];
     var value = 0;
-    for(var k=1; k<trip_categories[i].length; k++){
-        value += trip_categories[i][k][1];
+    for(var j=0; j<expcat.length; j++){
+        const exp = expcat[j];
+        value += exp[2];
     }
     values.push(value);
     colors.push(all_colors[i]);

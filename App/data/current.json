@@ -1,6 +1,6 @@
 {
   "current-infos": [
-    "Laurene",
+    "ahenryl",
     [
       "Tanzania",
       [
@@ -13,15 +13,7 @@
           "creator"
         ],
         [
-          "steve",
-          "none"
-        ],
-        [
           "ahenryl",
-          "none"
-        ],
-        [
-          "hortense",
           "none"
         ]
       ],
@@ -35,7 +27,6 @@
       null,
       "",
       "#000000"
-    ],
-    null
+    ]
   ]
 }

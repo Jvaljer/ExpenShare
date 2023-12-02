@@ -278,9 +278,11 @@ app.post('/specific-travel', (req,res) => {
     const data_ = JSON.parse(raw_);
     const trips = data_["trips"];
 
+    var tname;
     var trip;
     for(var i=0; i<trips.length; i++){
         if(name===trips[i][0]){
+            tname = trips[i][0];
             trip = trips[i];
         }
     }
@@ -291,9 +293,24 @@ app.post('/specific-travel', (req,res) => {
     //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     let creator = debtbar();
 
+    //now I wanna add all the related expenses to the expenses list
+    const raaw = fs.readFileSync("data/expenses.json");
+    const daata = JSON.parse(raaw);
+    const expense_list = daata["expenses"];
+
+    var expenses;
+    for(var i=0; i<expense_list.length; i++){
+        if(expense_list[i][0]===tname){
+            expenses = expense_list[i];
+        }
+    }
+
+    console.log("we are sending the datas : "+current[0]+";"+tname+";["+expenses+"];"+creator);
+
     res.render("travel-main-view.ejs", {
         user: current[0],
-        trip: current[1],
+        trip_name: tname,
+        trip_expenses: expenses,
         role: creator
     });
 });

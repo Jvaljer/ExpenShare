@@ -16,6 +16,7 @@
 * 'debt': no dynamic yet
 * must remove trip from current.json when hitting the back button
 * 'logged'/'login': can only view the trip that the current user created but should be able to see the trips that    the user is part of 
+* shall add the history datas to the travel-main
 
 
 -----OTHER-----
