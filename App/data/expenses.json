@@ -5,7 +5,15 @@
       [
         [
           "Fuel",
-          []
+          [
+            [
+              "ahenryl",
+              "Mercedes C63S AMG",
+              "120",
+              "2023-12-25",
+              "this bitch drinks alot"
+            ]
+          ]
         ],
         [
           "Restaurant",
@@ -34,11 +42,18 @@
               ""
             ],
             [
+              "ahenryl",
+              "Bus",
+              "32",
+              "2023-12-03",
+              "traffic was horrific"
+            ],
+            [
               "Laurene",
               "Car",
               "78",
               "2023-12-03",
-              "blue car"
+              "merco"
             ]
           ]
         ]

@@ -519,38 +519,40 @@ app.get('/specific-category', (req, res) => {
 
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
-    const categories = data["current-infos"][1][3];
+    const trip = data["current-infos"][1][0];
+    console.log("parsing category "+cname+" for trip "+trip);
 
-    var cuser = [];
+    const all_members= data["current-infos"][1][2];
+    var members = [];
+    for(var i=0; i<all_members.length; i++){
+        members.push(all_members[i][0]);
+    }
+    console.log("we have the trip members : "+members);
 
-    //MUST FIX THAT
+    const raaw = fs.readFileSync("data/expenses.json");
+    const daata = JSON.parse(raaw);
+    const all_exp = daata["expenses"];
 
-    for (var i = 0; i < categories.length; i++) {
-        const category = categories[i];
-        if (category[0] === cname) {
-            let found = [];
-            let inside;
-            for (var j = 1; j < category.length; j++) {
-                const expense = category[j];
-                inside = false;
-                for (var k = 0; k < found.length; k++) {
-                    if (expense[0] === found[k]) {
-                        cuser[k][1] += expense[1];
-                        inside = true;
-                    }
-                }
-                if (!inside) {
-                    cuser.push(expense);
-                }
-            }
+    var cats;
+    for(var i=0; i<all_exp.length; i++){
+        if(all_exp[i][0]===trip){
+            cats = all_exp[i][1];
         }
     }
-    console.log("for category "+cname+" we got the amounts"+ cuser);
+
+    var spe_exp;
+    for(var i=0; i<cats.length; i++){
+        if(cats[i][0]===cname){
+            spe_exp = cats[i];
+        }
+    }
+    console.log(spe_exp);
+    var exps = []; //this must contain list like this [username, whole amount]
 
     res.render("specific-category.ejs", {
         role: creator,
         category: cname,
-        users: cuser
+        expenses: exps
     });
 });
 

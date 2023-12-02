@@ -1,12 +1,12 @@
 var canva = document.getElementById('category-chart');
 
 const data_div = document.querySelector('.container');
-const users_infos = JSON.parse(data_div.dataset.users);
-const category_name = JSON.parse(data_div.dataset.category);
+const all_exps = JSON.parse(data_div.dataset.expenses);
+console.log("users is "+all_exps);
 
 var trip_members = [];
-for(var i=0; i<users_infos.length; i++){
-    trip_members.add(users_infos[i][0]);
+for(var i=0; i<all_exps.length; i++){
+    trip_members.add(all_exps[i][0]);
 }
 const all_colors = ["#ECCC68", "#FFA502", "#F94C10","#FF7F50", "#FF6348", "#FF6B81", "#FF4757", "#B31312"];
 

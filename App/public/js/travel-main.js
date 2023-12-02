@@ -21,7 +21,7 @@ for(var i=0; i<expenses.length; i++){
     var value = 0;
     for(var j=0; j<expcat.length; j++){
         const exp = expcat[j];
-        value += exp[2];
+        value += parseInt(exp[2]);
     }
     values.push(value);
     colors.push(all_colors[i]);

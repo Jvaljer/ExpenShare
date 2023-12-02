@@ -5,21 +5,13 @@
     <%- include("navbar.ejs") %>
     <%- include("trip-bar.ejs") %>
 </div>
-<div id="body" class="container" data-users="<%=users%>" data-category="<%=category%>"> <!-- must add data with JSON.stringify(...) -->
+<div id="body" class="container" data-expenses="<%=JSON.stringify(expenses)%>"> <!-- must add data with JSON.stringify(...) -->
     <div id="page-title"> <%= category %></div>
     <div id="chart-field">
         <canvas id="category-chart" aria-label="chart" role="img"></canvas>
     </div>
     <div id="users-field">
-        <%for(var i=0; i<users.length; i++){%>
-            <div class="usr-box">
-                <div class="usr-infos">
-                    <img class="usr-icon" src="media/<%=users[i][1]%>">
-                    <div class="usr-name"> <%= users[i][0] %> </div>
-                </div>
-                <div class="usr-amount"> <%= users[i][2] %></div>
-            </div>
-        <%}%>
+        <!-- must implement -->
     </div>
 </div>
 
