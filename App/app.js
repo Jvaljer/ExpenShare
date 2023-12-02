@@ -7,7 +7,6 @@ const port = 3000;
 const fs = require('fs');
 const bodyParser = require ('body-parser');
 const $ = require('jquery');
-app.use (bodyParser.urlencoded()) ;
 
 app.use(express.static(__dirname));
 // Adding css and js files from installed apps
@@ -16,6 +15,9 @@ app.use('/js', express.static(path.join(__dirname, 'public/js')));
 //using bootstrap
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+//using body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // This requires a folder called views
 app.engine('html', require('ejs').renderFile);
@@ -467,15 +469,52 @@ app.post('/valid-expense', (req, res) => {
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
 
     res.render("valid-expense.ejs")
-})
+});
 
 app.get('/valid-expense', (req, res) => {
     res.render("valid-expense.ejs")
-})
-
-app.all('/specific-category', (req,res) => {
-    res.render("specific-category.ejs");
 });
+app.get('/specific-category', (req, res) => {
+    let creator = debtbar();
+    const cname = req.query.category; // Use req.query to get the category from the query parameters
+
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const categories = data["current-infos"][1][3];
+
+    var cuser = [];
+
+    //MUST FIX THAT
+
+    for (var i = 0; i < categories.length; i++) {
+        const category = categories[i];
+        if (category[0] === cname) {
+            let found = [];
+            let inside;
+            for (var j = 1; j < category.length; j++) {
+                const expense = category[j];
+                inside = false;
+                for (var k = 0; k < found.length; k++) {
+                    if (expense[0] === found[k]) {
+                        cuser[k][1] += expense[1];
+                        inside = true;
+                    }
+                }
+                if (!inside) {
+                    cuser.push(expense);
+                }
+            }
+        }
+    }
+    console.log("for category "+cname+" we got the amounts"+ cuser);
+
+    res.render("specific-category.ejs", {
+        role: creator,
+        category: cname,
+        users: cuser
+    });
+});
+
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
 });

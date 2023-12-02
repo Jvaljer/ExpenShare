@@ -1,9 +1,13 @@
 var canva = document.getElementById('category-chart');
 
 const data_div = document.querySelector('.container');
-const infos = JSON.parse(data_div.dataset.category);
+const users_infos = JSON.parse(data_div.dataset.users);
+const category_name = JSON.parse(data_div.dataset.category);
 
-const trip_members = infos[3];
+var trip_members = [];
+for(var i=0; i<users_infos.length; i++){
+    trip_members.add(users_infos[i][0]);
+}
 const all_colors = ["#ECCC68", "#FFA502", "#F94C10","#FF7F50", "#FF6348", "#FF6B81", "#FF4757", "#B31312"];
 
 //initializing all chart variables

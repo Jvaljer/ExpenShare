@@ -2,37 +2,25 @@
 <link rel="stylesheet" href="css/trip-bar.css">
 
 <div id="header">
-    <!--
-    < %- include("navbar.ejs") % >
-    < %- include("trip-bar.ejs") % >
-    -->
+    <%- include("navbar.ejs") %>
+    <%- include("trip-bar.ejs") %>
 </div>
-<div id="body" class="container" data-category=""> <!-- must add data with JSON.stringify(...) -->
-    <div id="title">Category- </div>
+<div id="body" class="container" data-users="<%=users%>" data-category="<%=category%>"> <!-- must add data with JSON.stringify(...) -->
+    <div id="page-title"> <%= category %></div>
     <div id="chart-field">
         <canvas id="category-chart" aria-label="chart" role="img"></canvas>
     </div>
     <div id="users-field">
-        <div id="user0-box">
-            <div id="u0-infos">
-                <img id="u0-icon" src="">
-                <div id="u0-name">User 0</div>
+        <%for(var i=0; i<users.length; i++){%>
+            <div class="usr-box">
+                <div class="usr-infos">
+                    <img class="usr-icon" src="media/<%=users[i][1]%>">
+                    <div class="usr-name"> <%= users[i][0] %> </div>
+                </div>
+                <div class="usr-amount"> <%= users[i][2] %></div>
             </div>
-            <div id="u0-amount">54.25$</div>
-        </div>
-        <div id="user1-box">
-            <div id="u1-infos">
-                <img id="u1-icon" src="">
-                <div id="u1-name">User 1</div>
-            </div>
-            <div id="u1-amount">12.48</div>
-        </div>
-        <div id="user2-box">
-            <div id="u2-infos">
-                <img id="u2-icon" src="">
-                <div id="u2-name">User 2</div>
-            </div>
-            <div id="u2-amount">39.96$</div>
-        </div>
+        <%}%>
     </div>
 </div>
+
+<script src="js/category.js"></script>

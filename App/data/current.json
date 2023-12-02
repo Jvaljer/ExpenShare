@@ -19,7 +19,7 @@
       ],
       [
         [
-          "Food",
+          "Groceries",
           [
             "ahenryl",
             34.98
@@ -38,6 +38,24 @@
           [
             "Laurene",
             120
+          ]
+        ],
+        [
+          "Alcohol",
+          [
+            "ahenryl",
+            19.87
+          ],
+          [
+            "ahenryl",
+            32.9
+          ]
+        ],
+        [
+          "Fuel",
+          [
+            "Laurene",
+            89.99
           ]
         ]
       ],

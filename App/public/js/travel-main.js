@@ -49,5 +49,21 @@ my_canva.onclick = function(e){
     if (!slice.length) return; // return if not clicked on slice
     var category = travel_chart.data.labels[slice[0].index];
     console.log("clicked on category: "+category);
-    //from here we wanna render the specific category view
+
+    /*fetch('/specific-category',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Set content type to JSON
+        },
+        body: JSON.stringify({ category: category }),
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Redirect to the specific category page
+        window.location.href = '/specific-category';
+    }).catch(error => {
+        console.error('Fetching went wrong:', error);
+    });*/
+    window.location.href = '/specific-category?category=' + encodeURIComponent(category);
 };
