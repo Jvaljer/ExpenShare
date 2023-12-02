@@ -59,19 +59,16 @@
 }
 
 #validate-btn{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    margin-top: 40px;
     width: 100px;
     font-family: Monaco;
     font-size: 2em;
     border-radius: 2em;
     color: #FFFFFF;
-    margin-bottom: 15%;
 }
-
 .default {
     border-color: #DFE4EA;
+    background: #A4B0BE;
 }
 
 .default:hover {
