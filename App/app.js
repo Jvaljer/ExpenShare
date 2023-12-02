@@ -529,6 +529,22 @@ app.get('/specific-category', (req, res) => {
     }
     console.log("we have the trip members : "+members);
 
+    const raw_ = fs.readFileSync("data/users.json");
+    const data_ = JSON.parse(raw_);
+    const users = data_["users"];
+
+    var images = [];
+    for(var i=0; i<members.length; i++){
+        images.push("");
+    }
+    for(var i=0; i<users.length; i++){
+        for(var j=0; j<members.length; j++){
+            if(users[i][0]===members[j]){
+                images[j] = users[i][2];
+            }
+        }
+    }
+
     const raaw = fs.readFileSync("data/expenses.json");
     const daata = JSON.parse(raaw);
     const all_exp = daata["expenses"];
@@ -549,7 +565,7 @@ app.get('/specific-category', (req, res) => {
     console.log(spe_exp);
     var exps = []; //this must contain list like this [username, whole amount]
     for(var i=0; i<members.length; i++){
-        exps.push([members[i], 0]);
+        exps.push([members[i], 0, images[i]]);
     }
     const cat_exp = spe_exp[1];
     for(var i=0; i<cat_exp.length; i++){
