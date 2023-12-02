@@ -9,13 +9,13 @@
 * 'fst-view' : added trips are fitting their content
 * 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
 * 'sign-in-view' : must allow user to select an icon from a list by clicking
-
+* finish 'specific-category' content
 
 -----DATA COMMUNICATION-----
 * 'profile' : missing the expense information 
 * 'debt': no dynamic yet
 * must remove trip from current.json when hitting the back button
-* 'logged'/'login': can only view the trip that the current user created but should be able to see the trips that    the user is part of 
+* 'logged'/'login': can only view the trip that the current user created but should be able to see the trips that the user is part of 
 * shall add the history datas to the travel-main
 
 
