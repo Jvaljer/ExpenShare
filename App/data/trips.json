@@ -3,34 +3,8 @@
     [
       "Tanzania",
       [
-        "12/06/2023",
-        "29/07/2023"
-      ],
-      [
-        [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "Laurene",
-          "none"
-        ]
-      ],
-      [
-        "Groceries",
-        "Hotel",
-        "Alcohol",
-        "Fuel"
-      ],
-      "350",
-      "tanzania.png",
-      "based trip to tanzania, hope will be fun"
-    ],
-    [
-      "Italy",
-      [
-        "2023-12-25",
-        "2024-01-01"
+        "2023-12-20",
+        "2023-12-30"
       ],
       [
         [
@@ -42,66 +16,70 @@
           "none"
         ],
         [
-          "hortense",
+          "ahenryl",
           "none"
         ],
         [
-          "jane",
+          "hortense",
           "none"
         ]
       ],
       [
-        "Hotel",
-        "Party",
-        "Groceries",
+        "Fuel",
         "Restaurant",
+        "Sleeping",
         "Transports"
       ],
-      "335",
+      "0",
       null,
       "",
-      "#ff0000"
-    ],
-    [
-      "Croatia",
-      [
-        "2024-04-15",
-        "2024-04-28"
-      ],
-      [
-        [
-          "Laurene",
-          "creator"
-        ],
-        [
-          "anne",
-          "none"
-        ],
-        [
-          "hortense",
-          "none"
-        ],
-        [
-          "jane",
-          "none"
-        ]
-      ],
-      [
-        "Restaurant",
-        "Party",
-        "Hotel",
-        "Activities"
-      ],
-      "501",
-      null,
-      "",
-      "#8080ff"
+      "#000000"
     ],
     [
       "Bali",
       [
-        "2025-02-10",
-        "2025-02-26"
+        "2023-12-19",
+        "2023-12-31"
+      ],
+      [
+        [
+          "ahenryl",
+          "creator"
+        ],
+        [
+          "Laurene",
+          "none"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "steve",
+          "none"
+        ],
+        [
+          "jason",
+          "none"
+        ]
+      ],
+      [
+        "Fuel",
+        "Hotel",
+        "Activities",
+        "Party",
+        "Transports"
+      ],
+      "0",
+      null,
+      "",
+      "#004080"
+    ],
+    [
+      "Canada",
+      [
+        "2024-01-15",
+        "2024-01-21"
       ],
       [
         [
@@ -109,35 +87,34 @@
           "creator"
         ],
         [
-          "jason",
+          "steve",
           "none"
         ],
         [
           "anne",
-          "none"
-        ],
-        [
-          "hortense",
           "none"
         ],
         [
           "ahenryl",
           "none"
+        ],
+        [
+          "jane",
+          "none"
         ]
       ],
       [
-        "Sleeping",
-        "Groceries",
-        "Restaurant",
         "Hotel",
         "Transports",
         "Activities",
-        "Party"
+        "Party",
+        "Alcohol",
+        "Groceries"
       ],
-      "429",
+      "767",
       null,
-      "",
-      "#00ffff"
+      "Bring warm clothes because it is cold",
+      "#ff0000"
     ]
   ]
 }

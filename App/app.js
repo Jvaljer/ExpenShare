@@ -214,24 +214,16 @@ app.post('/validate-trip', (req, res) => {
         member_list.push([members[i], "none"]);
     }
 
-    var category_list = [];
-    for(var i=0; i<categories.length; i++){
-        var category = categories[i];
-        category_list.push(category);
-    }
-
     const trip_info = [
             name,
             [start, end],
             member_list,
-            category_list,
+            categories,
             budget,
             img,
             comment,
             color
     ];
-    console.log("got members : "+member_list);
-    console.log("got categories : "+category_list);
 
     data.trips.push(trip_info);
     fs.writeFileSync("data/trips.json", JSON.stringify(data, null, 2));
@@ -245,6 +237,24 @@ app.post('/validate-trip', (req, res) => {
         }
     }
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
+
+    //to add the trip and its corresponding categories in the expense.json
+    const raw_exp = fs.readFileSync("data/expenses.json");
+    const data_exp = JSON.parse(raw_exp);
+    const exp = data_exp["expenses"];
+
+    let categories_exp = []
+    for(i=0; i<categories.length; i++){
+        categories_exp.push([categories[i], []]);
+    }
+
+    const info_expense = [
+        name, 
+        categories_exp
+    ];
+
+    data_exp.expenses.push(info_expense);
+    fs.writeFileSync("data/expenses.json", JSON.stringify(data_exp, null, 2));
 
     res.render("valid-trip.ejs");
 });
@@ -456,24 +466,26 @@ app.post('/valid-expense', (req, res) => {
     
     const raw = fs.readFileSync("data/expenses.json");
     const data = JSON.parse(raw);
+    const exp = data["expenses"];
 
     //to get the information of who added the travel
     const cur_usr = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][0];
     const cur_travel = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][1][0];
 
-    const expenses_info = [
-        cur_travel,
-        cur_usr,
-        name,
-        amount,
-        date,
-        category,
-        comment
-    ]
+    for(var i=0; i<exp.length; i++){
+        if(cur_travel == exp[i][0]){
+            console.log("in the first if");
+            for(j=0; j<exp[i][1].length; j++){
+                if(category == exp[i][1][j][0]){
+                    console.log("in the second if");
+                    exp[i][1][j][1].push([cur_usr, name, amount, date, comment])
+                }
+            }
+        }
+    }
 
-    data.expenses.push(expenses_info);
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
-
+   
     let creator = debtbar();
 
     res.render("valid-expense.ejs", {

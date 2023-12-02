@@ -2,10 +2,10 @@
   "current-infos": [
     "Laurene",
     [
-      "Italy",
+      "Tanzania",
       [
-        "2023-12-25",
-        "2024-01-01"
+        "2023-12-20",
+        "2023-12-30"
       ],
       [
         [
@@ -17,25 +17,26 @@
           "none"
         ],
         [
-          "hortense",
+          "ahenryl",
           "none"
         ],
         [
-          "jane",
+          "hortense",
           "none"
         ]
       ],
       [
-        "Hotel",
-        "Party",
-        "Groceries",
+        "Fuel",
         "Restaurant",
+        "Sleeping",
         "Transports"
       ],
-      "335",
+      "0",
       null,
       "",
-      "#ff0000"
-    ]
+      "#000000"
+    ],
+    null,
+    null
   ]
 }

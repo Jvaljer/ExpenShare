@@ -2,93 +2,93 @@
   "expenses": [
     [
       "Tanzania",
-      "Laurene",
-      "Plaza Hotel",
-      "275",
-      "2023-11-30",
-      "Hotel",
-      "5 stars with jacuzzi"
+      [
+        [
+          "Fuel",
+          []
+        ],
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Sleeping",
+          []
+        ],
+        [
+          "Transports",
+          [
+            [
+              "Laurene",
+              "Boat tour",
+              "24",
+              "2023-12-02",
+              ""
+            ],
+            [
+              "Laurene",
+              "Car",
+              "78",
+              "2023-12-03",
+              "blue car"
+            ]
+          ]
+        ]
+      ]
     ],
     [
-      "Tanzania",
-      "Laurene",
-      "Japanese Restaurant",
-      "76",
-      "2023-11-18",
-      "Food",
-      "It was yummy"
+      "Bali",
+      [
+        [
+          "Fuel",
+          []
+        ],
+        [
+          "Hotel",
+          []
+        ],
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Party",
+          []
+        ],
+        [
+          "Transports",
+          []
+        ]
+      ]
     ],
     [
-      "Tanzania",
-      "Laurene",
-      "Train to Buzan",
-      "95",
-      "2023-11-18",
-      "Transportation",
-      "Not comfortable at all"
-    ],
-    [
-      "Australia",
-      "Laurene",
-      "Insect snacks",
-      "13",
-      "2023-12-27",
-      "Food",
-      "Interesting experience"
-    ],
-    [
-      "Australia",
-      "Laurene",
-      "Insect snacks",
-      "13",
-      "2023-12-27",
-      "Food",
-      "Interesting experience"
-    ],
-    [
-      "Australia",
-      "Laurene",
-      "Insect snacks",
-      "13",
-      "2023-02-14",
-      "Food",
-      "Interesting experience"
-    ],
-    [
-      "Tanzania",
-      "Laurene",
-      "Bus",
-      "12",
-      "2023-12-21",
-      "Transportation",
-      ""
-    ],
-    [
-      "Tanzania",
-      "Laurene",
-      "Plane",
-      "154",
-      "2023-12-14",
-      "Transportation",
-      ""
-    ],
-    [
-      "Tanzania",
-      "Laurene",
-      "Car fuel",
-      "68",
-      "2023-12-13",
-      "Transportation",
-      ""
-    ],
-    [
-      "Tanzania",
-      "Laurene",
-      "Restaurant",
-      "145",
-      "2023-12-26",
-      "Food",
-      ""
+      "Canada",
+      [
+        [
+          "Hotel",
+          []
+        ],
+        [
+          "Transports",
+          []
+        ],
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Party",
+          []
+        ],
+        [
+          "Alcohol",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
     ]
   ]
 }
