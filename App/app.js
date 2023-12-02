@@ -217,7 +217,7 @@ app.post('/validate-trip', (req, res) => {
     var category_list = [];
     for(var i=0; i<categories.length; i++){
         var category = categories[i];
-        category_list.push([category]);
+        category_list.push(category);
     }
 
     const trip_info = [
@@ -433,9 +433,15 @@ app.post('/profile', (req, res) => {
 
 app.post('/add-expense', (req, res) => {
     //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    const categories = current[1][3];
+
     let creator = debtbar();
     res.render("add-expense.ejs", {
         role: creator,
+        categories: categories
     })
 })
 
@@ -468,7 +474,11 @@ app.post('/valid-expense', (req, res) => {
     data.expenses.push(expenses_info);
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
 
-    res.render("valid-expense.ejs")
+    let creator = debtbar();
+
+    res.render("valid-expense.ejs", {
+        role: creator
+    })
 });
 
 app.get('/valid-expense', (req, res) => {

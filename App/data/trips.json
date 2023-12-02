@@ -17,83 +17,127 @@
         ]
       ],
       [
-        [
-          "Groceries",
-          [
-            "ahenryl",
-            34.98
-          ],
-          [
-            "Laurene",
-            23.55
-          ],
-          [
-            "ahenryl",
-            46.34
-          ]
-        ],
-        [
-          "Hotel",
-          [
-            "Laurene",
-            120
-          ]
-        ],
-        [
-          "Alcohol",
-          [
-            "ahenryl",
-            19.87
-          ],
-          [
-            "ahenryl",
-            32.90
-          ]
-        ],
-        [
-          "Fuel",
-          [
-            "Laurene",
-            89.99
-          ]
-        ]
+        "Groceries",
+        "Hotel",
+        "Alcohol",
+        "Fuel"
       ],
       "350",
       "tanzania.png",
       "based trip to tanzania, hope will be fun"
     ],
     [
-      "Australia",
+      "Italy",
       [
-        "2023-11-01",
-        "2023-11-30"
+        "2023-12-25",
+        "2024-01-01"
       ],
       [
         [
-          "ahenryl",
+          "Laurene",
           "creator"
         ],
         [
-          "member 0",
+          "steve",
           "none"
         ],
         [
-          "member 1",
+          "hortense",
           "none"
         ],
         [
-          "Laurene",
+          "jane",
           "none"
         ]
       ],
       [
+        "Hotel",
+        "Party",
+        "Groceries",
+        "Restaurant",
+        "Transports"
+      ],
+      "335",
+      null,
+      "",
+      "#ff0000"
+    ],
+    [
+      "Croatia",
+      [
+        "2024-04-15",
+        "2024-04-28"
+      ],
+      [
         [
-          "category 0"
+          "Laurene",
+          "creator"
+        ],
+        [
+          "anne",
+          "none"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "jane",
+          "none"
         ]
       ],
-      "310",
+      [
+        "Restaurant",
+        "Party",
+        "Hotel",
+        "Activities"
+      ],
+      "501",
       null,
-      "this is only a test trip"
+      "",
+      "#8080ff"
+    ],
+    [
+      "Bali",
+      [
+        "2025-02-10",
+        "2025-02-26"
+      ],
+      [
+        [
+          "Laurene",
+          "creator"
+        ],
+        [
+          "jason",
+          "none"
+        ],
+        [
+          "anne",
+          "none"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "ahenryl",
+          "none"
+        ]
+      ],
+      [
+        "Sleeping",
+        "Groceries",
+        "Restaurant",
+        "Hotel",
+        "Transports",
+        "Activities",
+        "Party"
+      ],
+      "429",
+      null,
+      "",
+      "#00ffff"
     ]
   ]
 }

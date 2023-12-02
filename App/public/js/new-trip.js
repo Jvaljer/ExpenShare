@@ -100,7 +100,6 @@ jQuery(document).ready(function () {
         $(this).remove();
     });
 
-
     // Handle form submission
     $("#form").submit(function (e) {
         e.preventDefault();

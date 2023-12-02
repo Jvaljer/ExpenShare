@@ -1,67 +1,41 @@
 {
   "current-infos": [
-    "ahenryl",
+    "Laurene",
     [
-      "Tanzania",
+      "Italy",
       [
-        "12/06/2023",
-        "29/07/2023"
+        "2023-12-25",
+        "2024-01-01"
       ],
       [
         [
-          "ahenryl",
+          "Laurene",
           "creator"
         ],
         [
-          "Laurene",
+          "steve",
+          "none"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "jane",
           "none"
         ]
       ],
       [
-        [
-          "Groceries",
-          [
-            "ahenryl",
-            34.98
-          ],
-          [
-            "Laurene",
-            23.55
-          ],
-          [
-            "ahenryl",
-            46.34
-          ]
-        ],
-        [
-          "Hotel",
-          [
-            "Laurene",
-            120
-          ]
-        ],
-        [
-          "Alcohol",
-          [
-            "ahenryl",
-            19.87
-          ],
-          [
-            "ahenryl",
-            32.9
-          ]
-        ],
-        [
-          "Fuel",
-          [
-            "Laurene",
-            89.99
-          ]
-        ]
+        "Hotel",
+        "Party",
+        "Groceries",
+        "Restaurant",
+        "Transports"
       ],
-      "350",
-      "tanzania.png",
-      "based trip to tanzania, hope will be fun"
+      "335",
+      null,
+      "",
+      "#ff0000"
     ]
   ]
 }
