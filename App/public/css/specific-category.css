@@ -1,0 +1,61 @@
+#chart-field{
+    width: 50%;
+    margin-left: 25%;
+}
+#users-field{
+    display: grid;
+    margin-top: 25px;
+    margin-bottom: 15%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.label{
+    margin-top: 5%;
+    margin-left: 12%;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: Monaco;
+}
+
+.usr-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 15px;
+    background-color: #DFE4EA;
+    width: 75%;
+    gap: 30%;
+}
+
+.usr-infos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.slot{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+.usr-icon{
+    width: 75px;
+    height: 75px;
+}
+.usr-name{
+    font-family: Monaco;
+    font-size: 1.5em;
+}
+.usr-amount{
+    font-family: Monaco;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 5px;
+}
