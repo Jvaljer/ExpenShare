@@ -108,7 +108,6 @@ jQuery(document).ready(function () {
         const startDate = $("#travel-start-date").val();
         const endDate = $("#travel-end-date").val();
         const budget = $("#budget-slider").val();
-        const image = $("#group-img-chooser").val();
         const comment = $("#comment-text").val();
         const color = $("#color-picker").val();
 
@@ -118,7 +117,6 @@ jQuery(document).ready(function () {
             start: startDate,
             end: endDate,
             budget: budget,
-            image: image,
             comment: comment,
             members: members,
             categories: categories,

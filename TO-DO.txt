@@ -17,7 +17,7 @@
 * shall add the history datas to the travel-main
 
 -----NAVIGATION-----
-
+* must do a new walkthrough !!!
 
 -----OTHER-----
 * Try with real 'server' stuff asap...
