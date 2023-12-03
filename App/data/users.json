@@ -4,7 +4,8 @@
       "ahenryl",
       [
         "Bali",
-        "Tanzania"
+        "Tanzania",
+        "test"
       ],
       "usr0.png"
     ],
@@ -18,7 +19,9 @@
     ],
     [
       "anne",
-      [],
+      [
+        "test"
+      ],
       "usr7.png"
     ],
     [

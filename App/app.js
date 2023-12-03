@@ -68,8 +68,8 @@ app.post('/login', (req, res) => {
                     data_cur["current-infos"].push(username);
                     //data_cur["current-infos"].push(trips);
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
-                    console.log("we got trips : "+trips);
                     //console.log("rendering FST-VIEW with user & trips /LOGIN");
+
                     res.render("fst-view.ejs", {
                         user: users[i],
                         trip: trips

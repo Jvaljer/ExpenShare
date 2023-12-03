@@ -23,8 +23,9 @@
         "Transports"
       ],
       "0",
+      null,
       "",
-      "#000000"
+      "#70A1FF"
     ],
     [
       "Bali",
@@ -64,7 +65,7 @@
       "0",
       null,
       "",
-      "#004080"
+      "#FF6B81"
     ],
     [
       "Canada",
@@ -106,6 +107,30 @@
       null,
       "Bring warm clothes because it is cold",
       "#ff0000"
+    ],
+    [
+      "test",
+      [
+        "",
+        ""
+      ],
+      [
+        [
+          "ahenryl",
+          "creator"
+        ],
+        [
+          "anne",
+          "none"
+        ]
+      ],
+      [
+        "Hotel"
+      ],
+      "0",
+      null,
+      "",
+      "#669c35"
     ]
   ]
 }
