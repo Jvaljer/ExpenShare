@@ -23,7 +23,6 @@
         "Transports"
       ],
       "0",
-      null,
       "",
       "#70A1FF"
     ],
@@ -63,7 +62,6 @@
         "Transports"
       ],
       "0",
-      null,
       "",
       "#FF6B81"
     ],
@@ -104,33 +102,8 @@
         "Groceries"
       ],
       "767",
-      null,
       "Bring warm clothes because it is cold",
       "#ff0000"
-    ],
-    [
-      "test",
-      [
-        "",
-        ""
-      ],
-      [
-        [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "anne",
-          "none"
-        ]
-      ],
-      [
-        "Hotel"
-      ],
-      "0",
-      null,
-      "",
-      "#669c35"
     ]
   ]
 }

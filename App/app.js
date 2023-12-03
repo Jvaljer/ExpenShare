@@ -198,7 +198,6 @@ app.post('/validate-trip', (req, res) => {
     const start = req.body.start;
     const end = req.body.end;
     const budget = req.body.budget;
-    const img = req.body.img;
     const comment = req.body.comment;
     const members = req.body.members;
     const categories = req.body.categories;
@@ -223,7 +222,6 @@ app.post('/validate-trip', (req, res) => {
             member_list,
             categories,
             budget,
-            img,
             comment,
             color
     ];
