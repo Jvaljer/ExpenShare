@@ -414,10 +414,12 @@ app.post('/debt-admin', (req, res) => {
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");
+    //to get the name of the current user
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
 
+    //to get the image corresponding to the current user and the list of trips
     const raw_users = fs.readFileSync("data/users.json");
     const data_users = JSON.parse(raw_users);
     const users_list = data_users["users"];
@@ -432,12 +434,29 @@ app.post('/profile', (req, res) => {
         }
     }
 
-    console.log("TRIPS LIST", users_list[index][1])
+    //to get the expenses information for every travel and their categories
+    const raw_exp = fs.readFileSync("data/expenses.json");
+    const data_exp = JSON.parse(raw_exp);
+    const exp_list = data_exp["expenses"];
+
+    let list_expenses = [];
+    for(i=0; i<exp_list.length; i++){
+        let aux = [exp_list[i][0]];
+        for (j=0; j<exp_list[i][1].length; j++){
+            let sum = 0;
+            for (k=0; k<exp_list[i][1][j][1].length; k++){
+                sum += parseInt(exp_list[i][1][j][1][k][2]) //to get the expense amount
+            }
+            aux.push([exp_list[i][1][j][0], sum]) //name of the category
+        }
+        list_expenses.push(aux);
+    }
 
     res.render("profile.ejs", {
         user: current[0],
         icon: usrimg,
-        trips: users_list[index][1]
+        trips: users_list[index][1],
+        expenses: list_expenses
     })
 })
 

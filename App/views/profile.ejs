@@ -21,16 +21,16 @@
         <% for (i=0; i<trips.length; i++){ %>
             <div class="trip-list"> 
                 <h2 id="destination"><%=trips[i]%> -</h2>
-                <div class="expenseBox"> 
-                    <div class="category">H</div>
-                    <div class="amount">18.64$ </div> 
-                </div>
-                <div class="expenseBox"> 
-                    <div class="category">P</div>
-                    <div class="amount">12.01$ </div> 
-                </div>
-            </div>
-        <%}%>
-        
+                <%for (j=0; j<expenses.length; j++){%>
+                    <% if (expenses[j][0] == trips[i]){%>
+                        <%for (k=1; k<expenses[j].length; k++){%>
+                            <div class="expenseBox"> 
+                                <div class="category"><%=expenses[j][k][0]%></div>
+                                <div class="amount"><%=expenses[j][k][1]%>$ </div> 
+                            </div>
+                        <%}%>
+                    <%}%>
+                <%}%>
+        <%}%> 
     </div>
 </div>
