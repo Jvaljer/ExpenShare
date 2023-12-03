@@ -115,7 +115,15 @@ app.post('/logged', (req,res) => {
     //here we first wanna get the actual user & trips
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const tmp_file = data["current-infos"];
+
+    //here we wanna remove the latest trip if it exists
+    if(tmp_file.length>1){
+        tmp_file[1] = "";
+    }
+
+    const current = tmp_file;
+    fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
     const raw_ = fs.readFileSync("data/users.json");
     const data_ = JSON.parse(raw_);
@@ -199,8 +207,6 @@ app.post('/validate-trip', (req, res) => {
     const categories = req.body.categories;
     const color = req.body.color;
 
-    console.log("travel color is "+color);
-
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
     const data = JSON.parse(raw);
@@ -267,7 +273,6 @@ app.get('/validate-trip', (req,res) => {
 
 
 app.post('/specific-travel', (req,res) => {
-    console.log("clicked on travel : "+req.body.travelname);
     const name = req.body.travelname;
 
     const raw = fs.readFileSync("data/current.json");
@@ -304,8 +309,6 @@ app.post('/specific-travel', (req,res) => {
             expenses = expense_list[i];
         }
     }
-
-    console.log("we are sending the datas : "+current[0]+";"+tname+";["+expenses+"];"+creator);
 
     res.render("travel-main-view.ejs", {
         user: current[0],
@@ -539,14 +542,12 @@ app.get('/specific-category', (req, res) => {
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const trip = data["current-infos"][1][0];
-    console.log("parsing category "+cname+" for trip "+trip);
 
     const all_members= data["current-infos"][1][2];
     var members = [];
     for(var i=0; i<all_members.length; i++){
         members.push(all_members[i][0]);
     }
-    console.log("we have the trip members : "+members);
 
     const raw_ = fs.readFileSync("data/users.json");
     const data_ = JSON.parse(raw_);
@@ -581,22 +582,18 @@ app.get('/specific-category', (req, res) => {
             spe_exp = cats[i];
         }
     }
-    console.log(spe_exp);
     var exps = []; //this must contain list like this [username, whole amount]
     for(var i=0; i<members.length; i++){
         exps.push([members[i], 0, images[i]]);
     }
     const cat_exp = spe_exp[1];
     for(var i=0; i<cat_exp.length; i++){
-        console.log("cat_exp["+i+"]="+cat_exp[i]);
         for(var j=0; j<exps.length; j++){
-            console.log("exps["+j+"]="+exps[j]);
             if(cat_exp[i][0]===exps[j][0]){
                 exps[j][1] += parseInt(cat_exp[i][2]);
             }
         }
     }
-    console.log(exps);
     res.render("specific-category.ejs", {
         role: creator,
         category: cname,
