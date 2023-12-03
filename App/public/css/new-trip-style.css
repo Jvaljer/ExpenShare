@@ -250,3 +250,23 @@
     width: 40px;
     height: 40px;
 }
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 2px;
+    border-radius: 5px;
+    font-family: Monaco;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.notadded-usr:hover .popup {
+    display: block;
+}
+
+.notadded-cat:hover .popup{
+    display: block;
+}

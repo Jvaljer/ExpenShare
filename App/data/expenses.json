@@ -150,6 +150,66 @@
           []
         ]
       ]
+    ],
+    [
+      "Mawtinik",
+      [
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Hotel",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
+    ],
+    [
+      "test-trip",
+      [
+        [
+          "Sleeping",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
+    ],
+    [
+      "Fronce",
+      [
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Sleeping",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
+    ],
+    [
+      "traaaavel",
+      [
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
     ]
   ]
 }

@@ -38,6 +38,7 @@
                 <%for(var i=0; i<all_users.length; i++){%>
                 <div class="notadded-usr" value="<%=all_users[i][0]%>">
                     <img class="user-icon" src="media/<%=all_users[i][2]%>">
+                    <div class="popup"><%=all_users[i][0]%></div>
                 </div>
                 <%}%>
             </div>
@@ -55,6 +56,7 @@
                 <%for(var i=0; i<all_categories.length; i++){%>
                 <div class="notadded-cat" value="<%=all_categories[i][0]%>">
                     <img class="cat-icon" src="media/<%=all_categories[i][1]%>">
+                    <div class="popup"><%=all_categories[i][0]%></div>
                 </div>
                 <%}%>
             </div>

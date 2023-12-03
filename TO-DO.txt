@@ -9,18 +9,18 @@
 * 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
 * 'sign-in-view' : must allow user to select an icon from a list by clicking
 * should add possibility to remove a trip from fst-view (cross button ?)
+* should display the trip color on the main-view
 
 -----DATA COMMUNICATION-----
 * 'profile' : missing the expense information 
 * 'debt': no dynamic yet
-* 'logged'/'login': can only view the trip that the current user created but should be able to see the trips that the user is part of (-> add it into the users.json)
 * shall add the history datas to the travel-main
-* MUST add trip to users when they are added by creator
+
+-----NAVIGATION-----
 
 
 -----OTHER-----
 * Try with real 'server' stuff asap...
-* modify login logic (not intuitive as it is yet)
 * allow users to select their icon (list of images) when creating account
 * move code from the app.js to separate js file - reorganise code (see later)
 * there is nowhere where we assign the roles 

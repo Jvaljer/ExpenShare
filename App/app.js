@@ -170,12 +170,9 @@ app.post('/new-trip', (req,res) => {
     const data_ = JSON.parse(raw_);
     const cur_user = data_["current-infos"][0];
 
-    console.log(cur_user);
-
     const others = users;
     for(var i=0; i<users.length; i++){
         if(users[i][0]===cur_user){
-            console.log("removing the user : "+users[i][0]);
             others.splice(i,1);
         }
     }
@@ -241,7 +238,13 @@ app.post('/validate-trip', (req, res) => {
         if(cur_usr===users[i][0]){
             users[i][1].push(name);
         }
+        for(var j=0; j<members.length; j++){
+            if(members[j]===users[i][0]){
+                users[i][1].push(name);
+            }
+        }
     }
+    //here we'd like to add the trip in other user's list
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
 
     //to add the trip and its corresponding categories in the expense.json
