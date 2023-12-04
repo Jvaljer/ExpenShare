@@ -12,9 +12,11 @@
 * should display the trip color on the main-view
 
 -----DATA COMMUNICATION-----
-* 'profile' : missing the expense information 
-* 'debt': no dynamic yet
+* 'profile': for now the expense are general but i should divide to have amount per person
+* 'debt-admin': no dynamic yet
+* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
 * shall add the history datas to the travel-main
+* problem with the current.json, that doesn't allow to use the navigation properly
 
 -----NAVIGATION-----
 * must do a new walkthrough !!!

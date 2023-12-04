@@ -1,5 +1,31 @@
 {
   "current-infos": [
-    "Laurene"
+    "Laurene",
+    [
+      "Tanzania",
+      [
+        "2023-12-20",
+        "2023-12-30"
+      ],
+      [
+        [
+          "Laurene",
+          "creator"
+        ],
+        [
+          "ahenryl",
+          "none"
+        ]
+      ],
+      [
+        "Fuel",
+        "Restaurant",
+        "Sleeping",
+        "Transports"
+      ],
+      "0",
+      "",
+      "#70A1FF"
+    ]
   ]
 }

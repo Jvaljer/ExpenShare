@@ -419,9 +419,72 @@ app.post('/friends', (req, res) => {
 
 app.post('/debt-everyone', (req, res) => {
     //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    //to get the current trip and user
+    let current_trip = current[1][0];
+    let current_user = current[0];
+
+    const raw_exp = fs.readFileSync("data/expenses.json");
+    const data_exp = JSON.parse(raw_exp);
+    const exp = data_exp["expenses"];
+
+    const raw_cat = fs.readFileSync("data/categories.json");
+    const data_cat = JSON.parse(raw_cat);
+    const cat = data_cat["categories"];
+
+    //to get the color of the trip
+    const raw_trip = fs.readFileSync("data/trips.json");
+    const data_trip = JSON.parse(raw_trip);
+    const trip_list = data_trip["trips"];
+
+    let color = "";
+    for (i=0; i<trip_list.length; i++){
+        if (current_trip == trip_list[i][0]){
+            color = trip_list[i][6];
+        }
+    }  
+
+    // 1) Find the corresponding trip in expenses.json
+    let get_back = [color];
+    let pay = [color];
+    for (i=0; i<exp.length; i++){
+        if (exp[i][0] == current_trip){
+            // 2) Go through the expenses
+            for (j=0; j<exp[i][1].length; j++){
+                let category_name = exp[i][1][j][0];
+                let category = "";
+                for (k=0; k<cat.length; k++){
+                    if (category_name == cat[k][0]){
+                        category = cat[k][1];
+                    }
+                }
+                for (k=0; k<exp[i][1][j][1].length; k++){
+                    let amount = exp[i][1][j][1][k][2];
+                    let date = exp[i][1][j][1][k][3];
+                    let person = exp[i][1][j][1][k][0];
+                    // 3) if the user is the one that created the expense, will go into the get back list, otherwise will go into the pay list
+                    if (person == current_user){
+                        get_back.push([category, amount, date, person]); //TO CHANGE -> PERSON
+                    } else{
+                        pay.push([category, amount, date, person]) //TO CHANGE -> PERSON
+                    }   
+                }
+            }
+        }
+    }
+    console.log(get_back);
+    console.log(pay);
+
+
     let creator = debtbar();
     res.render("debt-everyone.ejs", {
-        role: creator
+        role: creator,
+        get_back: get_back,
+        pay: pay,
+        color: color
     })
 })
 
@@ -460,6 +523,11 @@ app.post('/profile', (req, res) => {
     const data_exp = JSON.parse(raw_exp);
     const exp_list = data_exp["expenses"];
 
+    //used to get the color and the number of friends in a trip to calculate expenses
+    const raw_trip = fs.readFileSync("data/trips.json");
+    const data_trip = JSON.parse(raw_trip);
+    const trip_list = data_trip["trips"];
+
     let list_expenses = [];
     for(i=0; i<exp_list.length; i++){
         let aux = [exp_list[i][0]];
@@ -482,9 +550,6 @@ app.post('/profile', (req, res) => {
         }
         
         //to get the color of the trip
-        const raw_trip = fs.readFileSync("data/trips.json");
-        const data_trip = JSON.parse(raw_trip);
-        const trip_list = data_trip["trips"];
         for (j=0; j<trip_list.length; j++){
             if( trip_list[j][0] == exp_list[i][0]){
                 aux.push(trip_list[j][6]);
@@ -537,10 +602,8 @@ app.post('/valid-expense', (req, res) => {
 
     for(var i=0; i<exp.length; i++){
         if(cur_travel == exp[i][0]){
-            console.log("in the first if");
             for(j=0; j<exp[i][1].length; j++){
                 if(category == exp[i][1][j][0]){
-                    console.log("in the second if");
                     exp[i][1][j][1].push([cur_usr, name, amount, date, comment])
                 }
             }

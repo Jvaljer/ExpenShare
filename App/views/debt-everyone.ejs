@@ -13,21 +13,25 @@
 
         <div class="pay"> 
             <h2 id="pay">To pay -</h2>
-            <div class="debtBox"> 
-                <div class="category"></div>
-                <div class="amount-pos">18.64$ </div> 
-                <div class="date"> due since 24/03/23 </div>
-                <div class="person"><img class="img" src="media/usr0.png"></div>
-            </div>
+            <% for (i=1; i<pay.length; i++){ %>
+                <div class="debtBox"> 
+                    <div class="category" style="background-color:<%=pay[0]%>"><img class="img" src="media/<%=pay[i][0]%>"></div>
+                    <div class="amount-pos"><%=pay[i][1]%> $</div> 
+                    <div class="date"> due since <%=pay[i][2]%> </div>
+                    <div class="person"><img class="img" src="media/usr0.png"></div>
+                </div>
+            <%}%>
         </div>
         <div class="get-back">
             <h2 id="get-back">To get back -</h2>
-            <div class="debtBox"> 
-                <div class="category"></div>
-                <div class="amount-neg">25$ </div> 
-                <div class="date"> due since 18/11/23 </div>
-                <div class="person"><img class="img" src="media/usr0.png"></div>
-            </div>
+            <% for (i=1; i<get_back.length; i++){%>
+                <div class="debtBox"> 
+                    <div class="category" style="background-color:<%=get_back[0]%>"><img class="img" src="media/<%=get_back[i][0]%>"></div>
+                    <div class="amount-neg"><%=get_back[i][1]%> $</div> 
+                    <div class="date"> due since <%=get_back[i][2]%> </div>
+                    <div class="person"><img class="img" src="media/usr0.png"></div>
+                </div>
+            <%}%>
         </div>
     </div>
 </div>
