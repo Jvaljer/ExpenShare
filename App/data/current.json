@@ -2,30 +2,43 @@
   "current-infos": [
     "Laurene",
     [
-      "Tanzania",
+      "Bali",
       [
-        "2023-12-20",
-        "2023-12-30"
+        "2023-12-19",
+        "2023-12-31"
       ],
       [
         [
-          "Laurene",
+          "ahenryl",
           "creator"
         ],
         [
-          "ahenryl",
+          "Laurene",
+          "none"
+        ],
+        [
+          "hortense",
+          "none"
+        ],
+        [
+          "steve",
+          "none"
+        ],
+        [
+          "jason",
           "none"
         ]
       ],
       [
         "Fuel",
-        "Restaurant",
-        "Sleeping",
+        "Hotel",
+        "Activities",
+        "Party",
         "Transports"
       ],
       "0",
       "",
-      "#70A1FF"
+      "#FF6B81"
     ]
   ]
 }

@@ -435,11 +435,16 @@ app.post('/debt-everyone', (req, res) => {
     const data_cat = JSON.parse(raw_cat);
     const cat = data_cat["categories"];
 
+    //to get the icon of the person to pay 
+    const raw_user = fs.readFileSync("data/users.json");
+    const data_user = JSON.parse(raw_user);
+    const users_list = data_user["users"];
+
     //to get the color of the trip
     const raw_trip = fs.readFileSync("data/trips.json");
     const data_trip = JSON.parse(raw_trip);
     const trip_list = data_trip["trips"];
-
+    
     let color = "";
     for (i=0; i<trip_list.length; i++){
         if (current_trip == trip_list[i][0]){
@@ -469,7 +474,13 @@ app.post('/debt-everyone', (req, res) => {
                     if (person == current_user){
                         get_back.push([category, amount, date, person]); //TO CHANGE -> PERSON
                     } else{
-                        pay.push([category, amount, date, person]) //TO CHANGE -> PERSON
+                        let icon = "";
+                        for (m=0; m<users_list.length; m++){
+                            if (users_list[m][0] == person){
+                                icon = users_list[m][2];
+                            }
+                        }
+                        pay.push([category, amount, date, icon]) //TO CHANGE -> PERSON
                     }   
                 }
             }
