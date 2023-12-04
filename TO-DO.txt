@@ -17,6 +17,7 @@
 * 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
 * shall add the history datas to the travel-main
 * problem with the current.json, that doesn't allow to use the navigation properly
+* problem with users.json -> users have the trip in their list only if they created it
 
 -----NAVIGATION-----
 * must do a new walkthrough !!!

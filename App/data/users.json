@@ -19,12 +19,18 @@
     ],
     [
       "anne",
-      [],
+      [
+        "Canada",
+        "Bali"
+      ],
       "usr7.png"
     ],
     [
       "steve",
-      [],
+      [
+        "Canada",
+        "Bali"
+      ],
       "usr4.png"
     ]
   ]

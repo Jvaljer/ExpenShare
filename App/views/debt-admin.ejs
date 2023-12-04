@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="css/debt-admin.css">
 <link rel="stylesheet" href="css/trip-bar.css">
 
+<script src="js/debt_admin.js"></script>
+
 <div id="container">
     <div id="header">
         <%- include("navbar.ejs")%>
@@ -17,29 +19,35 @@
 
         <div class="pay"> 
             <h2 id="pay">To pay -</h2>
-            <div class="debtBox"> 
-                <div class="category"></div>
-                <div class="amount-pos">18.64$ </div> 
-                <div class="date"> due since 24/03/23 </div>
-                <div class="person"><img class="img" src="media/usr0.png"></div>
-            </div>
+            <% for (i=1; i<pay.length; i++){ %>
+                <div class="debtBox"> 
+                    <div class="category" style="background-color:<%=pay[0]%>"><img class="img_cat" src="media/<%=pay[i][0]%>"></div>
+                    <div class="amount-pos"><%=pay[i][1]%> $</div> 
+                    <div class="date"> due since <%=pay[i][2]%> </div>
+                    <div class="person"><img class="img" src="media/<%=pay[i][3]%>"></div>
+                </div>
+            <%}%>
         </div>
         <div class="get-back">
             <h2 id="get-back">To get back -</h2>
-            <div class="debtBox"> 
-                <div class="category"></div>
-                <div class="amount-neg">25$ </div> 
-                <div class="date"> due since 18/11/23 </div>
-                <div class="person"><img class="img" src="media/usr0.png"></div>
-            </div>
+            <% for (i=1; i<get_back.length; i++){%>
+                <div class="debtBox"> 
+                    <div class="category" style="background-color:<%=get_back[0]%>"><img class="img_cat" src="media/<%=get_back[i][0]%>"></div>
+                    <div class="amount-neg"><%=get_back[i][1]%> $</div> 
+                    <div class="date"> due since <%=get_back[i][2]%> </div>
+                    <div class="person"><img class="img" src="media/usr1.png"></div>
+                </div>
+            <%}%>
         </div>
     </div>
 
     <div id="footer">
         <div class="users">
-            <div class="other-user"><img class="img" src="media/usr0.png"> </div>
-            <div class="other-user"><img class="img" src="media/usr1.png"> </div>
-            <div class="other-user"><img class="img" src="media/usr2.png"> </div>
+            <%for (i=0; i<people.length; i++){%>
+                <form class="other-user" method="post">
+                    <button type="button" class="btn btn-light" onclick="who('<%=people[i]%>')"><img class="img" src="media/<%=people[i]%>"></button>
+                </form>
+            <%}%>
         </div>
     </div>
 </div>

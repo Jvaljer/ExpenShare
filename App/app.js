@@ -417,15 +417,14 @@ app.post('/friends', (req, res) => {
     })
 })
 
-app.post('/debt-everyone', (req, res) => {
-    //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
+function calc_debt(current_user){
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
 
     //to get the current trip and user
     let current_trip = current[1][0];
-    let current_user = current[0];
+    //let current_user = current[0];
 
     const raw_exp = fs.readFileSync("data/expenses.json");
     const data_exp = JSON.parse(raw_exp);
@@ -486,26 +485,79 @@ app.post('/debt-everyone', (req, res) => {
             }
         }
     }
-    console.log(get_back);
-    console.log(pay);
+    return [pay, get_back];
+}
 
+app.post('/debt-everyone', (req, res) => {
+    //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    let current_user = current[0];
 
     let creator = debtbar();
+    let aux = calc_debt(current_user)
+    let pay = aux[0];
+    let get_back = aux[1];
     res.render("debt-everyone.ejs", {
         role: creator,
         get_back: get_back,
-        pay: pay,
-        color: color
+        pay: pay
     })
 })
 
+function get_list_friends(current_user, current_trip){
+    const raw_user = fs.readFileSync("data/users.json");
+    const data_user = JSON.parse(raw_user);
+    const users_list = data_user["users"];
+
+    const person_icon = []; 
+    for(i=0; i<users_list.length; i++){
+        let test = users_list[i][1];
+        if (test.includes(current_trip) && users_list[i][0] != current_user){
+            person_icon.push(users_list[i][2]);
+        }
+    }
+    return person_icon;
+}
+
+
 app.post('/debt-admin', (req, res) => {
+    let personIndex;
+    if (req.body.personIndex != undefined){
+        personIndex = req.body.personIndex;
+    } else{
+        personIndex = -1;
+    }
+    console.log('person index on click', personIndex);
+
+    //SHOULD I STILL DO THE -1??
+    //if i don't i will have to take into account later the possibility where its undefined 
+    //from the picture, needs to find the user, to define the current user 
+
     //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    let current_user = current[0];
+    let current_trip = current[1][0];
+
+    let person_icon = get_list_friends(current_user, current_trip);
+    console.log(person_icon);
+
+    let aux = calc_debt(current_user)
+    let pay = aux[0];
+    let get_back = aux[1];
+
     let creator = debtbar();
     res.render("debt-admin.ejs", {
-        role: creator
+        role: creator,
+        pay: pay,
+        get_back: get_back,
+        people: person_icon
     })
 })
+
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");

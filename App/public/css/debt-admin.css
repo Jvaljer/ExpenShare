@@ -5,6 +5,10 @@
     right: 0;
 }
 
+.get-back{
+    margin-bottom: 100px;
+}
+
 .users{
     display:flex;
     flex-direction: row;
@@ -22,6 +26,11 @@
 .img{
     width: 40px;
     height: 40px;
+}
+
+.img_cat{
+    width: 30px;
+    height: 30px;
 }
 
 

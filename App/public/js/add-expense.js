@@ -18,7 +18,6 @@ jQuery(document).ready(function () {
             comment: comment,
         };
 
-        //julopipo said 'try using AJAX' -> tf that is ...
         $.post("/valid-expense", expense_data, function (data) {
             window.location.href = "/valid-expense";
         });
