@@ -468,10 +468,33 @@ app.post('/profile', (req, res) => {
             for (k=0; k<exp_list[i][1][j][1].length; k++){
                 sum += parseInt(exp_list[i][1][j][1][k][2]) //to get the expense amount
             }
-            aux.push([exp_list[i][1][j][0], sum]) //name of the category
+            //get the icon instead of the name of the category
+            const raw_cat = fs.readFileSync("data/categories.json");
+            const data_cat = JSON.parse(raw_cat);
+            const cat_list = data_cat["categories"];
+            let idx = -1;
+            for(k=0; k<cat_list.length; k++){
+                if(cat_list[k][0] == exp_list[i][1][j][0]){
+                    idx = k;
+                }
+            }
+            aux.push([cat_list[idx][1], sum]) //name of the category
+        }
+        
+        //to get the color of the trip
+        const raw_trip = fs.readFileSync("data/trips.json");
+        const data_trip = JSON.parse(raw_trip);
+        const trip_list = data_trip["trips"];
+        for (j=0; j<trip_list.length; j++){
+            if( trip_list[j][0] == exp_list[i][0]){
+                aux.push(trip_list[j][6]);
+            }
         }
         list_expenses.push(aux);
+        
     }
+
+    console.log(list_expenses);
 
     res.render("profile.ejs", {
         user: current[0],

@@ -12,7 +12,7 @@
     </div>
 
     <div id="body">
-
+        
         <div class="profile"> 
             <div class="name"><%=user%></div>
             <div class="current-user"> <img class="img" src="media/<%=icon%>"> </div>
@@ -23,9 +23,9 @@
                 <h2 id="destination"><%=trips[i]%> -</h2>
                 <%for (j=0; j<expenses.length; j++){%>
                     <% if (expenses[j][0] == trips[i]){%>
-                        <%for (k=1; k<expenses[j].length; k++){%>
+                        <%for (k=1; k<expenses[j].length-1; k++){%>
                             <div class="expenseBox"> 
-                                <div class="category"><%=expenses[j][k][0]%></div>
+                                <div class="category" style="background-color: <%=expenses[j][expenses[j].length-1]%>;"><img class="img" src="media/<%=expenses[j][k][0]%>"></div>
                                 <div class="amount"><%=expenses[j][k][1]%>$ </div> 
                             </div>
                         <%}%>
