@@ -1,34 +1,41 @@
 -----TO FIX-----
-* must make selecting categories & members NOT MANDATORY
-
------UNIMPLEMENTED VIEWS-----
-* Specific Travel - Category Detail
+A* must make selecting categories & members NOT MANDATORY
 
 
 -----VIEWS DETAIL TO FIX-----
-* 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
-* 'sign-in-view' : must allow user to select an icon from a list by clicking
-* should add possibility to remove a trip from fst-view (cross button ?)
-* should display the trip color on the main-view
+L* 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
+A* 'sign-in-view' : must allow user to select an icon from a list by clicking
+A* should add possibility to remove a trip from fst-view (cross button ?)
 
 -----DATA COMMUNICATION-----
-* 'profile': for now the expense are general but i should divide to have amount per person
-* 'debt-admin': no dynamic yet
-* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
-* shall add the history datas to the travel-main
-* problem with the current.json, that doesn't allow to use the navigation properly
-* problem with users.json -> users have the trip in their list only if they created it
+L* 'profile': for now the expense are general but i should divide to have amount per person
+L* 'debt-admin': almost dynamic yet
+L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
+A* problem with the current.json, that doesn't allow to use the navigation properly
+
 
 -----NAVIGATION-----
-* must do a new walkthrough !!!
 
 -----OTHER-----
-* Try with real 'server' stuff asap...
-* allow users to select their icon (list of images) when creating account
-* move code from the app.js to separate js file - reorganise code (see later)
-* there is nowhere where we assign the roles 
+* Try with real 'server' stuff asap... ui ui baguette
+A* there is nowhere where we assign the roles (OMW)
 
 
-=====SOLUTION IDEAS=====
-* Implement a 'previous.json' in datas to keep track of the page we are coming from
+-----WALKTHROUGH #2-----
+L* /profile user icon to scale properly
+L* /add-expense check how to input floats in amount
+L* /add-expense->/specific-travel the travel-bar is not displayed
+L* shall implement 'Latest Expense'
+
+A* /fst-view shall display users icon on trip 
+A* /fst-view shall only display OTHER users
+A* OVERALL shall CENTER THAT FCKING + BTN
+A* OVERALL -> shall only use % for size in order to allow resizing 
+A* /new-trip shall augment the budget limit (5000?)
+A* /add-expense->/specific-travel the chart is not displayed (CHART NEVER DISPLAYS APPART FROM ABOVE)
+A* /specific-category shall add gap between user's row (SAME SHIT)
+A* implement roles in Profile (list of roles)
+A* /friends->/specific-travel shall fix current it is null
+A* start cleaning APP.JS (functions & stuff)
+
 
