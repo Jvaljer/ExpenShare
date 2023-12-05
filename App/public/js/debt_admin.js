@@ -1,3 +1,4 @@
+//LAURENE'S VERSION
 /*jQuery(document).ready(function () {
     ///////////////////////////////
     function get_name_from_icon(users_list, icon){

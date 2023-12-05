@@ -543,7 +543,7 @@ app.post('/debt-admin', (req, res) => {
 
     //need to find the user that goes with the image
     let name = get_name_from_icon(personIndex);
-    console.log("this is the name" + name);
+    console.log("this is the name " + name);
 
     //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
     const raw = fs.readFileSync("data/current.json");
@@ -568,15 +568,14 @@ app.post('/debt-admin', (req, res) => {
     let get_back = aux[1];
 
     let creator = debtbar();
-
+    console.log("Rendering debt-admin from POST");
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,
         get_back: get_back,
         people: person_icon
     })
-})
-
+});
 
 app.post('/profile', (req, res) => {
     //console.log("rendering PROFILE with _ /PROFILE");

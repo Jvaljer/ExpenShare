@@ -123,7 +123,6 @@ jQuery(document).ready(function () {
             color: color
         };
 
-        //julopipo said 'try using AJAX' -> tf that is ...
         $.post("/validate-trip", trip_data, function (data) {
             window.location.href = "/validate-trip";
         });
