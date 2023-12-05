@@ -119,7 +119,9 @@ app.post('/logged', (req,res) => {
 
     //here we wanna remove the latest trip if it exists
     if(tmp_file.length>1){
-        tmp_file[1] = "";
+        console.log("removing the trip from the current file");
+        //tmp_file[1] = "";
+        tmp_file.pop(); //better like this
     }
 
     const current = tmp_file;
