@@ -538,7 +538,7 @@ function get_name_from_icon(icon){
 }
 
 
-app.post('/debt-admin', (req, res) => {
+/*app.post('/debt-admin', (req, res) => {
     let personIndex = req.body.personIndex;
 
     //need to find the user that goes with the image
@@ -568,13 +568,49 @@ app.post('/debt-admin', (req, res) => {
     let get_back = aux[1];
 
     let creator = debtbar();
-    console.log("Rendering debt-admin from POST");
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,
         get_back: get_back,
         people: person_icon
-    })
+    });
+});*/
+app.get('/debt-admin', (req, res) => {
+    console.log("GET debt-admin with: "+req.query.personIndex);
+    let personIndex = req.query.personIndex;
+    //need to find the user that goes with the image
+    let name = get_name_from_icon(personIndex);
+    console.log("this is the name " + name);
+
+    //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    let current_user = current[0];
+    let current_trip = current[1][0];
+
+    let user;
+    if (name == ""){
+        user = current_user;
+    } else{
+        user = name;
+    }
+    console.log("User " + user);
+
+    let person_icon = get_list_friends(user, current_trip);
+    console.log(person_icon);
+
+    let aux = calc_debt(user)
+    let pay = aux[0];
+    let get_back = aux[1];
+
+    let creator = debtbar();
+    res.render("debt-admin.ejs", {
+        role: creator,
+        pay: pay,
+        get_back: get_back,
+        people: person_icon
+    });
 });
 
 app.post('/profile', (req, res) => {

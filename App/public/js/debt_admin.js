@@ -79,14 +79,15 @@
 
 function who(personIndex) {
     // Use AJAX to send the personIndex to the server
-    fetch('/debt-admin', {
+    /*fetch('/debt-admin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ personIndex: personIndex }),
     })
-    .then(response => response.text())
+    .then(response => response.text()) */
+    window.location.href = '/debt-admin?personIndex='+encodeURIComponent(personIndex);
 }
 
 /*
