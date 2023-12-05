@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="css/debt-admin.css">
 <link rel="stylesheet" href="css/trip-bar.css">
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="js/debt_admin.js"></script>
 
 <div id="container">
@@ -44,8 +45,8 @@
     <div id="footer">
         <div class="users">
             <%for (i=0; i<people.length; i++){%>
-                <form class="other-user" method="post">
-                    <button type="button" class="btn btn-light" onclick="who('<%=people[i]%>')"><img class="img" src="media/<%=people[i]%>"></button>
+                <form id="form" class="other-user" method="post">
+                    <button type="button" class="btn btn-light" onclick="who('<%=people[i]%>')"><img class="img" id="<%=people[i]%>" src="media/<%=people[i]%>"></button>
                 </form>
             <%}%>
         </div>

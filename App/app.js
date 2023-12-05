@@ -521,19 +521,27 @@ function get_list_friends(current_user, current_trip){
     return person_icon;
 }
 
+function get_name_from_icon(icon){
+    const raw_user = fs.readFileSync("data/users.json");
+    const data_user = JSON.parse(raw_user);
+    const users_list = data_user["users"];
+
+    let name = "";
+    for(i=0; i<users_list.length; i++){
+        if (users_list[i][2] == icon){
+            name = users_list[i][0];
+        }
+    }
+    return name;
+}
+
 
 app.post('/debt-admin', (req, res) => {
-    let personIndex;
-    if (req.body.personIndex != undefined){
-        personIndex = req.body.personIndex;
-    } else{
-        personIndex = -1;
-    }
-    console.log('person index on click', personIndex);
+    let personIndex = req.body.personIndex;
 
-    //SHOULD I STILL DO THE -1??
-    //if i don't i will have to take into account later the possibility where its undefined 
-    //from the picture, needs to find the user, to define the current user 
+    //need to find the user that goes with the image
+    let name = get_name_from_icon(personIndex);
+    console.log("this is the name" + name);
 
     //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
     const raw = fs.readFileSync("data/current.json");
@@ -542,14 +550,23 @@ app.post('/debt-admin', (req, res) => {
     let current_user = current[0];
     let current_trip = current[1][0];
 
-    let person_icon = get_list_friends(current_user, current_trip);
+    let user;
+    if (name == ""){
+        user = current_user;
+    } else{
+        user = name;
+    }
+    console.log("User " + user);
+
+    let person_icon = get_list_friends(user, current_trip);
     console.log(person_icon);
 
-    let aux = calc_debt(current_user)
+    let aux = calc_debt(user)
     let pay = aux[0];
     let get_back = aux[1];
 
     let creator = debtbar();
+
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,

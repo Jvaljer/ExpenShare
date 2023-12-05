@@ -2,10 +2,10 @@
   "current-infos": [
     "Laurene",
     [
-      "Canada",
+      "Tanzania",
       [
-        "2024-01-15",
-        "2024-01-21"
+        "2023-12-20",
+        "2023-12-30"
       ],
       [
         [
@@ -13,33 +13,19 @@
           "creator"
         ],
         [
-          "steve",
-          "none"
-        ],
-        [
-          "anne",
-          "none"
-        ],
-        [
           "ahenryl",
-          "none"
-        ],
-        [
-          "jane",
           "none"
         ]
       ],
       [
-        "Hotel",
-        "Transports",
-        "Activities",
-        "Party",
-        "Alcohol",
-        "Groceries"
+        "Fuel",
+        "Restaurant",
+        "Sleeping",
+        "Transports"
       ],
-      "767",
-      "Bring warm clothes because it is cold",
-      "#ff0000"
+      "0",
+      "",
+      "#70A1FF"
     ]
   ]
 }
