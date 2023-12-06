@@ -66,14 +66,31 @@ app.post('/login', (req, res) => {
                     const data_cur = JSON.parse(raw_cur);
                     data_cur["current-infos"] = []; //emptying all previous infos
 
-                    console.log("Adding the user "+username+" to current");
-
                     data_cur["current-infos"].push(username);
+
+                    let others = [];
+                    let imgs = [];
+                    for(var j=0; j<trips.length; j++){
+                        imgs.push([]);
+                        for(var k=0; k<trips[j][2].length; k++){
+                            if(trips[j][2][k][0]!=username){
+                                others.push(trips[j][2][k]);
+                                for(var n=0; n<users.length; n++){
+                                    if(users[n][0]===trips[j][2][k][0]){
+                                        imgs[j].push(users[n][2]);
+                                    }
+                                }
+                            }
+                        }
+                        trips[j][2] = others;
+                        others = [];
+                    }
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
 
                     res.render("fst-view.ejs", {
                         user: users[i],
-                        trip: trips
+                        trip: trips,
+                        images: imgs
                     });
 
                     ignore = true;
@@ -150,6 +167,17 @@ app.post('/logged', (req,res) => {
                 }
             }
         }
+    }
+
+    let others = [];
+    for(var j=0; j<all_trip.length; j++){
+        for(var k=0; k<all_trip[j][2].length; k++){
+            if(all_trip[j][2][k][0]!=current[0]){
+                others.push(all_trip[j][2][k]);
+            }
+        }
+        all_trip[j][2] = others;
+        others = [];
     }
 
     res.render("fst-view.ejs", {

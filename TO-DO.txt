@@ -22,8 +22,6 @@ L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it fr
 L* /add-expense->/specific-travel the travel-bar is not displayed
 L* shall implement 'Latest Expense'
 
-A* /fst-view shall display users icon on trip 
-A* /fst-view shall only display OTHER users
 A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing 
 A* /specific-category shall add gap between user's row (SAME SHIT)
