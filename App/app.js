@@ -187,9 +187,6 @@ app.post('/new-trip', (req,res) => {
     });
 });
 
-
-//dunno why but have this strange duplicata .post & .get which seems to be the only working way...
-//shall ask julopipo
 app.post('/validate-trip', (req, res) => {
 
     const name = req.body.name;
@@ -269,7 +266,8 @@ app.get('/validate-trip', (req,res) => {
 
 
 app.post('/specific-travel', (req,res) => {
-    const name = req.body.travelname;
+    let name = req.body.travelname;
+    let from_above = (name!=null);
 
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
@@ -278,6 +276,10 @@ app.post('/specific-travel', (req,res) => {
     const raw_ = fs.readFileSync("data/trips.json");
     const data_ = JSON.parse(raw_);
     const trips = data_["trips"];
+
+    if(!from_above){
+        name = current[1][0];
+    }
 
     var tname;
     var trip;
@@ -288,13 +290,9 @@ app.post('/specific-travel', (req,res) => {
         }
     }
 
-    if(name!=null){
+    if(from_above){
         console.log("---adding a trip to current---");
         current.push(trip);
-        console.log(current);
-    } else {
-        console.log("---no trip to add---");
-        //here we wanna put the current trip's name
     }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 

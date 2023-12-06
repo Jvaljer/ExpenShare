@@ -10,14 +10,12 @@ A* should add possibility to remove a trip from fst-view (cross button ?)
 -----DATA COMMUNICATION-----
 L* 'debt-admin': almost dynamic yet
 L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
-A* problem with the current.json, that doesn't allow to use the navigation properly
 
 
 -----NAVIGATION-----
 
 -----OTHER-----
 * Try with real 'server' stuff asap... ui ui baguette
-A* there is nowhere where we assign the roles (OMW)
 
 
 -----WALKTHROUGH #2-----
@@ -28,11 +26,8 @@ A* /fst-view shall display users icon on trip
 A* /fst-view shall only display OTHER users
 A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing 
-A* /new-trip shall augment the budget limit (5000?)
-A* /add-expense->/specific-travel the chart is not displayed (CHART NEVER DISPLAYS APPART FROM ABOVE)
 A* /specific-category shall add gap between user's row (SAME SHIT)
 A* implement roles in Profile (list of roles)
-A* /friends->/specific-travel shall fix current it is null
 A* start cleaning APP.JS (functions & stuff)
 
 
