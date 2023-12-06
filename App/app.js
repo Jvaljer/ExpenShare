@@ -313,11 +313,14 @@ app.post('/specific-travel', (req,res) => {
         }
     }
 
+    let color_trip = current[1][6];
+
     res.render("travel-main-view.ejs", {
         user: current[0],
         trip_name: tname,
         trip_expenses: expenses,
-        role: creator
+        role: creator,
+        color_trip: color_trip
     });
 });
 
@@ -349,26 +352,6 @@ function debtbar(){
 };
 
 
-
-//This was to test the navigation bar, needs to be removed later on, I don't really know in each ejs to link it yet
-/*app.post('/navbar', (req, res) => {
-    console.log("rendering NAVBAR with _ /NAVBAR");
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
-    let auser = current[0]
-
-    let userslist = [];
-
-    for (var i=0; i<current.length; i++){
-        userslist.push(current[1][0][2][i])
-    }
-
-    res.render("navbar.ejs", {
-        user: auser,
-        tripfriends: userslist
-    })
-})*/
 
 app.post('/friends', (req, res) => {
     //console.log("rendering FRIENDS with _ /FRIENDS");
@@ -411,11 +394,16 @@ app.post('/friends', (req, res) => {
         }
     }
 
+    let trip_name = current[1][0];
+    let color_trip = current[1][6];
+
     res.render("friends.ejs", {
         role: creator,
         rolelist: userslistroles,
         namelist: userslistnames,
-        picturelist: userspicture
+        picturelist: userspicture,
+        trip_name: trip_name,
+        color_trip: color_trip
     })
 })
 
@@ -501,10 +489,16 @@ app.post('/debt-everyone', (req, res) => {
     let aux = calc_debt(current_user)
     let pay = aux[0];
     let get_back = aux[1];
+
+    let trip_name = current[1][0];
+    let color_trip = current[1][6];
+
     res.render("debt-everyone.ejs", {
         role: creator,
         get_back: get_back,
-        pay: pay
+        pay: pay,
+        trip_name: trip_name,
+        color_trip: color_trip
     })
 })
 
@@ -588,6 +582,7 @@ app.get('/debt-admin', (req, res) => {
     const current = data["current-infos"];
     let current_user = current[0];
     let current_trip = current[1][0];
+    let color_trip = current[1][6];
 
     let user;
     if (name == ""){
@@ -609,7 +604,9 @@ app.get('/debt-admin', (req, res) => {
         role: creator,
         pay: pay,
         get_back: get_back,
-        people: person_icon
+        people: person_icon,
+        trip_name: current_trip,
+        color_trip: color_trip
     });
 });
 
@@ -706,10 +703,15 @@ app.post('/add-expense', (req, res) => {
     const current = data["current-infos"];
     const categories = current[1][3];
 
+    let trip_name = current[1][0];
+    let color_trip = current[1][6];
+
     let creator = debtbar();
     res.render("add-expense.ejs", {
         role: creator,
-        categories: categories
+        categories: categories,
+        trip_name: trip_name,
+        color_trip: color_trip
     })
 })
 

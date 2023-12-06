@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="css/trip-bar.css">
 
 <%- include("navbar.ejs") %>
-<div class="trip-name" data-expenses="<%= JSON.stringify(trip_expenses) %>">
+<div class="trip-name" data-expenses="<%= JSON.stringify(trip_expenses) %>" style="background-color: <%=color_trip%>;">
     <form id="back-form" action="/logged" method="post">
         <button id="back-btn" type="submit"><</button>
     </form>
