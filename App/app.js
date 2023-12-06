@@ -787,10 +787,16 @@ app.get('/specific-category', (req, res) => {
             }
         }
     }
+
+    let trip_name = data["current-infos"][1][0];
+    let color_trip = data["current-infos"][1][6];
+
     res.render("specific-category.ejs", {
         role: creator,
         category: cname,
-        expenses: exps
+        expenses: exps,
+        trip_name: trip_name,
+        color_trip: color_trip
     });
 });
 

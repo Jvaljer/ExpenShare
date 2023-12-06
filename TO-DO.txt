@@ -23,9 +23,8 @@ L* /add-expense->/specific-travel the travel-bar is not displayed
 L* shall implement 'Latest Expense'
 
 A* OVERALL shall CENTER THAT FCKING + BTN
-A* OVERALL -> shall only use % for size in order to allow resizing 
-A* /specific-category shall add gap between user's row (SAME SHIT)
+A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* implement roles in Profile (list of roles)
 A* start cleaning APP.JS (functions & stuff)
-
+A* center login input text fields
 
