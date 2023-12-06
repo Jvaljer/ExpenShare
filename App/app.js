@@ -553,8 +553,24 @@ function get_name_from_icon(icon){
     }
     return name;
 }
+
+function get_icon_from_name(name){
+    const raw_user = fs.readFileSync("data/users.json");
+    const data_user = JSON.parse(raw_user);
+    const users_list = data_user["users"];
+
+    let icon = "";
+    for(i=0; i<users_list.length; i++){
+        if (users_list[i][0] == name){
+            icon = users_list[i][2];
+        }
+    }
+    return icon;
+}
+
 app.get('/debt-admin', (req, res) => {
     let personIndex = req.query.personIndex;
+
     //need to find the user that goes with the image
     let name = get_name_from_icon(personIndex);
 
@@ -564,6 +580,14 @@ app.get('/debt-admin', (req, res) => {
     let current_user = current[0];
     let current_trip = current[1][0];
     let color_trip = current[1][6];
+
+    //to get the icon for the top right corner
+    let icon;
+    if (personIndex == undefined){
+        icon = get_icon_from_name(current_user);
+    } else{
+        icon = personIndex;
+    }
 
     let user;
     if (name == ""){
@@ -585,7 +609,8 @@ app.get('/debt-admin', (req, res) => {
         get_back: get_back,
         people: person_icon,
         trip_name: current_trip,
-        color_trip: color_trip
+        color_trip: color_trip,
+        icon: icon
     });
 });
 
