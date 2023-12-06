@@ -170,10 +170,17 @@ app.post('/logged', (req,res) => {
     }
 
     let others = [];
+    let imgs = [];
     for(var j=0; j<all_trip.length; j++){
+        imgs.push([]);
         for(var k=0; k<all_trip[j][2].length; k++){
             if(all_trip[j][2][k][0]!=current[0]){
                 others.push(all_trip[j][2][k]);
+                for(var n=0; n<users.length; n++){
+                    if(users[n][0]===trips[j][2][k][0]){
+                        imgs[j].push(users[n][2]);
+                    }
+                }
             }
         }
         all_trip[j][2] = others;
@@ -182,7 +189,8 @@ app.post('/logged', (req,res) => {
 
     res.render("fst-view.ejs", {
         user: users[user_index],
-        trip: all_trip
+        trip: all_trip,
+        images: imgs
     });
 });
 app.post('/sign-in', (req,res) => {
