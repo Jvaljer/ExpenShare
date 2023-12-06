@@ -8,7 +8,6 @@ A* 'sign-in-view' : must allow user to select an icon from a list by clicking
 A* should add possibility to remove a trip from fst-view (cross button ?)
 
 -----DATA COMMUNICATION-----
-L* 'profile': for now the expense are general but i should divide to have amount per person
 L* 'debt-admin': almost dynamic yet
 L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
 A* problem with the current.json, that doesn't allow to use the navigation properly

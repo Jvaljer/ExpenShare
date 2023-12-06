@@ -648,6 +648,15 @@ app.post('/profile', (req, res) => {
     let list_expenses = [];
     for(i=0; i<exp_list.length; i++){
         let aux = [exp_list[i][0]];
+
+        //get the number of participants in the trip
+        let number_people;
+        for (j=0; j<trip_list.length; j++){
+            if( trip_list[j][0] == exp_list[i][0]){
+                number_people = (trip_list[j][2].length);
+            }
+        }  
+
         for (j=0; j<exp_list[i][1].length; j++){
             let sum = 0;
             for (k=0; k<exp_list[i][1][j][1].length; k++){
@@ -663,6 +672,10 @@ app.post('/profile', (req, res) => {
                     idx = k;
                 }
             }
+            //Get the number of user to divide the sum to have the epxense per person
+            
+            sum = (parseFloat(sum)/number_people).toFixed(2);
+
             aux.push([cat_list[idx][1], sum]) //name of the category
         }
         
