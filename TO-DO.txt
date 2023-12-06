@@ -22,7 +22,6 @@ A* there is nowhere where we assign the roles (OMW)
 
 
 -----WALKTHROUGH #2-----
-L* /profile user icon to scale properly
 L* /add-expense check how to input floats in amount
 L* /add-expense->/specific-travel the travel-bar is not displayed
 L* shall implement 'Latest Expense'

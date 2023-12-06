@@ -14,6 +14,10 @@
         [
           "ahenryl",
           "none"
+        ],
+        [
+          "Bas",
+          "none"
         ]
       ],
       [
@@ -42,15 +46,11 @@
           "none"
         ],
         [
-          "hortense",
+          "Bas",
           "none"
         ],
         [
           "steve",
-          "none"
-        ],
-        [
-          "jason",
           "none"
         ]
       ],
@@ -87,10 +87,6 @@
         [
           "ahenryl",
           "none"
-        ],
-        [
-          "jane",
-          "none"
         ]
       ],
       [
@@ -104,30 +100,6 @@
       "767",
       "Bring warm clothes because it is cold",
       "#ff0000"
-    ],
-    [
-      "caca",
-      [
-        "2023-12-01",
-        "2023-12-22"
-      ],
-      [
-        [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "Laurene",
-          "none"
-        ]
-      ],
-      [
-        "Restaurant",
-        "Fuel"
-      ],
-      "296",
-      "trip shit test",
-      "#785700"
     ]
   ]
 }
