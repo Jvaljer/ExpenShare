@@ -27,7 +27,6 @@ app.set('layout', './layouts/app-layout.ejs')
 
 
 app.get('', (req, res) => {
-    //console.log("rendering LOGIN-VIEW with start & !fail _");
     res.render("login-view.ejs", {start:true, fail:false});
 });
 
@@ -50,6 +49,7 @@ app.post('/login', (req, res) => {
             const raw_ = fs.readFileSync("data/trips.json");
             const data_ = JSON.parse(raw_);
             const trip_data = data_.trips;
+
             let trips = [];
             for(var i=0; i<users.length; i++){
                 if(users[i][0]===username){
@@ -65,10 +65,11 @@ app.post('/login', (req, res) => {
                     const raw_cur = fs.readFileSync("data/current.json");
                     const data_cur = JSON.parse(raw_cur);
                     data_cur["current-infos"] = []; //emptying all previous infos
+
+                    console.log("Adding the user "+username+" to current");
+
                     data_cur["current-infos"].push(username);
-                    //data_cur["current-infos"].push(trips);
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
-                    //console.log("rendering FST-VIEW with user & trips /LOGIN");
 
                     res.render("fst-view.ejs", {
                         user: users[i],
@@ -81,7 +82,6 @@ app.post('/login', (req, res) => {
         }
     }
     if(!ignore){
-        //console.log("rendering LOGIN-VIEW with !start & fail /LOGIN");
         res.render("login-view.ejs",{
             start: false,
             fail: true
@@ -105,7 +105,6 @@ app.post('/log', (req,res) => {
     daata.users.push([username,[],"user1.png"]); //can add here an image (use cnt of already existing ones...)
     fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
 
-    //console.log("rendering LOGIN-VIEW with !start & !fail + new logs /LOG");
     res.render("login-view.ejs",{
         start: false,
         fail: false
@@ -119,9 +118,10 @@ app.post('/logged', (req,res) => {
 
     //here we wanna remove the latest trip if it exists
     if(tmp_file.length>1){
-        console.log("removing the trip from the current file");
+        console.log("---removing the trip from the current---");
         //tmp_file[1] = "";
         tmp_file.pop(); //better like this
+        console.log(tmp_file);
     }
 
     const current = tmp_file;
@@ -152,14 +152,12 @@ app.post('/logged', (req,res) => {
         }
     }
 
-    //console.log("rendering FST-VIEW with _ /LOGGED");
     res.render("fst-view.ejs", {
         user: users[user_index],
         trip: all_trip
     });
 });
 app.post('/sign-in', (req,res) => {
-    //console.log("rendering SIGN-IN-VIEW with _ /SIGN-IN");
     res.render("sign-in-view.ejs");
 });
 app.post('/new-trip', (req,res) => {
@@ -183,7 +181,6 @@ app.post('/new-trip', (req,res) => {
     const daata = JSON.parse(raaw);
     const categories = daata["categories"];
 
-    //console.log("rendering NEW-TRIP-VIEW with _ /NEW-TRIP");
     res.render("new-trip-view.ejs", {
         all_users: others,
         all_categories: categories
@@ -194,7 +191,6 @@ app.post('/new-trip', (req,res) => {
 //dunno why but have this strange duplicata .post & .get which seems to be the only working way...
 //shall ask julopipo
 app.post('/validate-trip', (req, res) => {
-    //console.log("POST /validate-trip");
 
     const name = req.body.name;
     const start = req.body.start;
@@ -250,7 +246,6 @@ app.post('/validate-trip', (req, res) => {
     //to add the trip and its corresponding categories in the expense.json
     const raw_exp = fs.readFileSync("data/expenses.json");
     const data_exp = JSON.parse(raw_exp);
-    const exp = data_exp["expenses"];
 
     let categories_exp = []
     for(i=0; i<categories.length; i++){
@@ -269,8 +264,6 @@ app.post('/validate-trip', (req, res) => {
 });
 
 app.get('/validate-trip', (req,res) => {
-    //console.log("rendering VALID-TRIP with _ /VALIDATE-TRIP");
-    //console.log("GET /validate-trip");
     res.render("valid-trip.ejs");
 });
 
@@ -295,10 +288,16 @@ app.post('/specific-travel', (req,res) => {
         }
     }
 
-    current.push(trip);
+    if(name!=null){
+        console.log("---adding a trip to current---");
+        current.push(trip);
+        console.log(current);
+    } else {
+        console.log("---no trip to add---");
+        //here we wanna put the current trip's name
+    }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
-    //console.log("rendering TRAVEL-MAIN-VIEW with _ /SPECIFIC-TRAVEL");
     let creator = debtbar();
 
     //now I wanna add all the related expenses to the expenses list
@@ -354,7 +353,6 @@ function debtbar(){
 
 
 app.post('/friends', (req, res) => {
-    //console.log("rendering FRIENDS with _ /FRIENDS");
     let creator = debtbar();
     
     const raw = fs.readFileSync("data/current.json");
@@ -479,7 +477,6 @@ function calc_debt(current_user){
 }
 
 app.post('/debt-everyone', (req, res) => {
-    //console.log("rendering DEBT-EVERYONE with _ /DEBT-EVERYONE");
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
@@ -530,53 +527,11 @@ function get_name_from_icon(icon){
     }
     return name;
 }
-
-
-/*app.post('/debt-admin', (req, res) => {
-    let personIndex = req.body.personIndex;
-
-    //need to find the user that goes with the image
-    let name = get_name_from_icon(personIndex);
-    console.log("this is the name " + name);
-
-    //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
-    let current_user = current[0];
-    let current_trip = current[1][0];
-
-    let user;
-    if (name == ""){
-        user = current_user;
-    } else{
-        user = name;
-    }
-    console.log("User " + user);
-
-    let person_icon = get_list_friends(user, current_trip);
-    console.log(person_icon);
-
-    let aux = calc_debt(user)
-    let pay = aux[0];
-    let get_back = aux[1];
-
-    let creator = debtbar();
-    res.render("debt-admin.ejs", {
-        role: creator,
-        pay: pay,
-        get_back: get_back,
-        people: person_icon
-    });
-});*/
 app.get('/debt-admin', (req, res) => {
-    console.log("GET debt-admin with: "+req.query.personIndex);
     let personIndex = req.query.personIndex;
     //need to find the user that goes with the image
     let name = get_name_from_icon(personIndex);
-    console.log("this is the name " + name);
 
-    //console.log("rendering DEBT-ADMIN with _ /DEBT-ADMIN");
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
@@ -590,10 +545,8 @@ app.get('/debt-admin', (req, res) => {
     } else{
         user = name;
     }
-    console.log("User " + user);
 
     let person_icon = get_list_friends(user, current_trip);
-    console.log(person_icon);
 
     let aux = calc_debt(user)
     let pay = aux[0];
@@ -611,7 +564,6 @@ app.get('/debt-admin', (req, res) => {
 });
 
 app.post('/profile', (req, res) => {
-    //console.log("rendering PROFILE with _ /PROFILE");
     //to get the name of the current user
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
@@ -686,8 +638,6 @@ app.post('/profile', (req, res) => {
         
     }
 
-    console.log(list_expenses);
-
     res.render("profile.ejs", {
         user: current[0],
         icon: usrimg,
@@ -697,7 +647,6 @@ app.post('/profile', (req, res) => {
 })
 
 app.post('/add-expense', (req, res) => {
-    //console.log("rendering ADD-EXPENSE with _ /ADD-EXPENSE");
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
@@ -716,7 +665,6 @@ app.post('/add-expense', (req, res) => {
 })
 
 app.post('/valid-expense', (req, res) => {
-    //console.log("rendering VALID-EXPENSE with _ /VALID-EXPENSE");
 
     const name = req.body.name;
     const amount = req.body.amount;
