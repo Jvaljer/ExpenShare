@@ -1,5 +1,43 @@
 {
   "current-infos": [
-    "Laurene"
+    "Laurene",
+    [
+      "Canada",
+      [
+        "2024-01-15",
+        "2024-01-21"
+      ],
+      [
+        [
+          "Laurene",
+          "creator"
+        ],
+        [
+          "steve",
+          "none"
+        ],
+        [
+          "anne",
+          "none"
+        ],
+        [
+          "ahenryl",
+          "none"
+        ]
+      ],
+      [
+        "Hotel",
+        "Transports",
+        "Activities",
+        "Party",
+        "Alcohol",
+        "Groceries"
+      ],
+      "767",
+      "Bring warm clothes because it is cold",
+      "#ff0000"
+    ],
+    null,
+    null
   ]
 }
