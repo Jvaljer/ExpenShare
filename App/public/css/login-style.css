@@ -16,55 +16,63 @@
     font-family: Monaco;
 }
 #login-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /*display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(1,1fr);*/
-    width: 35%;
-    margin-left: 32.5%;
+    display: grid;
+    grid-template-rows: repeat(3, 0.85fr);
+    grid-template-columns: repeat(3, 0.85fr);
+    grid-template-areas:
+        "a b ."
+        "c d e"
+        ". f .";
+    column-gap: 10px;
+    width: 38%;
+    height: 30%;
+    margin-left: 31%;
     background-color: #A4B0BE;
     border-radius: 15px;
 }
-/*#form-left{
-    display: grid;
-    row-gap: 5px;
-    grid-template-columns: repeat(1,1fr);
-    grid-template-rows: repeat(3,1fr);
+#usr-txt{
+    overflow: auto;
+    grid-area: a;
     align-self: center;
     justify-self: center;
 }
-#form-center{
-    display: grid;
-    row-gap: 5px;
-    grid-template-columns: repeat(1,1fr);
-    grid-template-rows: repeat(3,1fr);
+#pwd-txt{
+    overflow: auto;
+    grid-area: c;
+    align-self: center;
+    justify-self: center;
 }
-#form-right{
-
-} */
-
-#usr{
-    margin-top: 15px;
-    display: flex;
-    width: fit-content;
+#usr-field{
+    overflow: auto;
+    height: 50%;
+    grid-area: b;
+    align-self: center;
+    justify-self: center;
 }
-#pwd{
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    width: fit-content;
+#pwd-field{
+    overflow: auto;
+    height: 50%;
+    grid-area: d;
+    align-self: center;
+    justify-self: center;
 }
 #show-hide{
+    height: 50%;
+    width: 50%;
+    overflow: auto;
     margin-left: 10px;
     margin-right: 10px;
+    grid-area: e;
+    align-self: center;
+    justify-self: center;
 }
 #btn{
+    overflow: auto;
     margin-top: 15px;
     margin-bottom: 15px;
+    grid-area: f;
+    align-self: center;
+    justify-self: center;
 }
 
 #signin-form{
@@ -73,8 +81,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35%;
-    margin-left: 32.5%;
+    width: 38%;
+    margin-left: 31%;
     background-color: #A4B0BE;
     border-radius: 15px;
     padding-bottom: 5px;

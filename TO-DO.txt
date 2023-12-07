@@ -15,7 +15,7 @@ L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it fr
 -----NAVIGATION-----
 
 -----OTHER-----
-* Try with real 'server' stuff asap... ui ui baguette
+* Try with real 'server' stuff asap... ui ui baguette [--> NOT MANDATORY]
 
 
 -----WALKTHROUGH #2-----

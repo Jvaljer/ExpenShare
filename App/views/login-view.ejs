@@ -14,28 +14,12 @@
 </div>
 
 <form id="login-form" action="/login" method="post">
-    <!--<div id="form-left">
-        <div id="usr-txt">Name- </div>
-        <div id="pwd-txt">Password- </div>
-    </div>
-    <div id="form-center">
-        <input id="usr-field" class="field" type="text" placeholder="user name" name="username"/>
-        <input id="pwd-field" class="field" type="password" placeholder="your password" name="password"/>
-        <button id="btn" type="submit">Login</button>
-    </div>
-    <div id="form-right">
-
-    </div> -->
-        <div id="usr">
-            <div id="usrtxt">Name- </div>
-            <input id="usrfield" type="text" placeholder="user-name" name="username"/>
-        </div>
-        <div id="pwd">
-            <div id="pwdtxt">Password- </div>
-            <input id="pwdfield" type="password" placeholder="your password" name="password"/>
-            <button id="show-hide" type="button" onclick="ShowHidePassword()">show</button>
-        </div>
-        <button id="btn" type="submit">Login</button>
+    <div id="usr-txt">Name </div>
+    <input id="usr-field" type="text" placeholder="user's name" name="username"/>
+    <div id="pwd-txt">Password </div>
+    <input id="pwd-field" type="password" placeholder="your password" name="password"/>
+    <button id="show-hide" type="button" onclick="ShowHidePassword()">show</button>
+    <button id="btn" type="submit">Login</button>
 </form>
 <form id="signin-form" action="/sign-in" method="post">
     <div id="signin-text">Not any account yet ?</div>
