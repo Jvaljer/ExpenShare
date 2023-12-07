@@ -30,7 +30,7 @@
     align-items: center;
 }
 
-#destination{
+.destination{
     margin-left: -320px;
 }
 
@@ -90,6 +90,7 @@
 }
 
 .dropdown {
+    margin-left: 15px;
     position: relative;
     display: inline-block;
 }
@@ -119,4 +120,11 @@
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.trip-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,16 +1,15 @@
 function ChooseRole(item, id) {
-    // Set the selected item text and close the dropdown
     document.getElementById('dropdown'+id).innerText = item;
     Hide();
 }
 
-function Toggle() {
+function Toggle(dropdownId) {
     // Toggle the visibility of the dropdown content
-    var dropdownContent = document.querySelector('.dropdown-content');
+    var dropdownContent = document.querySelector('#' + dropdownId + ' + .dropdown-content');
     dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
 }
 
-function Hide() {
+function Hide(dropdownId) {
     // Hide the dropdown content
-    document.querySelector('.dropdown-content').style.display = 'none';
+    document.querySelector('#' + dropdownId + ' + .dropdown-content').style.display = 'none';
 }
