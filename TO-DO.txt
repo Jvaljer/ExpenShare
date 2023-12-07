@@ -13,6 +13,7 @@ A* implement roles in Profile (list of roles)
 A* start cleaning APP.JS (functions & stuff)
 A* rename categories images to match their name
 
+* make code not awful
 * add a 'paid' button for debts
 
 L* remove color from the trip bar
