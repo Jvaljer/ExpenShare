@@ -20,11 +20,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /*display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(1,1fr);*/
     width: 35%;
     margin-left: 32.5%;
     background-color: #A4B0BE;
     border-radius: 15px;
 }
+/*#form-left{
+    display: grid;
+    row-gap: 5px;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(3,1fr);
+    align-self: center;
+    justify-self: center;
+}
+#form-center{
+    display: grid;
+    row-gap: 5px;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+#form-right{
+
+} */
+
 #usr{
     margin-top: 15px;
     display: flex;
