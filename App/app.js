@@ -454,7 +454,9 @@ function calc_debt(current_user){
 
     //to get the current trip and user
     let current_trip = current[1][0];
-    //let current_user = current[0];
+   
+    //to get the number of people in the trip
+    let people_trip = current[1][2].length;
 
     const raw_exp = fs.readFileSync("data/expenses.json");
     const data_exp = JSON.parse(raw_exp);
@@ -469,48 +471,50 @@ function calc_debt(current_user){
     const data_user = JSON.parse(raw_user);
     const users_list = data_user["users"];
 
-    //to get the color of the trip
+    //to get the list of friends of the trip
     const raw_trip = fs.readFileSync("data/trips.json");
     const data_trip = JSON.parse(raw_trip);
     const trip_list = data_trip["trips"];
     
-    let color = "";
-    for (i=0; i<trip_list.length; i++){
+    let list_friends = [];
+    for (let i=0; i<trip_list.length; i++){
         if (current_trip == trip_list[i][0]){
-            color = trip_list[i][6];
+            for(let j=0; j<trip_list[i][2].length; j++){
+                if (trip_list[i][2][j][0] != current_user){
+                    list_friends.push(trip_list[i][2][j][0]);
+                }
+            }
         }
-    }  
+    } 
 
     // 1) Find the corresponding trip in expenses.json
-    let get_back = [color];
-    let pay = [color];
-    for (i=0; i<exp.length; i++){
+    let get_back = [];
+    let pay = [];
+    for (let i=0; i<exp.length; i++){
         if (exp[i][0] == current_trip){
             // 2) Go through the expenses
-            for (j=0; j<exp[i][1].length; j++){
+            for (let j=0; j<exp[i][1].length; j++){
                 let category_name = exp[i][1][j][0];
                 let category = "";
-                for (k=0; k<cat.length; k++){
-                    if (category_name == cat[k][0]){
-                        category = cat[k][1];
+                //to get the icon corresponding to the category name
+                for (let p=0; p<cat.length; p++){
+                    if (category_name == cat[p][0]){
+                        category = cat[p][1];
                     }
                 }
-                for (k=0; k<exp[i][1][j][1].length; k++){
-                    let amount = exp[i][1][j][1][k][2];
+                for (let k=0; k<exp[i][1][j][1].length; k++){
+                    let amount = (parseFloat(exp[i][1][j][1][k][2])/people_trip).toFixed(2);
                     let date = exp[i][1][j][1][k][3];
                     let person = exp[i][1][j][1][k][0];
+                    let expense_name = exp[i][1][j][1][k][1];
                     // 3) if the user is the one that created the expense, will go into the get back list, otherwise will go into the pay list
                     if (person == current_user){
-                        get_back.push([category, amount, date, person]); //TO CHANGE -> PERSON
+                        for (let n=0; n<list_friends.length; n++){
+                            get_back.push([category, amount, date, get_icon_from_name(list_friends[n]), expense_name]);
+                        }                     
                     } else{
-                        let icon = "";
-                        for (m=0; m<users_list.length; m++){
-                            if (users_list[m][0] == person){
-                                icon = users_list[m][2];
-                            }
-                        }
-                        pay.push([category, amount, date, icon]) //TO CHANGE -> PERSON
-                    }   
+                        pay.push([category, amount, date, get_icon_from_name(person), expense_name])
+                    }  
                 }
             }
         }

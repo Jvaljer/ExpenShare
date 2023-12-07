@@ -1,23 +1,11 @@
------TO FIX-----
-
 
 -----VIEWS DETAIL TO FIX-----
+A* 'sign-in-view' : must allow user to select an icon from a list by clicking
 A* should add possibility to remove a trip from fst-view (cross button ?)
 A* should remove already used icons from available one
 
------DATA COMMUNICATION-----
-L* 'debt-admin': almost dynamic yet
-L* 'debt-everyone': need to fix amount per person + icon of who to pay/get it from
-
-
------NAVIGATION-----
-
------OTHER-----
-* Try with real 'server' stuff asap... ui ui baguette [--> NOT MANDATORY]
-
 
 -----WALKTHROUGH #2-----
-L* /add-expense->/specific-travel the travel-bar is not displayed
 L* shall implement 'Latest Expense'
 
 A* OVERALL shall CENTER THAT FCKING + BTN
@@ -27,4 +15,6 @@ A* start cleaning APP.JS (functions & stuff)
 A* rename categories images to match their name
 
 * add a 'paid' button for debts
+
+L* remove color from the trip bar
 

@@ -19,12 +19,12 @@
 
 #get-back{
     margin-left: -260px;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
 }
 
 #pay{
     margin-left: -320px;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
 }
 
 .debtBox{
@@ -35,7 +35,7 @@
     width: 400px;
     padding: 15px 20px;
     border-radius: 15px;
-    margin: 20px;
+    margin: 15px;
 }
 
 .category{
@@ -66,14 +66,22 @@
     left: 70px;
 }
 
+.exp-name {
+    position: absolute;
+    left: 150px;
+    top: 10px; /* Set top to 0 to place it at the top inside .debtBox */
+}
+
+.date {
+    position: absolute;
+    left: 150px;
+    top: 30px; /* Set top to create space between exp-name and date */
+    font-size: x-small;
+    align-self: center;
+}
+
 .person{
     position: absolute;
     left: 340px;
 }
 
-.date{
-    position:absolute;
-    left: 130px;
-    font-size: x-small;
-    align-self: center;
-}
