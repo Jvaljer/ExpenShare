@@ -1,8 +1,6 @@
 
 -----VIEWS DETAIL TO FIX-----
-A* 'sign-in-view' : must allow user to select an icon from a list by clicking
 A* should add possibility to remove a trip from fst-view (cross button ?)
-A* should remove already used icons from available one
 
 
 -----WALKTHROUGH #2-----
@@ -11,7 +9,7 @@ A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* implement roles in Profile (list of roles)
 A* start cleaning APP.JS (functions & stuff)
-A* rename categories images to match their name
+A* modify categories icon displaying (from category name adding .png)
 
 * make code not awful
 * add a 'paid' button for debts
