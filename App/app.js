@@ -249,6 +249,7 @@ app.post('/validate-trip', (req, res) => {
     const comment = req.body.comment;
     const members = req.body.members;
     const categories = req.body.categories;
+    const color = req.body.color;
 
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
@@ -264,12 +265,13 @@ app.post('/validate-trip', (req, res) => {
     }
 
     const trip_info = [
-            name,
-            [start, end],
-            member_list,
-            categories,
-            budget,
-            comment
+        name,
+        [start, end],
+        member_list,
+        categories,
+        budget,
+        comment,
+        color
     ];
 
     data.trips.push(trip_info);

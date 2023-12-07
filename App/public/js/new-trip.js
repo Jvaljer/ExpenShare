@@ -1,41 +1,29 @@
 jQuery(document).ready(function () {
     // Track added members and categories
-    const members = [];
-    const categories = [];
+    let members = [];
+    let categories = [];
     // Function to add a member to the list
     function AddMember(member) {
-        console.log("Adding member : "+member);
         members.push(member);
     }
     function RemoveMember(member){
-        for(var i=0; i<members.length; i++){
-            if(members[i]===member){
-                console.log("Removing member : "+member);
-                members.slice(i,1);
-                return;
-            }
+        if(members.includes(member)){
+            members.splice(members.indexOf(member), 1);
         }
     }
 
     // Function to add a category to the list
     function AddCategory(category) {
-        console.log("Adding category : "+category);
         categories.push(category);
     }
     function RemoveCategory(category){
-        for(var i=0; i<categories.length; i++){
-            if(categories[i]===category){
-                console.log("Removing category : "+category);
-                categories.slice(i,1);
-                return;
-            }
+        if(categories.includes(category)){
+            categories.splice(categories.indexOf(category), 1);
         }
     }
 
     // Handle "Add Member" button click
     $("#available-users").on("click", ".notadded-usr", function(){
-        console.log("clicked on: " + $(this).attr("value"));
-
         // Get the image source
         const value = $(this).attr("value");
         const img_src = $(this).find(".user-icon").attr("src");
@@ -50,8 +38,6 @@ jQuery(document).ready(function () {
         $(this).remove();
     });
     $("#added-users").on("click", ".added-usr", function(){
-        console.log("clicked on: " + $(this).attr("value"));
-
         // Get the image source
         const value = $(this).attr("value");
         const img_src = $(this).find(".user-icon").attr("src");
@@ -122,7 +108,6 @@ jQuery(document).ready(function () {
             categories: categories,
             color: color
         };
-
         $.post("/validate-trip", trip_data, function (data) {
             window.location.href = "/validate-trip";
         });
