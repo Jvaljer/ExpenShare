@@ -1,17 +1,5 @@
 {
   "categories": [
-<<<<<<< Updated upstream
-    ["Groceries", "groceries.png"],
-    ["Restaurant", "restaurant.png"],
-    ["Hotel", "hotel.png"],
-    ["Sleeping", "sleeping.png"],
-    ["Activities", "activities.png"],
-    ["Transports", "transports.png"],
-    ["Fuel", "fuel.png"],
-    ["Party", "party.png"],
-    ["Alcohol", "alcohol.png"],
-    ["Other", "other.png"]
-=======
     ["Groceries", "Groceries.png"],
     ["Restaurant", "Restaurant.png"],
     ["Hotel", "Hotel.png"],
@@ -22,6 +10,5 @@
     ["Party", "Party.png"],
     ["Alcohol", "Alcohol.png"],
     ["Other", "Other.png"]
->>>>>>> Stashed changes
   ]
 }
