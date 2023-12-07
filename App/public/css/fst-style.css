@@ -35,36 +35,35 @@
 }
 .travel-btn{
     border-radius: 15px;
-    width: 700px;
+    width: 500px;
     background-color: #DFE4EA;
 }
 .trip{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
     border-radius: 15px;
     background-color: #DFE4EA;
-}
-#illustration{
+    width: 60px;
+    height: 60px;
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: 25px;
-    border-radius: 10px;
-    width: 100px;
-    height: 100px;
 }
-#tripimg{
-    width: 100px;
-    height: 100px;
+
+.travel{
+    margin: 10px;
 }
+
 #name{
-    margin-left: 50px;
+    position: absolute;
+    margin-left: 100px;
     font-family: Monaco;
     font-size: 2em;
 }
 #group{
-    margin-left: 100px;
+    position: absolute;
+    margin-left: 600px;
     margin-right: 25px;
     display: grid;
     grid-row-gap: 20px;

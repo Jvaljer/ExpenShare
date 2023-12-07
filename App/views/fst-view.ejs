@@ -16,23 +16,23 @@
 
 <div id="body">
     <%for(var i=0; i<trip.length; i++){%>
-        <form action="/specific-travel" method="post">
-            <button class="travel-btn" type="submit">
-                <div class="trip">
-                    <div id="illustration" style="background: <%=trip[i][6]%>">
+        <div class="travel">
+            <form action="/specific-travel" method="post">
+                <button class="travel-btn" type="submit">
+                    <div class="trip">
+                        <input type="hidden" name="travelname" value="<%= trip[i][0] %>">
+                        <div id="name"> <%=trip[i][0]%> </div>
+                        <div id="group">
+                            <%for(var j=0; j<trip[i][2].length; j++){%>
+                                <div class="usr">
+                                    <img class="usrtinyicon" src="media/<%=images[i][j]%>">
+                                </div>
+                            <%}%>
+                        </div>
                     </div>
-                    <input type="hidden" name="travelname" value="<%= trip[i][0] %>">
-                    <div id="name"> <%=trip[i][0]%> </div>
-                    <div id="group">
-                        <%for(var j=0; j<trip[i][2].length; j++){%>
-                            <div class="usr">
-                                <img class="usrtinyicon" src="media/<%=images[i][j]%>">
-                            </div>
-                        <%}%>
-                    </div>
-                </div>
-            </button>
-        </form>
+                </button>
+            </form>
+        </div>
     <%}%>
 </div>
 

@@ -11,10 +11,23 @@ A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* implement roles in Profile (list of roles)
 A* start cleaning APP.JS (functions & stuff)
-A* rename categories images to match their name
+
 
 * make code not awful
-* add a 'paid' button for debts
 
-L* remove color from the trip bar
+L* rename categories images to match their name -> I started
+L* add a 'paid' button for debts
+L* Start doing functions in app.JS
+
+I will list all of the functions here. If they don't have an explicit name, I will put what they do.
+So that you can just take a look through this list to know if you can reuse something and so that 
+we don't have duplicata for later when we will rearrange the code
+
+-----FUNCTIONS-----
+
+- debtbar() -> to get the person that is the creator of a trip
+- calc_debt(current_user) -> for the debt pages
+- get_list_friends(current_user, current_trip) -> to know who else than the current user is in the trip
+- get_name_from_icon(icon)
+- get_icon_from_name(name)
 
