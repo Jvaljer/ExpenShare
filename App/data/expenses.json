@@ -24,7 +24,22 @@
         ],
         [
           "Restaurant",
-          []
+          [
+            [
+              "Laurene",
+              "Pizza night",
+              "24",
+              "2023-12-13",
+              ""
+            ],
+            [
+              "Laurene",
+              "McDo",
+              "10",
+              "2023-12-07",
+              ""
+            ]
+          ]
         ],
         [
           "Sleeping",
@@ -67,6 +82,13 @@
               "Plane",
               "567",
               "2023-12-18",
+              ""
+            ],
+            [
+              "Laurene",
+              "Helicopter",
+              "427",
+              "22023-12-09",
               ""
             ]
           ]
@@ -184,6 +206,47 @@
         ],
         [
           "Groceries",
+          []
+        ]
+      ]
+    ],
+    [
+      "Irlande",
+      [
+        [
+          "Party",
+          []
+        ],
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Hotel",
+          [
+            [
+              "Bas",
+              "Le Plaza",
+              "478",
+              "2024-09-12",
+              ""
+            ]
+          ]
+        ],
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Fuel",
+          []
+        ],
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Transports",
           []
         ]
       ]

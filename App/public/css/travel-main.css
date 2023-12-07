@@ -19,38 +19,40 @@
     margin-top: 25px;
     margin-bottom: 15%;
 }
+
 #expense{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
+    flex-grow: 0; 
+    position: relative;
+    background-color: #dcdcdc;
+    width: 400px;
+    padding: 15px 20px;
     border-radius: 15px;
-    background-color: #DFE4EA;
+    margin: 15px;
 }
-#category-icon{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    width: 75px;
-    height: 75px;
-    background: #ECCC68;
-    margin-left: 20px;
-    border-radius: 15px;
+
+.category_icon{
+    width: 30px;
+    height: 30px;
 }
+
 #amount{
-    margin-left: 25px;
-    font-family: Monaco;
-    font-weight: bold;
-    font-size: 2em;
+    position: absolute;
+    left: 70px;
 }
-#expense-user-icon{
-    width: 75px;
-    height: 75px;
-    background: #70A1FF;
-    margin-left: 150px;
-    border-radius: 50px;
-    margin-right: 15px;
+
+#name {
+    position: absolute;
+    left: 150px;
 }
+
+#date {
+    position: absolute;
+    left: 300px;
+    font-size: x-small;
+    align-self: center;
+} 
+
 .default {
     border-color: #DFE4EA;
     background: #A4B0BE;

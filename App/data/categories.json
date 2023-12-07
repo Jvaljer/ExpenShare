@@ -1,14 +1,14 @@
 {
   "categories": [
     ["Groceries", "groceries.png"],
-    ["Restaurant", "resto.png"],
+    ["Restaurant", "restaurant.png"],
     ["Hotel", "hotel.png"],
-    ["Sleeping", "sleep.png"],
+    ["Sleeping", "sleeping.png"],
     ["Activities", "activities.png"],
     ["Transports", "transports.png"],
     ["Fuel", "fuel.png"],
     ["Party", "party.png"],
-    ["Alcohol", "drink.png"],
+    ["Alcohol", "alcohol.png"],
     ["Other", "other.png"]
   ]
 }

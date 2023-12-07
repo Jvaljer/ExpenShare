@@ -301,6 +301,13 @@ app.post('/validate-trip', (req, res) => {
     data_exp.expenses.push(info_expense);
     fs.writeFileSync("data/expenses.json", JSON.stringify(data_exp, null, 2));
 
+    const raw_le = fs.readFileSync("data/latest-exp.json");
+    const data_le = JSON.parse(raw_le);
+    const le = data_le["latest-exp"];
+
+    le.push([name]);
+    fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
+
     res.render("valid-trip.ejs");
 });
 
@@ -356,12 +363,27 @@ app.post('/specific-travel', (req,res) => {
 
     let color_trip = current[1][6];
 
+    //to take care of the latest expenses
+    const raw_le = fs.readFileSync("data/latest-exp.json");
+    const data_le = JSON.parse(raw_le);
+    const latest_exp = data_le["latest-exp"];
+
+    let list_le = []
+    for(let i=0; i<latest_exp.length; i++){
+        if (latest_exp[i][0] == current[1][0]){
+            list_le = latest_exp[i];
+            list_le.shift() //erase the first element of the list (the trip name)
+        }
+    }
+    console.log(list_le);
+
     res.render("travel-main-view.ejs", {
         user: current[0],
         trip_name: tname,
         trip_expenses: expenses,
         role: creator,
-        color_trip: color_trip
+        color_trip: color_trip,
+        lat_exp: list_le
     });
 });
 
@@ -762,6 +784,23 @@ app.post('/valid-expense', (req, res) => {
     }
 
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
+
+    //to update the latest expenses
+    const raw_le = fs.readFileSync("data/latest-exp.json");
+    const data_le = JSON.parse(raw_le);
+    const exp_le = data_le["latest-exp"];
+
+    for (i=0; i<exp_le.length; i++){
+        if (exp_le[i][0] == cur_travel && exp_le.length == 4){
+            exp_le[i].splice(1,1);
+            exp_le[i].push([category, amount, name, date]);
+        } else if(exp_le[i][0] == cur_travel){
+            exp_le[i].push([category, amount, name, date]);
+        }
+    }
+
+    fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
+
    
     let creator = debtbar();
 

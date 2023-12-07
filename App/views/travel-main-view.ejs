@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="css/trip-bar.css">
 
 <%- include("navbar.ejs") %>
-<div class="trip-name" data-expenses="<%= JSON.stringify(trip_expenses) %>" style="background-color: <%=color_trip%>;">
+<div class="trip-name" data-expenses="<%= JSON.stringify(trip_expenses) %>" style="background-color: <%=color_trip%>">
     <form id="back-form" action="/logged" method="post">
         <button id="back-btn" type="submit"><</button>
     </form>
@@ -18,11 +18,14 @@
     </form>
     <div id="latest-label" class="label">Latest Expenses -</div>
     <div id="latest-field">
+        <% for (let i=0; i<lat_exp.length; i++){%>
         <div id="expense">
-            <div id="category-icon"></div>
-            <div id="amount">37.95 $</div>
-            <div id="expense-user-icon"></div>
+            <div id="category-icon"><img class="category_icon" src="media/<%=lat_exp[i][0]%>.png"></div>
+            <div id="amount"><%=lat_exp[i][1]%> $</div>
+            <div id="name"><%=lat_exp[i][2]%></div>
+            <div id="date"><%=lat_exp[i][3]%></div>
         </div>
+        <%}%>
     </div>
 </div>
 
