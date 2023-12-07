@@ -32,6 +32,7 @@ jQuery(document).ready(function () {
         $("#added-users").append(`
         <div class="added-usr" value="${value}">
             <img class="user-icon" src="${img_src}">
+            <div class="popup">${value}</div>
         </div>`);
 
         AddMember(value);
@@ -46,6 +47,7 @@ jQuery(document).ready(function () {
         $("#available-users").append(`
         <div class="notadded-usr" value="${value}">
             <img class="user-icon" src="${img_src}">
+            <div class="popup">${value}</div>
         </div>`);
 
         RemoveMember(value);
@@ -63,6 +65,7 @@ jQuery(document).ready(function () {
         $("#added-categories").append(`
         <div class="added-cat" value="${value}">
             <img class="cat-icon" src="${img_src}">
+            <div class="popup">${value}</div>
         </div>`);
 
         AddCategory(value);
@@ -79,6 +82,7 @@ jQuery(document).ready(function () {
         $("#available-categories").append(`
         <div class="notadded-cat" value="${value}">
             <img class="cat-icon" src="${img_src}">
+            <div class="popup">${value}</div>
         </div>`);
 
         // Remove the clicked 'notadded-usr' div

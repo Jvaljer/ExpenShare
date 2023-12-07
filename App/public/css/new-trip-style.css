@@ -266,7 +266,13 @@
 .notadded-usr:hover .popup {
     display: block;
 }
-
 .notadded-cat:hover .popup{
+    display: block;
+}
+.added-usr:hover .popup {
+    display: block;
+}
+
+.added-cat:hover .popup{
     display: block;
 }
