@@ -196,9 +196,18 @@ app.post('/logged', (req,res) => {
     });
 });
 app.post('/sign-in', (req,res) => {
+    const raw = fs.readFileSync("data/users.json");
+    const data = JSON.parse(raw);
+    const images = data["users"].map(function(usr){
+       return usr[2];
+    });
+    console.log("we got used images: "+images);
     let icons = [];
     for(var i=0; i<=16; i++){
-        icons.push("usr"+i+".png");
+        let file = "usr"+i+".png";
+        if(!images.includes(file)){
+            icons.push(file);
+        }
     }
     res.render("sign-in-view.ejs", {
         icons: icons
