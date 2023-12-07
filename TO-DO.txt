@@ -1,11 +1,9 @@
 -----TO FIX-----
-A* must make selecting categories & members NOT MANDATORY
 
 
 -----VIEWS DETAIL TO FIX-----
-L* 'friends': be able to add new friends for the trip from there (If we have time/ Not a priority)
-A* 'sign-in-view' : must allow user to select an icon from a list by clicking
 A* should add possibility to remove a trip from fst-view (cross button ?)
+A* should remove already used icons from available one
 
 -----DATA COMMUNICATION-----
 L* 'debt-admin': almost dynamic yet
@@ -26,5 +24,7 @@ A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* implement roles in Profile (list of roles)
 A* start cleaning APP.JS (functions & stuff)
-A* center login input text fields
+A* rename categories images to match their name
+
+* add a 'paid' button for debts
 

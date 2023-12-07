@@ -4,7 +4,7 @@
     <div id="txt">Enter your personal informations</div>
 
 </div>
-<form id="form" action="/log" method="post">
+<form id="form" action="/log" method="get">
     <div id="usr">
         <div id="usrtxt" class="txt">Enter an Username - </div>
         <input id="usrfield" class="field" type="text" placeholder="user-name" name="username"/>
@@ -13,5 +13,15 @@
         <div id="pwdtxt" class="txt">Choose a Password - </div>
         <input id="pwdfield" class="field" type="text" placeholder="password" name="password"/>
     </div>
+    <div id="icons">
+        <%for(var i=0; i<icons.length; i++){%>
+            <div class="usr-icon" value="<%=icons[i]%>">
+                <img class="usr-img" src="media/<%=icons[i]%>">
+            </div>
+        <%}%>
+    </div>
     <button id="btn" type="submit">Validate</button>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/sign-in.js"></script>

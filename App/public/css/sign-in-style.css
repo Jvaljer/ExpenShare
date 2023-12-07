@@ -29,3 +29,21 @@
     margin-left: 25%;
     margin-bottom: 2%;
 }
+#icons{
+    align-self: center;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 5px;
+    column: 5px;
+}
+.usr-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+.usr-img{
+    width: 50px;
+    height: 50px;
+}

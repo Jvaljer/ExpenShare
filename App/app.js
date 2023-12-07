@@ -105,21 +105,23 @@ app.post('/login', (req, res) => {
         });
     }
 });
-app.post('/log', (req,res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    // Read the existing JSON file
+app.get('/log', (req,res)=>{
+    console.log("fetching request on GET -> "+req.query.username);
+    const username = req.query.username;
+    const password = req.query.password;
+    const image = req.query.image;
+
     const raw = fs.readFileSync("data/logs.json");
     const data = JSON.parse(raw);
-    // Add the new login information to the array
+
     data.logins.push([username, password]);
-    // Write the updated JSON back to the file
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
     //now adding this new user to the user list (ofc)
     const raaw = fs.readFileSync("data/users.json");
     const daata = JSON.parse(raaw);
-    daata.users.push([username,[],"user1.png"]); //can add here an image (use cnt of already existing ones...)
+
+    daata.users.push([username,[],image]); //can add here an image (use cnt of already existing ones...)
     fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
 
     res.render("login-view.ejs",{
@@ -194,7 +196,13 @@ app.post('/logged', (req,res) => {
     });
 });
 app.post('/sign-in', (req,res) => {
-    res.render("sign-in-view.ejs");
+    let icons = [];
+    for(var i=0; i<=16; i++){
+        icons.push("usr"+i+".png");
+    }
+    res.render("sign-in-view.ejs", {
+        icons: icons
+    });
 });
 app.post('/new-trip', (req,res) => {
     const raw = fs.readFileSync("data/users.json");
