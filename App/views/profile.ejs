@@ -15,12 +15,41 @@
         
         <div class="profile"> 
             <div class="name"><%=user%></div>
-            <div class="current-user"> <img class="img_icon" src="media/<%=icon%>"> </div>
+            <div class="current-user">
+                <img class="img_icon" src="media/<%=icon%>">
+            </div>
         </div>  
 
         <% for (i=0; i<trips.length; i++){ %>
             <div class="trip-list"> 
                 <h2 id="destination"><%=trips[i]%> -</h2>
+                <div class="dropdown">
+                    <button class="dropbtn" id="selectedItem" onclick="toggleDropdown()">Select an item</button>
+                    <div class="dropdown-content" onmouseleave="hideDropdown()">
+                        <a onclick="selectItem('Item 1')">Item 1</a>
+                        <a onclick="selectItem('Item 2')">Item 2</a>
+                        <a onclick="selectItem('Item 3')">Item 3</a>
+                    </div>
+                </div>
+                <script>
+                    function selectItem(item) {
+                        // Set the selected item text and close the dropdown
+                        document.getElementById('selectedItem').innerText = item;
+                        hideDropdown();
+                    }
+
+                    function toggleDropdown() {
+                        // Toggle the visibility of the dropdown content
+                        var dropdownContent = document.querySelector('.dropdown-content');
+                        dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+                    }
+
+                    function hideDropdown() {
+                        // Hide the dropdown content
+                        document.querySelector('.dropdown-content').style.display = 'none';
+                    }
+                </script>
+
                 <%for (j=0; j<expenses.length; j++){%>
                     <% if (expenses[j][0] == trips[i]){%>
                         <%for (k=1; k<expenses[j].length-1; k++){%>
@@ -31,6 +60,7 @@
                         <%}%>
                     <%}%>
                 <%}%>
-        <%}%> 
+            </div>
+        <%}%>
     </div>
 </div>
