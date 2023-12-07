@@ -25,7 +25,7 @@
                     <% if (expenses[j][0] == trips[i]){%>
                         <%for (k=1; k<expenses[j].length-1; k++){%>
                             <div class="expenseBox"> 
-                                <div class="category" style="background-color:<%=expenses[j][expenses[j].length-1]%>"><img class="img" src="media/<%=expenses[j][k][0]%>"></div>
+                                <div class="category"><img class="img" src="media/<%=expenses[j][k][0]%>"></div>
                                 <div class="amount"><%=expenses[j][k][1]%>$ </div> 
                             </div>
                         <%}%>

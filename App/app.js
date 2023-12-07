@@ -249,7 +249,6 @@ app.post('/validate-trip', (req, res) => {
     const comment = req.body.comment;
     const members = req.body.members;
     const categories = req.body.categories;
-    const color = req.body.color;
 
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
@@ -270,8 +269,7 @@ app.post('/validate-trip', (req, res) => {
             member_list,
             categories,
             budget,
-            comment,
-            color
+            comment
     ];
 
     data.trips.push(trip_info);
@@ -370,8 +368,6 @@ app.post('/specific-travel', (req,res) => {
         }
     }
 
-    let color_trip = current[1][6];
-
     //to take care of the latest expenses
     const raw_le = fs.readFileSync("data/latest-exp.json");
     const data_le = JSON.parse(raw_le);
@@ -391,7 +387,6 @@ app.post('/specific-travel', (req,res) => {
         trip_name: tname,
         trip_expenses: expenses,
         role: creator,
-        color_trip: color_trip,
         lat_exp: list_le
     });
 });
@@ -466,15 +461,13 @@ app.post('/friends', (req, res) => {
     }
 
     let trip_name = current[1][0];
-    let color_trip = current[1][6];
 
     res.render("friends.ejs", {
         role: creator,
         rolelist: userslistroles,
         namelist: userslistnames,
         picturelist: userspicture,
-        trip_name: trip_name,
-        color_trip: color_trip
+        trip_name: trip_name
     })
 })
 
@@ -565,14 +558,12 @@ app.post('/debt-everyone', (req, res) => {
     let get_back = aux[1];
 
     let trip_name = current[1][0];
-    let color_trip = current[1][6];
 
     res.render("debt-everyone.ejs", {
         role: creator,
         get_back: get_back,
         pay: pay,
-        trip_name: trip_name,
-        color_trip: color_trip
+        trip_name: trip_name
     })
 })
 
@@ -630,7 +621,6 @@ app.get('/debt-admin', (req, res) => {
     const current = data["current-infos"];
     let current_user = current[0];
     let current_trip = current[1][0];
-    let color_trip = current[1][6];
 
     //to get the icon for the top right corner
     let icon;
@@ -660,7 +650,6 @@ app.get('/debt-admin', (req, res) => {
         get_back: get_back,
         people: person_icon,
         trip_name: current_trip,
-        color_trip: color_trip,
         icon: icon
     });
 });
@@ -691,7 +680,7 @@ app.post('/profile', (req, res) => {
     const data_exp = JSON.parse(raw_exp);
     const exp_list = data_exp["expenses"];
 
-    //used to get the color and the number of friends in a trip to calculate expenses
+    //used to get the number of friends in a trip to calculate expenses
     const raw_trip = fs.readFileSync("data/trips.json");
     const data_trip = JSON.parse(raw_trip);
     const trip_list = data_trip["trips"];
@@ -730,12 +719,6 @@ app.post('/profile', (req, res) => {
             aux.push([cat_list[idx][1], sum]) //name of the category
         }
         
-        //to get the color of the trip
-        for (j=0; j<trip_list.length; j++){
-            if( trip_list[j][0] == exp_list[i][0]){
-                aux.push(trip_list[j][6]);
-            }
-        }
         list_expenses.push(aux);
         
     }
@@ -755,14 +738,12 @@ app.post('/add-expense', (req, res) => {
     const categories = current[1][3];
 
     let trip_name = current[1][0];
-    let color_trip = current[1][6];
 
     let creator = debtbar();
     res.render("add-expense.ejs", {
         role: creator,
         categories: categories,
-        trip_name: trip_name,
-        color_trip: color_trip
+        trip_name: trip_name
     })
 })
 
@@ -882,14 +863,12 @@ app.get('/specific-category', (req, res) => {
     }
 
     let trip_name = data["current-infos"][1][0];
-    let color_trip = data["current-infos"][1][6];
 
     res.render("specific-category.ejs", {
         role: creator,
         category: cname,
         expenses: exps,
-        trip_name: trip_name,
-        color_trip: color_trip
+        trip_name: trip_name
     });
 });
 

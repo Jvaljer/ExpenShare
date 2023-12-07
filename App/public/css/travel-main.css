@@ -32,8 +32,10 @@
 }
 
 .category_icon{
+    border-radius: 25%;
     width: 30px;
     height: 30px;
+    background-color: #70A1FF;
 }
 
 #amount{
@@ -68,4 +70,8 @@
     font-size: 1.5em;
     font-weight: bold;
     font-family: Monaco;
+}
+
+.trip-name{
+    background-color: #dcdfe3;
 }

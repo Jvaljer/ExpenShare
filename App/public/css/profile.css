@@ -1,5 +1,5 @@
 .my-profile{
-    background: #ECCC68;
+    background: #dcdfe3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,6 +49,7 @@
     border-radius: 25%;
     width: 30px;
     height: 30px;
+    background-color:#70A1FF;
 }
 
 .amount{

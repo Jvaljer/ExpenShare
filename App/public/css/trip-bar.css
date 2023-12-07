@@ -15,10 +15,14 @@
     font-size: 3em;
     font-weight: bold;
     font-family: Monaco;
-    color: #FFFFFF;
+    color: #050505;
 }
 
 #back-btn{
     font-size: 3em;
     background-color: transparent;
+}
+
+.trip-name{
+    background-color: #dcdfe3;
 }
