@@ -725,11 +725,16 @@ app.post('/profile', (req, res) => {
         
     }
 
+    const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
+        return elt;
+    });
+    console.log("roles are "+all_roles);
     res.render("profile.ejs", {
         user: current[0],
         icon: usrimg,
         trips: users_list[index][1],
-        expenses: list_expenses
+        expenses: list_expenses,
+        roles: all_roles
     })
 })
 
