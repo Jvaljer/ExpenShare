@@ -106,7 +106,6 @@ app.post('/login', (req, res) => {
     }
 });
 app.get('/log', (req,res)=>{
-    console.log("fetching request on GET -> "+req.query.username);
     const username = req.query.username;
     const password = req.query.password;
     const image = req.query.image;
@@ -130,6 +129,9 @@ app.get('/log', (req,res)=>{
     });
 });
 app.all('/logged', (req,res) => {
+    const roles_str = req.query.roles;
+    const roles = JSON.parse(roles_str);
+
     //here we first wanna get the actual user & trips
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
@@ -137,10 +139,7 @@ app.all('/logged', (req,res) => {
 
     //here we wanna remove the latest trip if it exists
     if(tmp_file.length>1){
-        console.log("---removing the trip from the current---");
-        //tmp_file[1] = "";
-        tmp_file.pop(); //better like this
-        console.log(tmp_file);
+        tmp_file.pop();
     }
 
     const current = tmp_file;
@@ -154,12 +153,24 @@ app.all('/logged', (req,res) => {
     const daata = JSON.parse(raaw);
     const trips = daata["trips"];
 
+    trips.map(function(trip){
+        trip[2].map(function(usr){
+            if(usr[0]===current[0]){
+                roles.map(function(item){
+                    if(item==trip[0]){
+                        usr[1]=roles[roles.indexOf(item)+1];
+                    }
+                });
+            }
+        });
+    });
+    fs.writeFileSync("data/trips.json", JSON.stringify(daata, null, 2));
+
     var all_trip = [];
     var user_index = -1;
     for(var i=0; i<users.length; i++){
         if(users[i][0]===current[0]){
             user_index = i;
-            const username = users[i][0];
             const user_trips = users[i][1];
             for(var j=0; j<trips.length; j++){
                 for(var k=0; k<user_trips.length; k++){
@@ -201,7 +212,6 @@ app.post('/sign-in', (req,res) => {
     const images = data["users"].map(function(usr){
        return usr[2];
     });
-    console.log("we got used images: "+images);
     let icons = [];
     for(var i=0; i<=16; i++){
         let file = "usr"+i+".png";
@@ -351,7 +361,6 @@ app.post('/specific-travel', (req,res) => {
     }
 
     if(from_above){
-        console.log("---adding a trip to current---");
         current.push(trip);
     }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
@@ -382,7 +391,7 @@ app.post('/specific-travel', (req,res) => {
             list_le.shift() //erase the first element of the list (the trip name)
         }
     }
-    console.log(list_le);
+    console.log("list_le="+list_le);
 
     res.render("travel-main-view.ejs", {
         user: current[0],
@@ -728,7 +737,7 @@ app.post('/profile', (req, res) => {
     const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
         return elt;
     });
-    console.log("roles are "+all_roles);
+
     res.render("profile.ejs", {
         user: current[0],
         icon: usrimg,

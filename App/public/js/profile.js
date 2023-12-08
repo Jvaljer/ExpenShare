@@ -1,14 +1,28 @@
+let roles = [];
+
 jQuery(document).ready(function () {
     $("#back-btn").on("click", function(e){
         console.log("clicked on the button duh");
         e.preventDefault();
-        window.location.href = "/logged";
-    })
+        window.location.href = "/logged?roles=" + encodeURIComponent(JSON.stringify(roles));
+    });
 });
 
 function ChooseRole(item, id) {
     document.getElementById('dropdown'+id).innerText = item;
-    Hide();
+    Hide('dropdown'+id);
+
+    //here we wanna set the trip's role to item
+    const tname = document.getElementById("trip"+id).textContent;
+    console.log("setting role "+item+" for trip "+tname);
+
+    if(roles.includes(tname)){
+        roles[roles.indexOf(tname)+1] = item;
+    } else {
+        roles.push(tname);
+        roles.push(item);
+    }
+    console.log("updated roles are: "+roles);
 }
 
 function Toggle(id) {

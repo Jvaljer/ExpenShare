@@ -1,5 +1,39 @@
 {
   "current-infos": [
-    "ahenryl"
+    "ahenryl",
+    [
+      "Bali",
+      [
+        "2023-12-19",
+        "2023-12-31"
+      ],
+      [
+        [
+          "ahenryl",
+          "Driver"
+        ],
+        [
+          "Laurene",
+          "none"
+        ],
+        [
+          "Bas",
+          "none"
+        ],
+        [
+          "steve",
+          "none"
+        ]
+      ],
+      [
+        "Fuel",
+        "Hotel",
+        "Activities",
+        "Party",
+        "Transports"
+      ],
+      "0",
+      ""
+    ]
   ]
 }

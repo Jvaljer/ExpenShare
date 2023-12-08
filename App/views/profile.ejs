@@ -4,12 +4,7 @@
     <div id="header">
         <!-- this shall contain the app name, and the user profile overview -->
         <div class="my-profile">
-            <!--
-            <form id="back-form" action="/logged" method="post">
-                <button id="back-btn" type="submit"><</button>
-            </form>
-            -->
-            <button id="back-btn" type="submit" method="get"><</button>
+            <button id="back-btn" type="submit"><</button>
             <div id="title">My Profile</div>
         </div>
     </div>
@@ -26,7 +21,7 @@
         <% for (i=0; i<trips.length; i++){ %>
             <div class="trip-list">
                 <div class="trip-header">
-                    <h2 class="destination"><%=trips[i]%> -</h2>
+                    <h2 class="destination" id="trip<%=i%>"><%=trips[i]%></h2>
                     <div class="dropdown">
                         <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')">Select an item</button>
                         <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
