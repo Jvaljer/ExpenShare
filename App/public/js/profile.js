@@ -1,15 +1,23 @@
+jQuery(document).ready(function () {
+    $("#back-btn").on("click", function(e){
+        console.log("clicked on the button duh");
+        e.preventDefault();
+        window.location.href = "/logged";
+    })
+});
+
 function ChooseRole(item, id) {
     document.getElementById('dropdown'+id).innerText = item;
     Hide();
 }
 
-function Toggle(dropdownId) {
+function Toggle(id) {
     // Toggle the visibility of the dropdown content
-    var dropdownContent = document.querySelector('#' + dropdownId + ' + .dropdown-content');
-    dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
+    var dropdown = document.querySelector('#' + id + ' + .dropdown-content');
+    dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
 }
 
-function Hide(dropdownId) {
+function Hide(id) {
     // Hide the dropdown content
-    document.querySelector('#' + dropdownId + ' + .dropdown-content').style.display = 'none';
+    document.querySelector('#' + id + ' + .dropdown-content').style.display = 'none';
 }

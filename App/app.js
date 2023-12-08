@@ -129,7 +129,7 @@ app.get('/log', (req,res)=>{
         fail: false
     });
 });
-app.post('/logged', (req,res) => {
+app.all('/logged', (req,res) => {
     //here we first wanna get the actual user & trips
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);

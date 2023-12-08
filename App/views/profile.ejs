@@ -4,9 +4,12 @@
     <div id="header">
         <!-- this shall contain the app name, and the user profile overview -->
         <div class="my-profile">
+            <!--
             <form id="back-form" action="/logged" method="post">
                 <button id="back-btn" type="submit"><</button>
             </form>
+            -->
+            <button id="back-btn" type="submit" method="get"><</button>
             <div id="title">My Profile</div>
         </div>
     </div>
@@ -28,7 +31,7 @@
                         <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')">Select an item</button>
                         <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
                             <%for(var k=0; k<roles.length; k++){%>
-                            <a onclick="ChooseRole('<%=roles[k]%>',<%=i%>)"><%=roles[k]%></a>
+                                <a onclick="ChooseRole('<%=roles[k]%>',<%=i%>)"><%=roles[k]%></a>
                             <%}%>
                         </div>
                     </div>
@@ -48,4 +51,5 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="js/profile.js"></script>
