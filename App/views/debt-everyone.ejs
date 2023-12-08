@@ -12,7 +12,9 @@
         <h1 id="Debt">Balance</h1>
 
         <div class="pay"> 
-            <h2 id="pay">To pay -</h2>
+            <% if (pay.length != 0){%>
+                <h2 id="pay">To pay -</h2>
+            <%}%>
             <% for (i=0; i<pay.length; i++){ %>
                 <div class="debtBox"> 
                     <div class="category"><img class="img_cat" src="media/<%=pay[i][0]%>"></div>
@@ -20,11 +22,14 @@
                     <div class="exp-name"><%=pay[i][4]%></div> 
                     <div class="date"> due since <%=pay[i][2]%> </div>
                     <div class="person"><img class="img" src="media/<%=pay[i][3]%>"></div>
+                    <button type="button" class="btn btn-outline-secondary" onclick="remove('<%=i%>')">Done</button>
                 </div>
             <%}%>
         </div>
         <div class="get-back">
-            <h2 id="get-back">To get back -</h2>
+            <% if (get_back.length != 0){%>
+                <h2 id="get-back">To get back -</h2>
+            <%}%>
             <% for (i=0; i<get_back.length; i++){%>
                 <div class="debtBox"> 
                     <div class="category"><img class="img_cat" src="media/<%=get_back[i][0]%>"></div>
@@ -37,6 +42,9 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/debt-remove.js"></script>
 
 
             

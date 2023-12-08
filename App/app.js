@@ -327,6 +327,13 @@ app.post('/validate-trip', (req, res) => {
     le.push([name]);
     fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
 
+    const raw_debt = fs.readFileSync("data/debt.json");
+    const data_debt = JSON.parse(raw_debt);
+    const exp_debt = data_debt["debt"];
+
+    exp_debt.push([name]);
+    fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
+
     res.render("valid-trip.ejs");
 });
 
@@ -482,7 +489,7 @@ app.post('/friends', (req, res) => {
     })
 })
 
-function calc_debt(current_user){
+/*function calc_debt(current_user){
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
@@ -555,13 +562,80 @@ function calc_debt(current_user){
         }
     }
     return [pay, get_back];
+}*/
+
+function calc_debt(current_user){
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+
+    //to get the current trip and user
+    let current_trip = current[1][0];
+
+    const raw_debt = fs.readFileSync("data/debt.json");
+    const data_debt = JSON.parse(raw_debt);
+    const debt = data_debt["debt"];
+
+    // 1) Find the corresponding trip in debt.json
+    let get_back = [];
+    let pay = [];
+    for (let i=0; i<debt.length; i++){
+        if (debt[i][0] == current_trip){
+            for (let j=1; j<debt[i].length; j++){
+                let amount = debt[i][j][2][1];
+                let category = debt[i][j][2][0] + ".png";
+                let date = debt[i][j][2][3];
+                let expense_name = debt[i][j][2][2];
+                if (debt[i][j][0] == current_user){ //to put in get_back
+                    for(let k=0; k<debt[i][j][1].length; k++){
+                        get_back.push([category, amount, date, get_icon_from_name(debt[i][j][1][k]), expense_name])
+                    }
+                } else if (debt[i][j][1].includes(current_user)){ //to put in pay
+                    pay.push([category, amount, date, get_icon_from_name(debt[i][j][0]), expense_name])
+                }
+            }
+        }
+    }
+    return [pay, get_back];
 }
 
-app.post('/debt-everyone', (req, res) => {
+function remove(index, current_trip, current_user){
+    console.log("je passe par la")
+    const raw_debt = fs.readFileSync("data/debt.json");
+    const data_debt = JSON.parse(raw_debt);
+    const exp_debt = data_debt["debt"];
+
+    let compare_index = 0;
+    for (let i=0; i<exp_debt.length; i++){
+        if (exp_debt[i][0] == current_trip){
+            for(let j=1; j<exp_debt[i].length; j++){
+                if (exp_debt[i][j][0] != current_user && exp_debt[i][j][1].includes(current_user)){
+                    if (compare_index == index){
+                        exp_debt[i][j][1].splice(exp_debt[i][j][1].indexOf(current_user),1);
+                        //exp_debt[i].splice(j,1);
+                    }
+                    compare_index += 1;
+                }
+            }
+        }
+    }
+    fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
+}
+
+app.get('/debt-everyone', (req, res) => {
+    let index = req.query.index;
+
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
     const current = data["current-infos"];
     let current_user = current[0];
+    let current_trip = current[1][0];
+
+    if (index != undefined){
+        remove(index, current_trip, current_user);
+    }
+
+    index=undefined;
 
     let creator = debtbar();
     let aux = calc_debt(current_user)
@@ -574,7 +648,37 @@ app.post('/debt-everyone', (req, res) => {
         role: creator,
         get_back: get_back,
         pay: pay,
-        trip_name: trip_name
+        trip_name: trip_name,
+        current_user: current_user
+    })
+})
+
+app.post('/debt-everyone', (req, res) => {
+    let index = req.query.index;
+
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
+    let current_user = current[0];
+    let current_trip = current[1][0];
+
+    if (index != undefined){
+        remove(index, current_trip, current_user);
+    }
+
+    let creator = debtbar();
+    let aux = calc_debt(current_user)
+    let pay = aux[0];
+    let get_back = aux[1];
+
+    let trip_name = current[1][0];
+
+    res.render("debt-everyone.ejs", {
+        role: creator,
+        get_back: get_back,
+        pay: pay,
+        trip_name: trip_name,
+        current_user: current_user
     })
 })
 
@@ -763,8 +867,8 @@ app.post('/add-expense', (req, res) => {
     })
 })
 
-app.post('/valid-expense', (req, res) => {
 
+app.post('/valid-expense', (req, res) => {
     const name = req.body.name;
     const amount = req.body.amount;
     const date = req.body.date;
@@ -806,6 +910,38 @@ app.post('/valid-expense', (req, res) => {
     }
 
     fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
+
+    //to update the list of debts
+    const raw_debt = fs.readFileSync("data/debt.json");
+    const data_debt = JSON.parse(raw_debt);
+    const exp_debt = data_debt["debt"];
+
+    const raw_trip = fs.readFileSync("data/trips.json");
+    const data_trip = JSON.parse(raw_trip);
+    const trip_list = data_trip["trips"];
+
+    //get the list of people that are part of the trip (expect current user)
+    let list_friends = [];
+    for (let i=0; i<trip_list.length; i++){
+        if (cur_travel == trip_list[i][0]){
+            for(let j=0; j<trip_list[i][2].length; j++){
+                if (trip_list[i][2][j][0] != cur_usr){
+                    list_friends.push(trip_list[i][2][j][0]);
+                }
+            }
+        }
+    } 
+
+    for (let i=0; i<exp_debt.length; i++){
+        let amount_per_person = (parseFloat(amount)/(list_friends.length+1)).toFixed(2);
+        if (exp_debt[i][0] == cur_travel){
+            exp_debt[i].push([cur_usr, list_friends, [category, amount_per_person, name, date]])
+        }
+    }
+
+    fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
+    
+    
 
    
     let creator = debtbar();
