@@ -4,14 +4,11 @@ A* should add possibility to remove a trip from fst-view (cross button ?)
 
 
 -----WALKTHROUGH #2-----
-
 A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
-A* implement roles in Profile (list of roles)
-A* start cleaning APP.JS (functions & stuff)
+A* start cleaning APP.JS (turn for(for() into .map & .includes ?)
 A* modify categories icon displaying (from category name adding .png)
-
-* make code not awful
+A* display current role in profile (instead of 'select an item')
 
 L* rename categories images to match their name -> I started
 L* add a 'paid' button for debts
