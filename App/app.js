@@ -765,6 +765,24 @@ app.post('/profile', (req, res) => {
         
     }
 
+    let spe_roles = [];
+    users_list[index][1].map(function(e){
+        spe_roles.push("");
+    })
+    trip_list.map(function(trip){
+        if(users_list[index][1].includes(trip[0])){
+            console.log("we wanna add actual role for "+trip[0]+" from "+trip[2]);
+            trip[2].map(function(usr){
+                console.log("we have usr "+usr[0]+" compared to "+current[0]);
+                if(usr[0]===current[0]){
+                    console.log("   usr is "+usr[1]+" in "+trip[0]);
+                    spe_roles[users_list[index][1].indexOf(trip[0])] = usr[1];
+                }
+            });
+        }
+    });
+    console.log("spe_roles: "+spe_roles);
+
     const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
         return elt;
     });
@@ -774,7 +792,8 @@ app.post('/profile', (req, res) => {
         icon: usrimg,
         trips: users_list[index][1],
         expenses: list_expenses,
-        roles: all_roles
+        roles: all_roles,
+        usr_role: spe_roles
     })
 })
 

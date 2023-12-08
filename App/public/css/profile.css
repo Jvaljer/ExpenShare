@@ -31,7 +31,8 @@
 }
 
 .destination{
-    margin-left: -320px;
+    margin-right: 160px;
+
 }
 
 .expenseBox{
@@ -90,7 +91,6 @@
 }
 
 .dropdown {
-    margin-left: 15px;
     position: relative;
     display: inline-block;
 }
@@ -123,8 +123,15 @@
 }
 
 .trip-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.creator-txt{
+    justify-self: center;
+    align-self: center;
+    font-family: Monaco;
+    font-size: 1.75em;
+    color: #FF6B81;
 }

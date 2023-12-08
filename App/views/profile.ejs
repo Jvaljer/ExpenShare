@@ -23,12 +23,16 @@
                 <div class="trip-header">
                     <h2 class="destination" id="trip<%=i%>"><%=trips[i]%></h2>
                     <div class="dropdown">
-                        <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')">Select an item</button>
-                        <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
-                            <%for(var k=0; k<roles.length; k++){%>
+                        <%if(usr_role[i]!="creator"){%>
+                            <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')"><%=usr_role[i]%></button>
+                            <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
+                                <%for(var k=0; k<roles.length; k++){%>
                                 <a onclick="ChooseRole('<%=roles[k]%>',<%=i%>)"><%=roles[k]%></a>
-                            <%}%>
-                        </div>
+                                <%}%>
+                            </div>
+                        <%} else {%>
+                            <div class="creator-txt">Creator</div>
+                        <%}%>
                     </div>
                 </div>
                 <%for (j=0; j<expenses.length; j++){%>
