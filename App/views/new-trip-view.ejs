@@ -14,10 +14,6 @@
     <div id="body">
         <div id="travel-label" class="label">Travel -</div>
         <div id="travel-field">
-            <!--Here must add an icon & text field-->
-            <div class="colorpick">
-                <input id="color-picker" type="color"/>
-            </div>
             <input id="travel-input" type="text" placeholder="travel name" name="name" maxlength="12">
         </div>
 
@@ -58,9 +54,9 @@
             <div class="separator"></div>
             <div id="available-categories">
                 <%for(var i=0; i<all_categories.length; i++){%>
-                <div class="notadded-cat" value="<%=all_categories[i][0]%>">
-                    <img class="cat-icon" src="media/<%=all_categories[i][1]%>">
-                    <div class="popup"><%=all_categories[i][0]%></div>
+                <div class="notadded-cat" value="<%=all_categories[i]%>">
+                    <img class="cat-icon" src="media/<%=all_categories[i]%>.png">
+                    <div class="popup"><%=all_categories[i]%></div>
                 </div>
                 <%}%>
             </div>

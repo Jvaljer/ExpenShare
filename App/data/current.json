@@ -2,38 +2,39 @@
   "current-infos": [
     "Laurene",
     [
-      "Bali",
+      "Canada",
       [
-        "2023-12-19",
-        "2023-12-31"
+        "2024-01-15",
+        "2024-01-21"
       ],
       [
         [
-          "ahenryl",
-          "Driver"
-        ],
-        [
           "Laurene",
-          "none"
-        ],
-        [
-          "Bas",
-          "none"
+          "creator"
         ],
         [
           "steve",
           "none"
+        ],
+        [
+          "anne",
+          "none"
+        ],
+        [
+          "ahenryl",
+          "Party King"
         ]
       ],
       [
-        "Fuel",
         "Hotel",
+        "Transports",
         "Activities",
         "Party",
-        "Transports"
+        "Alcohol",
+        "Groceries"
       ],
-      "0",
-      ""
+      "767",
+      "Bring warm clothes because it is cold"
     ]
   ]
 }

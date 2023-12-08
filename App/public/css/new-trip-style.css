@@ -1,5 +1,5 @@
 #header{
-    background: #2ED573;
+    background: #dcdfe3;
     display: flex;
 }
 #back-btn{
@@ -16,7 +16,7 @@
     font-size: 3em;
     font-weight: bold;
     font-family: Monaco;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 #travel-field{
@@ -206,11 +206,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-#color-picker{
-    width: 50px;
-    height: 50px;
-    margin-right: 2em;
 }
 
 .added-usr{

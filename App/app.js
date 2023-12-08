@@ -223,6 +223,7 @@ app.post('/sign-in', (req,res) => {
         icons: icons
     });
 });
+
 app.post('/new-trip', (req,res) => {
     const raw = fs.readFileSync("data/users.json");
     const data = JSON.parse(raw);
@@ -240,9 +241,7 @@ app.post('/new-trip', (req,res) => {
         }
     }
 
-    const raaw = fs.readFileSync("data/categories.json");
-    const daata = JSON.parse(raaw);
-    const categories = daata["categories"];
+    let categories = ['Groceries','Restaurant', 'Hotel', 'Sleeping', 'Activities', 'Transports','Fuel','Party','Alcohol','Other']
 
     res.render("new-trip-view.ejs", {
         all_users: others,
@@ -489,80 +488,6 @@ app.post('/friends', (req, res) => {
     })
 })
 
-/*function calc_debt(current_user){
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
-
-    //to get the current trip and user
-    let current_trip = current[1][0];
-   
-    //to get the number of people in the trip
-    let people_trip = current[1][2].length;
-
-    const raw_exp = fs.readFileSync("data/expenses.json");
-    const data_exp = JSON.parse(raw_exp);
-    const exp = data_exp["expenses"];
-
-    const raw_cat = fs.readFileSync("data/categories.json");
-    const data_cat = JSON.parse(raw_cat);
-    const cat = data_cat["categories"];
-
-    //to get the icon of the person to pay 
-    const raw_user = fs.readFileSync("data/users.json");
-    const data_user = JSON.parse(raw_user);
-    const users_list = data_user["users"];
-
-    //to get the list of friends of the trip
-    const raw_trip = fs.readFileSync("data/trips.json");
-    const data_trip = JSON.parse(raw_trip);
-    const trip_list = data_trip["trips"];
-    
-    let list_friends = [];
-    for (let i=0; i<trip_list.length; i++){
-        if (current_trip == trip_list[i][0]){
-            for(let j=0; j<trip_list[i][2].length; j++){
-                if (trip_list[i][2][j][0] != current_user){
-                    list_friends.push(trip_list[i][2][j][0]);
-                }
-            }
-        }
-    } 
-
-    // 1) Find the corresponding trip in expenses.json
-    let get_back = [];
-    let pay = [];
-    for (let i=0; i<exp.length; i++){
-        if (exp[i][0] == current_trip){
-            // 2) Go through the expenses
-            for (let j=0; j<exp[i][1].length; j++){
-                let category_name = exp[i][1][j][0];
-                let category = "";
-                //to get the icon corresponding to the category name
-                for (let p=0; p<cat.length; p++){
-                    if (category_name == cat[p][0]){
-                        category = cat[p][1];
-                    }
-                }
-                for (let k=0; k<exp[i][1][j][1].length; k++){
-                    let amount = (parseFloat(exp[i][1][j][1][k][2])/people_trip).toFixed(2);
-                    let date = exp[i][1][j][1][k][3];
-                    let person = exp[i][1][j][1][k][0];
-                    let expense_name = exp[i][1][j][1][k][1];
-                    // 3) if the user is the one that created the expense, will go into the get back list, otherwise will go into the pay list
-                    if (person == current_user){
-                        for (let n=0; n<list_friends.length; n++){
-                            get_back.push([category, amount, date, get_icon_from_name(list_friends[n]), expense_name]);
-                        }                     
-                    } else{
-                        pay.push([category, amount, date, get_icon_from_name(person), expense_name])
-                    }  
-                }
-            }
-        }
-    }
-    return [pay, get_back];
-}*/
 
 function calc_debt(current_user){
     const raw = fs.readFileSync("data/current.json");
@@ -826,21 +751,14 @@ app.post('/profile', (req, res) => {
             for (k=0; k<exp_list[i][1][j][1].length; k++){
                 sum += parseInt(exp_list[i][1][j][1][k][2]) //to get the expense amount
             }
+
             //get the icon instead of the name of the category
-            const raw_cat = fs.readFileSync("data/categories.json");
-            const data_cat = JSON.parse(raw_cat);
-            const cat_list = data_cat["categories"];
-            let idx = -1;
-            for(k=0; k<cat_list.length; k++){
-                if(cat_list[k][0] == exp_list[i][1][j][0]){
-                    idx = k;
-                }
-            }
-            //Get the number of user to divide the sum to have the epxense per person
+            let category = exp_list[i][1][j][0] + ".png"
             
+            //Get the expense per person
             sum = (parseFloat(sum)/number_people).toFixed(2);
 
-            aux.push([cat_list[idx][1], sum]) //name of the category
+            aux.push([category, sum]) //name of the category
         }
         
         list_expenses.push(aux);
