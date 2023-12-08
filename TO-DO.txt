@@ -11,7 +11,6 @@ A* modify categories icon displaying (from category name adding .png)
 A* display current role in profile (instead of 'select an item') --> for this, the creator shouldn't be able to choose a role bc he already have one
 
 L* rename categories images to match their name -> I started
-L* add a 'paid' button for debts
 L* Start doing functions in app.JS
 
 I will list all of the functions here. If they don't have an explicit name, I will put what they do.

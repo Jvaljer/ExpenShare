@@ -600,7 +600,6 @@ function calc_debt(current_user){
 }
 
 function remove(index, current_trip, current_user){
-    console.log("je passe par la")
     const raw_debt = fs.readFileSync("data/debt.json");
     const data_debt = JSON.parse(raw_debt);
     const exp_debt = data_debt["debt"];
@@ -727,6 +726,7 @@ function get_icon_from_name(name){
 
 app.get('/debt-admin', (req, res) => {
     let personIndex = req.query.personIndex;
+    let index = req.query.index;
 
     //need to find the user that goes with the image
     let name = get_name_from_icon(personIndex);
@@ -736,6 +736,15 @@ app.get('/debt-admin', (req, res) => {
     const current = data["current-infos"];
     let current_user = current[0];
     let current_trip = current[1][0];
+
+    //to take care of the "done" button to remove debt when payed
+    if (index != undefined && personIndex == undefined){
+        remove(index, current_trip, current_user);
+    } else if (index != undefined){
+        remove(index, current_trip, get_name_from_icon(personIndex));
+    }
+
+    index=undefined;
 
     //to get the icon for the top right corner
     let icon;

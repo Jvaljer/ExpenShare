@@ -22,7 +22,7 @@
                     <div class="exp-name"><%=pay[i][4]%></div> 
                     <div class="date"> due since <%=pay[i][2]%> </div>
                     <div class="person"><img class="img" src="media/<%=pay[i][3]%>"></div>
-                    <button type="button" class="btn btn-outline-secondary" onclick="remove('<%=i%>')">Done</button>
+                    <button type="button" id="payed" class="btn btn-outline-secondary" onclick="remove('<%=i%>')">Done</button>
                 </div>
             <%}%>
         </div>
