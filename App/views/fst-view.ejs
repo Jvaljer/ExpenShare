@@ -19,7 +19,7 @@
         <div class="travel">
             <form action="/specific-travel" method="post">
                 <button class="travel-btn" type="submit">
-                    <div class="trip">
+                    <div class="trip" id="trip<%i%>">
                         <input type="hidden" name="travelname" value="<%= trip[i][0] %>">
                         <div id="name"> <%=trip[i][0]%> </div>
                         <div id="group">
@@ -41,3 +41,6 @@
         <button id="new-trip-btn" type="submit">+</button>
     </form>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/fst-view.js"></script>

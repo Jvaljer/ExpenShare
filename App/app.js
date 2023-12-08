@@ -130,7 +130,12 @@ app.get('/log', (req,res)=>{
 });
 app.all('/logged', (req,res) => {
     const roles_str = req.query.roles;
-    const roles = JSON.parse(roles_str);
+    let roles;
+    let from_profile = false;
+    if (roles_str != null) {
+        roles = JSON.parse(roles_str);
+        from_profile = true;
+    }
 
     //here we first wanna get the actual user & trips
     const raw = fs.readFileSync("data/current.json");
@@ -138,7 +143,7 @@ app.all('/logged', (req,res) => {
     const tmp_file = data["current-infos"];
 
     //here we wanna remove the latest trip if it exists
-    if(tmp_file.length>1){
+    if (tmp_file.length > 1) {
         tmp_file.pop();
     }
 
@@ -152,18 +157,19 @@ app.all('/logged', (req,res) => {
     const raaw = fs.readFileSync("data/trips.json");
     const daata = JSON.parse(raaw);
     const trips = daata["trips"];
-
-    trips.map(function(trip){
-        trip[2].map(function(usr){
-            if(usr[0]===current[0]){
-                roles.map(function(item){
-                    if(item==trip[0]){
-                        usr[1]=roles[roles.indexOf(item)+1];
-                    }
-                });
-            }
+    if(from_profile){
+        trips.map(function (trip) {
+            trip[2].map(function (usr) {
+                if (usr[0] === current[0]) {
+                    roles.map(function (item) {
+                        if (item == trip[0]) {
+                            usr[1] = roles[roles.indexOf(item) + 1];
+                        }
+                    });
+                }
+            });
         });
-    });
+    }
     fs.writeFileSync("data/trips.json", JSON.stringify(daata, null, 2));
 
     var all_trip = [];

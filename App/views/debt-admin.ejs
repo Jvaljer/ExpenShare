@@ -50,7 +50,9 @@
         <div class="users">
             <%for (i=0; i<people.length; i++){%>
                 <form id="form" class="other-user" method="post">
-                    <button type="button" class="btn btn-light" onclick="who('<%=people[i]%>')"><img class="img" id="<%=people[i]%>" src="media/<%=people[i]%>"></button>
+                    <button type="button" class="btn btn-light" onclick="who('<%=people[i]%>')">
+                        <img class="img" id="<%=people[i]%>" src="media/<%=people[i]%>">
+                    </button>
                 </form>
             <%}%>
         </div>

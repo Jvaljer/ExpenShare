@@ -7,8 +7,6 @@ A* should add possibility to remove a trip from fst-view (cross button ?)
 A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* start cleaning APP.JS (turn for(for() into .map & .includes ?)
-A* display current role in profile (instead of 'select an item') --> for this, the creator shouldn't be able to choose a role bc he already have one
-
 
 L* Start doing functions in app.JS
 
