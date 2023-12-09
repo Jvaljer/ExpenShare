@@ -542,9 +542,9 @@ function remove(index, current_trip, current_user){
                 if (exp_debt[i][j][0] != current_user && exp_debt[i][j][1].includes(current_user)){
                     if (compare_index == index){
                         exp_debt[i][j][1].splice(exp_debt[i][j][1].indexOf(current_user),1);
-                        //exp_debt[i].splice(j,1);
                     }
                     compare_index += 1;
+                    //to remove the expense from the list when everybody payed back
                     if (exp_debt[i][j][1].length == 0){
                         exp_debt[i].splice(j,1);
                     }
@@ -763,13 +763,14 @@ app.post('/profile', (req, res) => {
 
             //get the icon instead of the name of the category
             let category = exp_list[i][1][j][0] + ".png"
-            
+                        
             //Get the expense per person
             sum = (parseFloat(sum)/number_people).toFixed(2);
 
-            aux.push([category, sum]) //name of the category
-        }
-        
+            if (sum != 0){
+                aux.push([category, sum]) 
+            }
+        }        
         list_expenses.push(aux);
         
     }

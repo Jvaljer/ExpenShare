@@ -27,7 +27,7 @@
                             <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')"><%=usr_role[i]%></button>
                             <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
                                 <%for(var k=0; k<roles.length; k++){%>
-                                <a onclick="ChooseRole('<%=roles[k]%>',<%=i%>)"><%=roles[k]%></a>
+                                <a onclick="ChooseRole('<%=roles[k]%>','<%=i%>')"><%=roles[k]%></a>
                                 <%}%>
                             </div>
                         <%} else {%>
@@ -37,7 +37,7 @@
                 </div>
                 <%for (j=0; j<expenses.length; j++){%>
                     <% if (expenses[j][0] == trips[i]){%>
-                        <%for (k=1; k<expenses[j].length-1; k++){%>
+                        <%for (k=1; k<expenses[j].length; k++){%>
                             <div class="expenseBox"> 
                                 <div class="category"><img class="img" src="media/<%=expenses[j][k][0]%>"></div>
                                 <div class="amount"><%=expenses[j][k][1]%>$ </div> 
