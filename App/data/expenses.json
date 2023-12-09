@@ -257,6 +257,60 @@
           []
         ]
       ]
+    ],
+    [
+      "Japan",
+      [
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Party",
+          []
+        ],
+        [
+          "Alcohol",
+          []
+        ],
+        [
+          "Sleeping",
+          []
+        ],
+        [
+          "Groceries",
+          []
+        ]
+      ]
+    ],
+    [
+      "Rome",
+      [
+        [
+          "Restaurant",
+          []
+        ],
+        [
+          "Hotel",
+          []
+        ],
+        [
+          "Activities",
+          []
+        ],
+        [
+          "Party",
+          []
+        ],
+        [
+          "Transports",
+          []
+        ],
+        [
+          "Other",
+          []
+        ]
+      ]
     ]
   ]
 }

@@ -75,11 +75,7 @@ app.post('/login', (req, res) => {
                         for(var k=0; k<trips[j][2].length; k++){
                             if(trips[j][2][k][0]!=username){
                                 others.push(trips[j][2][k]);
-                                for(var n=0; n<users.length; n++){
-                                    if(users[n][0]===trips[j][2][k][0]){
-                                        imgs[j].push(users[n][2]);
-                                    }
-                                }
+                                imgs[j].push(get_icon_from_name(trips[j][2][k][0]));
                             }
                         }
                         trips[j][2] = others;
@@ -195,17 +191,14 @@ app.all('/logged', (req,res) => {
         for(var k=0; k<all_trip[j][2].length; k++){
             if(all_trip[j][2][k][0]!=current[0]){
                 others.push(all_trip[j][2][k]);
-                for(var n=0; n<users.length; n++){
-                    if(users[n][0]===trips[j][2][k][0]){
-                        imgs[j].push(users[n][2]);
-                    }
-                }
+                imgs[j].push(get_icon_from_name(all_trip[j][2][k][0]));
             }
         }
         all_trip[j][2] = others;
         others = [];
     }
 
+    console.log("list images", imgs)
     res.render("fst-view.ejs", {
         user: users[user_index],
         trip: all_trip,
@@ -264,7 +257,6 @@ app.post('/validate-trip', (req, res) => {
     const comment = req.body.comment;
     const members = req.body.members;
     const categories = req.body.categories;
-    const color = req.body.color;
 
     //adding new travel here
     const raw = fs.readFileSync("data/trips.json");
@@ -285,8 +277,7 @@ app.post('/validate-trip', (req, res) => {
         member_list,
         categories,
         budget,
-        comment,
-        color
+        comment
     ];
 
     data.trips.push(trip_info);
@@ -441,8 +432,6 @@ function debtbar(){
     return creator;
 };
 
-
-
 app.post('/friends', (req, res) => {
     let creator = debtbar();
     
@@ -466,22 +455,14 @@ app.post('/friends', (req, res) => {
         }
     }
 
-    //for the images, need to go into the users json file and organise them in the list in the same order as the name list to have the matching icon with the right name
-    const raw_users = fs.readFileSync("data/users.json");
-    const data_users = JSON.parse(raw_users);
-    const current_users = data_users["users"];
-
-    for (i=0; i<userslistnames.length; i++){
-        for (var j=0; j<current_users.length; j++){
-            if(userslistnames[i] == current_users[j][0]){
-                if (userslistnames[i] == auser){
-                    userspicture.unshift(current_users[j][2])
-                } else {
-                    userspicture.push(current_users[j][2]);
-                }
-            }
+    //for the images, need to organise them in the list in the same order as the name list to have the matching icon with the right name
+    userslistnames.forEach(element => {
+        if (element == auser){
+            userspicture.unshift(get_icon_from_name(auser));
+        } else {
+            userspicture.push(get_icon_from_name(element));
         }
-    }
+    });
 
     let trip_name = current[1][0];
 
