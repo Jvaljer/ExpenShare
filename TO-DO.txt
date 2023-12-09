@@ -4,7 +4,6 @@ A* should add possibility to remove a trip from fst-view (cross button ?)
 
 
 -----WALKTHROUGH #2-----
-A* OVERALL shall CENTER THAT FCKING + BTN
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
 A* start cleaning APP.JS (turn for(for() into .map & .includes ?)
 

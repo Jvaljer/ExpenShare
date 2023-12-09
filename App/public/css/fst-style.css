@@ -82,8 +82,15 @@
     width: 30px;
     height: 30px;
 }
+#footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #form{
     margin-top: 100px;
+    margin-bottom: 10px;
 }
 #new-trip-btn{
     display: flex;
@@ -92,5 +99,12 @@
     width: 75px;
     height: 75px;
     border-radius: 50px;
-    font-size: 5em;
+}
+
+.plus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
 }
