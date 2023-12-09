@@ -545,6 +545,9 @@ function remove(index, current_trip, current_user){
                         //exp_debt[i].splice(j,1);
                     }
                     compare_index += 1;
+                    if (exp_debt[i][j][1].length == 0){
+                        exp_debt[i].splice(j,1);
+                    }
                 }
             }
         }
