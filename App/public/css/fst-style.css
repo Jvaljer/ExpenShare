@@ -53,6 +53,9 @@
 
 .travel{
     margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #name{
@@ -76,7 +79,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #FF6B81;
+    background-color: #2ED573;
 }
 .usrtinyicon{
     width: 30px;
@@ -107,4 +110,13 @@
     align-items: center;
     width: 40px;
     height: 40px;
+    font-size: 5em;
+}
+
+.dlt-btn{
+    margin-left: 15px;
+    border-radius: 25%;
+    width: 75px;
+    height: 75px;
+    background-color: #FF6348;
 }

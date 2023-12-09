@@ -133,6 +133,13 @@ app.all('/logged', (req,res) => {
         from_profile = true;
     }
 
+    const del_trip = req.query.trip;
+    let from_delete = false;
+    if(del_trip != null){
+        console.log("we wanna delete the trip: "+del_trip);
+        from_delete = true;
+    }
+
     //here we first wanna get the actual user & trips
     const raw = fs.readFileSync("data/current.json");
     const data = JSON.parse(raw);
@@ -153,6 +160,7 @@ app.all('/logged', (req,res) => {
     const raaw = fs.readFileSync("data/trips.json");
     const daata = JSON.parse(raaw);
     const trips = daata["trips"];
+
     if(from_profile){
         trips.map(function (trip) {
             trip[2].map(function (usr) {
@@ -166,7 +174,20 @@ app.all('/logged', (req,res) => {
             });
         });
     }
+    if(from_delete){
+        trips.map(function(trip){
+            if(trip[0] === del_trip){
+                trips.splice(trips.indexOf(trip), 1);
+                users.map(function(usr){
+                    if(usr[1].includes(del_trip)){
+                        usr[1].splice(usr[1].indexOf(del_trip), 1);
+                    }
+                })
+            }
+        });
+    }
     fs.writeFileSync("data/trips.json", JSON.stringify(daata, null, 2));
+    fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
 
     var all_trip = [];
     var user_index = -1;
