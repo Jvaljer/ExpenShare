@@ -72,6 +72,49 @@ function read_debt(){
     return debt;
 }
 
+function UpdateRoles(trips, roles, current){
+    trips.map(function (trip) {
+        trip[2].map(function (usr) {
+            if (usr[0] === current[0]) {
+                roles.map(function (item) {
+                    if (item == trip[0]) {
+                        usr[1] = roles[roles.indexOf(item) + 1];
+                    }
+                });
+            }
+        });
+    });
+}
+
+function DeleteTrip(trips, del_trip, users){
+    trips.map(function(trip){
+        if(trip[0] === del_trip){
+            trips.splice(trips.indexOf(trip), 1);
+            users.map(function(usr){
+                if(usr[1].includes(del_trip)){
+                    usr[1].splice(usr[1].indexOf(del_trip), 1);
+                }
+            })
+        }
+    });
+}
+
+function AddOtherUserImages(trip_list, current, user_list){
+    let others = [];
+    let images = [];
+    trip_list.map(function(trip){
+        images.push([]);
+        trip[2].map(function(user){
+            if(user[0]!=current[0]){
+                others.push(user);
+                images[trip_list.indexOf(trip)].push(get_icon_from_name(user[0], user_list));
+            }
+        });
+        trip[2] = others;
+        others = [];
+    });
+    return images;
+}
 
 app.post('/login', (req, res) => {
     //here we would load all datas
@@ -105,19 +148,8 @@ app.post('/login', (req, res) => {
                     data_cur["current-infos"] = [];
                     data_cur["current-infos"].push(username);
 
-                    let others = [];
-                    let imgs = [];
-                    trips.map(function(trip){
-                        imgs.push([]);
-                        trip[2].map(function(usr){
-                            if(usr[0]!=username){
-                                others.push(usr);
-                                imgs[trips.indexOf(trip)].push(get_icon_from_name(usr[0], users_list));
-                            }
-                        });
-                        trip[2] = others;
-                        others = [];
-                    });
+                    let imgs = AddOtherUserImages(trips, data_cur["current-infos"], users_list);
+
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
 
                     res.render("fst-view.ejs", {
@@ -159,10 +191,12 @@ app.get('/log', (req,res)=>{
         fail: false
     });
 });
+
 app.all('/logged', (req,res) => {
     const roles_str = req.query.roles;
     let roles;
     let from_profile = false;
+
     if (roles_str != null) {
         roles = JSON.parse(roles_str);
         from_profile = true;
@@ -171,85 +205,52 @@ app.all('/logged', (req,res) => {
     const del_trip = req.query.trip;
     let from_delete = false;
     if(del_trip != null){
-        // we want to delete the trip
         from_delete = true;
     }
 
-    //here we first wanna get the actual user & trips
     const data = JSON.parse(fs.readFileSync("data/current.json"));
     const tmp_file = data["current-infos"];
-
-    //here we wanna remove the latest trip if it exists
     if (tmp_file.length > 1) {
         tmp_file.pop();
     }
-
     const current = tmp_file;
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
-    const data_ = JSON.parse(fs.readFileSync("data/users.json"));
-    const users = data_["users"];
+    const user_data = JSON.parse(fs.readFileSync("data/users.json"));
+    const users = user_data["users"];
 
-    const daata = JSON.parse(fs.readFileSync("data/trips.json"));
-    const trips = daata["trips"];
+    const trip_data = JSON.parse(fs.readFileSync("data/trips.json"));
+    const trips = trip_data["trips"];
 
     if(from_profile){
-        trips.map(function (trip) {
-            trip[2].map(function (usr) {
-                if (usr[0] === current[0]) {
-                    roles.map(function (item) {
-                        if (item == trip[0]) {
-                            usr[1] = roles[roles.indexOf(item) + 1];
-                        }
-                    });
-                }
-            });
-        });
+        UpdateRoles(trips, roles, current);
     }
+
     if(from_delete){
-        trips.map(function(trip){
-            if(trip[0] === del_trip){
-                trips.splice(trips.indexOf(trip), 1);
-                users.map(function(usr){
-                    if(usr[1].includes(del_trip)){
-                        usr[1].splice(usr[1].indexOf(del_trip), 1);
-                    }
-                })
-            }
-        });
+        DeleteTrip(trips, del_trip, users);
     }
-    fs.writeFileSync("data/trips.json", JSON.stringify(daata, null, 2));
-    fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
+
+    fs.writeFileSync("data/trips.json", JSON.stringify(trip_data, null, 2));
+    fs.writeFileSync("data/users.json", JSON.stringify(user_data, null, 2));
 
     var all_trip = [];
     var user_index = -1;
-    for(var i=0; i<users.length; i++){
-        if(users[i][0]===current[0]){
-            user_index = i;
-            const user_trips = users[i][1];
-            for(var j=0; j<trips.length; j++){
-                for(var k=0; k<user_trips.length; k++){
-                    if(user_trips[k]===trips[j][0]){
-                        all_trip.push(trips[j]);
-                    }
-                }
-            }
-        }
-    }
 
-    let others = [];
-    let imgs = [];
-    for(var j=0; j<all_trip.length; j++){
-        imgs.push([]);
-        for(var k=0; k<all_trip[j][2].length; k++){
-            if(all_trip[j][2][k][0]!=current[0]){
-                others.push(all_trip[j][2][k]);
-                imgs[j].push(get_icon_from_name(all_trip[j][2][k][0], users));
-            }
+    users.map(function(user){
+        if(user[0]===current[0]){
+            user_index = users.indexOf(user);
+            const user_trips = user[1];
+            trips.map(function(trip){
+                user_trips.map(function(u_trip){
+                    if(u_trip===trip[0]){
+                        all_trip.push(trip);
+                    }
+                });
+            });
         }
-        all_trip[j][2] = others;
-        others = [];
-    }
+    });
+
+    let imgs = AddOtherUserImages(all_trip, current, users);
 
     res.render("fst-view.ejs", {
         user: users[user_index],
@@ -296,15 +297,11 @@ app.post('/new-trip', (req,res) => {
 });
 
 app.post('/validate-trip', (req, res) => {
-    const name = req.body.name;
-    const start = req.body.start;
-    const end = req.body.end;
-    const budget = req.body.budget;
-    const comment = req.body.comment;
-    const members = req.body.members;
-    const categories = req.body.categories;
+    const request = req.body;
+    const members = request.members;
+    const name = request.name;
+    const categories = request.categories;
 
-    //adding new travel here
     const data = JSON.parse(fs.readFileSync("data/trips.json"));
     const cur_usr = read_current()[0];
 
@@ -317,11 +314,11 @@ app.post('/validate-trip', (req, res) => {
 
     const trip_info = [
         name,
-        [start, end],
+        [request.start, request.end],
         member_list,
         categories,
-        budget,
-        comment
+        request.budget,
+        request.comment
     ];
 
     data.trips.push(trip_info);
@@ -329,17 +326,17 @@ app.post('/validate-trip', (req, res) => {
 
     const data_ = JSON.parse(fs.readFileSync("data/users.json"));
     const users = data_["users"];
-    for(var i=0; i<users.length; i++){
-        if(cur_usr===users[i][0]){
-            users[i][1].push(name);
+
+    users.map(function(user){
+        if(cur_usr===user[0]){
+            user[1].push(name);
         }
-        for(var j=0; j<members.length; j++){
-            if(members[j]===users[i][0]){
-                users[i][1].push(name);
+        members.map(function(member){
+            if(member===user[0]){
+                user[1].push(name);
             }
-        }
-    }
-    //here we'd like to add the trip in other user's list
+        });
+    });
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
 
     //to add the trip and its corresponding categories in the expense.json

@@ -8,8 +8,7 @@ L* Start doing functions in app.JS
 -----CASUAL TESTING------
 * 'Done' button to pay a debt isn't working (in debt-admin)
 * Category chart label isn't the one we wanna display
-* read_current returns a [] instead of a str ? Didn't understand why dbf
-
+* read_current returns a [] instead of a str ? Didn't understand why tbf
 
 I will list all of the functions here. If they don't have an explicit name, I will put what they do.
 So that you can just take a look through this list to know if you can reuse something and so that 
@@ -21,5 +20,6 @@ we don't have duplicata for later when we will rearrange the code
 - get_list_friends(current_user, current_trip) -> to know who else than the current user is in the trip
 - get_name_from_icon(icon)
 - get_icon_from_name(name)
+- DeleteTrip(...) & UpdateRoles(...) -> only used in app.all(/logged) to make it shorter
 
 -----IMPROVMENTS-----
