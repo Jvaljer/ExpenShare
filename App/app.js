@@ -417,12 +417,12 @@ app.post('/specific-travel', (req,res) => {
 
     var tname;
     var trip;
-    for(var i=0; i<trips.length; i++){
-        if(name===trips[i][0]){
-            tname = trips[i][0];
-            trip = trips[i];
+    trips.map(function(trp){
+        if(name===trp[0]){
+            tname = trp[0];
+            trip = trp;
         }
-    }
+    });
 
     if(from_above){
         current.push(trip);
@@ -435,22 +435,22 @@ app.post('/specific-travel', (req,res) => {
     const expense_list = read_expenses();
 
     var expenses;
-    for(var i=0; i<expense_list.length; i++){
-        if(expense_list[i][0]===tname){
-            expenses = expense_list[i];
+    expense_list.map(function(exp){
+        if(exp[0]===tname){
+            expenses = exp;
         }
-    }
+    });
 
     //to take care of the latest expenses
     const latest_exp = read_latest_exp();
 
     let list_le = []
-    for(let i=0; i<latest_exp.length; i++){
-        if (latest_exp[i][0] == current[1][0]){
-            list_le = latest_exp[i];
-            list_le.shift() //erase the first element of the list (the trip name)
+    latest_exp.map(function(latest){
+        if(latest[0] == current[1][0]){
+            list_le = latest;
+            list_le.shift;
         }
-    }
+    });
 
     res.render("travel-main-view.ejs", {
         user: current[0],
@@ -491,16 +491,13 @@ app.post('/friends', (req, res) => {
     let creator = debtbar(current);
     let trip_name = current[1][0];
 
-    let temp = gather_info_friends_page(current, users_list);
-    let namelist = temp[0];
-    let piclist = temp[1];
-    let roleslist = temp[2];
+    let tmp = gather_info_friends_page(current, users_list);
 
     res.render("friends.ejs", {
         role: creator,
-        rolelist: roleslist,
-        namelist: namelist,
-        picturelist: piclist,
+        rolelist: tmp[2],
+        namelist: tmp[0],
+        picturelist: tmp[1],
         trip_name: trip_name
     })
 })
@@ -512,17 +509,17 @@ function gather_info_friends_page(current, users_list){
     let userslistnames = [];
     let userspicture = [];
 
-    for (var i=0; i<current[1][2].length; i++){
-        let user_name = current[1][2][i][0];
-        let user_role = current[1][2][i][1];
-        if (user_name == auser){  //to have the current user appear as the first one in the list
-            userslistnames.unshift(user_name);
-            userslistroles.unshift(user_role);
+    current[1][2].map(function(info){
+        let name = info[0];
+        let role = info[1];
+        if(name==auser){
+            userslistnames.unshift(name);
+            userslistroles.unshift(role);
         } else {
-            userslistnames.push(user_name);
-            userslistroles.push(user_role);
+            userslistnames.push(name);
+            userslistroles.push(role);
         }
-    }
+    });
 
     //for the images, need to organise them in the list in the same order as the name list to have the matching icon with the right name
     userslistnames.forEach(element => {

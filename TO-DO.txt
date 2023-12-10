@@ -9,7 +9,6 @@ L* Start doing functions in app.JS
 * 'Done' button to pay a debt isn't working (in debt-admin)
 * Category chart label isn't the one we wanna display
 * read_current returns a [] instead of a str ? Didn't understand why tbf
-* shall delete trip from LATEST_EXPENSE & EXPENSE jsons
 
 I will list all of the functions here. If they don't have an explicit name, I will put what they do.
 So that you can just take a look through this list to know if you can reuse something and so that 
