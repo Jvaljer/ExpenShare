@@ -97,6 +97,13 @@ function DeleteTrip(trips, del_trip, users){
     trips.map(function(trip){
         if(trip[0] === del_trip){
             trips.splice(trips.indexOf(trip), 1);
+            //deleting from debt json file
+            debts.map(function(debt){
+                if(debt[0]==del_trip){
+                    debts.splice(debts.indexOf(del_trip), 1);
+                }
+            })
+
             //deleting from user json file
             users.map(function(usr){
                 if(usr[1].includes(del_trip)){
