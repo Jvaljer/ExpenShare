@@ -466,9 +466,24 @@ app.post('/friends', (req, res) => {
     const users_list = read_users();
 
     let creator = debtbar(current);
-
-    //creating a list of roles, names, and pictures to display the people from a trip
     let trip_name = current[1][0];
+
+    let temp = gather_info_friends_page(current, users_list);
+    let namelist = temp[0];
+    let piclist = temp[1];
+    let roleslist = temp[2];
+
+    res.render("friends.ejs", {
+        role: creator,
+        rolelist: roleslist,
+        namelist: namelist,
+        picturelist: piclist,
+        trip_name: trip_name
+    })
+})
+
+function gather_info_friends_page(current, users_list){
+    //creating a list of roles, names, and pictures to display the people from a trip
     let auser = current[0]
     let userslistroles = [];
     let userslistnames = [];
@@ -494,25 +509,18 @@ app.post('/friends', (req, res) => {
             userspicture.push(get_icon_from_name(element, users_list));
         }
     });
+    return [userslistnames, userspicture, userslistroles];
+}
 
-    res.render("friends.ejs", {
-        role: creator,
-        rolelist: userslistroles,
-        namelist: userslistnames,
-        picturelist: userspicture,
-        trip_name: trip_name
-    })
-})
 
 function calc_debt(current_user){
     const current = read_current();
     const debt = read_debt();
     const users_list = read_users();
 
-    //to get the current trip and user
+    //to get the current trip
     let current_trip = current[1][0];
 
-    // 1) Find the corresponding trip in debt.json
     let get_back = [];
     let pay = [];
     for (let i=0; i<debt.length; i++){
@@ -569,7 +577,6 @@ app.get('/debt-everyone', (req, res) => {
     if (index != undefined){
         remove(index, current_trip, current_user);
     }
-
     index=undefined;
 
     let creator = debtbar(current);
