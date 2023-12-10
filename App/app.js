@@ -279,10 +279,9 @@ app.post('/sign-in', (req,res) => {
 
 app.post('/new-trip', (req,res) => {
     const users = read_users();
-
-    //here I wanna delete the current user from the sent list
     const cur_user = read_current()[0];
 
+    //here I wanna delete the current user from the users list
     const others = users;
     for(var i=0; i<users.length; i++){
         if(users[i][0]===cur_user){
@@ -407,7 +406,7 @@ app.post('/specific-travel', (req,res) => {
     }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
-    let creator = debtbar();
+    let creator = debtbar(current);
 
     //now I wanna add all the related expenses to the expenses list
     const expense_list = read_expenses();
@@ -439,9 +438,7 @@ app.post('/specific-travel', (req,res) => {
     });
 });
 
-function debtbar(){
-    const current = read_current();
-
+function debtbar(current){
     let auser = current[0]
     let userslist = [];
     let creator = false;
@@ -465,10 +462,10 @@ function debtbar(){
 };
 
 app.post('/friends', (req, res) => {
-    let creator = debtbar();
-    
     const current = read_current();
     const users_list = read_users();
+
+    let creator = debtbar(current);
 
     //creating a list of roles, names, and pictures to display the people from a trip
     let auser = current[0]
@@ -574,7 +571,7 @@ app.get('/debt-everyone', (req, res) => {
 
     index=undefined;
 
-    let creator = debtbar();
+    let creator = debtbar(current);
     let aux = calc_debt(current_user)
     let pay = aux[0];
     let get_back = aux[1];
@@ -601,7 +598,7 @@ app.post('/debt-everyone', (req, res) => {
         remove(index, current_trip, current_user);
     }
 
-    let creator = debtbar();
+    let creator = debtbar(current);
     let aux = calc_debt(current_user)
     let pay = aux[0];
     let get_back = aux[1];
@@ -691,7 +688,7 @@ app.get('/debt-admin', (req, res) => {
     let pay = aux[0];
     let get_back = aux[1];
 
-    let creator = debtbar();
+    let creator = debtbar(current);
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,
@@ -791,7 +788,7 @@ app.post('/add-expense', (req, res) => {
 
     let trip_name = current[1][0];
 
-    let creator = debtbar();
+    let creator = debtbar(current);
     res.render("add-expense.ejs", {
         role: creator,
         categories: categories,
@@ -869,7 +866,7 @@ app.post('/valid-expense', (req, res) => {
 
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
   
-    let creator = debtbar();
+    let creator = debtbar(current);
 
     res.render("valid-expense.ejs", {
         role: creator
@@ -881,11 +878,12 @@ app.get('/valid-expense', (req, res) => {
 });
 
 app.get('/specific-category', (req, res) => {
-    let creator = debtbar();
     const cname = req.query.category; // Use req.query to get the category from the query parameters
 
     const current = read_current();
     const trip_name = current[1][0];
+
+    let creator = debtbar(current);
 
     const all_members= current[1][2];
     var members = [];
