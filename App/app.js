@@ -468,18 +468,21 @@ app.post('/friends', (req, res) => {
     let creator = debtbar(current);
 
     //creating a list of roles, names, and pictures to display the people from a trip
+    let trip_name = current[1][0];
     let auser = current[0]
     let userslistroles = [];
     let userslistnames = [];
     let userspicture = [];
 
     for (var i=0; i<current[1][2].length; i++){
-        if (current[1][2][i][0] == auser){  //to have the current user appear as the first one in the list
-            userslistnames.unshift(current[1][2][i][0]);
-            userslistroles.unshift(current[1][2][i][1]);
+        let user_name = current[1][2][i][0];
+        let user_role = current[1][2][i][1];
+        if (user_name == auser){  //to have the current user appear as the first one in the list
+            userslistnames.unshift(user_name);
+            userslistroles.unshift(user_role);
         } else {
-            userslistroles.push(current[1][2][i][1]);
-            userslistnames.push(current[1][2][i][0]);
+            userslistnames.push(user_name);
+            userslistroles.push(user_role);
         }
     }
 
@@ -491,8 +494,6 @@ app.post('/friends', (req, res) => {
             userspicture.push(get_icon_from_name(element, users_list));
         }
     });
-
-    let trip_name = current[1][0];
 
     res.render("friends.ejs", {
         role: creator,
