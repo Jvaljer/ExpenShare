@@ -587,7 +587,7 @@ function remove(index, current_trip, current_user){
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
 }
 
-app.get('/debt-everyone', (req, res) => {
+app.all('/debt-everyone', (req, res) => {
     let index = req.query.index;
 
     const current = read_current();
@@ -598,33 +598,6 @@ app.get('/debt-everyone', (req, res) => {
         remove(index, current_trip, current_user);
     }
     index=undefined;
-
-    let creator = debtbar(current);
-    let aux = calc_debt(current_user)
-    let pay = aux[0];
-    let get_back = aux[1];
-
-    let trip_name = current[1][0];
-
-    res.render("debt-everyone.ejs", {
-        role: creator,
-        get_back: get_back,
-        pay: pay,
-        trip_name: trip_name,
-        current_user: current_user
-    })
-})
-
-app.post('/debt-everyone', (req, res) => {
-    let index = req.query.index;
-
-    const current = read_current();
-    let current_user = current[0];
-    let current_trip = current[1][0];
-
-    if (index != undefined){
-        remove(index, current_trip, current_user);
-    }
 
     let creator = debtbar(current);
     let aux = calc_debt(current_user)
