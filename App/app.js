@@ -80,6 +80,8 @@ app.post('/login', (req, res) => {
     const data = JSON.parse(fs.readFileSync("data/logs.json"));
     const logs = data["logins"];
 
+    const users_list = read_users();
+
     let ignore = false;
     for(var i=0; i<logs.length; i++){
         if(logs[i][0]===username && logs[i][1]===password){
@@ -111,7 +113,7 @@ app.post('/login', (req, res) => {
                         for(var k=0; k<trips[j][2].length; k++){
                             if(trips[j][2][k][0]!=username){
                                 others.push(trips[j][2][k]);
-                                imgs[j].push(get_icon_from_name(trips[j][2][k][0]));
+                                imgs[j].push(get_icon_from_name(trips[j][2][k][0], users_list));
                             }
                         }
                         trips[j][2] = others;
@@ -244,7 +246,7 @@ app.all('/logged', (req,res) => {
         for(var k=0; k<all_trip[j][2].length; k++){
             if(all_trip[j][2][k][0]!=current[0]){
                 others.push(all_trip[j][2][k]);
-                imgs[j].push(get_icon_from_name(all_trip[j][2][k][0]));
+                imgs[j].push(get_icon_from_name(all_trip[j][2][k][0], users));
             }
         }
         all_trip[j][2] = others;
@@ -466,6 +468,7 @@ app.post('/friends', (req, res) => {
     let creator = debtbar();
     
     const current = read_current();
+    const users_list = read_users();
 
     //creating a list of roles, names, and pictures to display the people from a trip
     let auser = current[0]
@@ -486,9 +489,9 @@ app.post('/friends', (req, res) => {
     //for the images, need to organise them in the list in the same order as the name list to have the matching icon with the right name
     userslistnames.forEach(element => {
         if (element == auser){
-            userspicture.unshift(get_icon_from_name(auser));
+            userspicture.unshift(get_icon_from_name(auser, users_list));
         } else {
-            userspicture.push(get_icon_from_name(element));
+            userspicture.push(get_icon_from_name(element, users_list));
         }
     });
 
@@ -506,6 +509,7 @@ app.post('/friends', (req, res) => {
 function calc_debt(current_user){
     const current = read_current();
     const debt = read_debt();
+    const users_list = read_users();
 
     //to get the current trip and user
     let current_trip = current[1][0];
@@ -522,10 +526,10 @@ function calc_debt(current_user){
                 let expense_name = debt[i][j][2][2];
                 if (debt[i][j][0] == current_user){ //to put in get_back
                     for(let k=0; k<debt[i][j][1].length; k++){
-                        get_back.push([category, amount, date, get_icon_from_name(debt[i][j][1][k]), expense_name])
+                        get_back.push([category, amount, date, get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
                     }
                 } else if (debt[i][j][1].includes(current_user)){ //to put in pay
-                    pay.push([category, amount, date, get_icon_from_name(debt[i][j][0]), expense_name])
+                    pay.push([category, amount, date, get_icon_from_name(debt[i][j][0], users_list), expense_name])
                 }
             }
         }
@@ -613,9 +617,7 @@ app.post('/debt-everyone', (req, res) => {
     })
 })
 
-function get_list_friends(current_user, current_trip){
-    const users_list = read_users();
-
+function get_list_friends(current_user, current_trip, users_list){
     const person_icon = []; 
     for(i=0; i<users_list.length; i++){
         let test = users_list[i][1];
@@ -626,9 +628,7 @@ function get_list_friends(current_user, current_trip){
     return person_icon;
 }
 
-function get_name_from_icon(icon){
-    const users_list = read_users();
-
+function get_name_from_icon(icon, users_list){
     let name = "";
     for(i=0; i<users_list.length; i++){
         if (users_list[i][2] == icon){
@@ -638,9 +638,7 @@ function get_name_from_icon(icon){
     return name;
 }
 
-function get_icon_from_name(name){
-    const users_list = read_users();
-
+function get_icon_from_name(name, users_list){
     let icon = "";
     for(i=0; i<users_list.length; i++){
         if (users_list[i][0] == name){
@@ -654,8 +652,10 @@ app.get('/debt-admin', (req, res) => {
     let personIndex = req.query.personIndex;
     let index = req.query.index;
 
+    const users_list = read_users();
+
     //need to find the user that goes with the image
-    let name = get_name_from_icon(personIndex);
+    let name = get_name_from_icon(personIndex, users_list);
 
     const current = read_current();
     let current_user = current[0];
@@ -665,7 +665,7 @@ app.get('/debt-admin', (req, res) => {
     if (index != undefined && personIndex == undefined){
         remove(index, current_trip, current_user);
     } else if (index != undefined){
-        remove(index, current_trip, get_name_from_icon(personIndex));
+        remove(index, current_trip, get_name_from_icon(personIndex, users_list));
     }
 
     index=undefined;
@@ -673,7 +673,7 @@ app.get('/debt-admin', (req, res) => {
     //to get the icon for the top right corner
     let icon;
     if (personIndex == undefined){
-        icon = get_icon_from_name(current_user);
+        icon = get_icon_from_name(current_user, users_list);
     } else{
         icon = personIndex;
     }
@@ -685,7 +685,7 @@ app.get('/debt-admin', (req, res) => {
         user = name;
     }
 
-    let person_icon = get_list_friends(user, current_trip);
+    let person_icon = get_list_friends(user, current_trip, users_list);
 
     let aux = calc_debt(user)
     let pay = aux[0];
