@@ -87,16 +87,44 @@ function UpdateRoles(trips, roles, current){
 }
 
 function DeleteTrip(trips, del_trip, users){
+    const exp_data = JSON.parse(fs.readFileSync("data/expenses.json"));
+    const latest_data = JSON.parse(fs.readFileSync("data/latest-exp.json"));
+    const debt_data = JSON.parse(fs.readFileSync("data/debt.json"));
+    var expenses = exp_data["expenses"];
+    var latest = latest_data["latest-exp"];
+    var debts = debt_data["debt"];
+
     trips.map(function(trip){
         if(trip[0] === del_trip){
             trips.splice(trips.indexOf(trip), 1);
+            //deleting from user json file
             users.map(function(usr){
                 if(usr[1].includes(del_trip)){
                     usr[1].splice(usr[1].indexOf(del_trip), 1);
                 }
             })
+            //deleting from expenses json files
+            expenses.map(function(exp){
+                if(exp[0]===del_trip){
+                    expenses.splice(expenses.indexOf(exp),1);
+                }
+            });
+            //deleting from latest-exp json file
+            latest.map(function(exp){
+                if(exp[0]===del_trip){
+                    latest.splice(latest.indexOf(exp), 1);
+                }
+            });
+            debts.map(function(debt){
+                if(debt[0]===del_trip){
+                    debt.splice(debts.indexOf(debt), 1);
+                }
+            });
         }
     });
+    fs.writeFileSync("data/expenses.json", JSON.stringify(exp_data, null, 2));
+    fs.writeFileSync("data/latest-exp.json", JSON.stringify(latest_data, null, 2));
+    fs.writeFileSync("data/debt.json", JSON.stringify(debt_data, null, 2));
 }
 
 function AddOtherUserImages(trip_list, current, user_list){
