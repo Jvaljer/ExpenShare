@@ -5,7 +5,6 @@
 <div id="container">
 
     <div id="header">
-        <!-- this shall contain the app name, and the user profile overview -->
         <%- include("navbar.ejs")%>
         <%- include("trip-bar.ejs")%>
     </div>
@@ -13,8 +12,6 @@
     <div id="body">
         <h1 id="tripFriend">Trip Friends</h1>
 
-
-        <!-- This will be changed to have the name dynamically-->
         <div class="friends">
             <% for (i=0; i<rolelist.length; i++){%>
                 <div class="friendBox"> 

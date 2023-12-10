@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
         console.log("clicked on "+ $(this).attr("value"));
         const value = $(this).attr("value");
 
-        //here I wanna set the clicked icon's bf to green
+        //here I wanna set the clicked icon's background to green
         $(this).css("background-color", "green");
 
         if (prv != null) {

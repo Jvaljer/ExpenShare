@@ -2,9 +2,9 @@ let roles = [];
 
 jQuery(document).ready(function () {
     $("#back-btn").on("click", function(e){
-        console.log("clicked on the button duh");
+        console.log("clicked on the button");
         e.preventDefault();
-        //window.location.href = "/logged?roles=" + encodeURIComponent(JSON.stringify(roles));
+        window.location.href = "/logged?roles=" + encodeURIComponent(JSON.stringify(roles));
     });
 });
 

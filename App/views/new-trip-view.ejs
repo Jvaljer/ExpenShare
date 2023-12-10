@@ -29,8 +29,6 @@
         <div id="group-label" class="label">Group Members -</div>
         <div id="group-field" class="field">
             <!--Here must add the user's icon & an 'add' button-->
-            <!--Also we wanna initiate a small window when add is hit
-                in order to select users to add-->
             <div id="added-users">
             </div>
             <div class="separator"></div>
@@ -47,8 +45,6 @@
         <div id="category-label" class="label">Categories -</div>
         <div id="category-field" class="field">
             <!--Here must add the categories's icon & an 'add' button-->
-            <!--Also we wanna initiate a small window when add is hit
-                in order to select category to add-->
             <div id="added-categories">
             </div>
             <div class="separator"></div>
@@ -64,7 +60,7 @@
 
         <div id="maxbudget-label" class="label">Maximum Budget -</div>
         <div id="budget-field" class="field">
-            <!--Here just wanna add a slider-->
+            <!--Here, add a slider-->
             <input type="range" id="budget-slider" min="0" max="3000" value="0" oninput="this.nextElementSibling.value = this.value"/>
             <output id="budget-value" name="budget">0</output>
         </div>
@@ -76,8 +72,7 @@
                 contain enough for a comment-->
             <textarea id="comment-text" placeholder="add a comment about this trip" name="comment"></textarea>
         </div>
-        <!--Here we only wanna add an 'add' button to validate the informations
-            Also this shou;d trigger a view change-->
+        <!--Here we only wanna add an 'add' button to validate the informations and change view -->
         <button type="submit" id="validate-btn" class="btn default">Add</button>
     </div>
 </form>

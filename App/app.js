@@ -112,7 +112,7 @@ app.get('/log', (req,res)=>{
     data.logins.push([username, password]);
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
-    //now adding this new user to the user list (ofc)
+    //now adding this new user to the user list
     const raaw = fs.readFileSync("data/users.json");
     const daata = JSON.parse(raaw);
 
@@ -136,7 +136,7 @@ app.all('/logged', (req,res) => {
     const del_trip = req.query.trip;
     let from_delete = false;
     if(del_trip != null){
-        console.log("we wanna delete the trip: "+del_trip);
+        // we want to delete the trip
         from_delete = true;
     }
 
@@ -219,7 +219,6 @@ app.all('/logged', (req,res) => {
         others = [];
     }
 
-    console.log("list images", imgs)
     res.render("fst-view.ejs", {
         user: users[user_index],
         trip: all_trip,
@@ -415,7 +414,6 @@ app.post('/specific-travel', (req,res) => {
             list_le.shift() //erase the first element of the list (the trip name)
         }
     }
-    console.log("list_le="+list_le);
 
     res.render("travel-main-view.ejs", {
         user: current[0],
@@ -783,17 +781,13 @@ app.post('/profile', (req, res) => {
     })
     trip_list.map(function(trip){
         if(users_list[index][1].includes(trip[0])){
-            console.log("we wanna add actual role for "+trip[0]+" from "+trip[2]);
             trip[2].map(function(usr){
-                console.log("we have usr "+usr[0]+" compared to "+current[0]);
                 if(usr[0]===current[0]){
-                    console.log("   usr is "+usr[1]+" in "+trip[0]);
                     spe_roles[users_list[index][1].indexOf(trip[0])] = usr[1];
                 }
             });
         }
     });
-    console.log("spe_roles: "+spe_roles);
 
     const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
         return elt;
