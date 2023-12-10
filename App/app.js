@@ -38,16 +38,16 @@ function read_users(){
 }
 
 function read_trips(){
-    const raw_ = fs.readFileSync("data/trips.json");
-    const data_ = JSON.parse(raw_);
-    const trip_data = data_.trips;
+    const raw = fs.readFileSync("data/trips.json");
+    const data = JSON.parse(raw);
+    const trip_data = data.trips;
     return trip_data;
 }
 
 function read_current(){
-    const raw_ = fs.readFileSync("data/current.json");
-    const data_ = JSON.parse(raw_);
-    const current = data_["current-infos"];
+    const raw = fs.readFileSync("data/current.json");
+    const data = JSON.parse(raw);
+    const current = data["current-infos"];
     return current;
 }
 
@@ -77,61 +77,59 @@ app.post('/login', (req, res) => {
     //here we would load all datas
     const username = req.body.username;
     const password = req.body.password;
+
     const data = JSON.parse(fs.readFileSync("data/logs.json"));
     const logs = data["logins"];
 
     const users_list = read_users();
 
     let ignore = false;
-    for(var i=0; i<logs.length; i++){
-        if(logs[i][0]===username && logs[i][1]===password){
-            //here we wanna load the user from another JSON file
+
+    logs.map(function(log){
+        if(log[0]===username && log[1]===password){
             const users = read_users();
-            const trip_data = read_trips();            
+            const trip_data = read_trips();
 
             let trips = [];
-            for(var i=0; i<users.length; i++){
-                if(users[i][0]===username){
-                    for(var j=0; j<users[i][1].length; j++){
-                        var trip_name = users[i][1][j];
-                        for(var k=0; k<trip_data.length; k++){
-                            if(trip_name===trip_data[k][0]){
-                                trips.push(trip_data[k]);
+            users.map(function(user){
+                if(user[0]===username){
+                    user[1].map(function(trip_name){
+                        trip_data.map(function(trip){
+                            if(trip_name===trip[0]){
+                                trips.push(trip);
                             }
-                        }
-                    }
+                        })
+                    });
 
                     const data_cur = JSON.parse(fs.readFileSync("data/current.json"));
-                    data_cur["current-infos"] = []; //emptying all previous infos
-
+                    data_cur["current-infos"] = [];
                     data_cur["current-infos"].push(username);
 
                     let others = [];
                     let imgs = [];
-                    for(var j=0; j<trips.length; j++){
+                    trips.map(function(trip){
                         imgs.push([]);
-                        for(var k=0; k<trips[j][2].length; k++){
-                            if(trips[j][2][k][0]!=username){
-                                others.push(trips[j][2][k]);
-                                imgs[j].push(get_icon_from_name(trips[j][2][k][0], users_list));
+                        trip[2].map(function(usr){
+                            if(usr[0]!=username){
+                                others.push(usr);
+                                imgs[trips.indexOf(trip)].push(get_icon_from_name(usr[0], users_list));
                             }
-                        }
-                        trips[j][2] = others;
+                        });
+                        trip[2] = others;
                         others = [];
-                    }
+                    });
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
 
                     res.render("fst-view.ejs", {
-                        user: users[i],
+                        user: user,
                         trip: trips,
                         images: imgs
                     });
-
                     ignore = true;
                 }
-            }
+            });
         }
-    }
+    });
     if(!ignore){
         res.render("login-view.ejs",{
             start: false,
