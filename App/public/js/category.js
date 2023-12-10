@@ -3,7 +3,7 @@ var canva = document.getElementById('category-chart');
 const data_div = document.querySelector('.container');
 const all_exps = JSON.parse(data_div.dataset.expenses);
 
-const all_colors = ["#57606F","#FFA502", "#70A1FF", "#7BED9F", "#FF6B81", "#FF6348", "#ECCC68", "#1E90FF"];
+const all_colors = ["#FFA502", "#70A1FF", "#7BED9F", "#FF6B81", "#FF6348", "#ECCC68", "#1E90FF", "#57606F"];
 
 //initializing all chart variables
 var members = [];
@@ -16,15 +16,14 @@ for(var i=0; i<all_exps.length; i++){
 }
 
 //must set the values for variables
-console.log("members: "+members);
-console.log("values: "+values);
-console.log("colors: "+colors);
+for(var i=0; i<members.length; i++){
+    console.log(members[i]);
+}
 
-//here we wanna set the datas used by the chart
 const data = {
     labels: members,
     datasets: [{
-        label: 'Trip Members',
+        label: 'Members Expenses Amount',
         data: values,
         backgroundColor: colors,
         hoverOffset: 4

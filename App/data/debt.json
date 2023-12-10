@@ -38,6 +38,19 @@
           "Bus",
           "2023-12-03"
         ]
+      ],
+      [
+        "ahenryl",
+        [
+          "Laurene",
+          "Bas"
+        ],
+        [
+          "Restaurant",
+          "58.33",
+          "Pollos Hermanos",
+          "2023-12-10"
+        ]
       ]
     ],
     [
@@ -72,7 +85,6 @@
       [
         "ahenryl",
         [
-          "Bas",
           "steve"
         ],
         [
@@ -81,6 +93,20 @@
           "Scooter",
           "2023-12-22"
         ]
+      ],
+      [
+        "ahenryl",
+        [
+          "Laurene",
+          "Bas",
+          "steve"
+        ],
+        [
+          "Hotel",
+          "19.41",
+          "Extra Night",
+          "2023-12-10"
+        ]
       ]
     ],
     [
@@ -88,14 +114,27 @@
       [
         "Laurene",
         [
-          "anne",
-          "ahenryl"
+          "anne"
         ],
         [
           "Transports",
           "173.06",
           "Airplane",
           "2023-12-29"
+        ]
+      ],
+      [
+        "ahenryl",
+        [
+          "Laurene",
+          "steve",
+          "anne"
+        ],
+        [
+          "Party",
+          "12.50",
+          "Weed",
+          "2023-12-17"
         ]
       ]
     ],

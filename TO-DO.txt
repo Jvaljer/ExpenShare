@@ -1,13 +1,10 @@
 -----TO FIX-----
 A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
-A* start cleaning APP.JS (turn for(for() into .map & .includes ?)
 
 L* Start doing functions in app.JS
 
 
 -----CASUAL TESTING------
-* 'Done' button to pay a debt isn't working (in debt-admin)
-* Category chart label isn't the one we wanna display
 * read_current returns a [] instead of a str ? Didn't understand why tbf
 
 I will list all of the functions here. If they don't have an explicit name, I will put what they do.
