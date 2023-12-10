@@ -458,22 +458,21 @@ function remove(index, current_trip, current_user){
     const exp_debt = data_debt["debt"];
 
     let compare_index = 0;
-    for (let i=0; i<exp_debt.length; i++){
-        if (exp_debt[i][0] == current_trip){
-            for(let j=1; j<exp_debt[i].length; j++){
-                if (exp_debt[i][j][0] != current_user && exp_debt[i][j][1].includes(current_user)){
-                    if (compare_index == index){
-                        exp_debt[i][j][1].splice(exp_debt[i][j][1].indexOf(current_user),1);
+    exp_debt.map(function(expense){
+        if(expense[0]==current_trip){
+            expense.map(function(exp){
+                if(exp[0]!=current_user && exp[1].includes(current_user)){
+                    if(compare_index==index){
+                        exp[1].splice(exp[1].indexOf(current_user), 1);
                     }
                     compare_index += 1;
-                    //to remove the expense from the list when everybody payed back
-                    if (exp_debt[i][j][1].length == 0){
-                        exp_debt[i].splice(j,1);
+                    if(exp[1].length==0){
+                        expense.splice(expense.indexOf(exp), 1);
                     }
                 }
-            }
+            });
         }
-    }
+    });
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
 }
 
@@ -487,6 +486,21 @@ function calc_debt(current_user){
 
     let get_back = [];
     let pay = [];
+    /*debts.map(function(debt){
+        if(debt[0]==current_trip){
+            debt.map(function(debt_info){
+                let amount = debt_info[2][1];
+                let category = debt_info[2][0]+".png";
+                let date = debt_info[2][3];
+                let exp_name = debt_info[2][2];
+                if(debt_info[0]==current_user){
+                    debt_info[1].map(function(icon){
+                        get_back.push([category, amount, date, fct.get_icon_from_name(icon, users_list), exp_name]);
+                    });
+                }
+            });
+        }
+    });*/
     for (let i=0; i<debt.length; i++){
         if (debt[i][0] == current_trip){
             for (let j=1; j<debt[i].length; j++){
@@ -504,6 +518,7 @@ function calc_debt(current_user){
             }
         }
     }
+
     return [pay, get_back];
 }
 
@@ -682,7 +697,7 @@ app.post('/valid-expense', (req, res) => {
     const comment = req.body.comment;
     
     const data = JSON.parse(fs.readFileSync("data/expenses.json"));
-    const exp = data["expenses"];
+    const expenses = data["expenses"];
 
     //to get the information of who added the travel
     const current = read_current();
@@ -690,15 +705,15 @@ app.post('/valid-expense', (req, res) => {
     const cur_travel = current[1][0];
 
     //to add the expense in the right trip and right category
-    for(var i=0; i<exp.length; i++){
-        if(cur_travel == exp[i][0]){
-            for(j=0; j<exp[i][1].length; j++){
-                if(category == exp[i][1][j][0]){
-                    exp[i][1][j][1].push([cur_usr, name, amount, date, comment])
+    expenses.map(function(expense){
+        if(cur_travel==expense[0]){
+            expense[1].map(function(exp){
+                if(category==exp[0]){
+                    exp[1].push([cur_usr, name, amount, date, comment]);
                 }
-            }
+            });
         }
-    }
+    });
 
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
 
@@ -706,14 +721,14 @@ app.post('/valid-expense', (req, res) => {
     const data_le = JSON.parse(fs.readFileSync("data/latest-exp.json"));
     const exp_le = data_le["latest-exp"];
 
-    for (i=0; i<exp_le.length; i++){
-        if (exp_le[i][0] == cur_travel && exp_le.length == 4){
-            exp_le[i].splice(1,1);
-            exp_le[i].push([category, amount, name, date]);
-        } else if(exp_le[i][0] == cur_travel){
-            exp_le[i].push([category, amount, name, date]);
+    exp_le.map(function(exp){
+        if(exp[0]==cur_travel && exp_le.length==4){
+            exp.splice(1,1);
+            exp.push([category, amount, name, date]);
+        } else if(exp[0]==cur_travel){
+            exp.push([category, amount, name, date]);
         }
-    }
+    });
 
     fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
 
@@ -725,22 +740,20 @@ app.post('/valid-expense', (req, res) => {
 
     //get the list of people that are part of the trip (expect current user)
     let list_friends = [];
-    for (let i=0; i<trip_list.length; i++){
-        if (cur_travel == trip_list[i][0]){
-            for(let j=0; j<trip_list[i][2].length; j++){
-                if (trip_list[i][2][j][0] != cur_usr){
-                    list_friends.push(trip_list[i][2][j][0]);
-                }
-            }
+    trip_list.map(function(trip){
+        if(cur_travel==trip[0]){
+            trip[2].map(function(user){
+                list_friends.push(user[0]);
+            });
         }
-    }
+    });
 
-    for (let i=0; i<exp_debt.length; i++){
+    exp_debt.map(function(debt){
         let amount_per_person = (parseFloat(amount)/(list_friends.length+1)).toFixed(2);
-        if (exp_debt[i][0] == cur_travel){
-            exp_debt[i].push([cur_usr, list_friends, [category, amount_per_person, name, date]])
+        if(debt[0]==cur_travel){
+            debt.push([cur_usr, list_friends, [category, amount_per_person, name, date]]);
         }
-    }
+    });
 
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
   
