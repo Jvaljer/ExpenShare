@@ -226,7 +226,15 @@
         ],
         [
           "Restaurant",
-          []
+          [
+            [
+              "Laurene",
+              "Pizza",
+              "49.23",
+              "2023-12-11",
+              ""
+            ]
+          ]
         ],
         [
           "Hotel",
@@ -284,22 +292,14 @@
       ]
     ],
     [
-      "Rome",
+      "Vienna",
       [
         [
-          "Restaurant",
-          []
-        ],
-        [
-          "Hotel",
-          []
-        ],
-        [
-          "Activities",
-          []
-        ],
-        [
           "Party",
+          []
+        ],
+        [
+          "Alcohol",
           []
         ],
         [
@@ -307,29 +307,15 @@
           []
         ],
         [
-          "Other",
-          []
-        ]
-      ]
-    ],
-    [
-      "nice test",
-      [
-        [
-          "Hotel",
-          []
-        ]
-      ]
-    ],
-    [
-      "Testing",
-      [
-        [
-          "Groceries",
+          "Activities",
           []
         ],
         [
-          "Restaurant",
+          "Sleeping",
+          []
+        ],
+        [
+          "Groceries",
           []
         ]
       ]

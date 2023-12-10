@@ -30,25 +30,62 @@ app.get('', (req, res) => {
     res.render("login-view.ejs", {start:true, fail:false});
 });
 
+function read_users(){
+    const raw = fs.readFileSync("data/users.json");
+    const data = JSON.parse(raw);
+    const users = data["users"];
+    return users;
+}
+
+function read_trips(){
+    const raw_ = fs.readFileSync("data/trips.json");
+    const data_ = JSON.parse(raw_);
+    const trip_data = data_.trips;
+    return trip_data;
+}
+
+function read_current(){
+    const raw_ = fs.readFileSync("data/current.json");
+    const data_ = JSON.parse(raw_);
+    const current = data_["current-infos"];
+    return current;
+}
+
+function read_expenses(){
+    const raw = fs.readFileSync("data/expenses.json");
+    const data = JSON.parse(raw);
+    const expense_list = data["expenses"];
+    return expense_list;
+}
+
+function read_latest_exp(){
+    const raw = fs.readFileSync("data/latest-exp.json");
+    const data = JSON.parse(raw);
+    const latest_exp = data["latest-exp"];
+    return latest_exp;
+}
+
+function read_debt(){
+    const raw = fs.readFileSync("data/debt.json");
+    const data = JSON.parse(raw);
+    const debt = data["debt"];
+    return debt;
+}
+
+
 app.post('/login', (req, res) => {
     //here we would load all datas
     const username = req.body.username;
     const password = req.body.password;
-    const raw = fs.readFileSync("data/logs.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/logs.json"));
     const logs = data["logins"];
 
     let ignore = false;
     for(var i=0; i<logs.length; i++){
         if(logs[i][0]===username && logs[i][1]===password){
             //here we wanna load the user from another JSON file
-            const raw = fs.readFileSync("data/users.json");
-            const data = JSON.parse(raw);
-            const users = data["users"];
-
-            const raw_ = fs.readFileSync("data/trips.json");
-            const data_ = JSON.parse(raw_);
-            const trip_data = data_.trips;
+            const users = read_users();
+            const trip_data = read_trips();            
 
             let trips = [];
             for(var i=0; i<users.length; i++){
@@ -62,8 +99,7 @@ app.post('/login', (req, res) => {
                         }
                     }
 
-                    const raw_cur = fs.readFileSync("data/current.json");
-                    const data_cur = JSON.parse(raw_cur);
+                    const data_cur = JSON.parse(fs.readFileSync("data/current.json"));
                     data_cur["current-infos"] = []; //emptying all previous infos
 
                     data_cur["current-infos"].push(username);
@@ -101,20 +137,19 @@ app.post('/login', (req, res) => {
         });
     }
 });
+
 app.get('/log', (req,res)=>{
     const username = req.query.username;
     const password = req.query.password;
     const image = req.query.image;
 
-    const raw = fs.readFileSync("data/logs.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/logs.json"));
 
     data.logins.push([username, password]);
     fs.writeFileSync("data/logs.json", JSON.stringify(data, null, 2));
 
     //now adding this new user to the user list
-    const raaw = fs.readFileSync("data/users.json");
-    const daata = JSON.parse(raaw);
+    const daata = JSON.parse(fs.readFileSync("data/users.json"));
 
     daata.users.push([username,[],image]); //can add here an image (use cnt of already existing ones...)
     fs.writeFileSync("data/users.json", JSON.stringify(daata, null, 2));
@@ -141,8 +176,7 @@ app.all('/logged', (req,res) => {
     }
 
     //here we first wanna get the actual user & trips
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/current.json"));
     const tmp_file = data["current-infos"];
 
     //here we wanna remove the latest trip if it exists
@@ -153,12 +187,10 @@ app.all('/logged', (req,res) => {
     const current = tmp_file;
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
-    const raw_ = fs.readFileSync("data/users.json");
-    const data_ = JSON.parse(raw_);
+    const data_ = JSON.parse(fs.readFileSync("data/users.json"));
     const users = data_["users"];
 
-    const raaw = fs.readFileSync("data/trips.json");
-    const daata = JSON.parse(raaw);
+    const daata = JSON.parse(fs.readFileSync("data/trips.json"));
     const trips = daata["trips"];
 
     if(from_profile){
@@ -225,9 +257,9 @@ app.all('/logged', (req,res) => {
         images: imgs
     });
 });
+
 app.post('/sign-in', (req,res) => {
-    const raw = fs.readFileSync("data/users.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/users.json"));
     const images = data["users"].map(function(usr){
        return usr[2];
     });
@@ -244,14 +276,10 @@ app.post('/sign-in', (req,res) => {
 });
 
 app.post('/new-trip', (req,res) => {
-    const raw = fs.readFileSync("data/users.json");
-    const data = JSON.parse(raw);
-    const users= data["users"];
+    const users = read_users();
 
     //here I wanna delete the current user from the sent list
-    const raw_ = fs.readFileSync("data/current.json");
-    const data_ = JSON.parse(raw_);
-    const cur_user = data_["current-infos"][0];
+    const cur_user = read_current()[0];
 
     const others = users;
     for(var i=0; i<users.length; i++){
@@ -269,7 +297,6 @@ app.post('/new-trip', (req,res) => {
 });
 
 app.post('/validate-trip', (req, res) => {
-
     const name = req.body.name;
     const start = req.body.start;
     const end = req.body.end;
@@ -279,10 +306,8 @@ app.post('/validate-trip', (req, res) => {
     const categories = req.body.categories;
 
     //adding new travel here
-    const raw = fs.readFileSync("data/trips.json");
-    const data = JSON.parse(raw);
-
-    const cur_usr = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][0];
+    const data = JSON.parse(fs.readFileSync("data/trips.json"));
+    const cur_usr = read_current()[0];
 
     var member_list = [
         [cur_usr, "creator"]
@@ -303,8 +328,7 @@ app.post('/validate-trip', (req, res) => {
     data.trips.push(trip_info);
     fs.writeFileSync("data/trips.json", JSON.stringify(data, null, 2));
 
-    const raw_ = fs.readFileSync("data/users.json");
-    const data_ = JSON.parse(raw_);
+    const data_ = JSON.parse(fs.readFileSync("data/users.json"));
     const users = data_["users"];
     for(var i=0; i<users.length; i++){
         if(cur_usr===users[i][0]){
@@ -320,8 +344,7 @@ app.post('/validate-trip', (req, res) => {
     fs.writeFileSync("data/users.json", JSON.stringify(data_, null, 2));
 
     //to add the trip and its corresponding categories in the expense.json
-    const raw_exp = fs.readFileSync("data/expenses.json");
-    const data_exp = JSON.parse(raw_exp);
+    const data_exp = JSON.parse(fs.readFileSync("data/expenses.json"));
 
     let categories_exp = []
     for(i=0; i<categories.length; i++){
@@ -336,15 +359,13 @@ app.post('/validate-trip', (req, res) => {
     data_exp.expenses.push(info_expense);
     fs.writeFileSync("data/expenses.json", JSON.stringify(data_exp, null, 2));
 
-    const raw_le = fs.readFileSync("data/latest-exp.json");
-    const data_le = JSON.parse(raw_le);
+    const data_le = JSON.parse(fs.readFileSync("data/latest-exp.json"));
     const le = data_le["latest-exp"];
 
     le.push([name]);
     fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
 
-    const raw_debt = fs.readFileSync("data/debt.json");
-    const data_debt = JSON.parse(raw_debt);
+    const data_debt = JSON.parse(fs.readFileSync("data/debt.json"));
     const exp_debt = data_debt["debt"];
 
     exp_debt.push([name]);
@@ -357,18 +378,14 @@ app.get('/validate-trip', (req,res) => {
     res.render("valid-trip.ejs");
 });
 
-
 app.post('/specific-travel', (req,res) => {
     let name = req.body.travelname;
     let from_above = (name!=null);
 
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/current.json"));
     const current = data["current-infos"];
 
-    const raw_ = fs.readFileSync("data/trips.json");
-    const data_ = JSON.parse(raw_);
-    const trips = data_["trips"];
+    const trips = read_trips();
 
     if(!from_above){
         name = current[1][0];
@@ -391,9 +408,7 @@ app.post('/specific-travel', (req,res) => {
     let creator = debtbar();
 
     //now I wanna add all the related expenses to the expenses list
-    const raaw = fs.readFileSync("data/expenses.json");
-    const daata = JSON.parse(raaw);
-    const expense_list = daata["expenses"];
+    const expense_list = read_expenses();
 
     var expenses;
     for(var i=0; i<expense_list.length; i++){
@@ -403,9 +418,7 @@ app.post('/specific-travel', (req,res) => {
     }
 
     //to take care of the latest expenses
-    const raw_le = fs.readFileSync("data/latest-exp.json");
-    const data_le = JSON.parse(raw_le);
-    const latest_exp = data_le["latest-exp"];
+    const latest_exp = read_latest_exp();
 
     let list_le = []
     for(let i=0; i<latest_exp.length; i++){
@@ -425,9 +438,7 @@ app.post('/specific-travel', (req,res) => {
 });
 
 function debtbar(){
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
 
     let auser = current[0]
     let userslist = [];
@@ -454,9 +465,7 @@ function debtbar(){
 app.post('/friends', (req, res) => {
     let creator = debtbar();
     
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
 
     //creating a list of roles, names, and pictures to display the people from a trip
     let auser = current[0]
@@ -494,18 +503,12 @@ app.post('/friends', (req, res) => {
     })
 })
 
-
 function calc_debt(current_user){
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
+    const debt = read_debt();
 
     //to get the current trip and user
     let current_trip = current[1][0];
-
-    const raw_debt = fs.readFileSync("data/debt.json");
-    const data_debt = JSON.parse(raw_debt);
-    const debt = data_debt["debt"];
 
     // 1) Find the corresponding trip in debt.json
     let get_back = [];
@@ -531,8 +534,7 @@ function calc_debt(current_user){
 }
 
 function remove(index, current_trip, current_user){
-    const raw_debt = fs.readFileSync("data/debt.json");
-    const data_debt = JSON.parse(raw_debt);
+    const data_debt = JSON.parse(fs.readFileSync("data/debt.json"));
     const exp_debt = data_debt["debt"];
 
     let compare_index = 0;
@@ -558,9 +560,7 @@ function remove(index, current_trip, current_user){
 app.get('/debt-everyone', (req, res) => {
     let index = req.query.index;
 
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
     let current_user = current[0];
     let current_trip = current[1][0];
 
@@ -589,9 +589,7 @@ app.get('/debt-everyone', (req, res) => {
 app.post('/debt-everyone', (req, res) => {
     let index = req.query.index;
 
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
     let current_user = current[0];
     let current_trip = current[1][0];
 
@@ -616,9 +614,7 @@ app.post('/debt-everyone', (req, res) => {
 })
 
 function get_list_friends(current_user, current_trip){
-    const raw_user = fs.readFileSync("data/users.json");
-    const data_user = JSON.parse(raw_user);
-    const users_list = data_user["users"];
+    const users_list = read_users();
 
     const person_icon = []; 
     for(i=0; i<users_list.length; i++){
@@ -631,9 +627,7 @@ function get_list_friends(current_user, current_trip){
 }
 
 function get_name_from_icon(icon){
-    const raw_user = fs.readFileSync("data/users.json");
-    const data_user = JSON.parse(raw_user);
-    const users_list = data_user["users"];
+    const users_list = read_users();
 
     let name = "";
     for(i=0; i<users_list.length; i++){
@@ -645,9 +639,7 @@ function get_name_from_icon(icon){
 }
 
 function get_icon_from_name(name){
-    const raw_user = fs.readFileSync("data/users.json");
-    const data_user = JSON.parse(raw_user);
-    const users_list = data_user["users"];
+    const users_list = read_users();
 
     let icon = "";
     for(i=0; i<users_list.length; i++){
@@ -665,9 +657,7 @@ app.get('/debt-admin', (req, res) => {
     //need to find the user that goes with the image
     let name = get_name_from_icon(personIndex);
 
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
     let current_user = current[0];
     let current_trip = current[1][0];
 
@@ -714,14 +704,10 @@ app.get('/debt-admin', (req, res) => {
 
 app.post('/profile', (req, res) => {
     //to get the name of the current user
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
 
     //to get the image corresponding to the current user and the list of trips
-    const raw_users = fs.readFileSync("data/users.json");
-    const data_users = JSON.parse(raw_users);
-    const users_list = data_users["users"];
+    const users_list = read_users();
 
     let usrimg = "";
     let index = -1;
@@ -734,14 +720,10 @@ app.post('/profile', (req, res) => {
     }
 
     //to get the expenses information for every travel and their categories
-    const raw_exp = fs.readFileSync("data/expenses.json");
-    const data_exp = JSON.parse(raw_exp);
-    const exp_list = data_exp["expenses"];
+    const exp_list = read_expenses();
 
     //used to get the number of friends in a trip to calculate expenses
-    const raw_trip = fs.readFileSync("data/trips.json");
-    const data_trip = JSON.parse(raw_trip);
-    const trip_list = data_trip["trips"];
+    const trip_list = read_trips();
 
     let list_expenses = [];
     for(i=0; i<exp_list.length; i++){
@@ -804,9 +786,7 @@ app.post('/profile', (req, res) => {
 })
 
 app.post('/add-expense', (req, res) => {
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const current = data["current-infos"];
+    const current = read_current();
     const categories = current[1][3];
 
     let trip_name = current[1][0];
@@ -827,13 +807,13 @@ app.post('/valid-expense', (req, res) => {
     const category = req.body.category;
     const comment = req.body.comment;
     
-    const raw = fs.readFileSync("data/expenses.json");
-    const data = JSON.parse(raw);
+    const data = JSON.parse(fs.readFileSync("data/expenses.json"));
     const exp = data["expenses"];
 
     //to get the information of who added the travel
-    const cur_usr = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][0];
-    const cur_travel = JSON.parse(fs.readFileSync("data/current.json"))["current-infos"][1][0];
+    const current = read_current();
+    const cur_usr = current[0];
+    const cur_travel = current[1][0];
 
     for(var i=0; i<exp.length; i++){
         if(cur_travel == exp[i][0]){
@@ -848,8 +828,7 @@ app.post('/valid-expense', (req, res) => {
     fs.writeFileSync("data/expenses.json", JSON.stringify(data, null, 2));
 
     //to update the latest expenses
-    const raw_le = fs.readFileSync("data/latest-exp.json");
-    const data_le = JSON.parse(raw_le);
+    const data_le = JSON.parse(fs.readFileSync("data/latest-exp.json"));
     const exp_le = data_le["latest-exp"];
 
     for (i=0; i<exp_le.length; i++){
@@ -864,13 +843,10 @@ app.post('/valid-expense', (req, res) => {
     fs.writeFileSync("data/latest-exp.json", JSON.stringify(data_le, null, 2));
 
     //to update the list of debts
-    const raw_debt = fs.readFileSync("data/debt.json");
-    const data_debt = JSON.parse(raw_debt);
+    const data_debt = JSON.parse(fs.readFileSync("data/debt.json"));
     const exp_debt = data_debt["debt"];
 
-    const raw_trip = fs.readFileSync("data/trips.json");
-    const data_trip = JSON.parse(raw_trip);
-    const trip_list = data_trip["trips"];
+    const trip_list = read_trips();
 
     //get the list of people that are part of the trip (expect current user)
     let list_friends = [];
@@ -892,10 +868,7 @@ app.post('/valid-expense', (req, res) => {
     }
 
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
-    
-    
-
-   
+  
     let creator = debtbar();
 
     res.render("valid-expense.ejs", {
@@ -906,23 +879,21 @@ app.post('/valid-expense', (req, res) => {
 app.get('/valid-expense', (req, res) => {
     res.render("valid-expense.ejs")
 });
+
 app.get('/specific-category', (req, res) => {
     let creator = debtbar();
     const cname = req.query.category; // Use req.query to get the category from the query parameters
 
-    const raw = fs.readFileSync("data/current.json");
-    const data = JSON.parse(raw);
-    const trip = data["current-infos"][1][0];
+    const current = read_current();
+    const trip_name = current[1][0];
 
-    const all_members= data["current-infos"][1][2];
+    const all_members= current[1][2];
     var members = [];
     for(var i=0; i<all_members.length; i++){
         members.push(all_members[i][0]);
     }
 
-    const raw_ = fs.readFileSync("data/users.json");
-    const data_ = JSON.parse(raw_);
-    const users = data_["users"];
+    const users = read_users();
 
     var images = [];
     for(var i=0; i<members.length; i++){
@@ -936,13 +907,11 @@ app.get('/specific-category', (req, res) => {
         }
     }
 
-    const raaw = fs.readFileSync("data/expenses.json");
-    const daata = JSON.parse(raaw);
-    const all_exp = daata["expenses"];
+    const all_exp = read_expenses();
 
     var cats;
     for(var i=0; i<all_exp.length; i++){
-        if(all_exp[i][0]===trip){
+        if(all_exp[i][0]===trip_name){
             cats = all_exp[i][1];
         }
     }
@@ -965,8 +934,6 @@ app.get('/specific-category', (req, res) => {
             }
         }
     }
-
-    let trip_name = data["current-infos"][1][0];
 
     res.render("specific-category.ejs", {
         role: creator,

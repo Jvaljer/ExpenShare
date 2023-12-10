@@ -163,6 +163,37 @@
       ],
       "2176",
       "Boys trip"
+    ],
+    [
+      "Vienna",
+      [
+        "2023-12-30",
+        "2024-01-06"
+      ],
+      [
+        [
+          "Laurene",
+          "creator"
+        ],
+        [
+          "steve",
+          "none"
+        ],
+        [
+          "Bas",
+          "none"
+        ]
+      ],
+      [
+        "Party",
+        "Alcohol",
+        "Transports",
+        "Activities",
+        "Sleeping",
+        "Groceries"
+      ],
+      "1298",
+      ""
     ]
   ]
 }
