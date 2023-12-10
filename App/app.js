@@ -672,7 +672,6 @@ app.get('/debt-admin', (req, res) => {
     } else if (index != undefined){
         remove(index, current_trip, get_name_from_icon(personIndex, users_list));
     }
-
     index=undefined;
 
     //to get the icon for the top right corner
@@ -762,19 +761,7 @@ app.post('/profile', (req, res) => {
         
     }
 
-    let spe_roles = [];
-    users_list[index][1].map(function(e){
-        spe_roles.push("");
-    })
-    trip_list.map(function(trip){
-        if(users_list[index][1].includes(trip[0])){
-            trip[2].map(function(usr){
-                if(usr[0]===current[0]){
-                    spe_roles[users_list[index][1].indexOf(trip[0])] = usr[1];
-                }
-            });
-        }
-    });
+    let spe_roles = get_roles_per_trip(trip_list, users_list, index, current);
 
     const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
         return elt;
@@ -789,6 +776,23 @@ app.post('/profile', (req, res) => {
         usr_role: spe_roles
     })
 })
+
+function get_roles_per_trip(trip_list, users_list, index, current){
+    let spe_roles = [];
+    users_list[index][1].map(function(e){
+        spe_roles.push("");
+    })
+    trip_list.map(function(trip){
+        if(users_list[index][1].includes(trip[0])){
+            trip[2].map(function(usr){
+                if(usr[0]===current[0]){
+                    spe_roles[users_list[index][1].indexOf(trip[0])] = usr[1];
+                }
+            });
+        }
+    });
+    return spe_roles;
+}
 
 app.post('/add-expense', (req, res) => {
     const current = read_current();
@@ -820,6 +824,7 @@ app.post('/valid-expense', (req, res) => {
     const cur_usr = current[0];
     const cur_travel = current[1][0];
 
+    //to add the expense in the right trip and right category
     for(var i=0; i<exp.length; i++){
         if(cur_travel == exp[i][0]){
             for(j=0; j<exp[i][1].length; j++){
@@ -863,7 +868,7 @@ app.post('/valid-expense', (req, res) => {
                 }
             }
         }
-    } 
+    }
 
     for (let i=0; i<exp_debt.length; i++){
         let amount_per_person = (parseFloat(amount)/(list_friends.length+1)).toFixed(2);
