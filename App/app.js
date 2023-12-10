@@ -25,6 +25,8 @@ app.set('view engine', 'html');
 app.use(expressLayouts)
 app.set('layout', './layouts/app-layout.ejs')
 
+//js file where we put all of the useful function to use here
+var fct = require(path.join(__dirname, 'public/js/fct'));
 
 app.get('', (req, res) => {
     res.render("login-view.ejs", {start:true, fail:false});
@@ -72,20 +74,6 @@ function read_debt(){
     return debt;
 }
 
-function UpdateRoles(trips, roles, current){
-    trips.map(function (trip) {
-        trip[2].map(function (usr) {
-            if (usr[0] === current[0]) {
-                roles.map(function (item) {
-                    if (item == trip[0]) {
-                        usr[1] = roles[roles.indexOf(item) + 1];
-                    }
-                });
-            }
-        });
-    });
-}
-
 function DeleteTrip(trips, del_trip, users){
     const exp_data = JSON.parse(fs.readFileSync("data/expenses.json"));
     const latest_data = JSON.parse(fs.readFileSync("data/latest-exp.json"));
@@ -129,22 +117,6 @@ function DeleteTrip(trips, del_trip, users){
     fs.writeFileSync("data/debt.json", JSON.stringify(debt_data, null, 2));
 }
 
-function AddOtherUserImages(trip_list, current, user_list){
-    let others = [];
-    let images = [];
-    trip_list.map(function(trip){
-        images.push([]);
-        trip[2].map(function(user){
-            if(user[0]!=current[0]){
-                others.push(user);
-                images[trip_list.indexOf(trip)].push(get_icon_from_name(user[0], user_list));
-            }
-        });
-        trip[2] = others;
-        others = [];
-    });
-    return images;
-}
 
 app.post('/login', (req, res) => {
     //here we would load all datas
@@ -178,7 +150,7 @@ app.post('/login', (req, res) => {
                     data_cur["current-infos"] = [];
                     data_cur["current-infos"].push(username);
 
-                    let imgs = AddOtherUserImages(trips, data_cur["current-infos"], users_list);
+                    let imgs = fct.AddOtherUserImages(trips, data_cur["current-infos"], users_list);
 
                     fs.writeFileSync("data/current.json", JSON.stringify(data_cur, null, 2));
 
@@ -253,7 +225,7 @@ app.all('/logged', (req,res) => {
     const trips = trip_data["trips"];
 
     if(from_profile){
-        UpdateRoles(trips, roles, current);
+        fct.UpdateRoles(trips, roles, current);
     }
 
     if(from_delete){
@@ -280,7 +252,7 @@ app.all('/logged', (req,res) => {
         }
     });
 
-    let imgs = AddOtherUserImages(all_trip, current, users);
+    let imgs = fct.AddOtherUserImages(all_trip, current, users);
 
     res.render("fst-view.ejs", {
         user: users[user_index],
@@ -431,7 +403,7 @@ app.post('/specific-travel', (req,res) => {
     }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
 
     //now I wanna add all the related expenses to the expenses list
     const expense_list = read_expenses();
@@ -450,7 +422,7 @@ app.post('/specific-travel', (req,res) => {
     latest_exp.map(function(latest){
         if(latest[0] == current[1][0]){
             list_le = latest;
-            list_le.shift;
+            list_le.shift();
         }
     });
 
@@ -463,37 +435,14 @@ app.post('/specific-travel', (req,res) => {
     });
 });
 
-function debtbar(current){
-    let auser = current[0]
-    let userslist = [];
-    let creator = false;
-
-    for (var i=0; i<current.length; i++){
-        userslist.push(current[1][2][i])
-    }
-
-    if (userslist.length >0){
-        for (var i=0; i<userslist.length; i++){
-            if (userslist[i][0] == auser){ 
-                if (userslist[i][1] == "creator"){
-                    creator = true;
-                } else {
-                    creator = false;
-                }
-            }
-        }
-    }
-    return creator;
-};
-
 app.post('/friends', (req, res) => {
     const current = read_current();
     const users_list = read_users();
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
     let trip_name = current[1][0];
 
-    let tmp = gather_info_friends_page(current, users_list);
+    let tmp = fct.gather_info_friends_page(current, users_list);
 
     res.render("friends.ejs", {
         role: creator,
@@ -503,67 +452,6 @@ app.post('/friends', (req, res) => {
         trip_name: trip_name
     })
 })
-
-function gather_info_friends_page(current, users_list){
-    //creating a list of roles, names, and pictures to display the people from a trip
-    let auser = current[0]
-    let userslistroles = [];
-    let userslistnames = [];
-    let userspicture = [];
-
-    current[1][2].map(function(info){
-        let name = info[0];
-        let role = info[1];
-        if(name==auser){
-            userslistnames.unshift(name);
-            userslistroles.unshift(role);
-        } else {
-            userslistnames.push(name);
-            userslistroles.push(role);
-        }
-    });
-
-    //for the images, need to organise them in the list in the same order as the name list to have the matching icon with the right name
-    userslistnames.forEach(element => {
-        if (element == auser){
-            userspicture.unshift(get_icon_from_name(auser, users_list));
-        } else {
-            userspicture.push(get_icon_from_name(element, users_list));
-        }
-    });
-    return [userslistnames, userspicture, userslistroles];
-}
-
-
-function calc_debt(current_user){
-    const current = read_current();
-    const debt = read_debt();
-    const users_list = read_users();
-
-    //to get the current trip
-    let current_trip = current[1][0];
-
-    let get_back = [];
-    let pay = [];
-    for (let i=0; i<debt.length; i++){
-        if (debt[i][0] == current_trip){
-            for (let j=1; j<debt[i].length; j++){
-                let amount = debt[i][j][2][1];
-                let category = debt[i][j][2][0] + ".png";
-                let date = debt[i][j][2][3];
-                let expense_name = debt[i][j][2][2];
-                if (debt[i][j][0] == current_user){ //to put in get_back
-                    for(let k=0; k<debt[i][j][1].length; k++){
-                        get_back.push([category, amount, date, get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
-                    }
-                } else if (debt[i][j][1].includes(current_user)){ //to put in pay
-                    pay.push([category, amount, date, get_icon_from_name(debt[i][j][0], users_list), expense_name])
-                }
-            }
-        }
-    }
-    return [pay, get_back];
-}
 
 function remove(index, current_trip, current_user){
     const data_debt = JSON.parse(fs.readFileSync("data/debt.json"));
@@ -589,6 +477,36 @@ function remove(index, current_trip, current_user){
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
 }
 
+function calc_debt(current_user){
+    const current = read_current();
+    const debt = read_debt();
+    const users_list = read_users();
+
+    //to get the current trip
+    let current_trip = current[1][0];
+
+    let get_back = [];
+    let pay = [];
+    for (let i=0; i<debt.length; i++){
+        if (debt[i][0] == current_trip){
+            for (let j=1; j<debt[i].length; j++){
+                let amount = debt[i][j][2][1];
+                let category = debt[i][j][2][0] + ".png";
+                let date = debt[i][j][2][3];
+                let expense_name = debt[i][j][2][2];
+                if (debt[i][j][0] == current_user){ //to put in get_back
+                    for(let k=0; k<debt[i][j][1].length; k++){
+                        get_back.push([category, amount, date, fct.get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
+                    }
+                } else if (debt[i][j][1].includes(current_user)){ //to put in pay
+                    pay.push([category, amount, date, fct.get_icon_from_name(debt[i][j][0], users_list), expense_name])
+                }
+            }
+        }
+    }
+    return [pay, get_back];
+}
+
 app.all('/debt-everyone', (req, res) => {
     let index = req.query.index;
 
@@ -601,7 +519,7 @@ app.all('/debt-everyone', (req, res) => {
     }
     index=undefined;
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
     let aux = calc_debt(current_user)
     let pay = aux[0];
     let get_back = aux[1];
@@ -617,37 +535,6 @@ app.all('/debt-everyone', (req, res) => {
     })
 })
 
-function get_list_friends(current_user, current_trip, users_list){
-    const person_icon = []; 
-    for(i=0; i<users_list.length; i++){
-        let test = users_list[i][1];
-        if (test.includes(current_trip) && users_list[i][0] != current_user){
-            person_icon.push(users_list[i][2]);
-        }
-    }
-    return person_icon;
-}
-
-function get_name_from_icon(icon, users_list){
-    let name = "";
-    for(i=0; i<users_list.length; i++){
-        if (users_list[i][2] == icon){
-            name = users_list[i][0];
-        }
-    }
-    return name;
-}
-
-function get_icon_from_name(name, users_list){
-    let icon = "";
-    for(i=0; i<users_list.length; i++){
-        if (users_list[i][0] == name){
-            icon = users_list[i][2];
-        }
-    }
-    return icon;
-}
-
 app.get('/debt-admin', (req, res) => {
     let personIndex = req.query.personIndex;
     let index = req.query.index;
@@ -655,7 +542,7 @@ app.get('/debt-admin', (req, res) => {
     const users_list = read_users();
 
     //need to find the user that goes with the image
-    let name = get_name_from_icon(personIndex, users_list);
+    let name = fct.get_name_from_icon(personIndex, users_list);
 
     const current = read_current();
     let current_user = current[0];
@@ -665,14 +552,14 @@ app.get('/debt-admin', (req, res) => {
     if (index != undefined && personIndex == undefined){
         remove(index, current_trip, current_user);
     } else if (index != undefined){
-        remove(index, current_trip, get_name_from_icon(personIndex, users_list));
+        remove(index, current_trip, fct.get_name_from_icon(personIndex, users_list));
     }
     index=undefined;
 
     //to get the icon for the top right corner
     let icon;
     if (personIndex == undefined){
-        icon = get_icon_from_name(current_user, users_list);
+        icon = fct.get_icon_from_name(current_user, users_list);
     } else{
         icon = personIndex;
     }
@@ -684,13 +571,13 @@ app.get('/debt-admin', (req, res) => {
         user = name;
     }
 
-    let person_icon = get_list_friends(user, current_trip, users_list);
+    let person_icon = fct.get_list_friends(user, current_trip, users_list);
 
     let aux = calc_debt(user)
     let pay = aux[0];
     let get_back = aux[1];
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,
@@ -756,7 +643,7 @@ app.post('/profile', (req, res) => {
         
     }
 
-    let spe_roles = get_roles_per_trip(trip_list, users_list, index, current);
+    let spe_roles = fct.get_roles_per_trip(trip_list, users_list, index, current);
 
     const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
         return elt;
@@ -772,30 +659,13 @@ app.post('/profile', (req, res) => {
     })
 })
 
-function get_roles_per_trip(trip_list, users_list, index, current){
-    let spe_roles = [];
-    users_list[index][1].map(function(e){
-        spe_roles.push("");
-    })
-    trip_list.map(function(trip){
-        if(users_list[index][1].includes(trip[0])){
-            trip[2].map(function(usr){
-                if(usr[0]===current[0]){
-                    spe_roles[users_list[index][1].indexOf(trip[0])] = usr[1];
-                }
-            });
-        }
-    });
-    return spe_roles;
-}
-
 app.post('/add-expense', (req, res) => {
     const current = read_current();
     const categories = current[1][3];
 
     let trip_name = current[1][0];
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
     res.render("add-expense.ejs", {
         role: creator,
         categories: categories,
@@ -874,7 +744,7 @@ app.post('/valid-expense', (req, res) => {
 
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
   
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
 
     res.render("valid-expense.ejs", {
         role: creator
@@ -891,7 +761,7 @@ app.get('/specific-category', (req, res) => {
     const current = read_current();
     const trip_name = current[1][0];
 
-    let creator = debtbar(current);
+    let creator = fct.debtbar(current);
 
     const all_members= current[1][2];
     var members = [];

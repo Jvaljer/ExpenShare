@@ -21,18 +21,6 @@
         ],
         [
           "Restaurant",
-          "8",
-          "Pizza night",
-          "2023-12-13"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "Bas"
-        ],
-        [
-          "Restaurant",
           "3.34",
           "McDo",
           "2023-12-07"
@@ -96,7 +84,20 @@
       ]
     ],
     [
-      "Canada"
+      "Canada",
+      [
+        "Laurene",
+        [
+          "anne",
+          "ahenryl"
+        ],
+        [
+          "Transports",
+          "173.06",
+          "Airplane",
+          "2023-12-29"
+        ]
+      ]
     ],
     [
       "Irlande",
