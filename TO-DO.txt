@@ -5,10 +5,6 @@ A* OVERALL -> shall only use % for size in order to allow resizing (enough time 
 -----CASUAL TESTING------
 * read_current returns a [] instead of a str ? Didn't understand why tbf
 
-I will list all of the functions here. If they don't have an explicit name, I will put what they do.
-So that you can just take a look through this list to know if you can reuse something and so that 
-we don't have duplicata for later when we will rearrange the code
-
 -----FUNCTIONS-----
 - debtbar() -> to get the person that is the creator of a trip
 - calc_debt(current_user) -> for the debt pages
@@ -18,5 +14,15 @@ we don't have duplicata for later when we will rearrange the code
 - DeleteTrip(...) & UpdateRoles(...) -> only used in app.all(/logged) to make it shorter
 
 -----IMPROVMENTS-----
-* move role setting to 'friends page'
-* display a message when nothing to print in 'balance'
+A* move role setting to 'friends page'
+L* display a message when nothing to print in 'balance'
+A* display budget in 'specific travel' with progression (123/123)
+	-> budget set initially is PER MEMBER
+A* display comment in 'fst-view'
+L* display expense comment in 'spe travel'
+L* clean all data
+A* finish cleaning app.js
+L* display a message on FST-VIEW if no travel to show
+A* fix user shall not be shown (julopipo last added in new-trip)
+A* fix new-trip fields width
+A* fix 2 users added when creating a new one (another null null)

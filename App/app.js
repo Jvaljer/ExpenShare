@@ -490,21 +490,6 @@ function calc_debt(current_user){
 
     let get_back = [];
     let pay = [];
-    /*debts.map(function(debt){
-        if(debt[0]==current_trip){
-            debt.map(function(debt_info){
-                let amount = debt_info[2][1];
-                let category = debt_info[2][0]+".png";
-                let date = debt_info[2][3];
-                let exp_name = debt_info[2][2];
-                if(debt_info[0]==current_user){
-                    debt_info[1].map(function(icon){
-                        get_back.push([category, amount, date, fct.get_icon_from_name(icon, users_list), exp_name]);
-                    });
-                }
-            });
-        }
-    });*/
     for (let i=0; i<debt.length; i++){
         if (debt[i][0] == current_trip){
             for (let j=1; j<debt[i].length; j++){
@@ -747,7 +732,9 @@ app.post('/valid-expense', (req, res) => {
     trip_list.map(function(trip){
         if(cur_travel==trip[0]){
             trip[2].map(function(user){
-                list_friends.push(user[0]);
+                if(user[0]!=cur_usr){
+                    list_friends.push(user[0]);
+                }
             });
         }
     });
