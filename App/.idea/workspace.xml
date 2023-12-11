@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa509c83-b2ee-45c5-b505-bf50454757e0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/current.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/current.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logs.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sign-in-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sign-in-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/sign-in.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/sign-in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/sign-in-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/sign-in-view.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TO-DO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TO-DO.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
