@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/current.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/current.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/debt.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/debt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/expenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/expenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/latest-exp.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/latest-exp.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +123,9 @@
       <workItem from="1702072462966" duration="8394000" />
       <workItem from="1702205262528" duration="568000" />
       <workItem from="1702216874396" duration="13785000" />
-      <workItem from="1702245560039" duration="3114000" />
+      <workItem from="1702245560039" duration="3186000" />
+      <workItem from="1702283495022" duration="579000" />
+      <workItem from="1702284526672" duration="745000" />
     </task>
     <servers />
   </component>

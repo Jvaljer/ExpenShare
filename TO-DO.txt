@@ -20,3 +20,6 @@ we don't have duplicata for later when we will rearrange the code
 - DeleteTrip(...) & UpdateRoles(...) -> only used in app.all(/logged) to make it shorter
 
 -----IMPROVMENTS-----
+* move role setting to 'friends page'
+* display a message when nothing to print in 'balance'
+* remove the login taunt

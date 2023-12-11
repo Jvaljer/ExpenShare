@@ -399,7 +399,11 @@ app.post('/specific-travel', (req,res) => {
     });
 
     if(from_above){
-        current.push(trip);
+        if(current[1]!=null){
+            current[1] = trip;
+        } else {
+            current.push(trip);
+        }
     }
     fs.writeFileSync("data/current.json", JSON.stringify(data, null, 2));
 
