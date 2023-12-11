@@ -133,4 +133,32 @@ function debtbar(current){
     return creator;
 };
 
-module.exports = { gather_info_friends_page, get_list_friends, get_name_from_icon, get_icon_from_name, get_roles_per_trip, UpdateRoles, AddOtherUserImages, debtbar };
+//to make a "pay" list and a "get back" list to display in the balance page, depending on the information saved in the debt.json 
+function calc_debt(current_user, current, debt, users_list){
+    //to get the current trip
+    let current_trip = current[1][0];
+
+    let get_back = [];
+    let pay = [];
+    for (let i=0; i<debt.length; i++){
+        if (debt[i][0] == current_trip){
+            for (let j=1; j<debt[i].length; j++){
+                let amount = debt[i][j][2][1];
+                let category = debt[i][j][2][0] + ".png";
+                let date = debt[i][j][2][3];
+                let expense_name = debt[i][j][2][2];
+                if (debt[i][j][0] == current_user){ //to put in get_back
+                    for(let k=0; k<debt[i][j][1].length; k++){
+                        get_back.push([category, amount, date, fct.get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
+                    }
+                } else if (debt[i][j][1].includes(current_user)){ //to put in pay
+                    pay.push([category, amount, date, fct.get_icon_from_name(debt[i][j][0], users_list), expense_name])
+                }
+            }
+        }
+    }
+
+    return [pay, get_back];
+}
+
+module.exports = { gather_info_friends_page, get_list_friends, get_name_from_icon, get_icon_from_name, get_roles_per_trip, UpdateRoles, AddOtherUserImages, debtbar, calc_debt };

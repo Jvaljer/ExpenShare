@@ -480,37 +480,6 @@ function remove(index, current_trip, current_user){
     fs.writeFileSync("data/debt.json", JSON.stringify(data_debt, null, 2));
 }
 
-function calc_debt(current_user){
-    const current = read_current();
-    const debt = read_debt();
-    const users_list = read_users();
-
-    //to get the current trip
-    let current_trip = current[1][0];
-
-    let get_back = [];
-    let pay = [];
-    for (let i=0; i<debt.length; i++){
-        if (debt[i][0] == current_trip){
-            for (let j=1; j<debt[i].length; j++){
-                let amount = debt[i][j][2][1];
-                let category = debt[i][j][2][0] + ".png";
-                let date = debt[i][j][2][3];
-                let expense_name = debt[i][j][2][2];
-                if (debt[i][j][0] == current_user){ //to put in get_back
-                    for(let k=0; k<debt[i][j][1].length; k++){
-                        get_back.push([category, amount, date, fct.get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
-                    }
-                } else if (debt[i][j][1].includes(current_user)){ //to put in pay
-                    pay.push([category, amount, date, fct.get_icon_from_name(debt[i][j][0], users_list), expense_name])
-                }
-            }
-        }
-    }
-
-    return [pay, get_back];
-}
-
 app.all('/debt-everyone', (req, res) => {
     let index = req.query.index;
 
@@ -518,23 +487,24 @@ app.all('/debt-everyone', (req, res) => {
     let current_user = current[0];
     let current_trip = current[1][0];
 
+    const debt = read_debt();
+    const users_list = read_users();
+
     if (index != undefined){
         remove(index, current_trip, current_user);
     }
     index=undefined;
 
     let creator = fct.debtbar(current);
-    let aux = calc_debt(current_user)
+    let aux = fct.calc_debt(current_user, current, debt, users_list);
     let pay = aux[0];
     let get_back = aux[1];
-
-    let trip_name = current[1][0];
 
     res.render("debt-everyone.ejs", {
         role: creator,
         get_back: get_back,
         pay: pay,
-        trip_name: trip_name,
+        trip_name: current_trip,
         current_user: current_user
     })
 })
@@ -544,6 +514,7 @@ app.get('/debt-admin', (req, res) => {
     let index = req.query.index;
 
     const users_list = read_users();
+    const debt = read_debt();
 
     //need to find the user that goes with the image
     let name = fct.get_name_from_icon(personIndex, users_list);
@@ -577,7 +548,7 @@ app.get('/debt-admin', (req, res) => {
 
     let person_icon = fct.get_list_friends(user, current_trip, users_list);
 
-    let aux = calc_debt(user)
+    let aux = fct.calc_debt(user,current, debt, users_list);
     let pay = aux[0];
     let get_back = aux[1];
 
