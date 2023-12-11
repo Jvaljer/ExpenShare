@@ -120,3 +120,15 @@
     height: 75px;
     background-color: #FF6348;
 }
+
+#empty{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.img_no_debt{
+    width: 100px;
+    height: 100px;
+}
+

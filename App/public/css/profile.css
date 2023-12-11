@@ -135,3 +135,15 @@
     font-size: 1.75em;
     color: #FF6B81;
 }
+
+#empty{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    margin-top: 50px;
+}
+
+.img_no_debt{
+    width: 100px;
+    height: 100px;
+}

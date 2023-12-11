@@ -18,6 +18,12 @@
             </div>
         </div>  
 
+        <!-- to display a message if there is no travel yet-->
+        <% if (trips.length == 0){%>
+            <div id="empty">No travel yet!</div>
+            <div id="empty"><img class="img_no_debt" src="media/no-travelling.png"></div>
+        <%}%>
+
         <% for (i=0; i<trips.length; i++){ %>
             <div class="trip-list">
                 <div class="trip-header">

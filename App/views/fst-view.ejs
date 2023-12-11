@@ -15,6 +15,10 @@
 </div>
 
 <div id="body">
+    <% if (trip.length == 0){%>
+        <div id="empty">No travel yet!</div>
+        <div id="empty"><img class="img_no_debt" src="media/no-travelling.png"></div>
+    <%}%>
     <%for(var i=0; i<trip.length; i++){%>
         <div class="travel">
             <form action="/specific-travel" method="post">

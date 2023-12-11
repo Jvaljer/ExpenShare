@@ -21,4 +21,3 @@ A* display comment in 'fst-view'
 L* display expense comment in 'spe travel'
 L* clean all data
 A* finish cleaning app.js
-L* display a message on FST-VIEW if no travel to show
