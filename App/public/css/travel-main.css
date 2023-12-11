@@ -95,3 +95,9 @@
     height: 100px;
 }
 
+#budget{
+    font-size: 1.5em;
+    margin-top: 5%;
+    font-weight: bold;
+    font-family: Monaco;
+}

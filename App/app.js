@@ -391,10 +391,15 @@ app.post('/specific-travel', (req,res) => {
 
     var tname;
     var trip;
+    var budget;
     trips.map(function(trp){
         if(name===trp[0]){
             tname = trp[0];
             trip = trp;
+            budget = trp[4];
+            if(budget==0){
+                budget = "no limit";
+            }
         }
     });
 
@@ -413,9 +418,17 @@ app.post('/specific-travel', (req,res) => {
     const expense_list = read_expenses();
 
     var expenses;
+    var total = 0;
     expense_list.map(function(exp){
         if(exp[0]===tname){
             expenses = exp;
+            exp[1].map(function(category){
+                category[1].map(function(expense){
+                    console.log("adding the expense "+expense[1]+" of "+expense[2]);
+                    total += parseFloat(expense[2]);
+                    console.log("  ->  total is now "+total);
+                });
+            });
         }
     });
 
@@ -435,7 +448,9 @@ app.post('/specific-travel', (req,res) => {
         trip_name: tname,
         trip_expenses: expenses,
         role: creator,
-        lat_exp: list_le
+        lat_exp: list_le,
+        current_amount: total,
+        total_amount: budget
     });
 });
 
