@@ -9,6 +9,10 @@
 
     <div id="body">
         <h1 id="Debt">Balance</h1>
+        <% if (pay.length == 0 && get_back.length == 0){%>
+            <div id="empty">Nothing to report in here!</div>
+            <div id="empty"><img class="img_no_debt" src="media/no-debt.png"></div>
+        <%}%>
 
         <div class="pay"> 
             <% if (pay.length != 0){%>

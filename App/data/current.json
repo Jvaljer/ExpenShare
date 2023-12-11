@@ -2,10 +2,10 @@
   "current-infos": [
     "Laurene",
     [
-      "Tanzania",
+      "Vienna",
       [
-        "2023-12-20",
-        "2023-12-30"
+        "2024-05-12",
+        "2024-05-18"
       ],
       [
         [
@@ -13,8 +13,12 @@
           "creator"
         ],
         [
-          "ahenryl",
-          "Party King"
+          "julopipo",
+          "none"
+        ],
+        [
+          "anne",
+          "none"
         ],
         [
           "Bas",
@@ -22,12 +26,13 @@
         ]
       ],
       [
-        "Fuel",
-        "Restaurant",
+        "Transports",
+        "Activities",
+        "Groceries",
         "Sleeping",
-        "Transports"
+        "Party"
       ],
-      "0",
+      "1285",
       ""
     ]
   ]

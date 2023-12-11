@@ -163,6 +163,40 @@
       ],
       "2176",
       "Boys trip"
+    ],
+    [
+      "Vienna",
+      [
+        "2024-05-12",
+        "2024-05-18"
+      ],
+      [
+        [
+          "Laurene",
+          "creator"
+        ],
+        [
+          "julopipo",
+          "none"
+        ],
+        [
+          "anne",
+          "none"
+        ],
+        [
+          "Bas",
+          "none"
+        ]
+      ],
+      [
+        "Transports",
+        "Activities",
+        "Groceries",
+        "Sleeping",
+        "Party"
+      ],
+      "1285",
+      ""
     ]
   ]
 }

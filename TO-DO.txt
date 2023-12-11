@@ -15,7 +15,6 @@ A* OVERALL -> shall only use % for size in order to allow resizing (enough time 
 
 -----IMPROVMENTS-----
 A* move role setting to 'friends page'
-L* display a message when nothing to print in 'balance'
 A* display budget in 'specific travel' with progression (123/123)
 	-> budget set initially is PER MEMBER
 A* display comment in 'fst-view'

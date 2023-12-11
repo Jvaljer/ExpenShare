@@ -90,3 +90,16 @@
     position: absolute;
     left: 410px;
 }
+
+#empty{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 40px;
+}
+
+.img_no_debt{
+    width: 100px;
+    height: 100px;
+}
+

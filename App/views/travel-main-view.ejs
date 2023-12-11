@@ -17,6 +17,10 @@
         <button id="new-expense-btn" class="btn default" type="submit">Add Expense</button>
     </form>
     <div id="latest-label" class="label">Latest Expenses -</div>
+    <% if (lat_exp.length == 0){%>
+        <div id="empty">No expenses for now!</div>
+        <div id="empty"><img class="img_no_debt" src="media/no-debt.png"></div>
+    <%}%>
     <div id="latest-field">
         <% for (let i=0; i<lat_exp.length; i++){%>
         <div id="expense">

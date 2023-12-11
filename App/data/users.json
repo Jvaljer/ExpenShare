@@ -16,7 +16,8 @@
         "Tanzania",
         "Canada",
         "Bali",
-        "Irlande"
+        "Irlande",
+        "Vienna"
       ],
       "usr1.png"
     ],
@@ -25,7 +26,8 @@
       [
         "Canada",
         "Bali",
-        "Irlande"
+        "Irlande",
+        "Vienna"
       ],
       "usr7.png"
     ],
@@ -45,13 +47,16 @@
         "Tanzania",
         "Bali",
         "Irlande",
-        "Japan"
+        "Japan",
+        "Vienna"
       ],
       "usr8.png"
     ],
     [
       "julopipo",
-      [],
+      [
+        "Vienna"
+      ],
       "usr14.png"
     ]
   ]
