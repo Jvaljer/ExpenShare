@@ -146,7 +146,7 @@
     font-weight: bold;
     font-family: Monaco;
 }
-.field{
+.select-field{
     margin-left: 15%;
     display: flex;
     background-color: #DFE4EA;
@@ -154,6 +154,14 @@
     border-radius: 2em;
     width: fit-content;
     padding-right: 1%;
+}
+.field{
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+    background-color: #DFE4EA;
+    border: solid 3px #2F3542;
+    border-radius: 2em;
 }
 .separator{
     margin-top: 2px;
