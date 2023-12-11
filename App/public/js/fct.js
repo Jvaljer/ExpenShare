@@ -149,10 +149,10 @@ function calc_debt(current_user, current, debt, users_list){
                 let expense_name = debt[i][j][2][2];
                 if (debt[i][j][0] == current_user){ //to put in get_back
                     for(let k=0; k<debt[i][j][1].length; k++){
-                        get_back.push([category, amount, date, fct.get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
+                        get_back.push([category, amount, date, get_icon_from_name(debt[i][j][1][k], users_list), expense_name])
                     }
                 } else if (debt[i][j][1].includes(current_user)){ //to put in pay
-                    pay.push([category, amount, date, fct.get_icon_from_name(debt[i][j][0], users_list), expense_name])
+                    pay.push([category, amount, date, get_icon_from_name(debt[i][j][0], users_list), expense_name])
                 }
             }
         }
