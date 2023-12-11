@@ -682,11 +682,11 @@ app.post('/valid-expense', (req, res) => {
     const exp_le = data_le["latest-exp"];
 
     exp_le.map(function(exp){
-        if(exp[0]==cur_travel && exp_le.length==4){
+        if(exp[0]==cur_travel && exp.length === 4){
             exp.splice(1,1);
-            exp.push([category, amount, name, date]);
+            exp.push([category, amount, name, date, comment]);
         } else if(exp[0]==cur_travel){
-            exp.push([category, amount, name, date]);
+            exp.push([category, amount, name, date, comment]);
         }
     });
 

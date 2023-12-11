@@ -26,6 +26,13 @@
               "50",
               "2023-12-11",
               ""
+            ],
+            [
+              "Laurene",
+              "Car",
+              "120",
+              "2023-12-20",
+              ""
             ]
           ]
         ],
@@ -59,6 +66,41 @@
               "500",
               "",
               "damn that's huge"
+            ],
+            [
+              "Laurene",
+              "Indian Food",
+              "123.83",
+              "2023-12-13",
+              "Restaurant in Le Marais"
+            ],
+            [
+              "Laurene",
+              "Italian pasta",
+              "43.50",
+              "2023-12-18",
+              "Mamamia"
+            ],
+            [
+              "Laurene",
+              "pasta",
+              "17",
+              "2023-12-20",
+              "italian food"
+            ],
+            [
+              "Laurene",
+              "crêpe",
+              "12.53",
+              "2023-12-14",
+              "miam"
+            ],
+            [
+              "Laurene",
+              "Sushi ",
+              "87.33",
+              "",
+              "yummy"
             ]
           ]
         ],
@@ -71,6 +113,20 @@
               "490",
               "2023-12-26",
               "two double rooms"
+            ],
+            [
+              "Laurene",
+              "Night in a tent",
+              "90",
+              "2023-12-13",
+              "Stars night"
+            ],
+            [
+              "Laurene",
+              "AirBnB",
+              "674",
+              "2023-12-28",
+              ""
             ]
           ]
         ],
@@ -111,6 +167,27 @@
               "427",
               "22023-12-09",
               ""
+            ],
+            [
+              "Laurene",
+              "Bikes",
+              "12",
+              "2023-12-14",
+              "Rent a bike.com"
+            ],
+            [
+              "Laurene",
+              "boat",
+              "245",
+              "2023-12-28",
+              "titanic"
+            ],
+            [
+              "Laurene",
+              "limousine",
+              "243",
+              "2023-12-19",
+              "classy"
             ]
           ]
         ]

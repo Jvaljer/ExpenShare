@@ -46,6 +46,7 @@
 #name {
     position: absolute;
     left: 150px;
+    top: 10px;
 }
 
 #date {
@@ -54,6 +55,12 @@
     font-size: x-small;
     align-self: center;
 } 
+#comment {
+    position: absolute;
+    left: 150px;
+    top: 30px;
+    font-size: x-small;
+}
 
 .default {
     border-color: #DFE4EA;
@@ -87,3 +94,4 @@
     width: 100px;
     height: 100px;
 }
+

@@ -18,6 +18,5 @@ A* move role setting to 'friends page'
 A* display budget in 'specific travel' with progression (123/123)
 	-> budget set initially is PER MEMBER
 A* display comment in 'fst-view'
-L* display expense comment in 'spe travel'
 L* clean all data
 A* finish cleaning app.js
