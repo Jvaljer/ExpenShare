@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="aa509c83-b2ee-45c5-b505-bf50454757e0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/login-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login-view.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login-view.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/current.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/current.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/new-trip-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/new-trip-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +124,7 @@
       <workItem from="1702216874396" duration="13785000" />
       <workItem from="1702245560039" duration="3186000" />
       <workItem from="1702283495022" duration="579000" />
-      <workItem from="1702284526672" duration="1052000" />
+      <workItem from="1702284526672" duration="1574000" />
     </task>
     <servers />
   </component>

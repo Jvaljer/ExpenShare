@@ -1,7 +1,5 @@
 -----TO FIX-----
-A* OVERALL -> shall only use % for size in order to allow resizing (FCK that will be painful)
-
-L* Start doing functions in app.JS
+A* OVERALL -> shall only use % for size in order to allow resizing (enough time ??)
 
 
 -----CASUAL TESTING------
@@ -22,4 +20,3 @@ we don't have duplicata for later when we will rearrange the code
 -----IMPROVMENTS-----
 * move role setting to 'friends page'
 * display a message when nothing to print in 'balance'
-* remove the login taunt
