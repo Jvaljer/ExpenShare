@@ -23,6 +23,5 @@ L* display expense comment in 'spe travel'
 L* clean all data
 A* finish cleaning app.js
 L* display a message on FST-VIEW if no travel to show
-A* fix user shall not be shown (julopipo last added in new-trip)
 A* fix new-trip fields width
 A* fix 2 users added when creating a new one (another null null)

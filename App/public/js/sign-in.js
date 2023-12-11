@@ -18,21 +18,11 @@ jQuery(document).ready(function () {
         prv = value;
     });
 
-    $("#form").submit(function(e){
+    $("#btn").on("click",function(e){
         e.preventDefault();
-
         const username = $('#usrfield').val();
         const password = $('#pwdfield').val();
 
-        const new_usr = {
-            username,
-            password,
-            image
-        }
-
-        $.get("/log", new_usr, function(data){
-            console.log("submitting from sign-in.js -> get with "+new_usr);
-            window.location.href = "/log";
-        });
-    });
+        window.location.href = "/log?name="+encodeURIComponent(username)+"&pwd="+encodeURIComponent(password)+"&img="+encodeURIComponent(image);
+    })
 });

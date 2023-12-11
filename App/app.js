@@ -173,9 +173,9 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/log', (req,res)=>{
-    const username = req.query.username;
-    const password = req.query.password;
-    const image = req.query.image;
+    const username = req.query.name;
+    const password = req.query.pwd;
+    const image = req.query.img;
 
     const data = JSON.parse(fs.readFileSync("data/logs.json"));
 
