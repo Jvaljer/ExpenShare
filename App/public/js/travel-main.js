@@ -54,7 +54,5 @@ my_canva.onclick = function(e){
     var slice = travel_chart.getElementsAtEventForMode(e, 'nearest', {intersect: true}, true);
     if (!slice.length) return; // return if not clicked on slice
     var category = travel_chart.data.labels[slice[0].index];
-    console.log("clicked on category: "+category);
-
     window.location.href = '/specific-category?category=' + encodeURIComponent(category);
 };

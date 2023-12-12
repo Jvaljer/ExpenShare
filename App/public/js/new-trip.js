@@ -55,8 +55,6 @@ jQuery(document).ready(function () {
     });
 
     $("#available-categories").on("click", ".notadded-cat", function(){
-        console.log("clicked on: " + $(this).attr("value"));
-
         // Get the image source
         const value = $(this).attr("value");
         const img_src = $(this).find(".cat-icon").attr("src");
@@ -72,8 +70,6 @@ jQuery(document).ready(function () {
         $(this).remove();
     });
     $("#added-categories").on("click", ".added-cat", function(){
-        console.log("clicked on: " + $(this).attr("value"));
-
         // Get the image source
         const value = $(this).attr("value");
         const img_src = $(this).find(".cat-icon").attr("src");

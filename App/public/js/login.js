@@ -8,7 +8,5 @@ function ShowHidePassword(){
     } else if(field.type === "text"){
         field.type = "password";
         btn.textContent = "show";
-    } else {
-        console.log("ERR TYPE WASN'T GET/RECOGNIZE");
     }
 }

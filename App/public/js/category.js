@@ -15,11 +15,6 @@ for(var i=0; i<all_exps.length; i++){
     colors.push(all_colors[i]);
 }
 
-//must set the values for variables
-for(var i=0; i<members.length; i++){
-    console.log(members[i]);
-}
-
 const data = {
     labels: members,
     datasets: [{

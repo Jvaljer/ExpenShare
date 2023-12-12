@@ -3,8 +3,6 @@
 
 
 -----IMPROVMENTS-----
-A* move role setting to 'friends page'
-A* display comment in 'fst-view'
 A* finish cleaning app.js
 A* center friends icon
 A* remove all logs

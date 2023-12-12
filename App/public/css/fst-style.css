@@ -40,12 +40,10 @@
 }
 .trip{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 15px;
     background-color: #DFE4EA;
-    width: 60px;
-    height: 60px;
     margin-top: 25px;
     margin-bottom: 25px;
     margin-left: 25px;
@@ -59,14 +57,15 @@
 }
 
 #name{
-    position: absolute;
-    margin-left: 100px;
     font-family: Monaco;
     font-size: 2em;
 }
+#comment{
+    font-family: Monaco;
+    font-size: 0.75em;
+    color: #FFFFFF;
+}
 #group{
-    position: absolute;
-    margin-left: 600px;
     margin-right: 25px;
     display: grid;
     grid-row-gap: 20px;
@@ -131,4 +130,3 @@
     width: 100px;
     height: 100px;
 }
-

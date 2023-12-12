@@ -26,6 +26,13 @@
                     <div class="trip" id="trip<%i%>">
                         <input type="hidden" name="travelname" value="<%= trip[i][0] %>">
                         <div id="name"> <%=trip[i][0]%> </div>
+                        <div id="comment">
+                            <%if(trip[i][5]==""){%>
+                                no comment for this trip
+                            <%} else {%>
+                                <%=trip[i][5]%>
+                            <%}%>
+                        </div>
                         <div id="group">
                             <%for(var j=0; j<trip[i][2].length; j++){%>
                                 <div class="usr">

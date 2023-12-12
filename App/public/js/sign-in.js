@@ -3,7 +3,6 @@ jQuery(document).ready(function () {
     let prv;
 
     $("#icons").on("click", ".usr-icon", function(){
-        console.log("clicked on "+ $(this).attr("value"));
         const value = $(this).attr("value");
 
         //here I wanna set the clicked icon's background to green
