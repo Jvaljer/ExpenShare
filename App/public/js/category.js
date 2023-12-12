@@ -3,7 +3,7 @@ var canva = document.getElementById('category-chart');
 const data_div = document.querySelector('.container');
 const all_exps = JSON.parse(data_div.dataset.expenses);
 
-const all_colors = ["#FFA502", "#70A1FF", "#7BED9F", "#FF6B81", "#FF6348", "#ECCC68", "#1E90FF", "#57606F"];
+const all_colors = ["#FFA502", "#7BED9F", "#FF6B81", "#ECCC68", "#FF6348", "#70A1FF", "#1E90FF", "#57606F"];
 
 //initializing all chart variables
 var members = [];

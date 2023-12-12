@@ -2,18 +2,13 @@
 * read_current returns a [] instead of a str ? Didn't understand why tbf
 
 
------IMPROVMENTS-----
-A* finish cleaning app.js
-A* center friends icon
-A* remove all logs
-A* perform tests & walkthrough
-
-L* clean all data
-
-
 -----REPORT-----
 A* Split overview as Intro & quick description
 A* Make functioning Graph
 A* Write description of my views (with illustrations)
 A* Write data information for Current, Trip, User
 A* Write code limitations
+
+-----LAST WALKTHROUGH-----
+* display a message instead of chart when nothing added as expenses ??
+* everything seems fine !!!!

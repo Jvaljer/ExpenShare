@@ -27,13 +27,6 @@
     [
       "Bali",
       [
-        "Party",
-        "49.24",
-        "Boat party",
-        "2023-12-09",
-        ""
-      ],
-      [
         "Hotel",
         "77.64",
         "Extra Night",
@@ -46,6 +39,13 @@
         "Pool Party",
         "2023-12-13",
         ""
+      ],
+      [
+        "Activities",
+        "230",
+        "Boat Escape",
+        "2023-12-14",
+        "WE SAW DOLPHINS"
       ]
     ],
     [
@@ -87,6 +87,9 @@
     ],
     [
       "Vienna"
+    ],
+    [
+      "Barcelona"
     ]
   ]
 }

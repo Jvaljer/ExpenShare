@@ -400,7 +400,6 @@ app.post('/specific-travel', (req,res) => {
             if(budget==0){
                 budget = "no limit";
             }
-            //still need to multiply by number of members
         }
     });
 
@@ -652,41 +651,26 @@ app.post('/profile', (req, res) => {
     const trip_list = read_trips();
 
     let list_expenses = [];
-    for(i=0; i<exp_list.length; i++){
-        let aux = [exp_list[i][0]];
-
-        //get the number of participants in the trip
+    exp_list.map(function(exp){
+        let aux = [exp[0]];
         let number_people;
-        for (j=0; j<trip_list.length; j++){
-            if( trip_list[j][0] == exp_list[i][0]){
-                number_people = (trip_list[j][2].length);
+        trip_list.map(function(trip){
+            if(trip[0]==exp[0]){
+                number_people = (trip[2].length);
             }
-        }  
-
-        for (j=0; j<exp_list[i][1].length; j++){
+        });
+        exp[1].map(function(expense){
             let sum = 0;
-            for (k=0; k<exp_list[i][1][j][1].length; k++){
-                sum += parseInt(exp_list[i][1][j][1][k][2]) //to get the expense amount
-            }
-
-            //get the icon instead of the name of the category
-            let category = exp_list[i][1][j][0] + ".png"
-                        
-            //Get the expense per person
+            expense[1].map(function(exp_detail){
+                sum += parseInt(exp_detail[2]);
+            });
+            let category = expense[0]+".png";
             sum = (parseFloat(sum)/number_people).toFixed(2);
-
-            if (sum != 0){
-                aux.push([category, sum]) 
+            if(sum!=0){
+                aux.push([category,sum]);
             }
-        }        
+        });
         list_expenses.push(aux);
-        
-    }
-
-    let spe_roles = fct.get_roles_per_trip(trip_list, users_list, index, current);
-
-    const all_roles = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
-        return elt;
     });
 
     res.render("profile.ejs", {
@@ -813,41 +797,44 @@ app.get('/specific-category', (req, res) => {
     for(var i=0; i<members.length; i++){
         images.push("");
     }
-    for(var i=0; i<users.length; i++){
-        for(var j=0; j<members.length; j++){
-            if(users[i][0]===members[j]){
-                images[j] = users[i][2];
-            }
-        }
-    }
+
+    users.map(function(user){
+       members.map(function(member){
+          if(user[0]===member){
+              images[members.indexOf(member)] = user[2];
+          }
+       });
+    });
 
     const all_exp = read_expenses();
 
     var cats;
-    for(var i=0; i<all_exp.length; i++){
-        if(all_exp[i][0]===trip_name){
-            cats = all_exp[i][1];
-        }
-    }
+    all_exp.map(function(exp){
+       if(exp[0]===trip_name){
+           cats = exp[1];
+       }
+    });
 
     var spe_exp;
-    for(var i=0; i<cats.length; i++){
-        if(cats[i][0]===cname){
-            spe_exp = cats[i];
+    cats.map(function(cat){
+        if(cat[0]===cname){
+            spe_exp = cat;
         }
-    }
+    });
+
     var exps = []; //this must contain list like this [username, whole amount]
-    for(var i=0; i<members.length; i++){
-        exps.push([members[i], 0, images[i]]);
-    }
+    members.map(function(member){
+       exps.push([member, 0, images[members.indexOf(member)]]);
+    });
+
     const cat_exp = spe_exp[1];
-    for(var i=0; i<cat_exp.length; i++){
-        for(var j=0; j<exps.length; j++){
-            if(cat_exp[i][0]===exps[j][0]){
-                exps[j][1] += parseInt(cat_exp[i][2]);
-            }
-        }
-    }
+    cat_exp.map(function(cat){
+        exps.map(function(exp){
+           if(cat[0]===exp[0]){
+               exp[1] += parseInt(cat[2]);
+           }
+        });
+    });
 
     res.render("specific-category.ejs", {
         role: creator,

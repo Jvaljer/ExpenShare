@@ -264,6 +264,20 @@
           "Pool Party",
           "2023-12-13"
         ]
+      ],
+      [
+        "ahenryl",
+        [
+          "Laurene",
+          "Bas",
+          "steve"
+        ],
+        [
+          "Activities",
+          "57.50",
+          "Boat Escape",
+          "2023-12-14"
+        ]
       ]
     ],
     [
@@ -317,6 +331,9 @@
     ],
     [
       "Vienna"
+    ],
+    [
+      "Barcelona"
     ]
   ]
 }
