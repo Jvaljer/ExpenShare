@@ -8,18 +8,15 @@
         <%- include("navbar.ejs")%>
         <%- include("trip-bar.ejs")%>
     </div>
-
     <div id="body">
+        <div id="current" value="<%=current_user%>" visibility="hidden"></div>
         <h1 id="tripFriend">Trip Friends</h1>
-
         <div class="friends">
             <% for (i=0; i<rolelist.length; i++){%>
                 <div class="friendBox"> 
                     <div class="picture"> <img class="img" src="media/<%=picturelist[i]%>"> </div> <!-- change for every users to have their picture-->
                     <div class="name"><%=namelist[i]%> </div>
-                    <%console.log("current_user: "+current_user+", name:"+namelist[i]);%>
                     <%if(current_user===namelist[i]){%>
-                        <%console.log("here is our current user: "+namelist[i]);%>
                         <%if(rolelist[i]==="creator"){%>
                             <div class="role"><%=rolelist[i]%> </div>
                         <%} else {%>
@@ -30,8 +27,8 @@
                                 <%}%>
                             </div>
                         <%}%>
-                    <%} else {%>
-                        <div class="role"><%=rolelist[i]%> </div>
+                    <%}else{%>
+                        <div class="role"> <%=rolelist[i]%> </div>
                     <%}%>
                 </div>
             <%}%>

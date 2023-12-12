@@ -3,7 +3,10 @@ let role;
 jQuery(document).ready(function () {
     //must find how & when to update the roles
     $(".selector").on("click", function(){
-        console.log("clicked on the selector eh");
+        const current = $("#current").attr("value");
+
+        window.location.href = "/friends?current="+encodeURIComponent(current)+
+                        "&new_role="+encodeURIComponent(role);
     });
 });
 

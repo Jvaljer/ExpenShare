@@ -425,9 +425,7 @@ app.post('/specific-travel', (req,res) => {
             expenses = exp;
             exp[1].map(function(category){
                 category[1].map(function(expense){
-                    console.log("adding the expense "+expense[1]+" of "+expense[2]);
                     total += parseFloat(expense[2]);
-                    console.log("  ->  total is now "+total);
                 });
             });
         }
@@ -468,7 +466,6 @@ app.post('/friends', (req, res) => {
         return elt;
     });
 
-    console.log("current user is: "+current[0]);
     res.render("friends.ejs", {
         role: creator,
         rolelist: tmp[2],
@@ -478,7 +475,52 @@ app.post('/friends', (req, res) => {
         roles: role_list,
         current_user: current[0]
     })
-})
+});
+
+app.get('/friends', (req, res)=>{
+    const current = req.query.current;
+    const role = req.query.new_role;
+
+    const current_data = JSON.parse(fs.readFileSync("data/current.json"));
+    var current_read = current_data["current-infos"];
+    const current_trip = current_read[1];
+
+    const trip_data = JSON.parse(fs.readFileSync("data/trips.json"));
+    const trips = trip_data["trips"];
+    trips.map(function(trip){
+       if(trip[0]===current_trip[0]){
+           trip[2].map(function(user){
+               if(user[0]===current){
+                   user[1] = role;
+               }
+           });
+           current_read[1] = trip;
+       }
+    });
+    fs.writeFileSync("data/trips.json", JSON.stringify(trip_data, null, 2));
+
+    const users_list = read_users();
+
+    let creator = fct.debtbar(current_read);
+    let trip_name = current_read[1][0];
+
+    let tmp = fct.gather_info_friends_page(current_read, users_list);
+
+    const role_list = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
+        return elt;
+    });
+
+    //here we wanna update the roles inside of jsons
+    res.render("friends.ejs", {
+        role: creator,
+        rolelist: tmp[2],
+        namelist: tmp[0],
+        picturelist: tmp[1],
+        trip_name: trip_name,
+        roles: role_list,
+        current_user: current
+    })
+});
 
 function remove(index, current_trip, current_user){
     const data_debt = JSON.parse(fs.readFileSync("data/debt.json"));

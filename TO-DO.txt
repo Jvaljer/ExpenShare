@@ -1,20 +1,21 @@
------TO FIX-----
-A* OVERALL -> shall only use % for size in order to allow resizing (enough time ??)
-
-
 -----CASUAL TESTING------
 * read_current returns a [] instead of a str ? Didn't understand why tbf
 
------FUNCTIONS-----
-- debtbar() -> to get the person that is the creator of a trip
-- calc_debt(current_user) -> for the debt pages
-- get_list_friends(current_user, current_trip) -> to know who else than the current user is in the trip
-- get_name_from_icon(icon)
-- get_icon_from_name(name)
-- DeleteTrip(...) & UpdateRoles(...) -> only used in app.all(/logged) to make it shorter
 
 -----IMPROVMENTS-----
 A* move role setting to 'friends page'
 A* display comment in 'fst-view'
-L* clean all data
 A* finish cleaning app.js
+A* center friends icon
+A* remove all logs
+A* perform tests & walkthrough
+
+L* clean all data
+
+
+-----REPORT-----
+A* Split overview as Intro & quick description
+A* Make functioning Graph
+A* Write description of my views (with illustrations)
+A* Write data information for Current, Trip, User
+A* Write code limitations
