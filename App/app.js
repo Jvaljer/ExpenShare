@@ -400,6 +400,7 @@ app.post('/specific-travel', (req,res) => {
             if(budget==0){
                 budget = "no limit";
             }
+            //still need to multiply by number of members
         }
     });
 
@@ -463,12 +464,19 @@ app.post('/friends', (req, res) => {
 
     let tmp = fct.gather_info_friends_page(current, users_list);
 
+    const role_list = JSON.parse(fs.readFileSync("data/roles.json"))["roles"].map(function(elt){
+        return elt;
+    });
+
+    console.log("current user is: "+current[0]);
     res.render("friends.ejs", {
         role: creator,
         rolelist: tmp[2],
         namelist: tmp[0],
         picturelist: tmp[1],
-        trip_name: trip_name
+        trip_name: trip_name,
+        roles: role_list,
+        current_user: current[0]
     })
 })
 
@@ -643,9 +651,7 @@ app.post('/profile', (req, res) => {
         user: current[0],
         icon: usrimg,
         trips: users_list[index][1],
-        expenses: list_expenses,
-        roles: all_roles,
-        usr_role: spe_roles
+        expenses: list_expenses
     })
 })
 

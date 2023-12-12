@@ -16,10 +16,28 @@
             <% for (i=0; i<rolelist.length; i++){%>
                 <div class="friendBox"> 
                     <div class="picture"> <img class="img" src="media/<%=picturelist[i]%>"> </div> <!-- change for every users to have their picture-->
-                    <div class="name"><%=namelist[i]%> </div> 
-                    <div class="role"><%=rolelist[i]%> </div>
+                    <div class="name"><%=namelist[i]%> </div>
+                    <%console.log("current_user: "+current_user+", name:"+namelist[i]);%>
+                    <%if(current_user===namelist[i]){%>
+                        <%console.log("here is our current user: "+namelist[i]);%>
+                        <%if(rolelist[i]==="creator"){%>
+                            <div class="role"><%=rolelist[i]%> </div>
+                        <%} else {%>
+                            <button class="dropbtn" id="dropdown<%=i%>" onclick="Toggle('dropdown<%=i%>')"><%=rolelist[i]%></button>
+                            <div class="dropdown-content" onmouseleave="Hide('dropdown<%=i%>')">
+                                <%for(var k=0; k<roles.length; k++){%>
+                                    <a class="selector" onclick="ChooseRole('<%=roles[k]%>','<%=i%>')"><%=roles[k]%></a>
+                                <%}%>
+                            </div>
+                        <%}%>
+                    <%} else {%>
+                        <div class="role"><%=rolelist[i]%> </div>
+                    <%}%>
                 </div>
             <%}%>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="js/friends.js"></script>
