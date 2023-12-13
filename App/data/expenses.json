@@ -276,6 +276,13 @@
               "267.99",
               "2023-12-13",
               "this is gonna be lit !"
+            ],
+            [
+              "ahenryl",
+              "candies",
+              "2",
+              "2023-12-04",
+              "some sugar"
             ]
           ]
         ],
@@ -410,31 +417,6 @@
       ]
     ],
     [
-      "Japan",
-      [
-        [
-          "Activities",
-          []
-        ],
-        [
-          "Party",
-          []
-        ],
-        [
-          "Alcohol",
-          []
-        ],
-        [
-          "Sleeping",
-          []
-        ],
-        [
-          "Groceries",
-          []
-        ]
-      ]
-    ],
-    [
       "Vienna",
       [
         [
@@ -455,27 +437,6 @@
         ],
         [
           "Party",
-          []
-        ]
-      ]
-    ],
-    [
-      "Barcelona",
-      [
-        [
-          "Activities",
-          []
-        ],
-        [
-          "Alcohol",
-          []
-        ],
-        [
-          "Party",
-          []
-        ],
-        [
-          "Groceries",
           []
         ]
       ]

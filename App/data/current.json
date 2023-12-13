@@ -2,9 +2,9 @@
   "current-infos": [
     "ahenryl",
     [
-      "Barcelona",
+      "Bali",
       [
-        "2023-12-01",
+        "2023-12-19",
         "2023-12-31"
       ],
       [
@@ -13,18 +13,27 @@
           "creator"
         ],
         [
-          "julopipo",
+          "Laurene",
+          "none"
+        ],
+        [
+          "Bas",
+          "Driver"
+        ],
+        [
+          "steve",
           "none"
         ]
       ],
       [
+        "Fuel",
+        "Hotel",
         "Activities",
-        "Alcohol",
         "Party",
-        "Groceries"
+        "Transports"
       ],
-      "2200",
-      "Anem a espanya jicos"
+      "0",
+      ""
     ]
   ]
 }
