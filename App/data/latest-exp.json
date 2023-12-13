@@ -3,87 +3,26 @@
     [
       "Tanzania",
       [
-        "Transports",
-        "245",
-        "boat",
-        "2023-12-28",
-        "titanic"
-      ],
-      [
-        "Transports",
-        "243",
-        "limousine",
-        "2023-12-19",
-        "classy"
-      ],
-      [
-        "Restaurant",
-        "87.33",
-        "Sushi ",
-        "",
-        "yummy"
-      ]
-    ],
-    [
-      "Bali",
-      [
-        "Party",
-        "267.99",
-        "Pool Party",
-        "2023-12-13",
-        ""
-      ],
-      [
-        "Activities",
-        "230",
-        "Boat Escape",
-        "2023-12-14",
-        "WE SAW DOLPHINS"
-      ],
-      [
-        "Party",
-        "2",
-        "candies",
-        "2023-12-04",
-        "some sugar"
-      ]
-    ],
-    [
-      "Canada",
-      [
-        "Transports",
-        "692.24",
-        "Airplane",
-        "2023-12-29",
-        ""
-      ],
-      [
-        "Party",
-        "50",
-        "Weed",
-        "2023-12-17",
-        ""
-      ]
-    ],
-    [
-      "Irlande",
-      [
-        "Hotel",
-        "478",
-        "Le Plaza",
-        "2024-09-12",
-        ""
-      ],
-      [
-        "Restaurant",
-        "49.23",
-        "Pizza",
+        "Alcohol",
+        "44.95",
+        "Rhum",
         "2023-12-11",
+        "monday..."
+      ],
+      [
+        "Restaurant",
+        "128.27",
+        "Blue Dongwe Jetty",
+        "2023-12-13",
+        "32 lake beach"
+      ],
+      [
+        "Fuel",
+        "60",
+        "Car",
+        "2023-12-16",
         ""
       ]
-    ],
-    [
-      "Vienna"
     ]
   ]
 }

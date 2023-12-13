@@ -560,7 +560,8 @@ app.all('/debt-everyone', (req, res) => {
     index=undefined;
 
     let creator = fct.debtbar(current);
-    let aux = fct.calc_debt(current_user, current, debt, users_list);
+    let debt_modif = read_debt();
+    let aux = fct.calc_debt(current_user, current, debt_modif, users_list);
     let pay = aux[0];
     let get_back = aux[1];
 
@@ -573,7 +574,7 @@ app.all('/debt-everyone', (req, res) => {
     })
 })
 
-app.get('/debt-admin', (req, res) => {
+app.all('/debt-admin', (req, res) => {
     let personIndex = req.query.personIndex;
     let index = req.query.index;
 
@@ -612,11 +613,13 @@ app.get('/debt-admin', (req, res) => {
 
     let person_icon = fct.get_list_friends(user, current_trip, users_list);
 
-    let aux = fct.calc_debt(user,current, debt, users_list);
+    let debt_modif = read_debt();
+    let aux = fct.calc_debt(user,current, debt_modif, users_list);
     let pay = aux[0];
     let get_back = aux[1];
 
     let creator = fct.debtbar(current);
+
     res.render("debt-admin.ejs", {
         role: creator,
         pay: pay,

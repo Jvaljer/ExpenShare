@@ -3,39 +3,27 @@
     [
       "Tanzania",
       [
-        "ahenryl",
-        [
-          "Laurene"
-        ],
-        [
-          "Fuel",
-          "19",
-          "Truk",
-          "2023-12-25"
-        ]
-      ],
-      [
         "Laurene",
         [
-          "Bas"
+          "julopipo"
         ],
         [
           "Restaurant",
-          "3.34",
-          "McDo",
-          "2023-12-07"
+          "19.94",
+          "L'Exotico",
+          "2023-12-02"
         ]
       ],
       [
         "ahenryl",
         [
           "Bas",
-          "Laurene"
+          "julopipo"
         ],
         [
-          "Transports",
-          "10.67",
-          "Bus",
+          "Alcohol",
+          "8.74",
+          "Beers",
           "2023-12-03"
         ]
       ],
@@ -46,302 +34,63 @@
           "Bas"
         ],
         [
-          "Restaurant",
-          "58.33",
-          "Pollos Hermanos",
-          "2023-12-10"
+          "Party",
+          "25.00",
+          "El Luxurious",
+          "2023-12-05"
         ]
       ],
       [
-        "Laurene",
+        "julopipo",
         [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Restaurant",
-          "41.28",
-          "Indian Food",
-          "2023-12-13"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Restaurant",
-          "14.50",
-          "Italian pasta",
-          "2023-12-18"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Sleeping",
-          "30.00",
-          "Night in a tent",
-          "2023-12-13"
-        ]
-      ],
-      [
-        "Laurene",
-        [
+          "Laurene",
           "ahenryl",
           "Bas"
         ],
         [
           "Fuel",
-          "40.00",
-          "Car",
-          "2023-12-20"
+          "8.14",
+          "TukTuk",
+          "2023-12-05"
         ]
       ],
       [
-        "Laurene",
+        "Bas",
         [
           "ahenryl",
-          "Bas"
-        ],
-        [
-          "Sleeping",
-          "224.67",
-          "AirBnB",
-          "2023-12-28"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Transports",
-          "4.00",
-          "Bikes",
-          "2023-12-14"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
+          "julopipo"
         ],
         [
           "Restaurant",
-          "5.67",
-          "pasta",
-          "2023-12-20"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Restaurant",
-          "4.18",
-          "crêpe",
-          "2023-12-14"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Transports",
-          "81.67",
-          "boat",
-          "2023-12-28"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Transports",
-          "81.00",
-          "limousine",
-          "2023-12-19"
-        ]
-      ],
-      [
-        "Laurene",
-        [
-          "ahenryl",
-          "Bas"
-        ],
-        [
-          "Restaurant",
-          "29.11",
-          "Sushi ",
-          ""
-        ]
-      ]
-    ],
-    [
-      "Bali",
-      [
-        "Laurene",
-        [
-          "Bas",
-          "steve"
-        ],
-        [
-          "Party",
-          "12.31",
-          "Boat party",
+          "18.81",
+          "Sushis",
           "2023-12-09"
         ]
       ],
       [
-        "ahenryl",
+        "julopipo",
         [
-          "Bas",
-          "steve",
-          "Laurene"
+          "ahenryl"
         ],
         [
-          "Activities",
-          "21.75",
-          "Scubadiving",
-          "2023-12-22"
-        ]
-      ],
-      [
-        "ahenryl",
-        [
-          "steve"
-        ],
-        [
-          "Transports",
-          "2",
-          "Scooter",
-          "2023-12-22"
-        ]
-      ],
-      [
-        "ahenryl",
-        [
-          "Laurene",
-          "Bas",
-          "steve"
-        ],
-        [
-          "Hotel",
-          "19.41",
-          "Extra Night",
-          "2023-12-10"
-        ]
-      ],
-      [
-        "ahenryl",
-        [
-          "Laurene",
-          "Bas",
-          "steve"
-        ],
-        [
-          "Party",
-          "53.60",
-          "Pool Party",
+          "Restaurant",
+          "32.07",
+          "Blue Dongwe Jetty",
           "2023-12-13"
         ]
       ],
       [
         "ahenryl",
         [
-          "Laurene",
-          "Bas",
-          "steve"
+          "Bas"
         ],
         [
-          "Activities",
-          "57.50",
-          "Boat Escape",
-          "2023-12-14"
-        ]
-      ],
-      [
-        "ahenryl",
-        [
-          "Laurene",
-          "Bas",
-          "steve"
-        ],
-        [
-          "Party",
-          "0.50",
-          "candies",
-          "2023-12-04"
+          "Fuel",
+          "15.00",
+          "Car",
+          "2023-12-16"
         ]
       ]
-    ],
-    [
-      "Canada",
-      [
-        "Laurene",
-        [
-          "anne"
-        ],
-        [
-          "Transports",
-          "173.06",
-          "Airplane",
-          "2023-12-29"
-        ]
-      ],
-      [
-        "ahenryl",
-        [
-          "Laurene",
-          "steve",
-          "anne"
-        ],
-        [
-          "Party",
-          "12.50",
-          "Weed",
-          "2023-12-17"
-        ]
-      ]
-    ],
-    [
-      "Irlande",
-      [
-        "Laurene",
-        [
-          "Bas",
-          "steve",
-          "anne"
-        ],
-        [
-          "Restaurant",
-          "12.31",
-          "Pizza",
-          "2023-12-11"
-        ]
-      ]
-    ],
-    [
-      "Vienna"
     ]
   ]
 }

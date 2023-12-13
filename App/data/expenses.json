@@ -4,440 +4,113 @@
       "Tanzania",
       [
         [
-          "Fuel",
-          [
-            [
-              "ahenryl",
-              "Mercedes C63S AMG",
-              "120",
-              "2023-12-25",
-              "this bitch drinks alot"
-            ],
-            [
-              "ahenryl",
-              "Truk",
-              "57",
-              "2023-12-25",
-              ""
-            ],
-            [
-              "ahenryl",
-              "Another Gas Filling",
-              "50",
-              "2023-12-11",
-              ""
-            ],
-            [
-              "Laurene",
-              "Car",
-              "120",
-              "2023-12-20",
-              ""
-            ]
-          ]
-        ],
-        [
           "Restaurant",
           [
             [
               "Laurene",
-              "Pizza night",
-              "24",
-              "2023-12-13",
-              ""
-            ],
-            [
-              "Laurene",
-              "McDo",
-              "10",
-              "2023-12-07",
-              ""
-            ],
-            [
-              "ahenryl",
-              "Pollos Hermanos",
-              "175",
-              "2023-12-10",
-              "yummy chicken"
-            ],
-            [
-              "ahenryl",
-              "Huge Expense",
-              "500",
-              "",
-              "damn that's huge"
-            ],
-            [
-              "Laurene",
-              "Indian Food",
-              "123.83",
-              "2023-12-13",
-              "Restaurant in Le Marais"
-            ],
-            [
-              "Laurene",
-              "Italian pasta",
-              "43.50",
-              "2023-12-18",
-              "Mamamia"
-            ],
-            [
-              "Laurene",
-              "pasta",
-              "17",
-              "2023-12-20",
-              "italian food"
-            ],
-            [
-              "Laurene",
-              "crêpe",
-              "12.53",
-              "2023-12-14",
-              "miam"
-            ],
-            [
-              "Laurene",
-              "Sushi ",
-              "87.33",
-              "",
-              "yummy"
-            ]
-          ]
-        ],
-        [
-          "Sleeping",
-          [
-            [
-              "Laurene",
-              "AirBnB",
-              "490",
-              "2023-12-26",
-              "two double rooms"
-            ],
-            [
-              "Laurene",
-              "Night in a tent",
-              "90",
-              "2023-12-13",
-              "Stars night"
-            ],
-            [
-              "Laurene",
-              "AirBnB",
-              "674",
-              "2023-12-28",
-              ""
-            ]
-          ]
-        ],
-        [
-          "Transports",
-          [
-            [
-              "Laurene",
-              "Boat tour",
-              "24",
+              "L'Exotico",
+              "79.76",
               "2023-12-02",
-              "test"
+              "no groceries yet"
             ],
             [
-              "ahenryl",
-              "Bus",
-              "32",
-              "2023-12-03",
-              "traffic was horrific"
+              "julopipo",
+              "Pizza",
+              "19.38",
+              "2023-12-05",
+              "yummy"
             ],
             [
-              "Laurene",
-              "Car",
-              "78",
-              "2023-12-03",
-              "merco"
+              "julopipo",
+              "Ugali",
+              "42.98",
+              "2023-12-07",
+              "needed to try"
             ],
             [
-              "Laurene",
-              "Plane",
-              "567",
-              "2023-12-18",
-              ""
-            ],
-            [
-              "Laurene",
-              "Helicopter",
-              "427",
-              "22023-12-09",
-              ""
-            ],
-            [
-              "Laurene",
-              "Bikes",
-              "12",
-              "2023-12-14",
-              "Rent a bike.com"
-            ],
-            [
-              "Laurene",
-              "boat",
-              "245",
-              "2023-12-28",
-              "titanic"
-            ],
-            [
-              "Laurene",
-              "limousine",
-              "243",
-              "2023-12-19",
-              "classy"
-            ]
-          ]
-        ]
-      ]
-    ],
-    [
-      "Bali",
-      [
-        [
-          "Fuel",
-          [
-            [
-              "ahenryl",
-              "test",
-              "25",
-              "",
-              ""
-            ]
-          ]
-        ],
-        [
-          "Hotel",
-          [
-            [
-              "Laurene",
-              "Beach house",
-              "456",
-              "2023-12-13",
-              ""
-            ],
-            [
-              "ahenryl",
-              "Extra Night",
-              "77.64",
-              "2023-12-10",
-              "wouldn't sleep under a bridge"
-            ]
-          ]
-        ],
-        [
-          "Activities",
-          [
-            [
-              "ahenryl",
-              "Scubadiving",
-              "87",
-              "2023-12-22",
-              ""
-            ],
-            [
-              "ahenryl",
-              "Boat Escape",
-              "230",
-              "2023-12-14",
-              "WE SAW DOLPHINS"
-            ]
-          ]
-        ],
-        [
-          "Party",
-          [
-            [
-              "Laurene",
-              "Club",
-              "123",
-              "2023-12-13",
-              ""
-            ],
-            [
-              "Laurene",
-              "Show ",
-              "29",
-              "2023-12-14",
-              ""
-            ],
-            [
-              "Laurene",
-              "Boat party",
-              "49.24",
+              "Bas",
+              "Sushis",
+              "75.25",
               "2023-12-09",
               ""
             ],
             [
-              "ahenryl",
-              "Pool Party",
-              "267.99",
+              "julopipo",
+              "Blue Dongwe Jetty",
+              "128.27",
               "2023-12-13",
-              "this is gonna be lit !"
+              "32 lake beach"
+            ]
+          ]
+        ],
+        [
+          "Fuel",
+          [
+            [
+              "julopipo",
+              "TukTuk",
+              "32.55",
+              "2023-12-05",
+              "vroom vroom"
             ],
             [
               "ahenryl",
-              "candies",
-              "2",
-              "2023-12-04",
-              "some sugar"
-            ]
-          ]
-        ],
-        [
-          "Transports",
-          [
-            [
-              "Laurene",
-              "Boat ",
-              "59",
-              "2023-12-22",
-              "beautiful ride"
-            ],
-            [
-              "ahenryl",
-              "Scooter ",
-              "8",
-              "",
-              "vroum vroum"
-            ]
-          ]
-        ]
-      ]
-    ],
-    [
-      "Canada",
-      [
-        [
-          "Hotel",
-          []
-        ],
-        [
-          "Transports",
-          [
-            [
-              "Laurene",
-              "Airplane",
-              "692.24",
-              "2023-12-29",
+              "Car",
+              "60",
+              "2023-12-16",
               ""
-            ]
-          ]
-        ],
-        [
-          "Activities",
-          [
-            [
-              "Laurene",
-              "Ski",
-              "12.56",
-              "2023-12-28",
-              ""
-            ],
-            [
-              "Laurene",
-              "Fishing equipment",
-              "54",
-              "2023-12-08",
-              ""
-            ]
-          ]
-        ],
-        [
-          "Party",
-          [
-            [
-              "ahenryl",
-              "Weed",
-              "50",
-              "2023-12-17",
-              "smoke weed everyday "
             ]
           ]
         ],
         [
           "Alcohol",
-          []
+          [
+            [
+              "ahenryl",
+              "Beers",
+              "34.98",
+              "2023-12-03",
+              "getting thirsty"
+            ],
+            [
+              "julopipo",
+              "Rhum",
+              "44.95",
+              "2023-12-11",
+              "monday..."
+            ]
+          ]
         ],
-        [
-          "Groceries",
-          []
-        ]
-      ]
-    ],
-    [
-      "Irlande",
-      [
         [
           "Party",
-          []
-        ],
-        [
-          "Restaurant",
           [
             [
-              "Laurene",
-              "Pizza",
-              "49.23",
-              "2023-12-11",
+              "ahenryl",
+              "El Luxurious",
+              "99.99",
+              "2023-12-05",
               ""
-            ]
-          ]
-        ],
-        [
-          "Hotel",
-          [
+            ],
             [
               "Bas",
-              "Le Plaza",
-              "478",
-              "2024-09-12",
-              ""
+              "BeachParty",
+              "55.01",
+              "2023-12-10",
+              "vale chicos"
             ]
           ]
-        ],
-        [
-          "Activities",
-          []
-        ],
-        [
-          "Fuel",
-          []
-        ],
-        [
-          "Activities",
-          []
-        ],
-        [
-          "Transports",
-          []
-        ]
-      ]
-    ],
-    [
-      "Vienna",
-      [
-        [
-          "Transports",
-          []
-        ],
-        [
-          "Activities",
-          []
-        ],
-        [
-          "Groceries",
-          []
         ],
         [
           "Sleeping",
-          []
-        ],
-        [
-          "Party",
-          []
+          [
+            [
+              "Laurene",
+              "AirBnB",
+              "732.87",
+              "2023-10-06",
+              "jacuzzi on the roof"
+            ]
+          ]
         ]
       ]
     ]

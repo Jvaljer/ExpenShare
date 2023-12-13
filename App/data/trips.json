@@ -3,170 +3,36 @@
     [
       "Tanzania",
       [
-        "2023-12-20",
-        "2023-12-30"
-      ],
-      [
-        [
-          "Laurene",
-          "creator"
-        ],
-        [
-          "ahenryl",
-          "Driver"
-        ],
-        [
-          "Bas",
-          "none"
-        ]
-      ],
-      [
-        "Fuel",
-        "Restaurant",
-        "Sleeping",
-        "Transports"
-      ],
-      "0",
-      ""
-    ],
-    [
-      "Bali",
-      [
-        "2023-12-19",
+        "2023-12-01",
         "2023-12-31"
       ],
       [
         [
-          "ahenryl",
-          "creator"
-        ],
-        [
-          "Laurene",
-          "none"
-        ],
-        [
-          "Bas",
-          "Driver"
-        ],
-        [
-          "steve",
-          "none"
-        ]
-      ],
-      [
-        "Fuel",
-        "Hotel",
-        "Activities",
-        "Party",
-        "Transports"
-      ],
-      "0",
-      ""
-    ],
-    [
-      "Canada",
-      [
-        "2024-01-15",
-        "2024-01-21"
-      ],
-      [
-        [
           "Laurene",
           "creator"
-        ],
-        [
-          "steve",
-          "none"
-        ],
-        [
-          "anne",
-          "none"
         ],
         [
           "ahenryl",
           "Driver"
-        ]
-      ],
-      [
-        "Hotel",
-        "Transports",
-        "Activities",
-        "Party",
-        "Alcohol",
-        "Groceries"
-      ],
-      "767",
-      "Bring warm clothes because it is cold"
-    ],
-    [
-      "Irlande",
-      [
-        "2024-09-24",
-        "2024-10-01"
-      ],
-      [
+        ],
         [
           "Bas",
-          "creator"
-        ],
-        [
-          "Laurene",
           "none"
-        ],
-        [
-          "steve",
-          "none"
-        ],
-        [
-          "anne",
-          "none"
-        ]
-      ],
-      [
-        "Party",
-        "Restaurant",
-        "Hotel",
-        "Activities",
-        "Fuel",
-        "Activities",
-        "Transports"
-      ],
-      "814",
-      ""
-    ],
-    [
-      "Vienna",
-      [
-        "2024-05-12",
-        "2024-05-18"
-      ],
-      [
-        [
-          "Laurene",
-          "creator"
         ],
         [
           "julopipo",
           "none"
-        ],
-        [
-          "anne",
-          "none"
-        ],
-        [
-          "Bas",
-          "none"
         ]
       ],
       [
-        "Transports",
-        "Activities",
-        "Groceries",
-        "Sleeping",
-        "Party"
+        "Restaurant",
+        "Fuel",
+        "Alcohol",
+        "Party",
+        "Sleeping"
       ],
-      "1285",
-      ""
+      "2502",
+      "Into the wild"
     ]
   ]
 }

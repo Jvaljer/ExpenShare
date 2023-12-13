@@ -1,5 +1,5 @@
 function ShowHidePassword(){
-    var field = document.getElementById("pwdfield");
+    var field = document.getElementById("pwd-field");
     var btn = document.getElementById("show-hide");
 
     if(field.type === "password"){

@@ -1,39 +1,39 @@
 {
   "current-infos": [
-    "ahenryl",
+    "julopipo",
     [
-      "Bali",
+      "Tanzania",
       [
-        "2023-12-19",
+        "2023-12-01",
         "2023-12-31"
       ],
       [
         [
-          "ahenryl",
+          "Laurene",
           "creator"
         ],
         [
-          "Laurene",
-          "none"
-        ],
-        [
-          "Bas",
+          "ahenryl",
           "Driver"
         ],
         [
-          "steve",
+          "Bas",
+          "none"
+        ],
+        [
+          "julopipo",
           "none"
         ]
       ],
       [
+        "Restaurant",
         "Fuel",
-        "Hotel",
-        "Activities",
+        "Alcohol",
         "Party",
-        "Transports"
+        "Sleeping"
       ],
-      "0",
-      ""
+      "2502",
+      "Into the wild"
     ]
   ]
 }
