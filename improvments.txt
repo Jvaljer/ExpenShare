@@ -1,0 +1,1 @@
+some obvious improvments are about the login navigation -> adding the possibility to log out + to navigate between sign-in & log-in without being forced to nothing else

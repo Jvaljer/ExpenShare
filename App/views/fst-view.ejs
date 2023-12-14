@@ -3,7 +3,12 @@
 <div id="header">
     <h1 id="title">ExpenShare</h1>
     <div id="usrprofile">
-        <div id="usrinfo"> <%= user[0] %> </div>
+        <div id="infos">
+            <div id="usrinfo"> <%= user[0] %> </div>
+            <form action="/log" method="get">
+                <button type="text" id="log-out" value="out">Log Out</button>
+            </form>
+        </div>
         <form action="/profile" method="post">
             <button type="submit" class="nav-link" style="border: none; background: none; cursor: pointer;">
                 <div id="usricon">

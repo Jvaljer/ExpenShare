@@ -173,6 +173,13 @@ app.post('/login', (req, res) => {
 });
 
 app.get('/log', (req,res)=>{
+    if(req.body.out==="out"){
+        res.render("login-view.ejs",{
+            start: false,
+            fail: true
+        });
+    }
+
     const username = req.query.name;
     const password = req.query.pwd;
     const image = req.query.img;
