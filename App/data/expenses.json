@@ -113,6 +113,64 @@
           ]
         ]
       ]
+    ],
+    [
+      "Barcelona",
+      [
+        [
+          "Activities",
+          [
+            [
+              "ahenryl",
+              "Boat Trip",
+              "128",
+              "2024-06-20",
+              "Went Around "
+            ]
+          ]
+        ],
+        [
+          "Party",
+          [
+            [
+              "ahenryl",
+              "Yacht Partyyy",
+              "230",
+              "2024-06-21",
+              "yeeepa!"
+            ]
+          ]
+        ],
+        [
+          "Hotel",
+          [
+            [
+              "ahenryl",
+              "LogisHotel",
+              "467",
+              "2024-06-17",
+              "Whole Week Paid"
+            ]
+          ]
+        ]
+      ]
+    ],
+    [
+      "Rhodes ",
+      [
+        [
+          "Transports",
+          []
+        ],
+        [
+          "Alcohol",
+          []
+        ],
+        [
+          "Restaurant",
+          []
+        ]
+      ]
     ]
   ]
 }
